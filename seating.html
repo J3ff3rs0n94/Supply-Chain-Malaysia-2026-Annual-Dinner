@@ -209,12 +209,11 @@
     }
     .ballroom-grid {
       display: grid;
-      grid-template-columns: 24px 140px repeat(9, 78px) 24px;
-      grid-template-rows: 40px repeat(4, 78px) 40px;
+      grid-template-columns: 24px 150px repeat(9, 78px) 24px;
+      grid-template-rows: 40px 78px 78px 78px 78px 40px;
       gap: 10px;
       min-width: 960px;
       justify-content: center;
-      align-items: center;
       background: #090e1e;
       padding: 20px;
       border-radius: 12px;
@@ -235,29 +234,40 @@
       text-align: center;
     }
 
-    /* Expanded Stage Rectangle - Spans rows 2 through 5 completely */
+    /* Expanded Stage Rectangle - Completely fills row 2 down to row 5 */
     .stage-block {
-      background: linear-gradient(135deg, #1d3557, #457b9d);
-      border: 2px solid var(--accent-cyan);
+      background: linear-gradient(135deg, #1d3557, #457b9d) !important;
+      border: 2px solid var(--accent-cyan) !important;
       color: #ffffff;
-      grid-column: 2;
-      grid-row: 2 / span 4;
-      align-self: stretch;
-      justify-self: stretch;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 16px rgba(100, 223, 223, 0.25);
+      grid-column: 2 !important;
+      grid-row: 2 / 6 !important; /* spans row 2, 3, 4, 5 (all 4 table rows) */
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 330px !important;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(100, 223, 223, 0.3);
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 16px 8px;
     }
     .stage-block h3 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
+      font-weight: 900;
       color: var(--accent-cyan);
-      letter-spacing: 2px;
-      margin-bottom: 4px;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(100, 223, 223, 0.5);
     }
     .stage-block p {
-      font-size: 0.78rem;
-      color: #e0e1dd;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(11, 19, 43, 0.6);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(100, 223, 223, 0.4);
     }
 
     .buffet-block {
@@ -288,6 +298,8 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      justify-self: center;
+      align-self: center;
       cursor: pointer;
       position: relative;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -456,8 +468,8 @@
 
     <div class="ballroom-scroll-container">
       <div class="ballroom-grid" id="ballroomGrid">
-        <!-- Expanded Full-Height Stage Rectangle -->
-        <div class="floor-block stage-block">
+        <!-- Expanded Full-Height Stage Rectangle covering all 4 table rows -->
+        <div class="stage-block">
           <h3>STAGE</h3>
           <p>24ft x 12ft</p>
         </div>
