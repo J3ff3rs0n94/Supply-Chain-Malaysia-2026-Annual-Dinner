@@ -274,8 +274,56 @@
 </div>
 
 <script>
-  // Sanitized Attendee List (Names Only - NO WWIDs or Groups)
-  // Note: Add the remaining names here if needed.
+  // 8-Bit Arcade Audio Synthesizer (No external files needed)
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  let audioCtx;
+
+  function initAudio() {
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  // Ticking sound while spinning
+  function playTick() {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime); 
+    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
+    gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // Quiet tick
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.05);
+  }
+
+  // Mario-style coin/level up sound for the winner
+  function playWinSound() {
+    if (!audioCtx) return;
+    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Arpeggio)
+    let time = audioCtx.currentTime;
+    notes.forEach((freq, index) => {
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(freq, time);
+      gainNode.gain.setValueAtTime(0.1, time);
+      gainNode.gain.linearRampToValueAtTime(0, time + 0.15);
+      osc.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      osc.start(time);
+      osc.stop(time + 0.15);
+      time += 0.1; 
+    });
+  }
+
+  // Sanitized Attendee List (Names Only)
   const ATTENDEES = [
     "Suryakandh Kalimutu", "Jeff Heah Jun Jie", "Dylan Leong Chat Lun", 
     "Christine Woo", "Kasturi Krishnan", "Teoh Pei Fen", "Lee Swee Hoon", 
@@ -293,12 +341,15 @@
   function startDraw() {
     if (isDrawing || ATTENDEES.length === 0) return;
     
+    // Initialize audio on first click (browser requirement)
+    initAudio();
+
     isDrawing = true;
     drawBtn.disabled = true;
     drawBtn.textContent = "Drawing...";
     spinnerElement.classList.remove('winner-highlight');
 
-    let duration = 3000; // Spin for 3 seconds
+    let duration = 3000; 
     let startTime = Date.now();
     let intervalId;
 
@@ -307,15 +358,14 @@
       let elapsed = now - startTime;
 
       if (elapsed < duration) {
-        // Pick a random name for the visual effect
         let randomIndex = Math.floor(Math.random() * ATTENDEES.length);
         spinnerElement.textContent = ATTENDEES[randomIndex];
+        playTick(); // Play sound effect
         
-        // Slow down effect as it gets closer to the end
+        // Slow down effect
         let currentInterval = Math.max(50, (elapsed / duration) * 150);
         intervalId = setTimeout(animateSpin, currentInterval);
       } else {
-        // Finish the draw
         clearTimeout(intervalId);
         finishDraw();
       }
@@ -325,18 +375,17 @@
   }
 
   function finishDraw() {
-    // Select the final winner
     const winningIndex = Math.floor(Math.random() * ATTENDEES.length);
     const winnerName = ATTENDEES[winningIndex];
 
-    // Update UI
     spinnerElement.textContent = winnerName;
     spinnerElement.classList.add('winner-highlight');
+    playWinSound(); // Play victory sound effect!
     
     setTimeout(() => {
       finalWinnerName.textContent = winnerName;
       winnerModal.classList.add('active');
-    }, 600); // Wait a brief moment before popping up the modal
+    }, 600);
 
     drawBtn.disabled = false;
     drawBtn.textContent = "Draw Winner";
