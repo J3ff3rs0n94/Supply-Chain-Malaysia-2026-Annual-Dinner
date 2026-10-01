@@ -12,7 +12,7 @@
       --accent-teal: #5bc0be;
       --accent-gold: #ffb703;
       --accent-blue: #4895ef;
-      --accent-purple: #a855f7;
+      --accent-purple: #9d4edd;
       --text-main: #ffffff;
       --text-muted: #8d99ae;
       --border-color: #3a506b;
@@ -92,6 +92,7 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Uniform 2-Column Grid for All Cards */
     .hub-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -124,74 +125,37 @@
       box-shadow: 0 6px 18px rgba(100, 223, 223, 0.2);
     }
 
-    .hub-card.primary {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #1c2541 0%, #152238 100%);
-      border: 1.5px solid var(--accent-cyan);
-      box-shadow: 0 4px 16px rgba(100, 223, 223, 0.25);
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
-      padding: 18px 20px;
-      gap: 16px;
+    /* Dedicated Subtle Hover Accents */
+    .hub-card.card-seating {
+      border-color: rgba(100, 223, 223, 0.4);
     }
-    .hub-card.primary .card-icon {
-      font-size: 2.2rem;
-      background: rgba(100, 223, 223, 0.15);
-      border-radius: 12px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hub-card.primary .card-text h3 {
-      color: var(--accent-cyan);
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .hub-card.primary .card-text p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .hub-card.card-seating:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.25);
     }
 
-    .hub-card.engage-highlight {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #1f1b40 0%, #162447 100%);
-      border: 1.5px solid var(--accent-purple);
-      box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
-      padding: 16px 20px;
-      gap: 16px;
+    .hub-card.card-photos {
+      border-color: rgba(157, 78, 221, 0.4);
     }
-    .hub-card.engage-highlight:hover {
-      border-color: #d8b4fe;
-      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
+    .hub-card.card-photos:hover {
+      border-color: var(--accent-purple);
+      box-shadow: 0 6px 18px rgba(157, 78, 221, 0.3);
     }
-    .hub-card.engage-highlight .card-icon {
+
+    .card-icon {
       font-size: 2rem;
-      background: rgba(168, 85, 247, 0.2);
-      border-radius: 12px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .hub-card.engage-highlight .card-text h3 {
-      color: #e9d5ff;
-      font-size: 1.15rem;
-      margin-bottom: 2px;
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
     }
-    .hub-card.engage-highlight .card-text p {
-      font-size: 0.8rem;
-      color: #c4b5fd;
+    .card-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.2;
     }
 
-    .card-icon { font-size: 2rem; }
-    .card-title { font-size: 0.95rem; font-weight: 700; }
-    .card-subtitle { font-size: 0.72rem; color: var(--text-muted); line-height: 1.2; }
-
+    /* Modals for secondary actions */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -348,13 +312,11 @@
   </header>
 
   <main class="hub-grid">
-    <!-- 1. Seat & Reservation -->
-    <a href="seating.html" class="hub-card primary">
+    <!-- 1. Seat & Reservation (Standard 1-Column Card) -->
+    <a href="seating.html" class="hub-card card-seating">
       <div class="card-icon">🪑</div>
-      <div class="card-text">
-        <h3>Seat & Reservation</h3>
-        <p>Find your assigned table & view ballroom layout</p>
-      </div>
+      <div class="card-title">Seat & Reservation</div>
+      <div class="card-subtitle">Assigned table & ballroom map</div>
     </a>
 
     <!-- 2. Event Schedule -->
@@ -385,20 +347,18 @@
       <div class="card-subtitle">360 Cam & instant prints</div>
     </div>
 
-    <!-- 6. Try Your Luck (Links to Lucky Draw Web App) -->
+    <!-- 6. Try Your Luck (Links to Super Mario Lucky Draw) -->
     <a href="try_your_luck.html" class="hub-card">
       <div class="card-icon">🎰</div>
       <div class="card-title">Try Your Luck</div>
       <div class="card-subtitle">Interactive Lucky Draw</div>
     </a>
 
-    <!-- 7. Post Your Photos! (Viva Engage Community) -->
-    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card engage-highlight">
+    <!-- 7. Post Your Photos! (Standard 1-Column Card) -->
+    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
       <div class="card-icon">📷</div>
-      <div class="card-text">
-        <h3>Post Your Photos!</h3>
-        <p>Supply Chain Malaysia Channel ↗</p>
-      </div>
+      <div class="card-title">Post Your Photos!</div>
+      <div class="card-subtitle">Supply Chain Channel ↗</div>
     </a>
 
     <!-- 8. Event Committee -->
