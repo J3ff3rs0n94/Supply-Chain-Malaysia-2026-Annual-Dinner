@@ -1,1430 +1,1369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Super Mario Lucky Draw - SCM Annual Dinner 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --gold: #ffcc00;
-  --gold-glow: rgba(255, 204, 0, 0.6);
-  --brick-3d: #c84410;
-  --dark-bg: #070a12;
-  --card-bg: linear-gradient(145deg, #18233c, #0e1424);
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  user-select: none;
-}
-body {
-  background: radial-gradient(circle at 50% 20%, #131d33 0%, var(--dark-bg) 80%);
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Annual Lucky Draw</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0b111e 0%, #162447 50%, #1b1a47 100%);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --gold-primary: #f6c85f;
+      --gold-glow: #ffd700;
+      --gold-dark: #b8860b;
+      --accent-neon: #00d2ff;
+      --text-white: #ffffff;
+      --text-muted: #a0aec0;
+      --danger: #ff4757;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
 
-/* Navigation Bar */
-.top-nav {
-  width: 100%;
-  max-width: 1260px;
-  padding: 12px 20px 0;
-  display: flex;
-  justify-content: flex-start;
-}
-.btn-back-hub {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(100, 223, 223, 0.15);
-  color: #64dfdf;
-  border: 1px solid rgba(100, 223, 223, 0.4);
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-.btn-back-hub:hover {
-  background: #64dfdf;
-  color: #0b132b;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
 
-header {
-  width: 100%;
-  max-width: 1260px;
-  padding: 12px 24px 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.title-group h1 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 20px;
-  color: #ffde17;
-  text-shadow:
-    0 2px 0 #d97706,
-    0 4px 0 #92400e,
-    0 6px 0 #000,
-    0 10px 20px rgba(255, 222, 23, 0.4);
-  letter-spacing: 1px;
-}
-.title-group p {
-  font-size: 13px;
-  color: #9cb5db;
-  margin-top: 5px;
-  font-weight: 500;
-}
-.stats-bar {
-  display: flex;
-  gap: 16px;
-  background: linear-gradient(180deg, #243456, #121c32);
-  border: 3px solid #3d5588;
-  border-bottom: 6px solid #0f1629;
-  border-radius: 14px;
-  padding: 8px 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.5);
-}
-.stat-item {
-  text-align: center;
-  font-family: 'Press Start 2P', monospace;
-}
-.stat-label {
-  font-size: 8px;
-  color: #8da4d0;
-  display: block;
-  margin-bottom: 4px;
-}
-.stat-val {
-  font-size: 13px;
-  color: #00ffcc;
-  text-shadow: 0 0 12px rgba(0,255,204,0.6);
-}
-.game-wrapper {
-  width: 100%;
-  max-width: 1260px;
-  padding: 0 20px;
-  position: relative;
-  perspective: 1200px;
-}
-.canvas-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 570px;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #000;
-  border: 5px solid #233458;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.8),
-    0 0 0 4px #ffcc00,
-    0 0 40px rgba(255, 204, 0, 0.25);
-}
-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-white);
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: max(16px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom)) 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-/* HP Overlay and Active Superpower Status */
-.hud-status-bar {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-}
-.health-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(10, 15, 26, 0.9);
-  padding: 7px 12px;
-  border-radius: 12px;
-  border: 2px solid #334e7a;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-}
-.power-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(10, 15, 26, 0.9);
-  padding: 7px 12px;
-  border-radius: 12px;
-  border: 2px solid #eab308;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  color: #fef08a;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-  transition: all 0.3s ease;
-}
-.power-badge.flower {
-  border-color: #ef4444;
-  color: #fca5a5;
-  background: rgba(45, 10, 10, 0.92);
-}
-.power-badge.feather {
-  border-color: #38bdf8;
-  color: #bae6fd;
-  background: rgba(8, 30, 48, 0.92);
-}
-.power-badge.star {
-  border-color: #fde047;
-  color: #fff;
-  background: linear-gradient(90deg, #b91c1c, #d97706, #047857, #1d4ed8);
-  background-size: 200% 200%;
-  animation: rainbowShift 1s linear infinite;
-}
-@keyframes rainbowShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
+    /* Ambient Background Glow */
+    .bg-circle-1 {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* Mystery Blocks HUD (Showing STAR letters: S-U-P-E-R-W-I-N) */
-.hud-blocks {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.95), rgba(8, 12, 22, 0.95));
-  padding: 8px 14px;
-  border-radius: 16px;
-  border: 3px solid #ffcc00;
-  border-bottom: 6px solid #b38600;
-  box-shadow: 0 16px 32px rgba(0,0,0,0.7), 0 0 25px rgba(255, 204, 0, 0.35);
-  z-index: 10;
-}
-.hud-slot {
-  width: 38px;
-  height: 48px;
-  background: linear-gradient(180deg, #1f2a44, #101626);
-  border: 3px solid #36496e;
-  border-bottom: 5px solid #080c16;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 16px;
-  color: #4c6085;
-  position: relative;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.hud-slot.revealed {
-  background: linear-gradient(180deg, #ffe066, #ffb703);
-  color: #271400;
-  border-color: #fff;
-  border-bottom: 5px solid #b26a00;
-  transform: scale(1.1) translateY(-4px);
-  box-shadow: 0 0 20px #ffcc00;
-}
+    .bg-circle-2 {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(246, 200, 95, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* Controls Deck */
-.dashboard-controls {
-  width: 100%;
-  max-width: 1260px;
-  margin: 16px 0;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.action-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.btn-3d {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
-  padding: 14px 20px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  transition: all 0.12s ease;
-  text-shadow: 1px 2px 0 rgba(0,0,0,0.6);
-}
-.btn-auto-3d {
-  background: linear-gradient(180deg, #2ecc71, #1e824c);
-  color: #fff;
-  border: 3px solid #75e89d;
-  box-shadow: 0 8px 0 #114c2b, 0 14px 20px rgba(0, 230, 118, 0.35);
-}
-.btn-auto-3d:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #114c2b;
-}
-.btn-manual-3d {
-  background: linear-gradient(180deg, #e67e22, #b85406);
-  color: #fff;
-  border: 3px solid #f9b268;
-  box-shadow: 0 8px 0 #6e3002, 0 14px 20px rgba(230, 126, 34, 0.3);
-}
-.btn-manual-3d:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #6e3002;
-}
-.btn-sec-3d {
-  background: linear-gradient(180deg, #34495e, #1c2733);
-  color: #dbe4ef;
-  border: 2px solid #577391;
-  box-shadow: 0 6px 0 #0d141b, 0 10px 15px rgba(0,0,0,0.4);
-}
-.btn-sec-3d:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 #0d141b;
-}
-.btn-world-3d {
-  background: linear-gradient(180deg, #0284c7, #0369a1);
-  color: #e0f2fe;
-  border: 2px solid #38bdf8;
-  box-shadow: 0 6px 0 #075985, 0 10px 15px rgba(2, 132, 199, 0.4);
-}
-.btn-world-3d:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 #075985;
-}
-.mode-toggle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(180deg, #1b263f, #101726);
-  padding: 10px 16px;
-  border-radius: 12px;
-  border: 2px solid #334873;
-  font-size: 13px;
-  color: #a4b3d6;
-}
-.key-hint {
-  font-size: 11px;
-  color: #7b8db6;
-  margin-top: 6px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.key-tag {
-  background: #232d47;
-  padding: 3px 7px;
-  border-radius: 6px;
-  border: 1px solid #43547d;
-  font-family: monospace;
-  color: #fff;
-}
+    /* Top Bar */
+    header {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      padding: 4px 0 12px 0;
+    }
 
-/* History & Roster */
-.content-grid {
-  width: 100%;
-  max-width: 1260px;
-  padding: 0 20px 40px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-}
-.panel-box {
-  background: var(--card-bg);
-  border: 3px solid #283758;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.4);
-}
-.panel-box h3 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 12px;
-  color: #ffcc00;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.winner-list {
-  max-height: 240px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-right: 6px;
-}
-.winner-card {
-  background: linear-gradient(90deg, #1a253e, #131a2b);
-  border-left: 6px solid #00ffcc;
-  border-radius: 8px;
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
-.winner-card .name {
-  font-weight: 800;
-  font-size: 15px;
-  color: #fff;
-}
-.winner-card .time {
-  font-size: 12px;
-  color: #92a4cd;
-}
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
 
-/* Winner Modal */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 8, 18, 0.88);
-  backdrop-filter: blur(10px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-  perspective: 1200px;
-}
-.modal-overlay.active {
-  display: flex;
-}
-.winner-modal-3d {
-  background: radial-gradient(circle at 50% 10%, #1d2c4e 0%, #0d1222 100%);
-  border: 4px solid #ffcc00;
-  border-radius: 24px;
-  width: 100%;
-  max-width: 680px;
-  text-align: center;
-  padding: 42px 34px;
-  position: relative;
-  box-shadow:
-    0 0 0 6px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(255, 204, 0, 0.45),
-    inset 0 0 30px rgba(255, 204, 0, 0.15);
-  transform: rotateX(4deg);
-  animation: modalSlide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-@keyframes modalSlide {
-  0% { transform: translateY(60px) scale(0.8) rotateX(15deg); opacity: 0; }
-  100% { transform: translateY(0) scale(1) rotateX(4deg); opacity: 1; }
-}
-.drumroll-anim {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 18px;
-  color: #00ffcc;
-  margin: 24px 0;
-  letter-spacing: 2px;
-  animation: pulseText 0.4s infinite alternate;
-}
-.modal-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 20px;
-  color: #ffde17;
-  margin-bottom: 14px;
-  text-shadow: 0 0 16px rgba(255, 222, 23, 0.6);
-}
-.winner-name-big {
-  font-size: 34px;
-  font-weight: 900;
-  color: #ffffff;
-  text-shadow: 0 0 25px rgba(0, 255, 204, 0.7);
-  margin: 20px 0 28px;
-}
-.modal-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.btn-modal-accept {
-  background: linear-gradient(180deg, #ff4d4d, #c91111);
-  color: #fff;
-  border: 3px solid #ffa3a3;
-  box-shadow: 0 8px 0 #7a0808, 0 12px 20px rgba(230, 20, 20, 0.5);
-}
-.btn-modal-accept:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #7a0808;
-}
-.btn-modal-keep {
-  background: linear-gradient(180deg, #37537b, #1e2e47);
-  color: #e0e7ff;
-  border: 3px solid #6b89b8;
-  box-shadow: 0 8px 0 #0e1724, 0 12px 20px rgba(0,0,0,0.5);
-}
-.btn-modal-keep:active {
-  transform: translateY(6px);
-  box-shadow: 0 2px 0 #0e1724;
-}
-@keyframes pulseText {
-  0% { transform: scale(0.96); opacity: 0.8; }
-  100% { transform: scale(1.04); opacity: 1; }
-}
-</style>
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #fff, var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .icon-btn:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Container */
+    main {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 2;
+      margin: auto 0;
+    }
+
+    /* Pool Stat Badge */
+    .pool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+
+    .pool-badge strong {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00e676;
+    }
+
+    /* Slot Display Card */
+    .slot-machine-card {
+      width: 100%;
+      background: rgba(18, 25, 44, 0.7);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slot-machine-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      background: linear-gradient(180deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .slot-machine-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      background: linear-gradient(0deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .display-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .name-display {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      min-height: 2.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      word-break: break-word;
+      transition: all 0.15s ease;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .name-display.rolling {
+      color: var(--accent-neon);
+      transform: scale(1.04);
+      filter: blur(0.5px);
+    }
+
+    .name-display.winner-flash {
+      color: var(--gold-primary);
+      text-shadow: 0 0 20px rgba(246, 200, 95, 0.8), 0 0 35px rgba(255, 215, 0, 0.4);
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Draw Button */
+    .draw-btn-container {
+      width: 100%;
+      padding-top: 10px;
+    }
+
+    .draw-btn {
+      width: 100%;
+      padding: 20px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffd700 0%, #f6c85f 50%, #d4a017 100%);
+      color: #1a1600;
+      box-shadow: 0 8px 25px rgba(246, 200, 95, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+    }
+
+    .draw-btn:active:not(:disabled) {
+      transform: scale(0.96);
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.3);
+    }
+
+    .draw-btn:disabled {
+      background: #4a5568;
+      color: #a0aec0;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Quick History Bar on Main Screen */
+    .latest-winner-banner {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px dashed var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .latest-winner-title {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latest-winner-name {
+      color: var(--gold-primary);
+      font-weight: 700;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Footer Controls */
+    footer {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 2;
+      padding-top: 10px;
+    }
+
+    .sub-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+
+    .sub-btn:active {
+      transform: scale(0.95);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Modals / Drawers */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 500px;
+      background: #151d30;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      border-top: 1px solid var(--card-border);
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+    }
+
+    .modal-overlay.active .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .sheet-handle {
+      width: 44px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      margin: 0 auto 16px auto;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .sheet-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .sheet-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .sheet-content {
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 4px;
+    }
+
+    .winner-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .winner-rank {
+      font-weight: 800;
+      color: var(--gold-primary);
+      width: 32px;
+      font-size: 0.85rem;
+    }
+
+    .winner-info {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Winner Popup Modal (Celebration) */
+    .winner-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 105;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .winner-popup-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .winner-popup-card {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(145deg, #1f2b48 0%, #111a2f 100%);
+      border: 2px solid var(--gold-primary);
+      border-radius: 28px;
+      padding: 32px 20px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(246, 200, 95, 0.35);
+      animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .trophy-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: bounce 1.2s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .congrats-text {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .celebrated-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.25;
+      word-break: break-word;
+      text-shadow: 0 2px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .popup-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold-primary);
+      color: #111;
+      border: none;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.4);
+    }
+
+    .popup-btn:active {
+      transform: scale(0.96);
+    }
+  </style>
 </head>
 <body>
 
-<div class="top-nav">
-  <a href="index.html" class="btn-back-hub">← Back to Main Menu</a>
-</div>
+  <!-- Ambient Glows -->
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
 
-<header>
-  <div class="title-group">
-    <h1>SUPER MARIO LUCKY DRAW</h1>
-    <p>Intel SCM Annual Dinner 2026 &bull; Grand Mystery Run</p>
-  </div>
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-label">REMAINING POOL</span>
-      <span class="stat-val" id="poolCount">0</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">WINNERS</span>
-      <span class="stat-val" id="drawnCount">0</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">STAGE</span>
-      <span class="stat-val" id="stageBadge">DONUT PLAINS</span>
-    </div>
-  </div>
-</header>
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
 
-<div class="game-wrapper">
-  <div class="canvas-container" id="canvasBox">
-    <!-- Health status and Powerup HUD -->
-    <div class="hud-status-bar">
-      <div class="health-container">
-        <span>HP:</span>
-        <span id="healthHearts">❤️❤️❤️</span>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-title">Lucky Draw</div>
+      <div class="brand-subtitle">Official Random Picker</div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound" aria-label="Toggle Sound">
+        <span id="soundIcon">🔔</span>
+      </button>
+      <button class="icon-btn" id="infoBtn" title="Pool Details" aria-label="Pool Details">ℹ️</button>
+    </div>
+  </header>
+
+  <!-- Main Game Panel -->
+  <main>
+    <!-- Pool Counter -->
+    <div class="pool-badge">
+      <span class="pulse-dot"></span>
+      <span>Remaining in Pool: <strong id="poolCount">0</strong></span>
+    </div>
+
+    <!-- Slot Machine Box -->
+    <div class="slot-machine-card">
+      <div class="display-tag" id="displaySubtitle">Tap to Draw Winner</div>
+      <div class="name-display" id="nameBox">Ready?</div>
+    </div>
+
+    <!-- Draw Button -->
+    <div class="draw-btn-container">
+      <button class="draw-btn" id="drawBtn">
+        <span>🎲 DRAW NOW</span>
+      </button>
+    </div>
+
+    <!-- Latest Winner Banner -->
+    <div class="latest-winner-banner" id="latestWinnerBanner">
+      <span class="latest-winner-title">🏆 Latest Winner:</span>
+      <span class="latest-winner-name" id="latestWinnerName">None yet</span>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <footer>
+    <button class="sub-btn" id="viewWinnersBtn">
+      <span>📜 Winners</span>
+      <span id="winnerBadgeCount" style="background: rgba(246,200,95,0.25); color: var(--gold-primary); padding: 2px 7px; border-radius: 12px; font-size: 0.75rem;">0</span>
+    </button>
+    <button class="sub-btn" id="resetBtn" style="color: #ff7675;">
+      <span>🔄 Reset Pool</span>
+    </button>
+  </footer>
+
+  <!-- Winners Drawer Modal -->
+  <div class="modal-overlay" id="winnersModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Lucky Draw Winners (<span id="modalWinnersCount">0</span>)</div>
+        <button class="sheet-close" id="closeWinnersModal">&times;</button>
       </div>
-      <div class="power-badge" id="powerBadge">
-        <span id="powerIcon">🍄</span>
-        <span id="powerText">REGULAR MARIO</span>
-      </div>
-    </div>
-
-    <!-- 8 Mystery Star Block Slots -->
-    <div class="hud-blocks" id="hudContainer">
-      <div class="hud-slot" id="slot0">?</div>
-      <div class="hud-slot" id="slot1">?</div>
-      <div class="hud-slot" id="slot2">?</div>
-      <div class="hud-slot" id="slot3">?</div>
-      <div class="hud-slot" id="slot4">?</div>
-      <div class="hud-slot" id="slot5">?</div>
-      <div class="hud-slot" id="slot6">?</div>
-      <div class="hud-slot" id="slot7">?</div>
-    </div>
-
-    <canvas id="gameCanvas" width="1280" height="720"></canvas>
-  </div>
-</div>
-
-<div class="dashboard-controls">
-  <div class="action-buttons">
-    <button class="btn-3d btn-auto-3d" id="startAutoBtn">&#9654; AUTO RUN DRAW</button>
-    <button class="btn-3d btn-manual-3d" id="startManualBtn">&#127918; PLAY MANUALLY</button>
-    <button class="btn-3d btn-world-3d" id="swapWorldBtn">&#127754; SWAP WORLD</button>
-    <button class="btn-3d btn-sec-3d" id="resetRunBtn">&#8635; RESET TRACK</button>
-  </div>
-  <div>
-    <div class="mode-toggle">
-      <label><input type="checkbox" id="soundToggle" checked> 8-Bit SFX &amp; Fanfare</label>
-    </div>
-    <div class="key-hint">
-      Move: <span class="key-tag">&larr;</span><span class="key-tag">&rarr;</span> &bull;
-      Jump/Climb: <span class="key-tag">SPACE</span> / <span class="key-tag">&uarr;</span> &bull;
-      Power: <span class="key-tag">X</span> / <span class="key-tag">F</span>
-    </div>
-  </div>
-</div>
-
-<div class="content-grid">
-  <div class="panel-box">
-    <h3>
-      <span>RECENT LUCKY WINNERS</span>
-      <button class="btn-3d btn-sec-3d" style="font-size:8px; padding:8px 12px;" id="exportWinnersBtn">Export</button>
-    </h3>
-    <div class="winner-list" id="winnerListContainer">
-      <div style="color: #64748b; font-size: 13px; font-style: italic; text-align: center; padding: 24px;">
-        No lucky winners drawn yet! Hit "AUTO RUN DRAW" to start!
+      <div class="sheet-content" id="winnersListContainer">
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </div>
 
-  <div class="panel-box">
-    <h3>11 SUPER MARIO WORLDS</h3>
-    <div style="font-size: 12px; color: #a4b3d6; line-height: 1.55; margin-bottom: 14px; max-height: 170px; overflow-y: auto;">
-      <b>️ Sky Island (Vertical!):</b> Climb upward past floating islands &amp; Flying Turtles!<br>
-      <b>🍩 Donut Plains:</b> Rolling hills, lush meadows &amp; Chargin' Chucks.<br>
-      <b>️ Vanilla Dome:</b> Amber cavern dome, glowing crystals &amp; Spinies.<br>
-      <b>🌉 Twin Bridges:</b> Suspension bridge, wooden struts &amp; Bullet Bills.<br>
-      <b>🌲 Forest of Illusion:</b> Spooky canopy, deep woods &amp; Wigglers.<br>
-      <b>🍫 Chocolate Island:</b> Brown mud canyons, fudge mountains &amp; Rexes.<br>
-      <b>🔥 Valley of Bowser:</b> Volcanic underworld, lightning flashes &amp; Mechakoopas.<br>
-      <b>️ World 1-1 (Grassland):</b> Classic hills, pipes, and Goombas.<br>
-      <b>️ World 1-2 (Underground):</b> Subterranean tunnel, stalactites &amp; Buzzy Beetles.<br>
-      <b>🌊 World 2-2 (Sea):</b> Buoyant swimming with Bloopers &amp; Cheep-Cheeps.<br>
-      <b>☁️ World 3-1 (Sky):</b> Cloud platforms, floating rainbows &amp; Paratroopas!
-    </div>
-    <div style="display: flex; gap: 10px;">
-      <button class="btn-3d btn-sec-3d" style="font-size:9px; width:100%;" id="shufflePoolBtn">&#127922; Shuffle Pool</button>
-      <button class="btn-3d btn-sec-3d" style="font-size:9px; width:100%;" id="resetAllDataBtn">&#9851; Restore All</button>
-    </div>
-  </div>
-</div>
-
-<!-- Winner Pop-out 3D Modal -->
-<div class="modal-overlay" id="winnerModal">
-  <div class="winner-modal-3d">
-    <div id="drumrollSection">
-      <div class="modal-title">&#127878; ALL 8 BLOCKS COLLECTED! &#127878;</div>
-      <p style="font-size: 15px; color: #cbd5e1; margin-bottom: 10px;">MARIO REACHED THE CASTLE!</p>
-      <div class="drumroll-anim" id="drumrollDigits">SELECTING WINNER...</div>
-      <p style="font-size: 13px; color: #94a3b8;">Verifying draw ticket...</p>
-    </div>
-
-    <div style="display:none;" id="winnerRevealSection">
-      <div class="modal-title">&#127942; CONGRATULATIONS! &#127942;</div>
-      <div class="winner-name-big" id="modalWinnerName">-</div>
-      <div class="modal-actions">
-        <button class="btn-3d btn-modal-accept" id="removeAndNextBtn">&#10004; ACCEPT &amp; REMOVE FROM POOL</button>
-        <button class="btn-3d btn-modal-keep" id="keepAndCloseBtn">&#8634; KEEP IN POOL &amp; CLOSE</button>
+  <!-- Pool Info Drawer Modal -->
+  <div class="modal-overlay" id="infoModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Active Pool Details</div>
+        <button class="sheet-close" id="closeInfoModal">&times;</button>
+      </div>
+      <div class="sheet-content">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+          Only employees verified with <strong>"Yes"</strong> for lucky draw eligibility are included. Each winner is drawn without replacement so they cannot win multiple times.
+        </p>
+        <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 12px; font-size: 0.85rem; line-height: 1.8;">
+          <div>• Total Eligible Uploaded: <strong style="color:#fff;">353</strong></div>
+          <div>• Excluded Ineligibles: <strong style="color:var(--danger);">9</strong></div>
+          <div>• Current Pool Size: <strong id="infoPoolSize" style="color:var(--gold-primary);">353</strong></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-/* =====================================================================
-   1. DATA REPOSITORY & EMPLOYEE ROSTER (Sanitized: Names only)
-===================================================================== */
-const RAW_EMPLOYEE_DATA = [
-  {"name":"Ooi, Cheng Hoon"},
-  {"name":"Suntharalingam, Paribalan"},
-  {"name":"Diow, Rhu Kooi"},
-  {"name":"Hong, Wai Fong"},
-  {"name":"Ng, Vanessa Yeng Sar"},
-  {"name":"Mohd Yusoff, Mohd Aiman Afnan"},
-  {"name":"Cheah, Joseph Chai Boon"},
-  {"name":"Ho, Kok Keong"},
-  {"name":"Ng, Kang Ning"},
-  {"name":"Balasubramaniam, Hari Chand"},
-  {"name":"Nguyen, Alice Uyen"},
-  {"name":"Ferrolino, Antonio"},
-  {"name":"Tan, Chee Boon"},
-  {"name":"Lee, Mooi Yee"},
-  {"name":"Koid, Shin Yih"},
-  {"name":"Pragasam, Justin"},
-  {"name":"Cheng, Boon Yee"},
-  {"name":"Lee, Kok Peng"},
-  {"name":"Lee, Poh Eng"},
-  {"name":"Ng, Wei Chon"},
-  {"name":"Sim, Yvonne Xin Yu"},
-  {"name":"Yeap, Siew Lean"},
-  {"name":"Liew, Choon Wai"},
-  {"name":"Koh, Terry Eng Keong"},
-  {"name":"Lo, Wei Leng"},
-  {"name":"Sim, Jeremy"},
-  {"name":"Woo, Christine"},
-  {"name":"Seow, Han Loon"},
-  {"name":"Richard, Gladys"},
-  {"name":"Wong, Woan Chiou"},
-  {"name":"Gan, Hock Boon"},
-  {"name":"Mah, Chin Keong Alex"},
-  {"name":"Mat Yusop, Ahmad Rafaie"},
-  {"name":"Abdullah, Aini Haslinda"},
-  {"name":"Heng, Cheng Yin"},
-  {"name":"Choo, Chien Hua"},
-  {"name":"Teoh, Pei Fen"},
-  {"name":"Lee, Shi Ning"},
-  {"name":"Hong, Seow Earn"},
-  {"name":"Lee, Swee Hoon"},
-  {"name":"Abd Majid, Syamimi"},
-  {"name":"Koo, Hee Kiah"},
-  {"name":"Chua, Khian Chee"},
-  {"name":"Go, Choo Kwong"},
-  {"name":"Fook, Loon Wooi"},
-  {"name":"Cheah, Seok Gaik"},
-  {"name":"Lim, Hooi Nee"},
-  {"name":"Lee, Chee Gang"},
-  {"name":"Boey, Hooi Ying"},
-  {"name":"Ong, Lee Ping"},
-  {"name":"Cheah, Teik Loon"},
-  {"name":"Tan, Guat Kiem"},
-  {"name":"Hoo, Ray"},
-  {"name":"Men, Soo Yit"},
-  {"name":"Ooi, Mian Hong"},
-  {"name":"Yeap, Jacky Kok Ghee"},
-  {"name":"Lee, Ming Ming"},
-  {"name":"Goh, Ramsay Thean Siang"},
-  {"name":"Kuan, Wei Yew"},
-  {"name":"Ang, Chui Ping"},
-  {"name":"Lee, Kah Weng"},
-  {"name":"Loh, Lee Naa"},
-  {"name":"Lim, Lean kooi"},
-  {"name":"Yeap, Sarina Cheng Gaik"},
-  {"name":"Lim, Wei Ping"},
-  {"name":"Ayavoo, Nalini"},
-  {"name":"Ooi, Bee Ling"},
-  {"name":"Thangarajoo, Geethawathy"},
-  {"name":"Eeran, Jayakumar"},
-  {"name":"Ramiah, Mangaleswary"},
-  {"name":"Teoh, Wen Xin"},
-  {"name":"Lim, Agnes Lee Hoong"},
-  {"name":"Soh, Chin Liang"},
-  {"name":"Teh, Ean Hoon"},
-  {"name":"Heah, Jeff Jun Jie"},
-  {"name":"Lye, Choy Ying Jolyn"},
-  {"name":"Teh, Joyce"},
-  {"name":"Lim, Lee Ling"},
-  {"name":"Chang, Li Ting"},
-  {"name":"Tan, Mei Ling"},
-  {"name":"Lee, Samantha Sien Ling"},
-  {"name":"Goh, Amanda"},
-  {"name":"Mendoza, Celine Yap Y"},
-  {"name":"Ooi, Chooi San"},
-  {"name":"Lim, Bee Hon"},
-  {"name":"Yew, Cherry"},
-  {"name":"Yap, Li Wooi"},
-  {"name":"Leong, Dylan Chat Lun"},
-  {"name":"Oon, David Tyeway"},
-  {"name":"Tan, Lay Sim1"},
-  {"name":"Tan, May Yong"},
-  {"name":"Leong, Adelyn Hui Lin"},
-  {"name":"Lim, Elaine Chi Ling"},
-  {"name":"Ishak, Izeanee Bt B"},
-  {"name":"Abdul Gani, Muhamad Izzulhafiz"},
-  {"name":"Tan, Irynn Ai Ling"},
-  {"name":"Chuah, Su Bee"},
-  {"name":"Lim, Su-lyn"},
-  {"name":"Lim, Mei Yin"},
-  {"name":"Ong, Pei Kuan"},
-  {"name":"Perumal, Arasu"},
-  {"name":"Mohamad Mustafa, Nurazura"},
-  {"name":"Teoh, Kai Ying"},
-  {"name":"Krishnan, Kasturi"},
-  {"name":"Aikin, Nang Som Chei"},
-  {"name":"Al Thanasegeran, Surendaar"},
-  {"name":"Kalimutu, Suryakandh"},
-  {"name":"None, Rozana"},
-  {"name":"Kamsan, Siti Nur Atiqah"},
-  {"name":"Md Haris, Mohd Sofian"},
-  {"name":"Ibrahim, Nur Adli"},
-  {"name":"Cheng, Elaine Ee Ling"},
-  {"name":"Ang, Hao Jiun"},
-  {"name":"Sakari, Nur Fatihah"},
-  {"name":"Murugan, Pennarasi"},
-  {"name":"Yeoh, Sheau Wen"},
-  {"name":"Chan, Lin Fang"},
-  {"name":"Yeoh, Cheng Yee"},
-  {"name":"Che Rouse, Noor Liyana"},
-  {"name":"Halim, Norshahira"},
-  {"name":"Sukiman, Nurul Zakiyyah"},
-  {"name":"Binti Mohamed Isa, Norhayati"},
-  {"name":"Ibrahim, Muhamad Sohimi"},
-  {"name":"Yeoh, Soon Leong"},
-  {"name":"Chan, Daniel Jun Jie"},
-  {"name":"Nadarajah, Thurgatharani Naidu"},
-  {"name":"Tan, Wei Hang"},
-  {"name":"Tan, Bee Huen"},
-  {"name":"Raja Ibrahim, Putri Hasratul Iqtikah"},
-  {"name":"Tan, May Leng"},
-  {"name":"Tan, Jing1 Wen"},
-  {"name":"Yeoh, Lay Choo"},
-  {"name":"Leong, Mei Yi"},
-  {"name":"Ibrahim, Nur Amalina"},
-  {"name":"Abd Rashak, Nur Azwani B"},
-  {"name":"Suntharam, Pirvinnesh"},
-  {"name":"Syed Azizan, Sharifah Maziana"},
-  {"name":"Ali Shaiffuddin, Syahira Hilal Aimi"},
-  {"name":"Yeoh, Sze Yong"},
-  {"name":"Khoo, Poh Ann"},
-  {"name":"Chan, Allysa Saw Geok"},
-  {"name":"Lim, Ching Yee"},
-  {"name":"Lim, Chung How"},
-  {"name":"Wong, Jael S"},
-  {"name":"Khoo, Jia Huey"},
-  {"name":"Asrulefendi, Syahmi"},
-  {"name":"Pardeep Singh Gill, Pevandeep Singh Gill"},
-  {"name":"Leong, Sin Mun"},
-  {"name":"Gan, Lay Peng"},
-  {"name":"Yong, Mei Eng"},
-  {"name":"Low, Min Qi"},
-  {"name":"Pragasam, Nicole Anne"},
-  {"name":"Chew, Ren"},
-  {"name":"Wong, Siu Wei"},
-  {"name":"Tan, Jia1 Yi"},
-  {"name":"Yeap, Yi You"},
-  {"name":"Heng, Yi Guan"},
-  {"name":"Yew, Siew Eng"},
-  {"name":"Khoo, Cheng Keat"},
-  {"name":"Chay, Kok Wei"},
-  {"name":"Abdullah, Nur Azira"},
-  {"name":"Sim, Kean Lee"},
-  {"name":"Anoar, Noor Hamala"},
-  {"name":"Lau, Pei Yun"},
-  {"name":"Khor, Heng Tien"},
-  {"name":"Ab Razak, Hakim"},
-  {"name":"Low, Shye Nee"},
-  {"name":"Tan, Tse Pei"},
-  {"name":"Lim, Yen Chiew"},
-  {"name":"Lim, Lay hong"},
-  {"name":"Lim, Cindy"},
-  {"name":"Thiyagarajan, Prabhu"},
-  {"name":"Loke, Shiuk Ming"},
-  {"name":"Tan, Alan"},
-  {"name":"Silvaine, Audrey"},
-  {"name":"Huam, Bee Leng"},
-  {"name":"Rashidi, Rina Nabila"},
-  {"name":"Phoon, Wei Wei"},
-  {"name":"Lim, Yoong Wei"},
-  {"name":"Ooi, Hock Heng"},
-  {"name":"Chan, Jessie"},
-  {"name":"Ang, Lay Pin"},
-  {"name":"Ponnampalam, Kanna"},
-  {"name":"Wang, John Paul"},
-  {"name":"Lim, Poh Suan"},
-  {"name":"Maurice, Ryan Dale"},
-  {"name":"Sanniababoo, Phuspha"},
-  {"name":"Tan, Lye Yeng"},
-  {"name":"Chin, Ting Chung"},
-  {"name":"Yusof, Adnin Naim"},
-  {"name":"Chan, Bee Jean"},
-  {"name":"Quah, Hock Soon"},
-  {"name":"Chong, Lian Hwa"},
-  {"name":"Ramu, Loganathan Naidu"},
-  {"name":"Ahmad Taufek, Nadia Ezanin"},
-  {"name":"Palanisamy, Thenmuli"},
-  {"name":"Yim, Wen Yang"},
-  {"name":"Anthonysamy, Willie Nelson"},
-  {"name":"Lim, Bok Sim"},
-  {"name":"Puah, Boon Teck"},
-  {"name":"Tan, Yeh Fuat"},
-  {"name":"Lee, Yoon Han"},
-  {"name":"Lim, Hooi Lee"},
-  {"name":"Abdul Aziz, Mohd Ashraf"},
-  {"name":"Muniandy, Devanthran"},
-  {"name":"Din, Mat Saad"},
-  {"name":"Kuan, Mei Kuen"},
-  {"name":"Kumaraisen, Revathy"},
-  {"name":"Teh, Jane Siok Jian"},
-  {"name":"Lim, TM"},
-  {"name":"McFarlane, Brendan Vincent"},
-  {"name":"Liang, Choon Guin"},
-  {"name":"Dahlan, Eida Yasmin"},
-  {"name":"Lee, Eugene"},
-  {"name":"Ramanathan, Geetha"},
-  {"name":"Ng, Guan Lee"},
-  {"name":"Low, Hooi Leng"},
-  {"name":"Wang, Hui Ler"},
-  {"name":"Leong, Teong Eng"},
-  {"name":"Devaraj, Uthaya Kumaran"},
-  {"name":"Sumague, Christopher L"},
-  {"name":"Lim, Bc"},
-  {"name":"Ooi, Bee Lay"},
-  {"name":"Low, Dora Poh Yin"},
-  {"name":"Leong, Felicia"},
-  {"name":"Tong, Geam Y"},
-  {"name":"Liew, Alfred Yah Woo"},
-  {"name":"Teah, Hester"},
-  {"name":"Nondisamy, Logesvaran"},
-  {"name":"Palany Kumar, Punitha Devi"},
-  {"name":"Kuppan, Puvindran"},
-  {"name":"Phi, Wah Tooi"},
-  {"name":"Quah, William Wee Liang"},
-  {"name":"Amurthalingam, Yuaraajan"},
-  {"name":"Chua, Ellie"},
-  {"name":"Leong, Chan Kay"},
-  {"name":"Ho, Cheah Luan"},
-  {"name":"Cheng, Wendy Chin Hong"},
-  {"name":"Tan, Jing Yi"},
-  {"name":"Teh, Kim Hoon"},
-  {"name":"Ooi, Peng Chin"},
-  {"name":"Ooi, Kim Eng"},
-  {"name":"Lim, Rachel Li Foong"},
-  {"name":"Lim, Sear Nie"},
-  {"name":"Yoh, Joyce"},
-  {"name":"Tang, Wye Yuen"},
-  {"name":"Lee, Rachael"},
-  {"name":"Lai, Zhi Hui"},
-  {"name":"Tan, Zhi Jie"},
-  {"name":"Ong, HJ"},
-  {"name":"Ng, Chin Kiat"},
-  {"name":"Tan, Zhu Sheng"},
-  {"name":"Wong, Emily Mei Fong"},
-  {"name":"Lim, Catherine"},
-  {"name":"Sim, Cher Huei"},
-  {"name":"Ne Chin, Chiravong A"},
-  {"name":"Koo, Chun Hong"},
-  {"name":"Khoo, Elise"},
-  {"name":"Lim, It Hui"},
-  {"name":"Tham, Jacklyn Yee Len"},
-  {"name":"Krishnan, Jegathesen"},
-  {"name":"Teh, Justin Yan Shin"},
-  {"name":"Koay, Kek Chian"},
-  {"name":"Tan, Lee Chin"},
-  {"name":"Mohamed Anas, Mohd Hafiz Hakimi"},
-  {"name":"Lim, Meng Chuan"},
-  {"name":"Goh, Eric"},
-  {"name":"Kung, Pei Hsia"},
-  {"name":"Lee, Wai Cheng"},
-  {"name":"Lim, Lay Pin"},
-  {"name":"Tan, Chooi Teong"},
-  {"name":"Balakrishnan, Aghielan S"},
-  {"name":"Bin Abd Aziz, Abd Luqman Hakim"},
-  {"name":"Rosdi, Afiff Qusyairy"},
-  {"name":"Binti Muhammad, Mazlina"},
-  {"name":"Kadiran, Fitri Andi Kesuma"},
-  {"name":"Ng, Kah Tiek"},
-  {"name":"Bin Sharudin, Mohd Alif"},
-  {"name":"Awang Hadzir, Mohd Shahmi Akmal"},
-  {"name":"Bin Ramli, Muhamad Nazrin"},
-  {"name":"Bin Zulfakhor, Muhammad Zarif"},
-  {"name":"Binti Abu Hassan, Noor Azeita"},
-  {"name":"Gunasegaran, Parimala"},
-  {"name":"Samsuri, Siti Nur Hidayah"},
-  {"name":"Binti Tajudin, Effarini"},
-  {"name":"Chan, Kl Chan"},
-  {"name":"Ismail, Mohd Khairul Anuar"},
-  {"name":"Addenan, Mohd Shahdan"},
-  {"name":"Bt Ali, Nur Azliza"},
-  {"name":"Muthusamy, Richard"},
-  {"name":"Sarojini, Gramalingam"},
-  {"name":"Tam, Swee Chin"},
-  {"name":"Chia, Vincent Lean Tatt"},
-  {"name":"Bin Hashim, Ihsan Hasifi"},
-  {"name":"Bin Kamal Ariff, Kamal Firdaus"},
-  {"name":"Abdul Razak, Mohamad Amirul"},
-  {"name":"Mohamad Termizi, Mimy Fatin Aliya"},
-  {"name":"Radzi, Mohamad Firdaus"},
-  {"name":"Zainal Abidin, Mohd Zulfaizal"},
-  {"name":"Azhar, Muhammad Aiman"},
-  {"name":"Bin Mohd Mokhtar, Muhammad Aizat"},
-  {"name":"Prahakaran, Prasath"},
-  {"name":"Palanisamy, Ranusha"},
-  {"name":"Rosle, Rohaniff"},
-  {"name":"Al Kandasamy, Thinagaran"},
-  {"name":"Manikkam, Vinod"},
-  {"name":"Abdul Kadir Jelani, Wani"},
-  {"name":"Loganazan, Yuveneswaran"},
-  {"name":"Mohd Shafian, Zarina"},
-  {"name":"Che Azman, Zul Aizad"},
-  {"name":"Teh, Hock Hin"},
-  {"name":"Cheah, Beng Gaik"},
-  {"name":"Chang, Chun Chian"},
-  {"name":"Bin Bahari, Mohd Zulkhairi"},
-  {"name":"Yeoh, Oon San"},
-  {"name":"Ooi, Ying Hui"},
-  {"name":"Lim, Pei Pei"},
-  {"name":"Lim, Kok Loon"},
-  {"name":"Tan, Guat Ngoh"},
-  {"name":"Nurhazli, Nur Azmira Elena"},
-  {"name":"Islam, Sharique"},
-  {"name":"Sharifud-din, Muhammad Shahir"},
-  {"name":"Chandran, Dennis Prem Kumar"},
-  {"name":"Lee, Boon Peng"},
-  {"name":"Bee Ling Tan"},
-  {"name":"Harris D.Ilham Adni"},
-  {"name":"Jenson Oh"},
-  {"name":"Joseph Xuan You Tian"},
-  {"name":"Nurul Zawani Muhamad Shukri"},
-  {"name":"Tharini Murthy"},
-  {"name":"Zaaim Redha, Zaaim Syukrin"},
-  {"name":"Syed Nasir Mohamed"},
-  {"name":"Lokman Marzuki"},
-  {"name":"azri mohd khanil"},
-  {"name":"Amit Sarkar"},
-  {"name":"Frederick Yew Shen Chong"},
-  {"name":"Julius Victorio Koentjoro"},
-  {"name":"Larissa Shuen Yuin Chee"},
-  {"name":"Mun Sun Son"},
-  {"name":"Yen Ting Koo"},
-  {"name":"Shirodkar, Shamin A"},
-  {"name":"Ai Chen Ng"},
-  {"name":"Ai Ni Eng"},
-  {"name":"Chai Ong Cheng"},
-  {"name":"Chee Hwei Ko"},
-  {"name":"Chin Chai Ng"},
-  {"name":"Chin Fai Lok"},
-  {"name":"Erdiana Natashsya Zulkifli"},
-  {"name":"HUI LING LEE"},
-  {"name":"Jui Ang Tan"},
-  {"name":"Nguk Yen Ong"},
-  {"name":"Sock Khim Pah"},
-  {"name":"Suat Ooi Tong"},
-  {"name":"Chitra A/P Arjunan"},
-  {"name":"Li Fen Ho"},
-  {"name":"Chee San Lee"},
-  {"name":"DIVYA RUBAN MUTHUSAMY"},
-  {"name":"Si Yeu Lai"},
-  {"name":"Jessica, Choong"},
-  {"name":"Leng See Teh"},
-  {"name":"SZE GIE ANG"},
-  {"name":"Farilah Yusoff"},
-  {"name":"Mahsuri Mat Wasi"},
-  {"name":"Rames Velusamy"},
-  {"name":"Cheah Kuon Sim"},
-  {"name":"Joa Yen Tang"},
-  {"name":"Kenny Lim"},
-  {"name":"Usha Devi Raman"},
-  {"name":"Norhaslinda Mohamad Kasim"},
-  {"name":"Tan, Gaik Theng"},
-  {"name":"Irene Poh Im Yeoh"}
-];
+  <!-- Winner Celebration Popup -->
+  <div class="winner-popup-overlay" id="winnerPopup">
+    <div class="winner-popup-card">
+      <div class="trophy-icon">🏆</div>
+      <div class="congrats-text">Congratulations!</div>
+      <div class="celebrated-name" id="celebratedNameBox">Winner Name</div>
+      <button class="popup-btn" id="claimBtn">Continue</button>
+    </div>
+  </div>
 
-let pool = [...RAW_EMPLOYEE_DATA];
-let winnersHistory = [];
-let currentCandidate = null;
-
-const WORLDS = [
-  'sky_island',
-  'donut_plains',
-  'vanilla_dome',
-  'twin_bridges',
-  'forest_of_illusion',
-  'chocolate_island',
-  'valley_of_bowser',
-  'grassland',
-  'tunnel',
-  'underwater',
-  'sky'
-];
-let currentWorld = 'sky_island';
-
-/* =====================================================================
-   2. PROCEDURAL 8-BIT SOUND ENGINE
-===================================================================== */
-class SoundEngine {
-  constructor() {
-    this.ctx = null;
-    this.enabled = true;
-  }
-  init() {
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      this.ctx = new AudioCtx();
-    }
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume();
-    }
-  }
-  playTone(freq, type = 'square', duration = 0.1, delay = 0, vol = 0.12) {
-    if (!this.enabled || !this.ctx) return;
-    try {
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      const startTime = this.ctx.currentTime + delay;
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, startTime);
-      gain.gain.setValueAtTime(vol, startTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start(startTime);
-      osc.stop(startTime + duration);
-    } catch (e) {}
-  }
-  jump() {
-    if (!this.enabled || !this.ctx) return;
-    try {
-      const t = this.ctx.currentTime;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(160, t);
-      osc.frequency.exponentialRampToValueAtTime(620, t + 0.18);
-      gain.gain.setValueAtTime(0.12, t);
-      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-      osc.start(t);
-      osc.stop(t + 0.18);
-    } catch (e) {}
-  }
-  coin() {
-    this.playTone(987.77, 'triangle', 0.08, 0, 0.18);
-    this.playTone(1318.51, 'square', 0.32, 0.08, 0.2);
-  }
-  powerUp() {
-    const notes = [330, 392, 659, 523, 587, 784, 988];
-    notes.forEach((freq, idx) => {
-      this.playTone(freq, 'triangle', 0.08, idx * 0.05, 0.16);
-    });
-  }
-  fanfare() {
-    if (!this.enabled || !this.ctx) return;
-    const melody = [
-      { f: 523, d: 0.14, t: 0 },
-      { f: 659, d: 0.14, t: 0.14 },
-      { f: 784, d: 0.14, t: 0.28 },
-      { f: 1046, d: 0.35, t: 0.42 },
-      { f: 784, d: 0.14, t: 0.8 },
-      { f: 1046, d: 0.55, t: 0.95 }
+  <!-- Logic & Data Script -->
+  <script>
+    /* ========================================================
+       ELIGIBLE EMPLOYEE DATASET (Eligibility == "Yes" ONLY)
+       ======================================================== */
+    const INITIAL_POOL = [
+      "Ooi, Cheng Hoon",
+      "Suntharalingam, Paribalan",
+      "Diow, Rhu Kooi",
+      "Hong, Wai Fong",
+      "Ng, Vanessa Yeng Sar",
+      "Mohd Yusoff, Mohd Aiman Afnan",
+      "Cheah, Joseph Chai Boon",
+      "Ho, Kok Keong",
+      "Ng, Kang Ning",
+      "Balasubramaniam, Hari Chand",
+      "Nguyen, Alice Uyen",
+      "Ferrolino, Antonio",
+      "Tan, Chee Boon",
+      "Lee, Mooi Yee",
+      "Koid, Shin Yih",
+      "Pragasam, Justin",
+      "Cheng, Boon Yee",
+      "Lee, Kok Peng",
+      "Lee, Poh Eng",
+      "Ng, Wei Chon",
+      "Sim, Yvonne Xin Yu",
+      "Yeap, Siew Lean",
+      "Liew, Choon Wai",
+      "Koh, Terry Eng Keong",
+      "Lo, Wei Leng",
+      "Sim, Jeremy",
+      "Woo, Christine",
+      "Seow, Han Loon",
+      "Richard, Gladys",
+      "Wong, Woan Chiou",
+      "Gan, Hock Boon",
+      "Mah, Chin Keong Alex",
+      "Mat Yusop, Ahmad Rafaie",
+      "Abdullah, Aini Haslinda",
+      "Heng, Cheng Yin",
+      "Choo, Chien Hua",
+      "Teoh, Pei Fen",
+      "Lee, Shi Ning",
+      "Hong, Seow Earn",
+      "Lee, Swee Hoon",
+      "Abd Majid, Syamimi",
+      "Koo, Hee Kiah",
+      "Chua, Khian Chee",
+      "Go, Choo Kwong",
+      "Fook, Loon Wooi",
+      "Cheah, Seok Gaik",
+      "Lim, Hooi Nee",
+      "Boey, Hooi Ying",
+      "Ong, Lee Ping",
+      "Hoo, Ray",
+      "Men, Soo Yit",
+      "Ooi, Mian Hong",
+      "Yeap, Jacky Kok Ghee",
+      "Lee, Ming Ming",
+      "Goh, Ramsay Thean Siang",
+      "Kuan, Wei Yew",
+      "Ang, Chui Ping",
+      "Lee, Kah Weng",
+      "Loh, Lee Naa",
+      "Lim, Lean kooi",
+      "Yeap, Sarina Cheng Gaik",
+      "Ayavoo, Nalini",
+      "Ooi, Bee Ling",
+      "Thangarajoo, Geethawathy",
+      "Ramiah, Mangaleswary",
+      "Teoh, Wen Xin",
+      "Lim, Agnes Lee Hoong",
+      "Soh, Chin Liang",
+      "Teh, Ean Hoon",
+      "Heah, Jeff Jun Jie",
+      "Lye, Choy Ying Jolyn",
+      "Teh, Joyce",
+      "Lim, Lee Ling",
+      "Chang, Li Ting",
+      "Tan, Mei Ling",
+      "Lee, Samantha Sien Ling",
+      "Goh, Amanda",
+      "Mendoza, Celine Yap Y",
+      "Ooi, Chooi San",
+      "Lim, Bee Hon",
+      "Yew, Cherry",
+      "Yap, Li Wooi",
+      "Leong, Dylan Chat Lun",
+      "Oon, David Tyeway",
+      "Tan, Lay Sim1",
+      "Tan, May Yong",
+      "Leong, Adelyn Hui Lin",
+      "Lim, Elaine Chi Ling",
+      "Ishak, Izeanee Bt B",
+      "Abdul Gani, Muhamad Izzulhafiz",
+      "Tan, Irynn Ai Ling",
+      "Chuah, Su Bee",
+      "Lim, Su-lyn",
+      "Lim, Mei Yin",
+      "Ong, Pei Kuan",
+      "Perumal, Arasu",
+      "Mohamad Mustafa, Nurazura",
+      "Teoh, Kai Ying",
+      "Krishnan, Kasturi",
+      "Aikin, Nang Som Chei",
+      "Al Thanasegeran, Surendaar",
+      "Kalimutu, Suryakandh",
+      "None, Rozana",
+      "Kamsan, Siti Nur Atiqah",
+      "Md Haris, Mohd Sofian",
+      "Ibrahim, Nur Adli",
+      "Cheng, Elaine Ee Ling",
+      "Ang, Hao Jiun",
+      "Sakari, Nur Fatihah",
+      "Murugan, Pennarasi",
+      "Yeoh, Sheau Wen",
+      "Chan, Lin Fang",
+      "Yeoh, Cheng Yee",
+      "Che Rouse, Noor Liyana",
+      "Halim, Norshahira",
+      "Sukiman, Nurul Zakiyyah",
+      "Ibrahim, Muhamad Sohimi",
+      "Yeoh, Soon Leong",
+      "Chan, Daniel Jun Jie",
+      "Nadarajah, Thurgatharani Naidu",
+      "Tan, Wei Hang",
+      "Tan, Bee Huen",
+      "Raja Ibrahim, Putri Hasratul Iqtikah",
+      "Tan, May Leng",
+      "Tan, Jing1 Wen",
+      "Yeoh, Lay Choo",
+      "Leong, Mei Yi",
+      "Ibrahim, Nur Amalina",
+      "Abd Rashak, Nur Azwani B",
+      "Suntharam, Pirvinnesh",
+      "Syed Azizan, Sharifah Maziana",
+      "Ali Shaiffuddin, Syahira Hilal Aimi",
+      "Yeoh, Sze Yong",
+      "Khoo, Poh Ann",
+      "Chan, Allysa Saw Geok",
+      "Lim, Ching Yee",
+      "Lim, Chung How",
+      "Wong, Jael S",
+      "Khoo, Jia Huey",
+      "Asrulefendi, Syahmi",
+      "Pardeep Singh Gill, Pevandeep Singh Gill",
+      "Gan, Lay Peng",
+      "Yong, Mei Eng",
+      "Low, Min Qi",
+      "Pragasam, Nicole Anne",
+      "Chew, Ren",
+      "Wong, Siu Wei",
+      "Tan, Jia1 Yi",
+      "Yeap, Yi You",
+      "Heng, Yi Guan",
+      "Yew, Siew Eng",
+      "Khoo, Cheng Keat",
+      "Chay, Kok Wei",
+      "Sim, Kean Lee",
+      "Anoar, Noor Hamala",
+      "Lau, Pei Yun",
+      "Khor, Heng Tien",
+      "Ab Razak, Hakim",
+      "Low, Shye Nee",
+      "Tan, Tse Pei",
+      "Lim, Yen Chiew",
+      "Lim, Lay hong",
+      "Thiyagarajan, Prabhu",
+      "Loke, Shiuk Ming",
+      "Tan, Alan",
+      "Silvaine, Audrey",
+      "Huam, Bee Leng",
+      "Phoon, Wei Wei",
+      "Ooi, Hock Heng",
+      "Ang, Lay Pin",
+      "Ponnampalam, Kanna",
+      "Wang, John Paul",
+      "Lim, Poh Suan",
+      "Sanniababoo, Phuspha",
+      "Tan, Lye Yeng",
+      "Chin, Ting Chung",
+      "Yusof, Adnin Naim",
+      "Quah, Hock Soon",
+      "Ramu, Loganathan Naidu",
+      "Palanisamy, Thenmuli",
+      "Yim, Wen Yang",
+      "Anthonysamy, Willie Nelson",
+      "Lim, Bok Sim",
+      "Puah, Boon Teck",
+      "Tan, Yeh Fuat",
+      "Lee, Yoon Han",
+      "Lim, Hooi Lee",
+      "Abdul Aziz, Mohd Ashraf",
+      "Muniandy, Devanthran",
+      "Din, Mat Saad",
+      "Kuan, Mei Kuen",
+      "Kumaraisen, Revathy",
+      "Teh, Jane Siok Jian",
+      "Sumague, Christopher L",
+      "Ooi, Bee Lay",
+      "Low, Dora Poh Yin",
+      "Leong, Felicia",
+      "Tong, Geam Y",
+      "Lim, Bc",
+      "Liew, Alfred Yah Woo",
+      "Teah, Hester",
+      "Nondisamy, Logesvaran",
+      "Palany Kumar, Punitha Devi",
+      "Kuppan, Puvindran",
+      "Phi, Wah Tooi",
+      "Quah, William Wee Liang",
+      "Amurthalingam, Yuaraajan",
+      "Lim, TM",
+      "Dahlan, Eida Yasmin",
+      "Ramanathan, Geetha",
+      "Leong, Teong Eng",
+      "Liang, Choon Guin",
+      "Lee, Eugene",
+      "Ng, Guan Lee",
+      "Low, Hooi Leng",
+      "Wang, Hui Ler",
+      "Devaraj, Uthaya Kumaran",
+      "Chua, Ellie",
+      "Leong, Chan Kay",
+      "Ho, Cheah Luan",
+      "Cheng, Wendy Chin Hong",
+      "Tan, Jing Yi",
+      "Teh, Kim Hoon",
+      "Ooi, Peng Chin",
+      "Ooi, Kim Eng",
+      "Lim, Rachel Li Foong",
+      "Lim, Sear Nie",
+      "Yoh, Joyce",
+      "Tang, Wye Yuen",
+      "Lee, Rachael",
+      "Lai, Zhi Hui",
+      "Tan, Zhi Jie",
+      "Ong, HJ",
+      "Ng, Chin Kiat",
+      "Tan, Zhu Sheng",
+      "Wong, Emily Mei Fong",
+      "Lim, Catherine",
+      "Sim, Cher Huei",
+      "Ne Chin, Chiravong A",
+      "Koo, Chun Hong",
+      "Khoo, Elise",
+      "Lim, It Hui",
+      "Tham, Jacklyn Yee Len",
+      "Krishnan, Jegathesen",
+      "Teh, Justin Yan Shin",
+      "Koay, Kek Chian",
+      "Tan, Lee Chin",
+      "Mohamed Anas, Mohd Hafiz Hakimi",
+      "Lim, Meng Chuan",
+      "Goh, Eric",
+      "Kung, Pei Hsia",
+      "Lee, Wai Cheng",
+      "Lim, Lay Pin",
+      "Balakrishnan, Aghielan S",
+      "Bin Abd Aziz, Abd Luqman Hakim",
+      "Rosdi, Afiff Qusyairy",
+      "Binti Muhammad, Mazlina",
+      "Kadiran, Fitri Andi Kesuma",
+      "Ng, Kah Tiek",
+      "Bin Sharudin, Mohd Alif",
+      "Awang Hadzir, Mohd Shahmi Akmal",
+      "Bin Ramli, Muhamad Nazrin",
+      "Bin Zulfakhor, Muhammad Zarif",
+      "Binti Abu Hassan, Noor Azeita",
+      "Gunasegaran, Parimala",
+      "Samsuri, Siti Nur Hidayah",
+      "Binti Tajudin, Effarini",
+      "Chan, Kl Chan",
+      "Ismail, Mohd Khairul Anuar",
+      "Addenan, Mohd Shahdan",
+      "Bt Ali, Nur Azliza",
+      "Muthusamy, Richard",
+      "Sarojini, Gramalingam",
+      "Tam, Swee Chin",
+      "Chia, Vincent Lean Tatt",
+      "Bin Hashim, Ihsan Hasifi",
+      "Bin Kamal Ariff, Kamal Firdaus",
+      "Abdul Razak, Mohamad Amirul",
+      "Mohamad Termizi, Mimy Fatin Aliya",
+      "Radzi, Mohamad Firdaus",
+      "Zainal Abidin, Mohd Zulfaizal",
+      "Azhar, Muhammad Aiman",
+      "Bin Mohd Mokhtar, Muhammad Aizat",
+      "Prahakaran, Prasath",
+      "Palanisamy, Ranusha",
+      "Rosle, Rohaniff",
+      "Al Kandasamy, Thinagaran",
+      "Manikkam, Vinod",
+      "Abdul Kadir Jelani, Wani",
+      "Loganazan, Yuveneswaran",
+      "Mohd Shafian, Zarina",
+      "Che Azman, Zul Aizad",
+      "Cheah, Beng Gaik",
+      "Chang, Chun Chian",
+      "Bin Bahari, Mohd Zulkhairi",
+      "Yeoh, Oon San",
+      "Ooi, Ying Hui",
+      "Lim, Pei Pei",
+      "Lim, Kok Loon",
+      "Tan, Guat Ngoh",
+      "Nurhazli, Nur Azmira Elena",
+      "Islam, Sharique",
+      "Sharifud-din, Muhammad Shahir",
+      "Chandran, Dennis Prem Kumar",
+      "Bee Ling Tan",
+      "Harris D.Ilham Adni",
+      "Jenson Oh",
+      "Joseph Xuan You Tian",
+      "Nurul Zawani Muhamad Shukri",
+      "Tharini Murthy",
+      "Zaaim Redha, Zaaim Syukrin",
+      "Syed Nasir Mohamed",
+      "Lokman Marzuki",
+      "azri mohd khanil",
+      "Amit Sarkar",
+      "Frederick Yew Shen Chong",
+      "Julius Victorio Koentjoro",
+      "Larissa Shuen Yuin Chee",
+      "Mun Sun Son",
+      "Yen Ting Koo",
+      "Ai Chen Ng",
+      "Ai Ni Eng",
+      "Chai Ong Cheng",
+      "Chee Hwei Ko",
+      "Chin Chai Ng",
+      "Chin Fai Lok",
+      "Erdiana Natashsya Zulkifli",
+      "HUI LING LEE",
+      "Jui Ang Tan",
+      "Nguk Yen Ong",
+      "Sock Khim Pah",
+      "Nathan Ganaeson",
+      "Nivitha Sundarajoo Thilagar",
+      "Yap, Austin",
+      "Chitra A/P Arjunan",
+      "Li Fen Ho",
+      "Chee San Lee",
+      "DIVYA RUBAN MUTHUSAMY",
+      "Si Yeu Lai",
+      "Jessica, Choong",
+      "Leng See Teh",
+      "SZE GIE ANG",
+      "Farilah Yusoff",
+      "Mahsuri Mat Wasi",
+      "Rames Velusamy",
+      "Cheah Kuon Sim",
+      "Joa Yen Tang",
+      "Usha Devi Raman",
+      "Norhaslinda Mohamad Kasim",
+      "Jaffar, Khyrunisha",
+      "Ping Chiet Chai",
+      "Tan, Gaik Theng ",
+      "Irene Poh Im Yeoh"
     ];
-    melody.forEach(n => this.playTone(n.f, 'square', n.d, n.t, 0.22));
-  }
-}
-const sfx = new SoundEngine();
 
-/* =====================================================================
-   3. GAME ENGINE & CANVAS RENDERING
-===================================================================== */
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-let WORLD_WIDTH = 5800;
-let WORLD_HEIGHT = 720;
-let GROUND_Y = 590;
-let isAutoPlaying = false;
-let gameActive = true;
-let cameraX = 0;
-let cameraY = 0;
-let blocks = [];
-let powerUpItems = [];
-let enemies = [];
-let particles = [];
-let clouds = [];
-let islands = [];
-let castle = { x: 5200, y: GROUND_Y - 260, width: 260, height: 260, flagReached: false };
+    /* ========================================================
+       STATE MANAGEMENT & LOCAL STORAGE
+       ======================================================== */
+    const STORAGE_KEY_POOL = "lucky_draw_pool_2026";
+    const STORAGE_KEY_WINNERS = "lucky_draw_winners_2026";
+    const STORAGE_KEY_SOUND = "lucky_draw_sound_enabled";
 
-const keys = { left: false, right: false, jump: false, action: false };
+    let pool = [];
+    let winners = [];
+    let isRolling = false;
+    let soundEnabled = true;
 
-const mario = {
-  x: 80,
-  y: GROUND_Y - 52,
-  width: 40,
-  height: 52,
-  vx: 0,
-  vy: 0,
-  speed: 7,
-  jumpPower: -17,
-  isGrounded: false,
-  facing: 1,
-  state: 'small',
-  hp: 3,
-  reset() {
-    this.x = 80;
-    this.y = GROUND_Y - 52;
-    this.vx = 0;
-    this.vy = 0;
-    this.isGrounded = false;
-    this.hp = 3;
-    document.getElementById('healthHearts').textContent = '❤️❤️❤️';
-  }
-};
+    function loadState() {
+      const savedPool = localStorage.getItem(STORAGE_KEY_POOL);
+      const savedWinners = localStorage.getItem(STORAGE_KEY_WINNERS);
+      const savedSound = localStorage.getItem(STORAGE_KEY_SOUND);
 
-const STAR_LETTERS = ['S', 'U', 'P', 'E', 'R', 'W', 'I', 'N'];
+      pool = savedPool ? JSON.parse(savedPool) : [...INITIAL_POOL];
+      winners = savedWinners ? JSON.parse(savedWinners) : [];
+      soundEnabled = savedSound !== null ? JSON.parse(savedSound) : true;
+    }
 
-function initLevel() {
-  blocks = [];
-  powerUpItems = [];
-  enemies = [];
-  clouds = [];
-  castle.flagReached = false;
-  document.getElementById('stageBadge').textContent = currentWorld.toUpperCase().replace('_', ' ');
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY_POOL, JSON.stringify(pool));
+      localStorage.setItem(STORAGE_KEY_WINNERS, JSON.stringify(winners));
+      localStorage.setItem(STORAGE_KEY_SOUND, JSON.stringify(soundEnabled));
+    }
 
-  if (!currentCandidate && pool.length > 0) {
-    pickNewCandidate();
-  }
+    /* ========================================================
+       AUDIO SYNTHESIS (Web Audio API - No Audio Files Needed)
+       ======================================================== */
+    let audioCtx = null;
 
-  // 8 Mystery blocks across the track
-  const zoneSize = (4900 - 450) / 8;
-  for (let i = 0; i < 8; i++) {
-    const minZoneX = 450 + i * zoneSize;
-    const blockX = Math.round(minZoneX + Math.random() * (zoneSize - 90));
-    blocks.push({
-      id: i,
-      x: blockX,
-      y: GROUND_Y - 150,
-      width: 54,
-      height: 54,
-      hit: false,
-      bounceY: 0,
-      letter: STAR_LETTERS[i]
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          audioCtx = new AudioContext();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playTick() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(400 + Math.random() * 200, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch (e) {}
+    }
+
+    function playWinSound() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        notes.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.1);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.1 + 0.4);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + i * 0.1);
+          osc.stop(audioCtx.currentTime + i * 0.1 + 0.4);
+        });
+      } catch (e) {}
+    }
+
+    /* ========================================================
+       MOBILE CONFETTI ENGINE (Pure Vanilla HTML5 Canvas)
+       ======================================================== */
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    let confettiPieces = [];
+    let confettiAnimationId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      confettiPieces = [];
+      const colors = ["#f6c85f", "#ffd700", "#00d2ff", "#ff4757", "#2ed573", "#a55eea", "#ffffff"];
+      for (let i = 0; i < 90; i++) {
+        confettiPieces.push({
+          x: canvas.width / 2,
+          y: canvas.height * 0.45,
+          r: Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: Math.random() * -15 - 5,
+          gravity: 0.4,
+          tilt: Math.random() * 10,
+          tiltSpeed: (Math.random() - 0.5) * 0.1,
+          opacity: 1
+        });
+      }
+
+      if (!confettiAnimationId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let active = false;
+
+      for (let p of confettiPieces) {
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.tilt += p.tiltSpeed;
+        p.opacity -= 0.006;
+
+        if (p.opacity > 0 && p.y < canvas.height + 20) {
+          active = true;
+          ctx.beginPath();
+          ctx.save();
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = Math.max(0, p.opacity);
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.tilt);
+          ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.5);
+          ctx.restore();
+        }
+      }
+
+      if (active) {
+        confettiAnimationId = requestAnimationFrame(animateConfetti);
+      } else {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    /* ========================================================
+       UI UPDATE HELPERS
+       ======================================================== */
+    const poolCountEl = document.getElementById("poolCount");
+    const nameBoxEl = document.getElementById("nameBox");
+    const displaySubtitleEl = document.getElementById("displaySubtitle");
+    const drawBtnEl = document.getElementById("drawBtn");
+    const latestWinnerNameEl = document.getElementById("latestWinnerName");
+    const winnerBadgeCountEl = document.getElementById("winnerBadgeCount");
+    const modalWinnersCountEl = document.getElementById("modalWinnersCount");
+    const winnersListContainerEl = document.getElementById("winnersListContainer");
+    const soundToggleBtn = document.getElementById("soundToggleBtn");
+    const soundIcon = document.getElementById("soundIcon");
+    const infoPoolSizeEl = document.getElementById("infoPoolSize");
+
+    function updateUI() {
+      poolCountEl.textContent = pool.length;
+      infoPoolSizeEl.textContent = pool.length;
+      winnerBadgeCountEl.textContent = winners.length;
+      modalWinnersCountEl.textContent = winners.length;
+
+      if (winners.length > 0) {
+        latestWinnerNameEl.textContent = winners[winners.length - 1];
+      } else {
+        latestWinnerNameEl.textContent = "None yet";
+      }
+
+      if (pool.length === 0) {
+        drawBtnEl.disabled = true;
+        nameBoxEl.textContent = "All Drawn!";
+        displaySubtitleEl.textContent = "Pool Exhausted";
+      } else if (!isRolling) {
+        drawBtnEl.disabled = false;
+      }
+
+      soundIcon.textContent = soundEnabled ? "🔔" : "🔕";
+      renderWinnersList();
+    }
+
+    function renderWinnersList() {
+      if (winners.length === 0) {
+        winnersListContainerEl.innerHTML = `
+          <div class="empty-state">
+            <p>No winners drawn yet.</p>
+            <p style="margin-top:4px; font-size:0.8rem; color:#718096;">Tap "DRAW NOW" on the main screen to begin!</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = "";
+      for (let i = winners.length - 1; i >= 0; i--) {
+        html += `
+          <div class="winner-list-item">
+            <span class="winner-rank">#${i + 1}</span>
+            <span class="winner-info">${winners[i]}</span>
+          </div>
+        `;
+      }
+      winnersListContainerEl.innerHTML = html;
+    }
+
+    /* ========================================================
+       ROLLING / DRAW ENGINE
+       ======================================================== */
+    function drawWinner() {
+      if (isRolling || pool.length === 0) return;
+
+      initAudio();
+      isRolling = true;
+      drawBtnEl.disabled = true;
+      nameBoxEl.classList.add("rolling");
+      nameBoxEl.classList.remove("winner-flash");
+      displaySubtitleEl.textContent = "Drawing Winner...";
+
+      let counter = 0;
+      const totalSteps = 28;
+      let delay = 45;
+
+      function step() {
+        // Pick random visual slice from the entire eligible pool for rolling excitement
+        const randomIndex = Math.floor(Math.random() * pool.length);
+        nameBoxEl.textContent = pool[randomIndex];
+        playTick();
+
+        counter++;
+        if (counter < totalSteps) {
+          // Progressively decelerate the roll for suspense
+          if (counter > totalSteps - 12) {
+            delay += 18;
+          }
+          setTimeout(step, delay);
+        } else {
+          // Final Winner Pick
+          finalizeWinner();
+        }
+      }
+
+      step();
+    }
+
+    function finalizeWinner() {
+      const winningIndex = Math.floor(Math.random() * pool.length);
+      const winnerName = pool.splice(winningIndex, 1)[0];
+      winners.push(winnerName);
+      saveState();
+
+      // UI Reveal
+      nameBoxEl.classList.remove("rolling");
+      nameBoxEl.classList.add("winner-flash");
+      nameBoxEl.textContent = winnerName;
+      displaySubtitleEl.textContent = "WINNER SELECTED!";
+      isRolling = false;
+
+      // Celebratory Effects
+      playWinSound();
+      triggerConfetti();
+      updateUI();
+
+      // Show Full celebration modal after a short pause
+      setTimeout(() => {
+        document.getElementById("celebratedNameBox").textContent = winnerName;
+        document.getElementById("winnerPopup").classList.add("active");
+      }, 700);
+    }
+
+    /* ========================================================
+       EVENT LISTENERS
+       ======================================================== */
+    drawBtnEl.addEventListener("click", drawWinner);
+
+    document.getElementById("claimBtn").addEventListener("click", () => {
+      document.getElementById("winnerPopup").classList.remove("active");
     });
-  }
 
-  // Reset HUD slots
-  for (let i = 0; i < 8; i++) {
-    const el = document.getElementById(`slot${i}`);
-    if (el) {
-      el.textContent = '?';
-      el.classList.remove('revealed');
-    }
-  }
-}
+    // Sound toggle
+    soundToggleBtn.addEventListener("click", () => {
+      initAudio();
+      soundEnabled = !soundEnabled;
+      saveState();
+      updateUI();
+    });
 
-function pickNewCandidate() {
-  if (pool.length === 0) return false;
-  const idx = Math.floor(Math.random() * pool.length);
-  currentCandidate = pool[idx];
-  return true;
-}
+    // Modals
+    const winnersModal = document.getElementById("winnersModal");
+    const infoModal = document.getElementById("infoModal");
 
-function triggerBlockHit(block) {
-  if (block.hit) return;
-  block.hit = true;
-  block.bounceY = -20;
-  sfx.coin();
+    document.getElementById("viewWinnersBtn").addEventListener("click", () => {
+      winnersModal.classList.add("active");
+    });
+    document.getElementById("closeWinnersModal").addEventListener("click", () => {
+      winnersModal.classList.remove("active");
+    });
 
-  const slotEl = document.getElementById(`slot${block.id}`);
-  if (slotEl) {
-    slotEl.textContent = block.letter;
-    slotEl.classList.add('revealed');
-  }
-}
+    document.getElementById("infoBtn").addEventListener("click", () => {
+      infoModal.classList.add("active");
+    });
+    document.getElementById("closeInfoModal").addEventListener("click", () => {
+      infoModal.classList.remove("active");
+    });
 
-function updatePhysics() {
-  if (isAutoPlaying) {
-    mario.facing = 1;
-    const targetBlock = blocks.find(b => !b.hit);
-    if (targetBlock) {
-      const diff = targetBlock.x + 6 - mario.x;
-      mario.vx = diff > 12 ? 8 : (diff < -12 ? -6 : 1);
-      if (Math.abs(diff) < 28 && mario.isGrounded) {
-        mario.vy = mario.jumpPower;
-        mario.isGrounded = false;
-        sfx.jump();
+    // Close modal on tap outside
+    window.addEventListener("click", (e) => {
+      if (e.target === winnersModal) winnersModal.classList.remove("active");
+      if (e.target === infoModal) infoModal.classList.remove("active");
+    });
+
+    // Reset Pool
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if (confirm("Reset lucky draw pool and clear all drawn winners back to original state?")) {
+        pool = [...INITIAL_POOL];
+        winners = [];
+        saveState();
+        nameBoxEl.textContent = "Ready?";
+        nameBoxEl.classList.remove("winner-flash", "rolling");
+        displaySubtitleEl.textContent = "Tap to Draw Winner";
+        updateUI();
       }
-    } else {
-      mario.vx = 9;
-      if (mario.isGrounded && Math.random() < 0.03) {
-        mario.vy = mario.jumpPower * 0.8;
-        mario.isGrounded = false;
-        sfx.jump();
-      }
-    }
-  } else {
-    if (keys.left) mario.vx = -mario.speed;
-    else if (keys.right) mario.vx = mario.speed;
-    else mario.vx *= 0.75;
+    });
 
-    if (keys.jump && mario.isGrounded) {
-      mario.vy = mario.jumpPower;
-      mario.isGrounded = false;
-      sfx.jump();
-    }
-  }
-
-  mario.vy += 0.85;
-  mario.x += mario.vx;
-  mario.y += mario.vy;
-
-  // Blocks collision
-  blocks.forEach(block => {
-    if (block.bounceY < 0) block.bounceY += 2;
-    if (block.bounceY > 0) block.bounceY = 0;
-    const bTop = block.y + block.bounceY;
-    const bBottom = bTop + block.height;
-
-    // Hit under
-    if (mario.x + mario.width > block.x + 6 &&
-        mario.x < block.x + block.width - 6 &&
-        mario.y <= bBottom + 14 &&
-        mario.y + mario.height >= bBottom &&
-        mario.vy < 0) {
-      mario.vy = 3;
-      triggerBlockHit(block);
-    }
-  });
-
-  if (mario.y + mario.height >= GROUND_Y) {
-    mario.y = GROUND_Y - mario.height;
-    mario.vy = 0;
-    mario.isGrounded = true;
-  }
-
-  cameraX += (mario.x - 360 - cameraX) * 0.1;
-  if (cameraX < 0) cameraX = 0;
-
-  if (mario.x >= castle.x + 80 && !castle.flagReached) {
-    castle.flagReached = true;
-    mario.vx = 0;
-    triggerWinnerAnnounce();
-  }
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  // Sky
-  const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  skyGrad.addColorStop(0, '#1e3a8a');
-  skyGrad.addColorStop(1, '#93c5fd');
-  ctx.fillStyle = skyGrad;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.save();
-  ctx.translate(-Math.floor(cameraX), 0);
-
-  // Ground
-  ctx.fillStyle = '#15803d';
-  ctx.fillRect(0, GROUND_Y, WORLD_WIDTH, 16);
-  ctx.fillStyle = '#78350f';
-  ctx.fillRect(0, GROUND_Y + 16, WORLD_WIDTH, 300);
-
-  // Blocks
-  blocks.forEach(b => {
-    const by = b.y + b.bounceY;
-    ctx.fillStyle = b.hit ? '#9c6f44' : '#ffb300';
-    ctx.fillRect(b.x, by, b.width, b.height);
-    ctx.strokeStyle = '#3d1a00';
-    ctx.lineWidth = 3;
-    ctx.strokeRect(b.x, by, b.width, b.height);
-    ctx.font = '24px "Press Start 2P"';
-    ctx.fillStyle = '#fff';
-    ctx.fillText(b.hit ? b.letter : '?', b.x + 16, by + 36);
-  });
-
-  // Castle
-  ctx.fillStyle = '#535b66';
-  ctx.fillRect(castle.x, castle.y + 70, castle.width, 190);
-  ctx.fillStyle = '#ffcc00';
-  ctx.beginPath();
-  ctx.arc(castle.x - 45, castle.y - 65, 14, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Mario
-  ctx.fillStyle = '#e52521';
-  ctx.fillRect(mario.x, mario.y, mario.width, mario.height);
-
-  ctx.restore();
-}
-
-function triggerWinnerAnnounce() {
-  gameActive = false;
-  isAutoPlaying = false;
-  const overlay = document.getElementById('winnerModal');
-  const drumrollSec = document.getElementById('drumrollSection');
-  const revealSec = document.getElementById('winnerRevealSection');
-  
-  overlay.classList.add('active');
-  drumrollSec.style.display = 'block';
-  revealSec.style.display = 'none';
-
-  setTimeout(() => {
-    drumrollSec.style.display = 'none';
-    revealSec.style.display = 'block';
-    sfx.fanfare();
-    document.getElementById('modalWinnerName').textContent = currentCandidate ? currentCandidate.name : "Grand Winner";
-  }, 2200);
-}
-
-function recordWinner(removeCandidate = true) {
-  if (currentCandidate) {
-    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    winnersHistory.unshift({ name: currentCandidate.name, time: timeStr });
-    if (removeCandidate) {
-      pool = pool.filter(c => c.name !== currentCandidate.name);
-    }
-    renderWinners();
-  }
-  document.getElementById('winnerModal').classList.remove('active');
-  resetTrack();
-}
-
-function renderWinners() {
-  document.getElementById('poolCount').textContent = pool.length;
-  document.getElementById('drawnCount').textContent = winnersHistory.length;
-  const listEl = document.getElementById('winnerListContainer');
-  if (winnersHistory.length === 0) {
-    listEl.innerHTML = `<div style="color:#64748b; font-size:13px; font-style:italic; text-align:center; padding:24px;">No winners drawn yet!</div>`;
-    return;
-  }
-  listEl.innerHTML = winnersHistory.map((w, idx) => `
-    <div class="winner-card">
-      <div class="name">#${winnersHistory.length - idx} &bull; ${w.name}</div>
-      <div class="time">${w.time}</div>
-    </div>
-  `).join('');
-}
-
-function resetTrack() {
-  mario.reset();
-  cameraX = 0;
-  initLevel();
-  gameActive = true;
-}
-
-function mainLoop() {
-  if (gameActive) updatePhysics();
-  draw();
-  requestAnimationFrame(mainLoop);
-}
-
-/* Event Handlers */
-document.getElementById('startAutoBtn').onclick = () => {
-  sfx.init();
-  resetTrack();
-  isAutoPlaying = true;
-};
-document.getElementById('startManualBtn').onclick = () => {
-  sfx.init();
-  resetTrack();
-  isAutoPlaying = false;
-};
-document.getElementById('resetRunBtn').onclick = resetTrack;
-document.getElementById('swapWorldBtn').onclick = () => {
-  const nextIdx = (WORLDS.indexOf(currentWorld) + 1) % WORLDS.length;
-  currentWorld = WORLDS[nextIdx];
-  sfx.powerUp();
-  resetTrack();
-};
-document.getElementById('removeAndNextBtn').onclick = () => recordWinner(true);
-document.getElementById('keepAndCloseBtn').onclick = () => recordWinner(false);
-
-document.getElementById('shufflePoolBtn').onclick = () => {
-  pool.sort(() => Math.random() - 0.5);
-  alert(`Pool shuffled! (${pool.length} candidates ready)`);
-};
-document.getElementById('resetAllDataBtn').onclick = () => {
-  if (confirm("Restore full attendee roster?")) {
-    pool = [...RAW_EMPLOYEE_DATA];
-    winnersHistory = [];
-    renderWinners();
-    resetTrack();
-  }
-};
-
-window.addEventListener('keydown', e => {
-  sfx.init();
-  if (e.code === 'ArrowLeft' || e.key === 'a') keys.left = true;
-  if (e.code === 'ArrowRight' || e.key === 'd') keys.right = true;
-  if (e.code === 'Space' || e.code === 'ArrowUp' || e.key === 'w') {
-    keys.jump = true;
-    e.preventDefault();
-  }
-});
-window.addEventListener('keyup', e => {
-  if (e.code === 'ArrowLeft' || e.key === 'a') keys.left = false;
-  if (e.code === 'ArrowRight' || e.key === 'd') keys.right = false;
-  if (e.code === 'Space' || e.code === 'ArrowUp' || e.key === 'w') keys.jump = false;
-});
-
-window.onload = () => {
-  renderWinners();
-  initLevel();
-  mainLoop();
-};
-</script>
+    // Initial Launch
+    loadState();
+    updateUI();
+  </script>
 </body>
 </html>
