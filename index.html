@@ -585,7 +585,7 @@
 </div>
 
 <script>
-  // Committee Data mapped to root-level image files in the repository
+  // Corrected Committee Data with accurate roles and repository image filenames
   const COMMITTEE_MEMBERS = [
     {
       name: "Suryakandh Kalimutu",
@@ -596,7 +596,7 @@
     {
       name: "Jeff Heah Jun Jie",
       dept: "GSCO-CPOG",
-      role: "Committee Lead",
+      role: "Committee Lead / Lucky Draw & Games",
       photo: "Heah Jeff.jpg"
     },
     {
@@ -608,7 +608,7 @@
     {
       name: "Christine Woo",
       dept: "GSCO-CPOG",
-      role: "Media & Photography",
+      role: "Vendor Coordinator",
       photo: "Christine Woo.png"
     },
     {
@@ -620,76 +620,92 @@
     {
       name: "Teoh Pei Fen",
       dept: "GSCO-CPOG",
-      role: "Emcee & Stage Host",
+      role: "Door Gift Lead",
       photo: "Teoh Pei Fen.png"
     },
     {
       name: "Lee Swee Hoon",
       dept: "GSCO-CPOG",
-      role: "Performance Lead",
+      role: "Door Gift Lead",
       photo: "Lee Swee Hoon.png"
     },
     {
       name: "Celine Yap Y Mendoza",
       dept: "GSCO-CPOG",
-      role: "Door Gift Lead",
-      photo: "Celine Yap Y Mendoza.png"
+      role: "Emcee & Stage Host",
+      photo: "Celine Yap Y Mendoza.jpg"
     },
     {
       name: "Chiravong A Ne Chin",
       dept: "FCS-Intel Foundry",
-      role: "Event Operations",
-      photo: "Chiravong A Ne Chin.png"
+      role: "Emcee & Stage Host",
+      photo: "Chiravong A Ne chin.png"
     },
     {
       name: "Eugene Loke Shiuk Ming",
       dept: "FCSP-Intel Foundry",
-      role: "Event Operations",
-      photo: "Eugene Loke Shiuk Ming.png"
+      role: "Media & Photography",
+      photo: "Eugene Loke Shiuk Ming.jpg"
     },
     {
       name: "Jenson Oh",
       dept: "IFA-Intel Foundry",
-      role: "Event Operations",
-      photo: "Jenson Oh.png"
+      role: "Media & Photography",
+      photo: "Jenson Oh.jpeg"
     },
     {
       name: "Azri Mohd Khanil",
       dept: "FIFA-Intel Foundry",
-      role: "Event Operations",
-      photo: "Azri Mohd Khanil.png"
+      role: "Media & Photography",
+      photo: "Azri Mohd Khanil.jpg"
     },
     {
       name: "Abbie Yen Ting Koo",
       dept: "IFA-Intel Foundry",
-      role: "Event Operations",
-      photo: "Abbie Yen Ting Koo.png"
+      role: "Performance Lead",
+      photo: "Abbie Yen Ting Koo.jpg"
     },
     {
       name: "Syed Nasir Mohamed",
       dept: "IFA-Intel Foundry",
-      role: "Lucky Draw & Games",
+      role: "Event Operations",
       photo: "Syed Nasir Mohamed.png"
     },
     {
       name: "Hakim Ab Razak",
       dept: "FCSP-Intel Foundry",
-      role: "Performance Team",
+      role: "Event Operations",
       photo: "Hakim Ab Razak.png"
     },
     {
       name: "Catherine Lim",
       dept: "FCS-Intel Foundry",
-      role: "Vendor Coordinator",
+      role: "Event Operations",
       photo: "Catherine Lim.png"
     },
     {
       name: "Chan Kl Chan",
       dept: "FCS-Intel Foundry",
-      role: "Door Gift Team",
+      role: "Event Operations",
       photo: "Chan Kl Chan.png"
     }
   ];
+
+  function handleImageError(img, baseFilename, memberName) {
+    const rawName = baseFilename.substring(0, baseFilename.lastIndexOf('.'));
+    const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG'];
+    
+    let attemptIndex = parseInt(img.dataset.attempt || '0', 10);
+    
+    if (attemptIndex < extensions.length) {
+      const nextExt = extensions[attemptIndex];
+      img.dataset.attempt = (attemptIndex + 1).toString();
+      img.src = encodeURI(rawName + nextExt);
+    } else {
+      img.onerror = null;
+      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=1c2541&color=64dfdf&bold=true`;
+    }
+  }
 
   function renderCommitteeHtml() {
     let html = `
@@ -700,11 +716,13 @@
     `;
 
     COMMITTEE_MEMBERS.forEach(m => {
-      // Robust multi-path resolution and automatic fallback avatar with member initials
-      const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=1c2541&color=64dfdf&bold=true`;
       html += `
         <div class="committee-card">
-          <img class="committee-avatar" src="${encodeURI(m.photo)}" alt="${m.name}" onerror="if (!this.dataset.triedAlt) { this.dataset.triedAlt = '1'; this.src = 'images/' + encodeURI('${m.photo}'); } else { this.onerror=null; this.src='${fallbackUrl}'; }" />
+          <img class="committee-avatar" 
+               src="${encodeURI(m.photo)}" 
+               alt="${m.name}" 
+               data-attempt="0"
+               onerror="handleImageError(this, '${m.photo}', '${m.name}')" />
           <div class="committee-info">
             <div class="committee-name">${m.name}</div>
             <div class="committee-dept">${m.dept}</div>
