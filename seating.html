@@ -115,9 +115,6 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
-    .search-box {
-      position: relative;
-    }
     .search-input {
       width: 100%;
       padding: 14px 16px;
@@ -212,7 +209,7 @@
     }
     .ballroom-grid {
       display: grid;
-      grid-template-columns: 24px 130px repeat(9, 78px) 24px;
+      grid-template-columns: 24px 140px repeat(9, 78px) 24px;
       grid-template-rows: 40px repeat(4, 78px) 40px;
       gap: 10px;
       min-width: 960px;
@@ -237,13 +234,32 @@
       color: var(--text-muted);
       text-align: center;
     }
+
+    /* Expanded Stage Rectangle - Spans rows 2 through 5 completely */
     .stage-block {
       background: linear-gradient(135deg, #1d3557, #457b9d);
-      border: 1.5px solid var(--accent-cyan);
+      border: 2px solid var(--accent-cyan);
       color: #ffffff;
       grid-column: 2;
       grid-row: 2 / span 4;
+      align-self: stretch;
+      justify-self: stretch;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 16px rgba(100, 223, 223, 0.25);
     }
+    .stage-block h3 {
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .stage-block p {
+      font-size: 0.78rem;
+      color: #e0e1dd;
+    }
+
     .buffet-block {
       background: #152238;
       border: 1px dashed var(--accent-teal);
@@ -251,12 +267,14 @@
       grid-column: 3 / span 9;
       grid-row: 6;
       font-size: 0.75rem;
+      height: 100%;
     }
     .entrance-block {
       background: #2b3a4a;
       grid-column: 2;
       grid-row: 6;
       color: #e0e1dd;
+      height: 100%;
     }
 
     /* Table Circular Node */
@@ -438,9 +456,10 @@
 
     <div class="ballroom-scroll-container">
       <div class="ballroom-grid" id="ballroomGrid">
-        <!-- Stage -->
+        <!-- Expanded Full-Height Stage Rectangle -->
         <div class="floor-block stage-block">
-          STAGE<br><small>24ft x 12ft</small>
+          <h3>STAGE</h3>
+          <p>24ft x 12ft</p>
         </div>
         <!-- Buffet Line -->
         <div class="floor-block buffet-block">
@@ -556,7 +575,7 @@
     {table:7, chair:5, seatNo:67, name:"None, Rozana", group:"Supply Chain Planning Operation"},
     {table:7, chair:6, seatNo:68, name:"Halim, Norshahira", group:"Supply Chain Planning Operation"},
     {table:7, chair:7, seatNo:69, name:"Sukiman, Nurul Zakiyyah", group:"Supply Chain Planning Operation"},
-    {table:7, chair:8, seatNo:70, name:null, group:null}, // Available seat
+    {table:7, chair:8, seatNo:70, name:null, group:null},
     {table:7, chair:9, seatNo:71, name:"Che Rouse, Noor Liyana", group:"Supply Chain Planning Operation"},
     {table:7, chair:10, seatNo:72, name:"Al Thanasegeran, Surendaar", group:"Supply Chain Planning Operation"},
     {table:7, chair:11, seatNo:73, name:"Ibrahim, Nur Adli", group:"Supply Chain Planning Operation"},
@@ -958,7 +977,7 @@
   function filterSeats() {
     const query = document.getElementById('searchInput').value.trim().toLowerCase();
     const resultsContainer = document.getElementById('searchResults');
-    
+
     if (!query) {
       resultsContainer.style.display = 'none';
       resultsContainer.innerHTML = '';
