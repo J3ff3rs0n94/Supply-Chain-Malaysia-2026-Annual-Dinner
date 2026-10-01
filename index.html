@@ -47,7 +47,6 @@
       gap: 16px;
     }
 
-    /* Header Section */
     .header-box {
       text-align: center;
       background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
@@ -92,7 +91,6 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* 8 Hub Cards Grid */
     .hub-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -125,7 +123,6 @@
       box-shadow: 0 6px 18px rgba(100, 223, 223, 0.2);
     }
 
-    /* Highlight Card for Seat & Reservation */
     .hub-card.primary {
       grid-column: span 2;
       background: linear-gradient(135deg, #1c2541 0%, #152238 100%);
@@ -156,25 +153,14 @@
       color: var(--text-muted);
     }
 
-    /* Standard Cards */
-    .card-icon {
-      font-size: 2rem;
-    }
-    .card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-    .card-subtitle {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.2;
-    }
+    .card-icon { font-size: 2rem; }
+    .card-title { font-size: 0.95rem; font-weight: 700; }
+    .card-subtitle { font-size: 0.72rem; color: var(--text-muted); line-height: 1.2; }
 
-    /* Modals for secondary actions */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(5px);
       display: none;
       justify-content: center;
@@ -182,9 +168,7 @@
       z-index: 9999;
       padding: 16px;
     }
-    .modal-overlay.active {
-      display: flex;
-    }
+    .modal-overlay.active { display: flex; }
     .modal-box {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -216,11 +200,6 @@
       font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-    .modal-nav-back:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
     }
     .modal-close {
       background: none;
@@ -229,13 +208,7 @@
       font-size: 1.6rem;
       cursor: pointer;
     }
-    .modal-content {
-      font-size: 0.9rem;
-      color: #e0e1dd;
-      line-height: 1.5;
-    }
 
-    /* Modal Navigation Back Button at Footer */
     .modal-bottom-bar {
       margin-top: 20px;
       padding-top: 14px;
@@ -253,23 +226,9 @@
       font-size: 0.9rem;
       border-radius: 10px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
-    .btn-return-main:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
     }
 
-    /* Timeline in Schedule */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .timeline { display: flex; flex-direction: column; gap: 12px; }
     .time-slot {
       display: flex;
       gap: 12px;
@@ -278,17 +237,9 @@
       border-radius: 8px;
       border-left: 3px solid var(--accent-teal);
     }
-    .time-val {
-      font-weight: 700;
-      color: var(--accent-gold);
-      min-width: 65px;
-      font-size: 0.85rem;
-    }
-    .time-desc {
-      font-size: 0.85rem;
-    }
+    .time-val { font-weight: 700; color: var(--accent-gold); min-width: 65px; font-size: 0.85rem; }
+    .time-desc { font-size: 0.85rem; }
 
-    /* Committee Grid */
     .committee-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -325,10 +276,7 @@
       object-fit: cover;
       display: block;
     }
-    .comm-details {
-      flex: 1;
-      overflow: hidden;
-    }
+    .comm-details { flex: 1; overflow: hidden; }
     .comm-name {
       font-size: 0.85rem;
       font-weight: 700;
@@ -337,10 +285,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .comm-dept {
-      font-size: 0.68rem;
-      color: var(--accent-teal);
-    }
+    .comm-dept { font-size: 0.68rem; color: var(--accent-teal); }
     .comm-role-pill {
       display: inline-block;
       margin-top: 3px;
@@ -352,50 +297,11 @@
       border-radius: 10px;
       font-weight: 600;
     }
-
-    /* Interactive Game Card */
-    .game-box {
-      text-align: center;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 10px;
-      border: 1px dashed var(--border-color);
-    }
-    .lucky-token {
-      font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      color: var(--accent-gold);
-      margin: 12px 0;
-      text-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
-    }
-    .btn-action {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
-      border: none;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: opacity 0.2s;
-    }
-    .btn-action:hover {
-      opacity: 0.9;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- Header -->
   <header class="header-box">
     <h1>INTEL SUPPLY CHAIN MALAYSIA</h1>
     <h2>Annual Dinner 2026</h2>
@@ -406,7 +312,6 @@
     </div>
   </header>
 
-  <!-- 8 Hub Cards -->
   <main class="hub-grid">
     <!-- 1. Seat & Reservation (Direct Link) -->
     <a href="seating.html" class="hub-card primary">
@@ -445,15 +350,12 @@
       <div class="card-subtitle">360 Cam & instant prints</div>
     </div>
 
-    <!-- 6. Try Your Luck -->
-    <div class="hub-card" onclick="openModal('modalTryLuck')">
-      <a href="try_your_luck.html" class="hub-card">
+    <!-- 6. Try Your Luck (Direct Link to Super Mario Lucky Draw) -->
+    <a href="try_your_luck.html" class="hub-card">
       <div class="card-icon">🎰</div>
       <div class="card-title">Try Your Luck</div>
-      <div class="card-subtitle">Door gift code & games</div>
-    </div>
       <div class="card-subtitle">Super Mario Lucky Draw</div>
-      </a>
+    </a>
 
     <!-- 7. Event Committee -->
     <div class="hub-card" onclick="openModal('modalCommittee')">
@@ -469,44 +371,36 @@
       <div class="card-subtitle">Special surprise reveal</div>
     </div>
   </main>
-
-  <footer>
-    Intel Supply Chain Malaysia • Annual Dinner 2026
-  </footer>
 </div>
 
-<!-- ================= MODALS ================= -->
-
-<!-- Modal: Event Schedule -->
+<!-- Modal: Schedule -->
 <div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
       <button class="modal-nav-back" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalSchedule')">&times;</button>
     </div>
-    <div class="modal-content">
-      <div class="timeline">
-        <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
-        <div class="time-slot"><div class="time-val">6:25 PM</div><div class="time-desc">Final Call &amp; Seating in Ballroom</div></div>
-        <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Grand Opening Session</div></div>
-        <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
-        <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
-        <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
-        <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
-        <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
-        <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
-        <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
-        <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
-        <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
-        <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
-        <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
-        <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
-        <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
-        <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
-        <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
-        <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
-        <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
-      </div>
+    <div class="timeline">
+      <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
+      <div class="time-slot"><div class="time-val">6:25 PM</div><div class="time-desc">Final Call &amp; Seating in Ballroom</div></div>
+      <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Opening Session</div></div>
+      <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
+      <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
+      <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
+      <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
+      <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
+      <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
+      <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
+      <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
+      <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
+      <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
+      <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
+      <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
+      <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
+      <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
+      <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
+      <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
+      <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
     </div>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
@@ -521,20 +415,18 @@
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-    <div class="modal-content">
-      <p style="margin-bottom: 12px;">Get ready for an exciting night with <strong>72 prize positions</strong> up for grabs across multiple drawing rounds!</p>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-        <h4 style="color: var(--accent-gold);">🎁 Session 1 (6:55 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 revealed live on the side LED displays.</p>
-      </div>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-        <h4 style="color: var(--accent-cyan);">🎁 Session 2 (8:10 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 drawn during the second band set.</p>
-      </div>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-        <h4 style="color: #ff4d6d;">🏆 Grand Lucky Draw (9:48 PM - 10:13 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">The Top 10 Grand Prizes drawn live on stage using the interactive balloon app!</p>
-      </div>
+    <p style="margin-bottom: 12px;">72 prize positions up for grabs!</p>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+      <h4 style="color: var(--accent-gold);">🎁 Session 1 (6:55 PM)</h4>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 on side LED displays.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+      <h4 style="color: var(--accent-cyan);">🎁 Session 2 (8:10 PM)</h4>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 during band set 2.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+      <h4 style="color: #ff4d6d;">🏆 Grand Draw (9:48 PM - 10:13 PM)</h4>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Top 10 Grand Prizes on stage!</p>
     </div>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
@@ -549,18 +441,15 @@
       <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
     </div>
-    <div class="modal-content">
-      <p style="margin-bottom: 14px;">Tonight features three high-energy sets by our live band and volunteer showcases from across our organization:</p>
-      <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px;">
-        <li><strong>Opening Session</strong> (6:30 PM)</li>
-        <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
-        <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
-        <li><strong>Internal Performance 2</strong> (8:00 PM - 8:10 PM)</li>
-        <li><strong>Live Band Set 2</strong> (8:10 PM - 8:43 PM)</li>
-        <li><strong>Internal Performance 3</strong> (8:53 PM - 9:03 PM)</li>
-        <li><strong>Live Band Finale Set 3</strong> (9:18 PM - 9:48 PM)</li>
-      </ul>
-    </div>
+    <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px;">
+      <li><strong>Opening Session</strong> (6:30 PM)</li>
+      <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
+      <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
+      <li><strong>Internal Performance 2</strong> (8:00 PM - 8:10 PM)</li>
+      <li><strong>Live Band Set 2</strong> (8:10 PM - 8:43 PM)</li>
+      <li><strong>Internal Performance 3</strong> (8:53 PM - 9:03 PM)</li>
+      <li><strong>Live Band Finale Set 3</strong> (9:18 PM - 9:48 PM)</li>
+    </ul>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
     </div>
@@ -574,56 +463,29 @@
       <button class="modal-nav-back" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalPhotobooth')">&times;</button>
     </div>
-    <div class="modal-content">
-      <h4 style="color: var(--accent-cyan); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
-      <p style="margin-bottom: 10px;">Capture the memories of the night with your colleagues at the foyer entrance before dinner commences.</p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">
-        • Available from 5:30 PM to 8:30 PM in the grand ballroom foyer.<br>
-        • Unlimited 4R photo printouts with customized SCM 2026 frames.<br>
-        • Instant QR download for digital video clips to share on social media.
-      </p>
-    </div>
+    <h4 style="color: var(--accent-cyan); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
+    <p style="font-size:0.85rem; color:var(--text-muted);">
+      • Available from 5:30 PM to 8:30 PM in ballroom foyer.<br>
+      • Unlimited 4R photo printouts.<br>
+      • Instant QR download for digital video clips.
+    </p>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
     </div>
   </div>
 </div>
 
-<!-- Modal: Try Your Luck -->
-<div class="modal-overlay" id="modalTryLuck" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalTryLuck')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <div class="game-box">
-        <p>Tap below to reveal your lucky digital token for tonight's special door gift redemption:</p>
-        <div class="lucky-token" id="tokenDisplay">????</div>
-        <button class="btn-action" onclick="generateToken()">Roll Lucky Number</button>
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Event Committee -->
+<!-- Modal: Committee -->
 <div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
       <button class="modal-nav-back" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalCommittee')">&times;</button>
     </div>
-    <div class="modal-content">
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
-        Meet the dedicated team behind the Intel Supply Chain Malaysia Annual Dinner 2026:
-      </p>
-      <div class="committee-grid" id="committeeGrid">
-        <!-- Rendered dynamically by script -->
-      </div>
-    </div>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
+      Meet the organizing team behind Intel Supply Chain Malaysia Annual Dinner 2026:
+    </p>
+    <div class="committee-grid" id="committeeGrid"></div>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
     </div>
@@ -637,7 +499,7 @@
       <button class="modal-nav-back" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalMystery')">&times;</button>
     </div>
-    <div class="modal-content" style="text-align: center; padding: 10px 0;">
+    <div style="text-align: center; padding: 10px 0;">
       <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
       <h3 style="color: var(--accent-gold); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
       <p style="color: #e0e1dd; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
@@ -655,63 +517,49 @@
 </div>
 
 <script>
-  // Roster with exact image filenames from your repository
+  // Roster with cache-busting (?v=3) so browsers reload new assets immediately
   const COMMITTEE_MEMBERS = [
-    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png" },
-    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg" },
-    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png" },
-    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png" },
-    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png" },
-    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png" },
-    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png" },
-    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg" },
-    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png" },
-    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg" },
-    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg" },
-    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg" },
-    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg" },
-    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png" },
-    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "hakim Ab Razak.png" },
-    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png" },
-    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png" }
+    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png?v=3" },
+    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg?v=3" },
+    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png?v=3" },
+    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png?v=3" },
+    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png?v=3" },
+    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png?v=3" },
+    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png?v=3" },
+    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg?v=3" },
+    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png?v=3" },
+    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg?v=3" },
+    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg?v=3" },
+    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg?v=3" },
+    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg?v=3" },
+    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png?v=3" },
+    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "Hakim Ab Razak.png?v=3" },
+    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png?v=3" },
+    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png?v=3" }
   ];
 
   function getInitials(name) {
     const parts = name.split(' ');
-    if (parts.length >= 2) {
-      return (parts[0][0] + parts[1][0]).toUpperCase();
-    }
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
     return name.slice(0, 2).toUpperCase();
   }
 
-  // Multi-tier fallback scanner to handle lowercase/uppercase and format differences
   function handleImageError(img, name) {
     const attempt = parseInt(img.dataset.attempt || '0');
     img.dataset.attempt = attempt + 1;
-
     const baseName = name.trim();
-    const cleanBase = baseName.replace(/ /g, '%20');
 
     if (attempt === 0) {
-      // Attempt 1: lowercase first character
-      const lowerFirst = baseName.charAt(0).toLowerCase() + baseName.slice(1);
-      img.src = encodeURI(lowerFirst + '.png');
+      img.src = encodeURI('hakim Ab Razak.png?v=3');
     } else if (attempt === 1) {
-      // Attempt 2: Uppercase first character .png
-      const upperFirst = baseName.charAt(0).toUpperCase() + baseName.slice(1);
-      img.src = encodeURI(upperFirst + '.png');
+      img.src = encodeURI('Hakim Ab Razak.png?v=3');
     } else if (attempt === 2) {
-      // Attempt 3: Uppercase .jpg
-      img.src = encodeURI(baseName + '.jpg');
+      img.src = encodeURI(baseName + '.jpg?v=3');
     } else if (attempt === 3) {
-      // Attempt 4: Uppercase .jpeg
-      img.src = encodeURI(baseName + '.jpeg');
+      img.src = encodeURI(baseName + '.jpeg?v=3');
     } else {
-      // Fallback: render initials circle
       const parent = img.parentElement;
-      if (parent) {
-        parent.innerHTML = getInitials(name);
-      }
+      if (parent) parent.innerHTML = getInitials(name);
     }
   }
 
@@ -721,7 +569,6 @@
     let html = '';
 
     COMMITTEE_MEMBERS.forEach(m => {
-      const initials = getInitials(m.name);
       const encodedSrc = encodeURI(m.photo);
       html += `
         <div class="comm-card">
@@ -758,19 +605,9 @@
     }
   }
 
-  function generateToken() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let token = '';
-    for (let i = 0; i < 4; i++) {
-      token += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    document.getElementById('tokenDisplay').textContent = '#' + token;
-  }
-
   window.addEventListener('DOMContentLoaded', () => {
     renderCommitteeGrid();
   });
 </script>
-
 </body>
 </html>
