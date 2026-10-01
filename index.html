@@ -2,772 +2,1419 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SCM Annual Dinner 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Annual Lucky Draw</title>
   <style>
     :root {
-      --bg-main: #0b132b;
-      --bg-card: #1c2541;
-      --accent-cyan: #64dfdf;
-      --accent-teal: #5bc0be;
-      --accent-gold: #ffb703;
-      --accent-blue: #4895ef;
-      --text-main: #ffffff;
-      --text-muted: #8d99ae;
-      --border-color: #3a506b;
-      --card-radius: 14px;
+      --bg-gradient: linear-gradient(135deg, #0b111e 0%, #162447 50%, #1b1a47 100%);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --gold-primary: #f6c85f;
+      --gold-glow: #ffd700;
+      --gold-dark: #b8860b;
+      --accent-neon: #00d2ff;
+      --text-white: #ffffff;
+      --text-muted: #a0aec0;
+      --danger: #ff4757;
+      --radius-lg: 24px;
+      --radius-md: 16px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-white);
       min-height: 100vh;
+      min-height: -webkit-fill-available;
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(100, 223, 223, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(255, 183, 3, 0.06) 0%, transparent 45%);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* Header Section */
-    .header-box {
-      text-align: center;
-      background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 24px 16px;
+      justify-content: space-between;
+      padding: max(16px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom)) 16px;
+      overflow-x: hidden;
       position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
-    .header-box::before {
-      content: "";
+
+    /* Ambient Background Glow */
+    .bg-circle-1 {
       position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold), var(--accent-teal));
-    }
-    .header-box h1 {
-      color: var(--accent-cyan);
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-    .header-box h2 {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: #e0e1dd;
-      margin-bottom: 10px;
-    }
-    .header-meta {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .meta-badge {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 4px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      top: -100px;
+      right: -80px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    /* 8 Hub Cards Grid */
-    .hub-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .bg-circle-2 {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(246, 200, 95, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .hub-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 18px 14px;
+    /* Top Bar & Navigation */
+    header {
+      width: 100%;
+      max-width: 480px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--text-main);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    }
-    .hub-card:active {
-      transform: scale(0.97);
-    }
-    .hub-card:hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.2);
+      gap: 12px;
+      z-index: 2;
+      padding: 4px 0 8px 0;
     }
 
-    /* Highlight Card for Seat & Reservation */
-    .hub-card.primary {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #1c2541 0%, #152238 100%);
-      border: 1.5px solid var(--accent-cyan);
-      box-shadow: 0 4px 16px rgba(100, 223, 223, 0.25);
-      flex-direction: row;
-      justify-content: flex-start;
-      text-align: left;
-      padding: 18px 20px;
-      gap: 16px;
-    }
-    .hub-card.primary .card-icon {
-      font-size: 2.2rem;
-      background: rgba(100, 223, 223, 0.15);
-      border-radius: 12px;
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hub-card.primary .card-text h3 {
-      color: var(--accent-cyan);
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .hub-card.primary .card-text p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* Standard Cards */
-    .card-icon {
-      font-size: 2rem;
-    }
-    .card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-    .card-subtitle {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      line-height: 1.2;
-    }
-
-    /* Modals for secondary actions */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 16px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      width: 100%;
-      max-width: 520px;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-    .modal-header {
+    .nav-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
     }
-    .modal-nav-back {
+
+    .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(100, 223, 223, 0.15);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(100, 223, 223, 0.35);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-    .modal-nav-back:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
-    }
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-    .modal-content {
-      font-size: 0.9rem;
-      color: #e0e1dd;
-      line-height: 1.5;
-    }
-
-    /* Modal Navigation Back Button at Footer */
-    .modal-bottom-bar {
-      margin-top: 20px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: center;
-    }
-    .btn-return-main {
-      width: 100%;
-      padding: 12px;
-      background: rgba(100, 223, 223, 0.15);
-      border: 1px solid var(--accent-cyan);
-      color: var(--accent-cyan);
-      font-weight: 700;
-      font-size: 0.9rem;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       transition: all 0.2s ease;
     }
-    .btn-return-main:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
+
+    .back-btn:active {
+      transform: scale(0.94);
+      background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Timeline in Schedule */
-    .timeline {
+    .brand {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-    }
-    .time-slot {
-      display: flex;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 10px 12px;
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-teal);
-    }
-    .time-val {
-      font-weight: 700;
-      color: var(--accent-gold);
-      min-width: 65px;
-      font-size: 0.85rem;
-    }
-    .time-desc {
-      font-size: 0.85rem;
+      text-align: center;
     }
 
-    /* Committee Grid */
-    .committee-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #fff, var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
     }
-    .comm-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-      padding: 12px 10px;
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .comm-avatar-frame {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
+
+    .icon-btn:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Container */
+    main {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      z-index: 2;
+      margin: auto 0;
+    }
+
+    /* Pool Stat Badge */
+    .pool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+
+    .pool-badge strong {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #00e676;
       border-radius: 50%;
-      background: #151d38;
-      border: 2px solid var(--accent-cyan);
+      box-shadow: 0 0 8px #00e676;
+    }
+
+    /* Slot Display Card */
+    .slot-machine-card {
+      width: 100%;
+      background: rgba(18, 25, 44, 0.7);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slot-machine-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      background: linear-gradient(180deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .slot-machine-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35px;
+      background: linear-gradient(0deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .display-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .name-display {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      min-height: 2.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      word-break: break-word;
+      transition: all 0.15s ease;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .name-display.rolling {
+      color: var(--accent-neon);
+      transform: scale(1.04);
+      filter: blur(0.5px);
+    }
+
+    .name-display.winner-flash {
+      color: var(--gold-primary);
+      text-shadow: 0 0 20px rgba(246, 200, 95, 0.8), 0 0 35px rgba(255, 215, 0, 0.4);
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Draw Button */
+    .draw-btn-container {
+      width: 100%;
+      padding-top: 6px;
+    }
+
+    .draw-btn {
+      width: 100%;
+      padding: 20px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffd700 0%, #f6c85f 50%, #d4a017 100%);
+      color: #1a1600;
+      box-shadow: 0 8px 25px rgba(246, 200, 95, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: var(--accent-cyan);
+      gap: 10px;
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
     }
-    .comm-avatar-frame img {
+
+    .draw-btn:active:not(:disabled) {
+      transform: scale(0.96);
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.3);
+    }
+
+    .draw-btn:disabled {
+      background: #4a5568;
+      color: #a0aec0;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Quick History Bar on Main Screen */
+    .latest-winner-banner {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .comm-details {
-      flex: 1;
-      overflow: hidden;
-    }
-    .comm-name {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px dashed var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-size: 0.85rem;
+    }
+
+    .latest-winner-title {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latest-winner-name {
+      color: var(--gold-primary);
       font-weight: 700;
-      color: #fff;
+      max-width: 200px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .comm-dept {
-      font-size: 0.68rem;
-      color: var(--accent-teal);
+
+    /* Footer Controls */
+    footer {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 2;
+      padding-top: 10px;
     }
-    .comm-role-pill {
-      display: inline-block;
-      margin-top: 3px;
-      background: rgba(255, 183, 3, 0.15);
-      color: var(--accent-gold);
-      border: 1px solid rgba(255, 183, 3, 0.3);
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      border-radius: 10px;
+
+    .sub-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+
+    .sub-btn:active {
+      transform: scale(0.95);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Modals / Drawers */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 500px;
+      background: #151d30;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      border-top: 1px solid var(--card-border);
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+    }
+
+    .modal-overlay.active .modal-sheet {
+      transform: translateY(0);
+    }
+
+    .sheet-handle {
+      width: 44px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      margin: 0 auto 16px auto;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .sheet-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .sheet-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .sheet-content {
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 4px;
+    }
+
+    .winner-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .winner-rank {
+      font-weight: 800;
+      color: var(--gold-primary);
+      width: 32px;
+      font-size: 0.85rem;
+    }
+
+    .winner-info {
+      flex: 1;
       font-weight: 600;
     }
 
-    /* Interactive Game Card */
-    .game-box {
+    .empty-state {
       text-align: center;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 10px;
-      border: 1px dashed var(--border-color);
-    }
-    .lucky-token {
-      font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      color: var(--accent-gold);
-      margin: 12px 0;
-      text-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
-    }
-    .btn-action {
-      background: var(--accent-cyan);
-      color: var(--bg-main);
-      border: none;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 40px 20px;
+      color: var(--text-muted);
       font-size: 0.9rem;
-      transition: opacity 0.2s;
-    }
-    .btn-action:hover {
-      opacity: 0.9;
     }
 
-    footer {
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Winner Popup Modal (Celebration) */
+    .winner-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 105;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .winner-popup-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .winner-popup-card {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(145deg, #1f2b48 0%, #111a2f 100%);
+      border: 2px solid var(--gold-primary);
+      border-radius: 28px;
+      padding: 32px 20px;
       text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 8px;
+      box-shadow: 0 0 50px rgba(246, 200, 95, 0.35);
+      animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .trophy-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: bounce 1.2s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .congrats-text {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .celebrated-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.25;
+      word-break: break-word;
+      text-shadow: 0 2px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .popup-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold-primary);
+      color: #111;
+      border: none;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.4);
+    }
+
+    .popup-btn:active {
+      transform: scale(0.96);
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Header -->
-  <header class="header-box">
-    <h1>INTEL SUPPLY CHAIN MALAYSIA</h1>
-    <h2>Annual Dinner 2026</h2>
-    <div class="header-meta">
-      <span class="meta-badge">📍 Grand Ballroom</span>
-      <span class="meta-badge">⏰ 5:30 PM - 10:30 PM</span>
-      <span class="meta-badge">✨ 360 Guests</span>
+  <!-- Ambient Glows -->
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Header with Return to Main Panel -->
+  <header>
+    <div class="nav-top-row">
+      <button class="back-btn" id="returnMainBtn" title="Return to Main Panel" aria-label="Return to Main Panel">
+        <span>←</span>
+        <span>Main Panel</span>
+      </button>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound" aria-label="Toggle Sound">
+          <span id="soundIcon">🔔</span>
+        </button>
+        <button class="icon-btn" id="infoBtn" title="Pool Details" aria-label="Pool Details">ℹ️</button>
+      </div>
+    </div>
+
+    <div class="brand">
+      <div class="brand-title">Lucky Draw</div>
+      <div class="brand-subtitle">Official Random Picker</div>
     </div>
   </header>
 
-  <!-- 8 Hub Cards -->
-  <main class="hub-grid">
-    <!-- 1. Seat & Reservation (Direct Link) -->
-    <a href="seating.html" class="hub-card primary">
-      <div class="card-icon">🪑</div>
-      <div class="card-text">
-        <h3>Seat & Reservation</h3>
-        <p>Find your assigned table & view ballroom layout</p>
-      </div>
-    </a>
-
-    <!-- 2. Event Schedule -->
-    <div class="hub-card" onclick="openModal('modalSchedule')">
-      <div class="card-icon">📅</div>
-      <div class="card-title">Event Schedule</div>
-      <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
+  <!-- Main Game Panel -->
+  <main>
+    <!-- Pool Counter -->
+    <div class="pool-badge">
+      <span class="pulse-dot"></span>
+      <span>Remaining in Pool: <strong id="poolCount">0</strong></span>
     </div>
 
-    <!-- 3. Lucky Draw -->
-    <div class="hub-card" onclick="openModal('modalLucky')">
-      <div class="card-icon">🎁</div>
-      <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Prizes, tiers & guidelines</div>
+    <!-- Slot Machine Box -->
+    <div class="slot-machine-card">
+      <div class="display-tag" id="displaySubtitle">Tap to Draw Winner</div>
+      <div class="name-display" id="nameBox">Ready?</div>
     </div>
 
-    <!-- 4. Performance -->
-    <div class="hub-card" onclick="openModal('modalPerformance')">
-      <div class="card-icon">🎤</div>
-      <div class="card-title">Performance</div>
-      <div class="card-subtitle">Live band & talent acts</div>
+    <!-- Draw Button -->
+    <div class="draw-btn-container">
+      <button class="draw-btn" id="drawBtn">
+        <span>🎲 DRAW NOW</span>
+      </button>
     </div>
 
-    <!-- 5. Photobooths -->
-    <div class="hub-card" onclick="openModal('modalPhotobooth')">
-      <div class="card-icon">📸</div>
-      <div class="card-title">Photobooths</div>
-      <div class="card-subtitle">360 Cam & instant prints</div>
-    </div>
-
-    <!-- 6. Try Your Luck -->
-      <a href="try_your_luck.html" class="hub-card">
-      <div class="card-icon">🎰</div>
-      <div class="card-title">Try Your Luck</div>
-      <div class="card-subtitle">Super Mario Lucky Draw</div>
-      </a>
-
-    <!-- 7. Event Committee -->
-    <div class="hub-card" onclick="openModal('modalCommittee')">
-      <div class="card-icon">👥</div>
-      <div class="card-title">Event Committee</div>
-      <div class="card-subtitle">Organizing team directory</div>
-    </div>
-
-    <!-- 8. Mystery -->
-    <div class="hub-card" onclick="openModal('modalMystery')">
-      <div class="card-icon">✨</div>
-      <div class="card-title">Mystery</div>
-      <div class="card-subtitle">Special surprise reveal</div>
+    <!-- Latest Winner Banner -->
+    <div class="latest-winner-banner" id="latestWinnerBanner">
+      <span class="latest-winner-title">🏆 Latest Winner:</span>
+      <span class="latest-winner-name" id="latestWinnerName">None yet</span>
     </div>
   </main>
 
+  <!-- Bottom Navigation -->
   <footer>
-    Intel Supply Chain Malaysia • Annual Dinner 2026
+    <button class="sub-btn" id="viewWinnersBtn">
+      <span>📜 Winners</span>
+      <span id="winnerBadgeCount" style="background: rgba(246,200,95,0.25); color: var(--gold-primary); padding: 2px 7px; border-radius: 12px; font-size: 0.75rem;">0</span>
+    </button>
+    <button class="sub-btn" id="resetBtn" style="color: #ff7675;">
+      <span>🔄 Reset Pool</span>
+    </button>
   </footer>
-</div>
 
-<!-- ================= MODALS ================= -->
-
-<!-- Modal: Event Schedule -->
-<div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalSchedule')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <div class="timeline">
-        <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
-        <div class="time-slot"><div class="time-val">6:25 PM</div><div class="time-desc">Final Call &amp; Seating in Ballroom</div></div>
-        <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Grand Opening Session</div></div>
-        <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
-        <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
-        <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
-        <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
-        <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
-        <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
-        <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
-        <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
-        <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
-        <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
-        <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
-        <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
-        <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
-        <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
-        <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
-        <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
-        <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
+  <!-- Winners Drawer Modal -->
+  <div class="modal-overlay" id="winnersModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Lucky Draw Winners (<span id="modalWinnersCount">0</span>)</div>
+        <button class="sheet-close" id="closeWinnersModal">&times;</button>
+      </div>
+      <div class="sheet-content" id="winnersListContainer">
+        <!-- Rendered dynamically -->
       </div>
     </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
-    </div>
   </div>
-</div>
 
-<!-- Modal: Lucky Draw -->
-<div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <p style="margin-bottom: 12px;">Get ready for an exciting night with <strong>72 prize positions</strong> up for grabs across multiple drawing rounds!</p>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-        <h4 style="color: var(--accent-gold);">🎁 Session 1 (6:55 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 revealed live on the side LED displays.</p>
+  <!-- Pool Info Drawer Modal -->
+  <div class="modal-overlay" id="infoModal">
+    <div class="modal-sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Active Pool Details</div>
+        <button class="sheet-close" id="closeInfoModal">&times;</button>
       </div>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-        <h4 style="color: var(--accent-cyan);">🎁 Session 2 (8:10 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 drawn during the second band set.</p>
-      </div>
-      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-        <h4 style="color: #ff4d6d;">🏆 Grand Lucky Draw (9:48 PM - 10:13 PM)</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">The Top 10 Grand Prizes drawn live on stage using the interactive balloon app!</p>
+      <div class="sheet-content">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+          Only employees verified with <strong>"Yes"</strong> for lucky draw eligibility are included. Each winner is drawn without replacement so they cannot win multiple times.
+        </p>
+        <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 12px; font-size: 0.85rem; line-height: 1.8;">
+          <div>• Total Eligible Uploaded: <strong style="color:#fff;">353</strong></div>
+          <div>• Excluded Ineligibles: <strong style="color:var(--danger);">9</strong></div>
+          <div>• Current Pool Size: <strong id="infoPoolSize" style="color:var(--gold-primary);">353</strong></div>
+        </div>
       </div>
     </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
+  </div>
+
+  <!-- Winner Celebration Popup -->
+  <div class="winner-popup-overlay" id="winnerPopup">
+    <div class="winner-popup-card">
+      <div class="trophy-icon">🏆</div>
+      <div class="congrats-text">Congratulations!</div>
+      <div class="celebrated-name" id="celebratedNameBox">Winner Name</div>
+      <button class="popup-btn" id="claimBtn">Continue</button>
     </div>
   </div>
-</div>
 
-<!-- Modal: Performance -->
-<div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <p style="margin-bottom: 14px;">Tonight features three high-energy sets by our live band and volunteer showcases from across our organization:</p>
-      <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px;">
-        <li><strong>Opening Session</strong> (6:30 PM)</li>
-        <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
-        <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
-        <li><strong>Internal Performance 2</strong> (8:00 PM - 8:10 PM)</li>
-        <li><strong>Live Band Set 2</strong> (8:10 PM - 8:43 PM)</li>
-        <li><strong>Internal Performance 3</strong> (8:53 PM - 9:03 PM)</li>
-        <li><strong>Live Band Finale Set 3</strong> (9:18 PM - 9:48 PM)</li>
-      </ul>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
+  <!-- Logic & Data Script -->
+  <script>
+    /* ========================================================
+       CONFIGURABLE NAVIGATION SETTINGS
+       Change this to your main portal hub file (e.g., 'main.html', 'index.html', or '../')
+       ======================================================== */
+    const MAIN_PANEL_URL = "main.html";
 
-<!-- Modal: Photobooth -->
-<div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalPhotobooth')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <h4 style="color: var(--accent-cyan); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
-      <p style="margin-bottom: 10px;">Capture the memories of the night with your colleagues at the foyer entrance before dinner commences.</p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">
-        • Available from 5:30 PM to 8:30 PM in the grand ballroom foyer.<br>
-        • Unlimited 4R photo printouts with customized SCM 2026 frames.<br>
-        • Instant QR download for digital video clips to share on social media.
-      </p>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
+    /* ========================================================
+       ELIGIBLE EMPLOYEE DATASET (Eligibility == "Yes" ONLY)
+       ======================================================== */
+    const INITIAL_POOL = [
+      "Ooi, Cheng Hoon",
+      "Suntharalingam, Paribalan",
+      "Diow, Rhu Kooi",
+      "Hong, Wai Fong",
+      "Ng, Vanessa Yeng Sar",
+      "Mohd Yusoff, Mohd Aiman Afnan",
+      "Cheah, Joseph Chai Boon",
+      "Ho, Kok Keong",
+      "Ng, Kang Ning",
+      "Balasubramaniam, Hari Chand",
+      "Nguyen, Alice Uyen",
+      "Ferrolino, Antonio",
+      "Tan, Chee Boon",
+      "Lee, Mooi Yee",
+      "Koid, Shin Yih",
+      "Pragasam, Justin",
+      "Cheng, Boon Yee",
+      "Lee, Kok Peng",
+      "Lee, Poh Eng",
+      "Ng, Wei Chon",
+      "Sim, Yvonne Xin Yu",
+      "Yeap, Siew Lean",
+      "Liew, Choon Wai",
+      "Koh, Terry Eng Keong",
+      "Lo, Wei Leng",
+      "Sim, Jeremy",
+      "Woo, Christine",
+      "Seow, Han Loon",
+      "Richard, Gladys",
+      "Wong, Woan Chiou",
+      "Gan, Hock Boon",
+      "Mah, Chin Keong Alex",
+      "Mat Yusop, Ahmad Rafaie",
+      "Abdullah, Aini Haslinda",
+      "Heng, Cheng Yin",
+      "Choo, Chien Hua",
+      "Teoh, Pei Fen",
+      "Lee, Shi Ning",
+      "Hong, Seow Earn",
+      "Lee, Swee Hoon",
+      "Abd Majid, Syamimi",
+      "Koo, Hee Kiah",
+      "Chua, Khian Chee",
+      "Go, Choo Kwong",
+      "Fook, Loon Wooi",
+      "Cheah, Seok Gaik",
+      "Lim, Hooi Nee",
+      "Boey, Hooi Ying",
+      "Ong, Lee Ping",
+      "Hoo, Ray",
+      "Men, Soo Yit",
+      "Ooi, Mian Hong",
+      "Yeap, Jacky Kok Ghee",
+      "Lee, Ming Ming",
+      "Goh, Ramsay Thean Siang",
+      "Kuan, Wei Yew",
+      "Ang, Chui Ping",
+      "Lee, Kah Weng",
+      "Loh, Lee Naa",
+      "Lim, Lean kooi",
+      "Yeap, Sarina Cheng Gaik",
+      "Ayavoo, Nalini",
+      "Ooi, Bee Ling",
+      "Thangarajoo, Geethawathy",
+      "Ramiah, Mangaleswary",
+      "Teoh, Wen Xin",
+      "Lim, Agnes Lee Hoong",
+      "Soh, Chin Liang",
+      "Teh, Ean Hoon",
+      "Heah, Jeff Jun Jie",
+      "Lye, Choy Ying Jolyn",
+      "Teh, Joyce",
+      "Lim, Lee Ling",
+      "Chang, Li Ting",
+      "Tan, Mei Ling",
+      "Lee, Samantha Sien Ling",
+      "Goh, Amanda",
+      "Mendoza, Celine Yap Y",
+      "Ooi, Chooi San",
+      "Lim, Bee Hon",
+      "Yew, Cherry",
+      "Yap, Li Wooi",
+      "Leong, Dylan Chat Lun",
+      "Oon, David Tyeway",
+      "Tan, Lay Sim1",
+      "Tan, May Yong",
+      "Leong, Adelyn Hui Lin",
+      "Lim, Elaine Chi Ling",
+      "Ishak, Izeanee Bt B",
+      "Abdul Gani, Muhamad Izzulhafiz",
+      "Tan, Irynn Ai Ling",
+      "Chuah, Su Bee",
+      "Lim, Su-lyn",
+      "Lim, Mei Yin",
+      "Ong, Pei Kuan",
+      "Perumal, Arasu",
+      "Mohamad Mustafa, Nurazura",
+      "Teoh, Kai Ying",
+      "Krishnan, Kasturi",
+      "Aikin, Nang Som Chei",
+      "Al Thanasegeran, Surendaar",
+      "Kalimutu, Suryakandh",
+      "None, Rozana",
+      "Kamsan, Siti Nur Atiqah",
+      "Md Haris, Mohd Sofian",
+      "Ibrahim, Nur Adli",
+      "Cheng, Elaine Ee Ling",
+      "Ang, Hao Jiun",
+      "Sakari, Nur Fatihah",
+      "Murugan, Pennarasi",
+      "Yeoh, Sheau Wen",
+      "Chan, Lin Fang",
+      "Yeoh, Cheng Yee",
+      "Che Rouse, Noor Liyana",
+      "Halim, Norshahira",
+      "Sukiman, Nurul Zakiyyah",
+      "Ibrahim, Muhamad Sohimi",
+      "Yeoh, Soon Leong",
+      "Chan, Daniel Jun Jie",
+      "Nadarajah, Thurgatharani Naidu",
+      "Tan, Wei Hang",
+      "Tan, Bee Huen",
+      "Raja Ibrahim, Putri Hasratul Iqtikah",
+      "Tan, May Leng",
+      "Tan, Jing1 Wen",
+      "Yeoh, Lay Choo",
+      "Leong, Mei Yi",
+      "Ibrahim, Nur Amalina",
+      "Abd Rashak, Nur Azwani B",
+      "Suntharam, Pirvinnesh",
+      "Syed Azizan, Sharifah Maziana",
+      "Ali Shaiffuddin, Syahira Hilal Aimi",
+      "Yeoh, Sze Yong",
+      "Khoo, Poh Ann",
+      "Chan, Allysa Saw Geok",
+      "Lim, Ching Yee",
+      "Lim, Chung How",
+      "Wong, Jael S",
+      "Khoo, Jia Huey",
+      "Asrulefendi, Syahmi",
+      "Pardeep Singh Gill, Pevandeep Singh Gill",
+      "Gan, Lay Peng",
+      "Yong, Mei Eng",
+      "Low, Min Qi",
+      "Pragasam, Nicole Anne",
+      "Chew, Ren",
+      "Wong, Siu Wei",
+      "Tan, Jia1 Yi",
+      "Yeap, Yi You",
+      "Heng, Yi Guan",
+      "Yew, Siew Eng",
+      "Khoo, Cheng Keat",
+      "Chay, Kok Wei",
+      "Sim, Kean Lee",
+      "Anoar, Noor Hamala",
+      "Lau, Pei Yun",
+      "Khor, Heng Tien",
+      "Ab Razak, Hakim",
+      "Low, Shye Nee",
+      "Tan, Tse Pei",
+      "Lim, Yen Chiew",
+      "Lim, Lay hong",
+      "Thiyagarajan, Prabhu",
+      "Loke, Shiuk Ming",
+      "Tan, Alan",
+      "Silvaine, Audrey",
+      "Huam, Bee Leng",
+      "Phoon, Wei Wei",
+      "Ooi, Hock Heng",
+      "Ang, Lay Pin",
+      "Ponnampalam, Kanna",
+      "Wang, John Paul",
+      "Lim, Poh Suan",
+      "Sanniababoo, Phuspha",
+      "Tan, Lye Yeng",
+      "Chin, Ting Chung",
+      "Yusof, Adnin Naim",
+      "Quah, Hock Soon",
+      "Ramu, Loganathan Naidu",
+      "Palanisamy, Thenmuli",
+      "Yim, Wen Yang",
+      "Anthonysamy, Willie Nelson",
+      "Lim, Bok Sim",
+      "Puah, Boon Teck",
+      "Tan, Yeh Fuat",
+      "Lee, Yoon Han",
+      "Lim, Hooi Lee",
+      "Abdul Aziz, Mohd Ashraf",
+      "Muniandy, Devanthran",
+      "Din, Mat Saad",
+      "Kuan, Mei Kuen",
+      "Kumaraisen, Revathy",
+      "Teh, Jane Siok Jian",
+      "Sumague, Christopher L",
+      "Ooi, Bee Lay",
+      "Low, Dora Poh Yin",
+      "Leong, Felicia",
+      "Tong, Geam Y",
+      "Lim, Bc",
+      "Liew, Alfred Yah Woo",
+      "Teah, Hester",
+      "Nondisamy, Logesvaran",
+      "Palany Kumar, Punitha Devi",
+      "Kuppan, Puvindran",
+      "Phi, Wah Tooi",
+      "Quah, William Wee Liang",
+      "Amurthalingam, Yuaraajan",
+      "Lim, TM",
+      "Dahlan, Eida Yasmin",
+      "Ramanathan, Geetha",
+      "Leong, Teong Eng",
+      "Liang, Choon Guin",
+      "Lee, Eugene",
+      "Ng, Guan Lee",
+      "Low, Hooi Leng",
+      "Wang, Hui Ler",
+      "Devaraj, Uthaya Kumaran",
+      "Chua, Ellie",
+      "Leong, Chan Kay",
+      "Ho, Cheah Luan",
+      "Cheng, Wendy Chin Hong",
+      "Tan, Jing Yi",
+      "Teh, Kim Hoon",
+      "Ooi, Peng Chin",
+      "Ooi, Kim Eng",
+      "Lim, Rachel Li Foong",
+      "Lim, Sear Nie",
+      "Yoh, Joyce",
+      "Tang, Wye Yuen",
+      "Lee, Rachael",
+      "Lai, Zhi Hui",
+      "Tan, Zhi Jie",
+      "Ong, HJ",
+      "Ng, Chin Kiat",
+      "Tan, Zhu Sheng",
+      "Wong, Emily Mei Fong",
+      "Lim, Catherine",
+      "Sim, Cher Huei",
+      "Ne Chin, Chiravong A",
+      "Koo, Chun Hong",
+      "Khoo, Elise",
+      "Lim, It Hui",
+      "Tham, Jacklyn Yee Len",
+      "Krishnan, Jegathesen",
+      "Teh, Justin Yan Shin",
+      "Koay, Kek Chian",
+      "Tan, Lee Chin",
+      "Mohamed Anas, Mohd Hafiz Hakimi",
+      "Lim, Meng Chuan",
+      "Goh, Eric",
+      "Kung, Pei Hsia",
+      "Lee, Wai Cheng",
+      "Lim, Lay Pin",
+      "Balakrishnan, Aghielan S",
+      "Bin Abd Aziz, Abd Luqman Hakim",
+      "Rosdi, Afiff Qusyairy",
+      "Binti Muhammad, Mazlina",
+      "Kadiran, Fitri Andi Kesuma",
+      "Ng, Kah Tiek",
+      "Bin Sharudin, Mohd Alif",
+      "Awang Hadzir, Mohd Shahmi Akmal",
+      "Bin Ramli, Muhamad Nazrin",
+      "Bin Zulfakhor, Muhammad Zarif",
+      "Binti Abu Hassan, Noor Azeita",
+      "Gunasegaran, Parimala",
+      "Samsuri, Siti Nur Hidayah",
+      "Binti Tajudin, Effarini",
+      "Chan, Kl Chan",
+      "Ismail, Mohd Khairul Anuar",
+      "Addenan, Mohd Shahdan",
+      "Bt Ali, Nur Azliza",
+      "Muthusamy, Richard",
+      "Sarojini, Gramalingam",
+      "Tam, Swee Chin",
+      "Chia, Vincent Lean Tatt",
+      "Bin Hashim, Ihsan Hasifi",
+      "Bin Kamal Ariff, Kamal Firdaus",
+      "Abdul Razak, Mohamad Amirul",
+      "Mohamad Termizi, Mimy Fatin Aliya",
+      "Radzi, Mohamad Firdaus",
+      "Zainal Abidin, Mohd Zulfaizal",
+      "Azhar, Muhammad Aiman",
+      "Bin Mohd Mokhtar, Muhammad Aizat",
+      "Prahakaran, Prasath",
+      "Palanisamy, Ranusha",
+      "Rosle, Rohaniff",
+      "Al Kandasamy, Thinagaran",
+      "Manikkam, Vinod",
+      "Abdul Kadir Jelani, Wani",
+      "Loganazan, Yuveneswaran",
+      "Mohd Shafian, Zarina",
+      "Che Azman, Zul Aizad",
+      "Cheah, Beng Gaik",
+      "Chang, Chun Chian",
+      "Bin Bahari, Mohd Zulkhairi",
+      "Yeoh, Oon San",
+      "Ooi, Ying Hui",
+      "Lim, Pei Pei",
+      "Lim, Kok Loon",
+      "Tan, Guat Ngoh",
+      "Nurhazli, Nur Azmira Elena",
+      "Islam, Sharique",
+      "Sharifud-din, Muhammad Shahir",
+      "Chandran, Dennis Prem Kumar",
+      "Bee Ling Tan",
+      "Harris D.Ilham Adni",
+      "Jenson Oh",
+      "Joseph Xuan You Tian",
+      "Nurul Zawani Muhamad Shukri",
+      "Tharini Murthy",
+      "Zaaim Redha, Zaaim Syukrin",
+      "Syed Nasir Mohamed",
+      "Lokman Marzuki",
+      "azri mohd khanil",
+      "Amit Sarkar",
+      "Frederick Yew Shen Chong",
+      "Julius Victorio Koentjoro",
+      "Larissa Shuen Yuin Chee",
+      "Mun Sun Son",
+      "Yen Ting Koo",
+      "Ai Chen Ng",
+      "Ai Ni Eng",
+      "Chai Ong Cheng",
+      "Chee Hwei Ko",
+      "Chin Chai Ng",
+      "Chin Fai Lok",
+      "Erdiana Natashsya Zulkifli",
+      "HUI LING LEE",
+      "Jui Ang Tan",
+      "Nguk Yen Ong",
+      "Sock Khim Pah",
+      "Nathan Ganaeson",
+      "Nivitha Sundarajoo Thilagar",
+      "Yap, Austin",
+      "Chitra A/P Arjunan",
+      "Li Fen Ho",
+      "Chee San Lee",
+      "DIVYA RUBAN MUTHUSAMY",
+      "Si Yeu Lai",
+      "Jessica, Choong",
+      "Leng See Teh",
+      "SZE GIE ANG",
+      "Farilah Yusoff",
+      "Mahsuri Mat Wasi",
+      "Rames Velusamy",
+      "Cheah Kuon Sim",
+      "Joa Yen Tang",
+      "Usha Devi Raman",
+      "Norhaslinda Mohamad Kasim",
+      "Jaffar, Khyrunisha",
+      "Ping Chiet Chai",
+      "Tan, Gaik Theng ",
+      "Irene Poh Im Yeoh"
+    ];
 
-<!-- Modal: Try Your Luck -->
-<div class="modal-overlay" id="modalTryLuck" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalTryLuck')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <div class="game-box">
-        <p>Tap below to reveal your lucky digital token for tonight's special door gift redemption:</p>
-        <div class="lucky-token" id="tokenDisplay">????</div>
-        <button class="btn-action" onclick="generateToken()">Roll Lucky Number</button>
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
+    /* ========================================================
+       STATE MANAGEMENT & LOCAL STORAGE
+       ======================================================== */
+    const STORAGE_KEY_POOL = "lucky_draw_pool_2026";
+    const STORAGE_KEY_WINNERS = "lucky_draw_winners_2026";
+    const STORAGE_KEY_SOUND = "lucky_draw_sound_enabled";
 
-<!-- Modal: Event Committee -->
-<div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalCommittee')">&times;</button>
-    </div>
-    <div class="modal-content">
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
-        Meet the dedicated team behind the Intel Supply Chain Malaysia Annual Dinner 2026:
-      </p>
-      <div class="committee-grid" id="committeeGrid">
-        <!-- Rendered dynamically by script -->
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
+    let pool = [];
+    let winners = [];
+    let isRolling = false;
+    let soundEnabled = true;
 
-<!-- Modal: Mystery -->
-<div class="modal-overlay" id="modalMystery" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalMystery')">&times;</button>
-    </div>
-    <div class="modal-content" style="text-align: center; padding: 10px 0;">
-      <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
-      <h3 style="color: var(--accent-gold); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
-      <p style="color: #e0e1dd; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
-        A special moment awaits our dinner guests at <strong>9:03 PM</strong>!<br>
-        Fortune favors those who pay attention to their surroundings.
-      </p>
-      <div style="background: rgba(255, 183, 3, 0.1); border: 1px dashed var(--accent-gold); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: var(--accent-gold);">
-        Stay at your assigned tables throughout the evening banquet for the spontaneous reveal!
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
+    function loadState() {
+      const savedPool = localStorage.getItem(STORAGE_KEY_POOL);
+      const savedWinners = localStorage.getItem(STORAGE_KEY_WINNERS);
+      const savedSound = localStorage.getItem(STORAGE_KEY_SOUND);
 
-<script>
-  // Roster with exact image filenames from your repository
-  const COMMITTEE_MEMBERS = [
-    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png" },
-    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg" },
-    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png" },
-    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png" },
-    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png" },
-    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png" },
-    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png" },
-    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg" },
-    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png" },
-    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg" },
-    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg" },
-    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg" },
-    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg" },
-    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png" },
-    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "hakim Ab Razak.png" },
-    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png" },
-    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png" }
-  ];
-
-  function getInitials(name) {
-    const parts = name.split(' ');
-    if (parts.length >= 2) {
-      return (parts[0][0] + parts[1][0]).toUpperCase();
+      pool = savedPool ? JSON.parse(savedPool) : [...INITIAL_POOL];
+      winners = savedWinners ? JSON.parse(savedWinners) : [];
+      soundEnabled = savedSound !== null ? JSON.parse(savedSound) : true;
     }
-    return name.slice(0, 2).toUpperCase();
-  }
 
-  // Multi-tier fallback scanner to handle lowercase/uppercase and format differences
-  function handleImageError(img, name) {
-    const attempt = parseInt(img.dataset.attempt || '0');
-    img.dataset.attempt = attempt + 1;
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY_POOL, JSON.stringify(pool));
+      localStorage.setItem(STORAGE_KEY_WINNERS, JSON.stringify(winners));
+      localStorage.setItem(STORAGE_KEY_SOUND, JSON.stringify(soundEnabled));
+    }
 
-    const baseName = name.trim();
-    const cleanBase = baseName.replace(/ /g, '%20');
+    /* ========================================================
+       AUDIO SYNTHESIS (Web Audio API - No Audio Files Needed)
+       ======================================================== */
+    let audioCtx = null;
 
-    if (attempt === 0) {
-      // Attempt 1: lowercase first character
-      const lowerFirst = baseName.charAt(0).toLowerCase() + baseName.slice(1);
-      img.src = encodeURI(lowerFirst + '.png');
-    } else if (attempt === 1) {
-      // Attempt 2: Uppercase first character .png
-      const upperFirst = baseName.charAt(0).toUpperCase() + baseName.slice(1);
-      img.src = encodeURI(upperFirst + '.png');
-    } else if (attempt === 2) {
-      // Attempt 3: Uppercase .jpg
-      img.src = encodeURI(baseName + '.jpg');
-    } else if (attempt === 3) {
-      // Attempt 4: Uppercase .jpeg
-      img.src = encodeURI(baseName + '.jpeg');
-    } else {
-      // Fallback: render initials circle
-      const parent = img.parentElement;
-      if (parent) {
-        parent.innerHTML = getInitials(name);
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          audioCtx = new AudioContext();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
       }
     }
-  }
 
-  function renderCommitteeGrid() {
-    const container = document.getElementById('committeeGrid');
-    if (!container) return;
-    let html = '';
+    function playTick() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(400 + Math.random() * 200, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch (e) {}
+    }
 
-    COMMITTEE_MEMBERS.forEach(m => {
-      const initials = getInitials(m.name);
-      const encodedSrc = encodeURI(m.photo);
-      html += `
-        <div class="comm-card">
-          <div class="comm-avatar-frame">
-            <img src="${encodedSrc}" 
-                 alt="${m.name}" 
-                 loading="lazy" 
-                 onerror="handleImageError(this, '${m.name.replace(/'/g, "\\'")}')" />
+    function playWinSound() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        notes.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.1);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.1 + 0.4);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + i * 0.1);
+          osc.stop(audioCtx.currentTime + i * 0.1 + 0.4);
+        });
+      } catch (e) {}
+    }
+
+    /* ========================================================
+       MOBILE CONFETTI ENGINE (Pure Vanilla HTML5 Canvas)
+       ======================================================== */
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    let confettiPieces = [];
+    let confettiAnimationId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      confettiPieces = [];
+      const colors = ["#f6c85f", "#ffd700", "#00d2ff", "#ff4757", "#2ed573", "#a55eea", "#ffffff"];
+      for (let i = 0; i < 90; i++) {
+        confettiPieces.push({
+          x: canvas.width / 2,
+          y: canvas.height * 0.45,
+          r: Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: Math.random() * -15 - 5,
+          gravity: 0.4,
+          tilt: Math.random() * 10,
+          tiltSpeed: (Math.random() - 0.5) * 0.1,
+          opacity: 1
+        });
+      }
+
+      if (!confettiAnimationId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let active = false;
+
+      for (let p of confettiPieces) {
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.tilt += p.tiltSpeed;
+        p.opacity -= 0.006;
+
+        if (p.opacity > 0 && p.y < canvas.height + 20) {
+          active = true;
+          ctx.beginPath();
+          ctx.save();
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = Math.max(0, p.opacity);
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.tilt);
+          ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.5);
+          ctx.restore();
+        }
+      }
+
+      if (active) {
+        confettiAnimationId = requestAnimationFrame(animateConfetti);
+      } else {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    /* ========================================================
+       UI UPDATE HELPERS
+       ======================================================== */
+    const poolCountEl = document.getElementById("poolCount");
+    const nameBoxEl = document.getElementById("nameBox");
+    const displaySubtitleEl = document.getElementById("displaySubtitle");
+    const drawBtnEl = document.getElementById("drawBtn");
+    const latestWinnerNameEl = document.getElementById("latestWinnerName");
+    const winnerBadgeCountEl = document.getElementById("winnerBadgeCount");
+    const modalWinnersCountEl = document.getElementById("modalWinnersCount");
+    const winnersListContainerEl = document.getElementById("winnersListContainer");
+    const soundToggleBtn = document.getElementById("soundToggleBtn");
+    const soundIcon = document.getElementById("soundIcon");
+    const infoPoolSizeEl = document.getElementById("infoPoolSize");
+
+    function updateUI() {
+      poolCountEl.textContent = pool.length;
+      infoPoolSizeEl.textContent = pool.length;
+      winnerBadgeCountEl.textContent = winners.length;
+      modalWinnersCountEl.textContent = winners.length;
+
+      if (winners.length > 0) {
+        latestWinnerNameEl.textContent = winners[winners.length - 1];
+      } else {
+        latestWinnerNameEl.textContent = "None yet";
+      }
+
+      if (pool.length === 0) {
+        drawBtnEl.disabled = true;
+        nameBoxEl.textContent = "All Drawn!";
+        displaySubtitleEl.textContent = "Pool Exhausted";
+      } else if (!isRolling) {
+        drawBtnEl.disabled = false;
+      }
+
+      soundIcon.textContent = soundEnabled ? "🔔" : "🔕";
+      renderWinnersList();
+    }
+
+    function renderWinnersList() {
+      if (winners.length === 0) {
+        winnersListContainerEl.innerHTML = `
+          <div class="empty-state">
+            <p>No winners drawn yet.</p>
+            <p style="margin-top:4px; font-size:0.8rem; color:#718096;">Tap "DRAW NOW" on the main screen to begin!</p>
           </div>
-          <div class="comm-details">
-            <div class="comm-name" title="${m.name}">${m.name}</div>
-            <div class="comm-dept">${m.dept}</div>
-            <span class="comm-role-pill">${m.role}</span>
+        `;
+        return;
+      }
+
+      let html = "";
+      for (let i = winners.length - 1; i >= 0; i--) {
+        html += `
+          <div class="winner-list-item">
+            <span class="winner-rank">#${i + 1}</span>
+            <span class="winner-info">${winners[i]}</span>
           </div>
-        </div>
-      `;
+        `;
+      }
+      winnersListContainerEl.innerHTML = html;
+    }
+
+    /* ========================================================
+       ROLLING / DRAW ENGINE
+       ======================================================== */
+    function drawWinner() {
+      if (isRolling || pool.length === 0) return;
+
+      initAudio();
+      isRolling = true;
+      drawBtnEl.disabled = true;
+      nameBoxEl.classList.add("rolling");
+      nameBoxEl.classList.remove("winner-flash");
+      displaySubtitleEl.textContent = "Drawing Winner...";
+
+      let counter = 0;
+      const totalSteps = 28;
+      let delay = 45;
+
+      function step() {
+        const randomIndex = Math.floor(Math.random() * pool.length);
+        nameBoxEl.textContent = pool[randomIndex];
+        playTick();
+
+        counter++;
+        if (counter < totalSteps) {
+          if (counter > totalSteps - 12) {
+            delay += 18;
+          }
+          setTimeout(step, delay);
+        } else {
+          finalizeWinner();
+        }
+      }
+
+      step();
+    }
+
+    function finalizeWinner() {
+      const winningIndex = Math.floor(Math.random() * pool.length);
+      const winnerName = pool.splice(winningIndex, 1)[0];
+      winners.push(winnerName);
+      saveState();
+
+      // UI Reveal
+      nameBoxEl.classList.remove("rolling");
+      nameBoxEl.classList.add("winner-flash");
+      nameBoxEl.textContent = winnerName;
+      displaySubtitleEl.textContent = "WINNER SELECTED!";
+      isRolling = false;
+
+      // Celebratory Effects
+      playWinSound();
+      triggerConfetti();
+      updateUI();
+
+      // Show Full celebration modal after a short pause
+      setTimeout(() => {
+        document.getElementById("celebratedNameBox").textContent = winnerName;
+        document.getElementById("winnerPopup").classList.add("active");
+      }, 700);
+    }
+
+    /* ========================================================
+       EVENT LISTENERS
+       ======================================================== */
+    drawBtnEl.addEventListener("click", drawWinner);
+
+    document.getElementById("claimBtn").addEventListener("click", () => {
+      document.getElementById("winnerPopup").classList.remove("active");
     });
-    container.innerHTML = html;
-  }
 
-  function openModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.classList.add('active');
-  }
+    // Return to Main Panel button
+    document.getElementById("returnMainBtn").addEventListener("click", () => {
+      if (window.history.length > 1 && document.referrer && new URL(document.referrer).origin === window.location.origin) {
+        window.history.back();
+      } else {
+        window.location.href = MAIN_PANEL_URL;
+      }
+    });
 
-  function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.classList.remove('active');
-  }
+    // Sound toggle
+    soundToggleBtn.addEventListener("click", () => {
+      initAudio();
+      soundEnabled = !soundEnabled;
+      saveState();
+      updateUI();
+    });
 
-  function closeOnBackdrop(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-      e.target.classList.remove('active');
-    }
-  }
+    // Modals
+    const winnersModal = document.getElementById("winnersModal");
+    const infoModal = document.getElementById("infoModal");
 
-  function generateToken() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let token = '';
-    for (let i = 0; i < 4; i++) {
-      token += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    document.getElementById('tokenDisplay').textContent = '#' + token;
-  }
+    document.getElementById("viewWinnersBtn").addEventListener("click", () => {
+      winnersModal.classList.add("active");
+    });
+    document.getElementById("closeWinnersModal").addEventListener("click", () => {
+      winnersModal.classList.remove("active");
+    });
 
-  window.addEventListener('DOMContentLoaded', () => {
-    renderCommitteeGrid();
-  });
-</script>
+    document.getElementById("infoBtn").addEventListener("click", () => {
+      infoModal.classList.add("active");
+    });
+    document.getElementById("closeInfoModal").addEventListener("click", () => {
+      infoModal.classList.remove("active");
+    });
 
+    // Close modal on tap outside
+    window.addEventListener("click", (e) => {
+      if (e.target === winnersModal) winnersModal.classList.remove("active");
+      if (e.target === infoModal) infoModal.classList.remove("active");
+    });
+
+    // Reset Pool
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if (confirm("Reset lucky draw pool and clear all drawn winners back to original state?")) {
+        pool = [...INITIAL_POOL];
+        winners = [];
+        saveState();
+        nameBoxEl.textContent = "Ready?";
+        nameBoxEl.classList.remove("winner-flash", "rolling");
+        displaySubtitleEl.textContent = "Tap to Draw Winner";
+        updateUI();
+      }
+    });
+
+    // Initial Launch
+    loadState();
+    updateUI();
+  </script>
 </body>
 </html>
