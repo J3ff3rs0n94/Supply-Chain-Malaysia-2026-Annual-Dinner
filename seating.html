@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SCM Annual Dinner 2026 | Seating Plan</title>
+  <style>
+    :root {
+      --bg-dark: #0b132b;
+      --bg-card: #1c2541;
+      --accent-cyan: #64dfdf;
+      --accent-teal: #5bc0be;
+      --accent-gold: #ffb703;
+      --accent-green: #52b788;
+      --accent-red: #ef233c;
+      --text-main: #ffffff;
+      --text-muted: #8d99ae;
+      --border-color: #3a506b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Top Navigation Bar with Back Button */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    .btn-back-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(100, 223, 223, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(100, 223, 223, 0.4);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-back-hub:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-dark);
+    }
+
+    .header-box {
+      text-align: center;
+      background: linear-gradient(135deg, #1c2541 0%, #0b132b 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .header-box h1 {
+      color: var(--accent-cyan);
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    .header-box h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    /* Search Bar */
+    .search-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0b132b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+    }
+    .search-results {
+      margin-top: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    .result-item {
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .result-item:hover {
+      background: rgba(100, 223, 223, 0.15);
+    }
+
+    /* Floor Plan Grid */
+    .ballroom-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .ballroom-grid {
+      display: grid;
+      grid-template-columns: 30px 120px repeat(9, 85px) 30px;
+      grid-template-rows: 45px repeat(4, 85px) 45px;
+      gap: 12px;
+      min-width: 950px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floor-item {
+      background: #151d38;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .stage {
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: #fff;
+      border-color: var(--accent-cyan);
+      grid-column: 2;
+      grid-row: 2 / span 4;
+    }
+    .buffet {
+      background: #1d3557;
+      color: var(--accent-teal);
+      grid-column: 3 / span 9;
+      grid-row: 6;
+    }
+
+    /* Table Node */
+    .table-node {
+      width: 76px;
+      height: 76px;
+      background: #1c2541;
+      border: 2px solid var(--accent-green);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .table-node:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 12px rgba(100, 223, 223, 0.5);
+    }
+    .table-node.highlighted {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 18px var(--accent-gold);
+      transform: scale(1.15);
+    }
+    .table-node .t-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .table-node .t-pax {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* Table Roster Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-teal);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .seat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+    }
+    .seat-num {
+      color: var(--accent-gold);
+      font-weight: 700;
+      min-width: 80px;
+    }
+    .seat-guest {
+      flex: 1;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-nav">
+    <a href="index.html" class="btn-back-hub">← Back to Event Hub</a>
+    <span style="font-size: 0.8rem; color: var(--text-muted);">SCM Annual Dinner 2026</span>
+  </div>
+
+  <div class="header-box">
+    <h1>Ballroom Seating Chart</h1>
+    <h2>Search by your name or seat number to find your table location</h2>
+  </div>
+
+  <div class="search-panel">
+    <input type="text" id="guestSearch" class="search-input" placeholder="Type your Name or Seat Number (e.g. 30)..." onkeyup="handleSearch()" />
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <div class="ballroom-wrapper">
+    <div class="ballroom-grid" id="ballroomGrid">
+      <div class="floor-item stage">
+        STAGE<br><small>24ft x 12ft</small>
+      </div>
+      <div class="floor-item buffet">
+        BUFFET BANQUET LINE
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Table Roster Modal -->
+<div class="modal-overlay" id="tableModal" onclick="closeModalOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modalTableTitle" style="color: var(--accent-cyan);">Table Details</h3>
+      <button onclick="closeTableModal()" style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">&times;</button>
+    </div>
+    <div id="modalRosterList"></div>
+    <button onclick="closeTableModal()" style="width:100%; padding:10px; margin-top:14px; background:rgba(255,255,255,0.08); border:1px solid var(--border-color); color:var(--accent-cyan); border-radius:8px; cursor:pointer;">
+      ← Close Roster
+    </button>
+  </div>
+</div>
+
+<script>
+  // Serpentine map mapping grid coordinates to Table IDs
+  const COORD_MAP = {
+    "2,3": 1, "2,4": 8, "2,5": 9, "2,6": 16, "2,7": 17, "2,8": 24, "2,9": 25, "2,10": 32, "2,11": 33,
+    "3,3": 2, "3,4": 7, "3,5": 10, "3,6": 15, "3,7": 18, "3,8": 23, "3,9": 26, "3,10": 31, "3,11": 34,
+    "4,3": 3, "4,4": 6, "4,5": 11, "4,6": 14, "4,7": 19, "4,8": 22, "4,9": 27, "4,10": 30, "4,11": 35,
+    "5,3": 4, "5,4": 5, "5,5": 12, "5,6": 13, "5,7": 20, "5,8": 21, "5,9": 28, "5,10": 29, "5,11": 36
+  };
+
+  // Sample attendee allocations linked to overall seat numbers (1 to 370)
+  // Tables 2, 3, 7, 10, 15, 18, 23, 26, 31, 34 are 11-seater; others are 10-seater
+  const ELEVEN_SEATERS = [2, 3, 7, 10, 15, 18, 23, 26, 31, 34];
+
+  function buildGrid() {
+    const grid = document.getElementById('ballroomGrid');
+    for (let r = 1; r <= 6; r++) {
+      for (let c = 1; c <= 12; c++) {
+        const key = `${r},${c}`;
+        const tableId = COORD_MAP[key];
+        if (tableId) {
+          const node = document.createElement('div');
+          node.className = 'table-node';
+          node.id = `tbl-${tableId}`;
+          node.style.gridRow = r;
+          node.style.gridColumn = c;
+          const cap = ELEVEN_SEATERS.includes(tableId) ? 11 : 10;
+          node.innerHTML = `<span class="t-name">T${tableId}</span><span class="t-pax">${cap} PAX</span>`;
+          node.onclick = () => openTableModal(tableId);
+          grid.appendChild(node);
+        }
+      }
+    }
+  }
+
+  function openTableModal(tableId) {
+    const cap = ELEVEN_SEATERS.includes(tableId) ? 11 : 10;
+    document.getElementById('modalTableTitle').textContent = `Table ${tableId} (${cap} PAX)`;
+    const list = document.getElementById('modalRosterList');
+    let html = '';
+    for (let i = 1; i <= cap; i++) {
+      html += `
+        <div class="seat-row">
+          <span class="seat-num">Chair ${i}</span>
+          <span class="seat-guest">Assigned Guest</span>
+        </div>
+      `;
+    }
+    list.innerHTML = html;
+    document.getElementById('tableModal').classList.add('active');
+  }
+
+  function closeTableModal() {
+    document.getElementById('tableModal').classList.remove('active');
+  }
+
+  function closeModalOnBackdrop(e) {
+    if (e.target.id === 'tableModal') closeTableModal();
+  }
+
+  function handleSearch() {
+    const query = document.getElementById('guestSearch').value.trim().toLowerCase();
+    const results = document.getElementById('searchResults');
+    if (!query) {
+      results.style.display = 'none';
+      return;
+    }
+    // Highlight table demo
+    results.style.display = 'block';
+    results.innerHTML = `<div class="result-item" onclick="highlightTable(1)"><span>Table 1 Example</span><small style="color:var(--accent-gold);">View Table</small></div>`;
+  }
+
+  function highlightTable(tableId) {
+    document.querySelectorAll('.table-node').forEach(n => n.classList.remove('highlighted'));
+    const target = document.getElementById(`tbl-${tableId}`);
+    if (target) {
+      target.classList.add('highlighted');
+      target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    }
+  }
+
+  window.onload = buildGrid;
+</script>
+
+</body>
+</html>
