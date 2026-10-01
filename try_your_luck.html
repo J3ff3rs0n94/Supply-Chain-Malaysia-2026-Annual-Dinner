@@ -2,60 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SCM 2026 | Lucky Draw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>SCM Annual Dinner 2026 | Lucky Draw</title>
   <style>
     :root {
-      --bg-main: #0b132b;
-      --bg-card: #1c2541;
+      --bg-gradient: linear-gradient(135deg, #0b111e 0%, #162447 50%, #1b1a47 100%);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.15);
+      --gold-primary: #f6c85f;
+      --gold-glow: #ffd700;
+      --gold-dark: #b8860b;
+      --accent-neon: #00d2ff;
       --accent-cyan: #64dfdf;
-      --accent-teal: #5bc0be;
-      --accent-gold: #ffb703;
-      --text-main: #ffffff;
-      --text-muted: #8d99ae;
-      --border-color: #3a506b;
+      --text-white: #ffffff;
+      --text-muted: #a0aec0;
+      --danger: #ff4757;
+      --radius-lg: 24px;
+      --radius-md: 16px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-white);
       min-height: 100vh;
+      min-height: -webkit-fill-available;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 16px;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(100, 223, 223, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 100%, rgba(255, 183, 3, 0.1) 0%, transparent 50%);
+      justify-content: space-between;
+      padding: max(16px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom)) 16px;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .container {
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      flex: 1;
+    /* Ambient Background Glow */
+    .bg-circle-1 {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-circle-2 {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(246, 200, 95, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    /* Top Navigation */
+    /* Top Navigation with Back to Hub */
     .top-nav {
+      width: 100%;
+      max-width: 480px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+      margin-bottom: 8px;
     }
     .btn-back-hub {
       display: inline-flex;
@@ -64,339 +86,1265 @@
       background: rgba(100, 223, 223, 0.15);
       color: var(--accent-cyan);
       border: 1px solid rgba(100, 223, 223, 0.4);
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
     }
     .btn-back-hub:hover {
       background: var(--accent-cyan);
-      color: var(--bg-main);
+      color: #0b111e;
     }
 
-    /* Game UI */
-    .game-board {
-      flex: 1;
+    header {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      padding: 4px 0 12px 0;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(90deg, #fff, var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .icon-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .icon-btn:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Container */
+    main {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 2;
+      margin: auto 0;
+    }
+
+    /* Pool Stat Badge */
+    .pool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+    .pool-badge strong {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00e676;
+    }
+
+    /* Slot Display Card */
+    .slot-machine-card {
+      width: 100%;
+      background: rgba(18, 25, 44, 0.7);
+      border: 2px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      min-height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--accent-cyan);
-      border-radius: 16px;
-      padding: 40px 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(100, 223, 223, 0.05);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
     }
-
-    .game-board::before {
-      content: '🎰';
-      font-size: 8rem;
+    .slot-machine-card::before {
+      content: "";
       position: absolute;
-      opacity: 0.05;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0; left: 0; right: 0;
+      height: 35px;
+      background: linear-gradient(180deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
       pointer-events: none;
+      z-index: 3;
     }
-
-    h1 {
-      color: var(--accent-gold);
-      font-size: 1.8rem;
-      margin-bottom: 8px;
+    .slot-machine-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 35px;
+      background: linear-gradient(0deg, rgba(18, 25, 44, 0.95) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+    .display-tag {
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(255, 183, 3, 0.3);
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      margin-bottom: 12px;
+      font-weight: 600;
     }
-    p.subtitle {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 30px;
-    }
-
-    /* The Spinner Display */
-    .spinner-container {
-      width: 100%;
-      height: 100px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
+    .name-display {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      min-height: 2.4em;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 30px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: inset 0 4px 10px rgba(0,0,0,0.6);
-    }
-    
-    .spinner-name {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
-      white-space: nowrap;
       padding: 0 10px;
+      word-break: break-word;
+      transition: all 0.15s ease;
+      line-height: 1.25;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .name-display.rolling {
+      color: var(--accent-neon);
+      transform: scale(1.04);
+      filter: blur(0.5px);
+    }
+    .name-display.winner-flash {
+      color: var(--gold-primary);
+      text-shadow: 0 0 20px rgba(246, 200, 95, 0.8), 0 0 35px rgba(255, 215, 0, 0.4);
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    .winner-highlight {
-      color: var(--accent-cyan);
-      text-shadow: 0 0 15px var(--accent-cyan);
-      transform: scale(1.1);
-      transition: all 0.3s ease;
+    /* Draw Button */
+    .draw-btn-container {
+      width: 100%;
+      padding-top: 10px;
     }
-
-    .btn-draw {
-      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-teal) 100%);
-      color: var(--bg-main);
+    .draw-btn {
+      width: 100%;
+      padding: 20px;
+      border-radius: 50px;
       border: none;
-      padding: 16px 32px;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 800;
-      border-radius: 30px;
-      cursor: pointer;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 6px 20px rgba(100, 223, 223, 0.4);
-      transition: transform 0.1s, box-shadow 0.1s;
-      width: 80%;
-      max-width: 250px;
-      z-index: 1;
+      background: linear-gradient(135deg, #ffd700 0%, #f6c85f 50%, #d4a017 100%);
+      color: #1a1600;
+      box-shadow: 0 8px 25px rgba(246, 200, 95, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
     }
-    .btn-draw:active {
-      transform: translateY(2px);
-      box-shadow: 0 2px 10px rgba(100, 223, 223, 0.4);
+    .draw-btn:active:not(:disabled) {
+      transform: scale(0.96);
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.3);
     }
-    .btn-draw:disabled {
-      background: var(--border-color);
-      color: var(--text-muted);
+    .draw-btn:disabled {
+      background: #4a5568;
+      color: #a0aec0;
       box-shadow: none;
       cursor: not-allowed;
+      transform: none;
     }
 
-    /* Winner Announcement Modal */
-    .winner-modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      backdrop-filter: blur(8px);
-      padding: 20px;
-    }
-    .winner-modal.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
-    .winner-card {
-      background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
-      border: 2px solid var(--accent-gold);
-      border-radius: 20px;
-      padding: 40px 20px;
-      text-align: center;
+    /* Quick History Bar */
+    .latest-winner-banner {
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 40px rgba(255, 183, 3, 0.2);
-      transform: scale(0.8);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px dashed var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
     }
-    .winner-modal.active .winner-card {
-      transform: scale(1);
+    .latest-winner-title {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .latest-winner-name {
+      color: var(--gold-primary);
+      font-weight: 700;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Footer Controls */
+    footer {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 2;
+      padding-top: 10px;
+    }
+    .sub-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .sub-btn:active {
+      transform: scale(0.95);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Modals / Drawers */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      display: flex;
       opacity: 1;
     }
-    .winner-card h2 {
-      color: var(--accent-gold);
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .modal-sheet {
+      width: 100%;
+      max-width: 500px;
+      background: #151d30;
+      border-top-left-radius: 28px;
+      border-top-right-radius: 28px;
+      border-top: 1px solid var(--card-border);
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
     }
-    .winner-card .final-name {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 30px;
-      text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+    .modal-overlay.active .modal-sheet {
+      transform: translateY(0);
     }
-    .btn-close-modal {
-      background: transparent;
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 10px 24px;
-      border-radius: 20px;
+    .sheet-handle {
+      width: 44px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      margin: 0 auto 16px auto;
+    }
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .sheet-title {
+      font-size: 1.15rem;
       font-weight: 700;
+    }
+    .sheet-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
       cursor: pointer;
+      line-height: 1;
+    }
+    .sheet-content {
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 4px;
+    }
+    .winner-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .winner-rank {
+      font-weight: 800;
+      color: var(--gold-primary);
+      width: 32px;
+      font-size: 0.85rem;
+    }
+    .winner-info {
+      flex: 1;
+      font-weight: 600;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
       font-size: 0.9rem;
     }
 
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Winner Popup Celebration */
+    .winner-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 105;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .winner-popup-overlay.active {
+      display: flex;
+      animation: fadeIn 0.3s ease forwards;
+    }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+    .winner-popup-card {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(145deg, #1f2b48 0%, #111a2f 100%);
+      border: 2px solid var(--gold-primary);
+      border-radius: 28px;
+      padding: 32px 20px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(246, 200, 95, 0.35);
+      animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes zoomIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .trophy-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      animation: bounce 1.2s infinite alternate;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+    .congrats-text {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .celebrated-name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.25;
+      word-break: break-word;
+      text-shadow: 0 2px 15px rgba(255, 255, 255, 0.3);
+    }
+    .popup-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--gold-primary);
+      color: #111;
+      border: none;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(246, 200, 95, 0.4);
+    }
+    .popup-btn:active {
+      transform: scale(0.96);
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- Top Navigation -->
-  <div class="top-nav">
-    <a href="index.html" class="btn-back-hub">← Back to Main Panel</a>
-    <span style="font-size: 0.8rem; color: var(--text-muted);">SCM Annual Dinner 2026</span>
+<!-- Ambient Glows -->
+<div class="bg-circle-1"></div>
+<div class="bg-circle-2"></div>
+
+<!-- Confetti Canvas -->
+<canvas id="confettiCanvas"></canvas>
+
+<!-- Top Back Navigation -->
+<div class="top-nav">
+  <a href="index.html" class="btn-back-hub">← Back to Main Menu</a>
+  <span style="font-size: 0.8rem; color: var(--text-muted);">Intel SCM Dinner 2026</span>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="brand">
+    <div class="brand-title">Lucky Draw</div>
+    <div class="brand-subtitle">Official Random Picker</div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" id="soundToggleBtn" title="Toggle Sound" aria-label="Toggle Sound">
+      <span id="soundIcon">🔔</span>
+    </button>
+    <button class="icon-btn" id="infoBtn" title="Pool Details" aria-label="Pool Details">ℹ️</button>
+  </div>
+</header>
+
+<!-- Main Game Panel -->
+<main>
+  <!-- Pool Counter -->
+  <div class="pool-badge">
+    <span class="pulse-dot"></span>
+    <span>Remaining in Pool: <strong id="poolCount">0</strong></span>
   </div>
 
-  <!-- Game Interface -->
-  <div class="game-board">
-    <h1>Lucky Draw</h1>
-    <p class="subtitle">Tap to randomly select a lucky winner!</p>
+  <!-- Slot Machine Box -->
+  <div class="slot-machine-card">
+    <div class="display-tag" id="displaySubtitle">Tap to Draw Winner</div>
+    <div class="name-display" id="nameBox">Ready?</div>
+  </div>
 
-    <div class="spinner-container">
-      <div class="spinner-name" id="spinnerName">READY TO ROLL</div>
+  <!-- Draw Button -->
+  <div class="draw-btn-container">
+    <button class="draw-btn" id="drawBtn">
+      <span>🎲 DRAW NOW</span>
+    </button>
+  </div>
+
+  <!-- Latest Winner Banner -->
+  <div class="latest-winner-banner" id="latestWinnerBanner">
+    <span class="latest-winner-title">🏆 Latest Winner:</span>
+    <span class="latest-winner-name" id="latestWinnerName">None yet</span>
+  </div>
+</main>
+
+<!-- Bottom Navigation -->
+<footer>
+  <button class="sub-btn" id="viewWinnersBtn">
+    <span>📜 Winners</span>
+    <span id="winnerBadgeCount" style="background: rgba(246,200,95,0.25); color: var(--gold-primary); padding: 2px 7px; border-radius: 12px; font-size: 0.75rem;">0</span>
+  </button>
+  <button class="sub-btn" id="resetBtn" style="color: #ff7675;">
+    <span>🔄 Reset Pool</span>
+  </button>
+</footer>
+
+<!-- Winners Drawer Modal -->
+<div class="modal-overlay" id="winnersModal">
+  <div class="modal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <div class="sheet-title">Lucky Draw Winners (<span id="modalWinnersCount">0</span>)</div>
+      <button class="sheet-close" id="closeWinnersModal">&times;</button>
     </div>
-
-    <button class="btn-draw" id="drawBtn" onclick="startDraw()">Draw Winner</button>
+    <div class="sheet-content" id="winnersListContainer"></div>
   </div>
 </div>
 
-<!-- Winner Modal -->
-<div class="winner-modal" id="winnerModal">
-  <div class="winner-card">
-    <div style="font-size: 4rem; margin-bottom: 10px;">🎉</div>
-    <h2>Congratulations</h2>
-    <div class="final-name" id="finalWinnerName">Name Here</div>
-    <button class="btn-close-modal" onclick="closeWinnerModal()">Close & Next Draw</button>
+<!-- Pool Info Drawer Modal -->
+<div class="modal-overlay" id="infoModal">
+  <div class="modal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <div class="sheet-title">Active Pool Details</div>
+      <button class="sheet-close" id="closeInfoModal">&times;</button>
+    </div>
+    <div class="sheet-content">
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5;">
+        Only employees verified with <strong>"Yes"</strong> for lucky draw eligibility are included. Each winner drawn is automatically removed from the active pool.
+      </p>
+      <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 12px; font-size: 0.85rem; line-height: 1.8;">
+        <div>• Total Eligible Uploaded: <strong style="color:#fff;">354</strong></div>
+        <div>• Excluded Ineligibles: <strong style="color:var(--danger);">8</strong></div>
+        <div>• Current Pool Size: <strong id="infoPoolSize" style="color:var(--gold-primary);">354</strong></div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- Winner Celebration Popup -->
+<div class="winner-popup-overlay" id="winnerPopup">
+  <div class="winner-popup-card">
+    <div class="trophy-icon">🏆</div>
+    <div class="congrats-text">Congratulations!</div>
+    <div class="celebrated-name" id="celebratedNameBox">Winner Name</div>
+    <button class="popup-btn" id="claimBtn">Continue</button>
+  </div>
+</div>
+
+<!-- Logic & Data Script -->
 <script>
-  // 8-Bit Arcade Audio Synthesizer (No external files needed)
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  let audioCtx;
+/* ========================================================
+   ELIGIBLE EMPLOYEE DATASET (Strictly Eligibility == "Yes" ONLY: 354 Attendees)
+======================================================== */
+const INITIAL_POOL = [
+  "Ooi, Cheng Hoon",
+  "Suntharalingam, Paribalan",
+  "Diow, Rhu Kooi",
+  "Hong, Wai Fong",
+  "Ng, Vanessa Yeng Sar",
+  "Mohd Yusoff, Mohd Aiman Afnan",
+  "Cheah, Joseph Chai Boon",
+  "Ho, Kok Keong",
+  "Ng, Kang Ning",
+  "Balasubramaniam, Hari Chand",
+  "Nguyen, Alice Uyen",
+  "Ferrolino, Antonio",
+  "Tan, Chee Boon",
+  "Lee, Mooi Yee",
+  "Koid, Shin Yih",
+  "Pragasam, Justin",
+  "Cheng, Boon Yee",
+  "Lee, Kok Peng",
+  "Lee, Poh Eng",
+  "Ng, Wei Chon",
+  "Sim, Yvonne Xin Yu",
+  "Yeap, Siew Lean",
+  "Liew, Choon Wai",
+  "Koh, Terry Eng Keong",
+  "Lo, Wei Leng",
+  "Sim, Jeremy",
+  "Woo, Christine",
+  "Seow, Han Loon",
+  "Richard, Gladys",
+  "Wong, Woan Chiou",
+  "Gan, Hock Boon",
+  "Mah, Chin Keong Alex",
+  "Mat Yusop, Ahmad Rafaie",
+  "Abdullah, Aini Haslinda",
+  "Heng, Cheng Yin",
+  "Choo, Chien Hua",
+  "Teoh, Pei Fen",
+  "Lee, Shi Ning",
+  "Hong, Seow Earn",
+  "Lee, Swee Hoon",
+  "Abd Majid, Syamimi",
+  "Koo, Hee Kiah",
+  "Chua, Khian Chee",
+  "Go, Choo Kwong",
+  "Fook, Loon Wooi",
+  "Cheah, Seok Gaik",
+  "Lim, Hooi Nee",
+  "Boey, Hooi Ying",
+  "Ong, Lee Ping",
+  "Hoo, Ray",
+  "Men, Soo Yit",
+  "Ooi, Mian Hong",
+  "Yeap, Jacky Kok Ghee",
+  "Lee, Ming Ming",
+  "Goh, Ramsay Thean Siang",
+  "Kuan, Wei Yew",
+  "Ang, Chui Ping",
+  "Lee, Kah Weng",
+  "Loh, Lee Naa",
+  "Lim, Lean kooi",
+  "Yeap, Sarina Cheng Gaik",
+  "Ayavoo, Nalini",
+  "Ooi, Bee Ling",
+  "Thangarajoo, Geethawathy",
+  "Ramiah, Mangaleswary",
+  "Teoh, Wen Xin",
+  "Lim, Agnes Lee Hoong",
+  "Soh, Chin Liang",
+  "Teh, Ean Hoon",
+  "Heah, Jeff Jun Jie",
+  "Lye, Choy Ying Jolyn",
+  "Teh, Joyce",
+  "Lim, Lee Ling",
+  "Chang, Li Ting",
+  "Tan, Mei Ling",
+  "Lee, Samantha Sien Ling",
+  "Goh, Amanda",
+  "Mendoza, Celine Yap Y",
+  "Ooi, Chooi San",
+  "Lim, Bee Hon",
+  "Yew, Cherry",
+  "Yap, Li Wooi",
+  "Leong, Dylan Chat Lun",
+  "Oon, David Tyeway",
+  "Tan, Lay Sim1",
+  "Tan, May Yong",
+  "Leong, Adelyn Hui Lin",
+  "Lim, Elaine Chi Ling",
+  "Ishak, Izeanee Bt B",
+  "Abdul Gani, Muhamad Izzulhafiz",
+  "Tan, Irynn Ai Ling",
+  "Chuah, Su Bee",
+  "Lim, Su-lyn",
+  "Lim, Mei Yin",
+  "Ong, Pei Kuan",
+  "Perumal, Arasu",
+  "Mohamad Mustafa, Nurazura",
+  "Teoh, Kai Ying",
+  "Krishnan, Kasturi",
+  "Aikin, Nang Som Chei",
+  "Al Thanasegeran, Surendaar",
+  "Kalimutu, Suryakandh",
+  "None, Rozana",
+  "Kamsan, Siti Nur Atiqah",
+  "Md Haris, Mohd Sofian",
+  "Ibrahim, Nur Adli",
+  "Cheng, Elaine Ee Ling",
+  "Ang, Hao Jiun",
+  "Sakari, Nur Fatihah",
+  "Murugan, Pennarasi",
+  "Yeoh, Sheau Wen",
+  "Chan, Lin Fang",
+  "Yeoh, Cheng Yee",
+  "Che Rouse, Noor Liyana",
+  "Halim, Norshahira",
+  "Sukiman, Nurul Zakiyyah",
+  "Ibrahim, Muhamad Sohimi",
+  "Yeoh, Soon Leong",
+  "Chan, Daniel Jun Jie",
+  "Nadarajah, Thurgatharani Naidu",
+  "Tan, Wei Hang",
+  "Tan, Bee Huen",
+  "Raja Ibrahim, Putri Hasratul Iqtikah",
+  "Tan, May Leng",
+  "Tan, Jing1 Wen",
+  "Yeoh, Lay Choo",
+  "Leong, Mei Yi",
+  "Ibrahim, Nur Amalina",
+  "Abd Rashak, Nur Azwani B",
+  "Suntharam, Pirvinnesh",
+  "Syed Azizan, Sharifah Maziana",
+  "Ali Shaiffuddin, Syahira Hilal Aimi",
+  "Yeoh, Sze Yong",
+  "Khoo, Poh Ann",
+  "Chan, Allysa Saw Geok",
+  "Lim, Ching Yee",
+  "Lim, Chung How",
+  "Wong, Jael S",
+  "Khoo, Jia Huey",
+  "Asrulefendi, Syahmi",
+  "Pardeep Singh Gill, Pevandeep Singh Gill",
+  "Gan, Lay Peng",
+  "Yong, Mei Eng",
+  "Low, Min Qi",
+  "Pragasam, Nicole Anne",
+  "Chew, Ren",
+  "Wong, Siu Wei",
+  "Tan, Jia1 Yi",
+  "Yeap, Yi You",
+  "Heng, Yi Guan",
+  "Yew, Siew Eng",
+  "Khoo, Cheng Keat",
+  "Chay, Kok Wei",
+  "Sim, Kean Lee",
+  "Anoar, Noor Hamala",
+  "Lau, Pei Yun",
+  "Khor, Heng Tien",
+  "Ab Razak, Hakim",
+  "Low, Shye Nee",
+  "Tan, Tse Pei",
+  "Lim, Yen Chiew",
+  "Lim, Lay hong",
+  "Thiyagarajan, Prabhu",
+  "Loke, Shiuk Ming",
+  "Tan, Alan",
+  "Silvaine, Audrey",
+  "Huam, Bee Leng",
+  "Phoon, Wei Wei",
+  "Ooi, Hock Heng",
+  "Ang, Lay Pin",
+  "Ponnampalam, Kanna",
+  "Wang, John Paul",
+  "Lim, Poh Suan",
+  "Sanniababoo, Phuspha",
+  "Tan, Lye Yeng",
+  "Chin, Ting Chung",
+  "Yusof, Adnin Naim",
+  "Quah, Hock Soon",
+  "Ramu, Loganathan Naidu",
+  "Palanisamy, Thenmuli",
+  "Yim, Wen Yang",
+  "Anthonysamy, Willie Nelson",
+  "Lim, Bok Sim",
+  "Puah, Boon Teck",
+  "Tan, Yeh Fuat",
+  "Lee, Yoon Han",
+  "Lim, Hooi Lee",
+  "Abdul Aziz, Mohd Ashraf",
+  "Muniandy, Devanthran",
+  "Din, Mat Saad",
+  "Kuan, Mei Kuen",
+  "Kumaraisen, Revathy",
+  "Teh, Jane Siok Jian",
+  "Sumague, Christopher L",
+  "Ooi, Bee Lay",
+  "Low, Dora Poh Yin",
+  "Leong, Felicia",
+  "Tong, Geam Y",
+  "Lim, Bc",
+  "Liew, Alfred Yah Woo",
+  "Teah, Hester",
+  "Nondisamy, Logesvaran",
+  "Palany Kumar, Punitha Devi",
+  "Kuppan, Puvindran",
+  "Phi, Wah Tooi",
+  "Quah, William Wee Liang",
+  "Amurthalingam, Yuaraajan",
+  "Lim, TM",
+  "Dahlan, Eida Yasmin",
+  "Ramanathan, Geetha",
+  "Leong, Teong Eng",
+  "Liang, Choon Guin",
+  "Lee, Eugene",
+  "Ng, Guan Lee",
+  "Low, Hooi Leng",
+  "Wang, Hui Ler",
+  "Devaraj, Uthaya Kumaran",
+  "Chua, Ellie",
+  "Leong, Chan Kay",
+  "Ho, Cheah Luan",
+  "Cheng, Wendy Chin Hong",
+  "Tan, Jing Yi",
+  "Teh, Kim Hoon",
+  "Ooi, Peng Chin",
+  "Ooi, Kim Eng",
+  "Lim, Rachel Li Foong",
+  "Lim, Sear Nie",
+  "Yoh, Joyce",
+  "Tang, Wye Yuen",
+  "Lee, Rachael",
+  "Lai, Zhi Hui",
+  "Tan, Zhi Jie",
+  "Ong, HJ",
+  "Ng, Chin Kiat",
+  "Tan, Zhu Sheng",
+  "Wong, Emily Mei Fong",
+  "Lim, Catherine",
+  "Sim, Cher Huei",
+  "Ne Chin, Chiravong A",
+  "Koo, Chun Hong",
+  "Khoo, Elise",
+  "Lim, It Hui",
+  "Tham, Jacklyn Yee Len",
+  "Krishnan, Jegathesen",
+  "Teh, Justin Yan Shin",
+  "Koay, Kek Chian",
+  "Tan, Lee Chin",
+  "Mohamed Anas, Mohd Hafiz Hakimi",
+  "Lim, Meng Chuan",
+  "Goh, Eric",
+  "Kung, Pei Hsia",
+  "Lee, Wai Cheng",
+  "Lim, Lay Pin",
+  "Balakrishnan, Aghielan S",
+  "Bin Abd Aziz, Abd Luqman Hakim",
+  "Rosdi, Afiff Qusyairy",
+  "Binti Muhammad, Mazlina",
+  "Kadiran, Fitri Andi Kesuma",
+  "Ng, Kah Tiek",
+  "Bin Sharudin, Mohd Alif",
+  "Awang Hadzir, Mohd Shahmi Akmal",
+  "Bin Ramli, Muhamad Nazrin",
+  "Bin Zulfakhor, Muhammad Zarif",
+  "Binti Abu Hassan, Noor Azeita",
+  "Gunasegaran, Parimala",
+  "Samsuri, Siti Nur Hidayah",
+  "Binti Tajudin, Effarini",
+  "Chan, Kl Chan",
+  "Ismail, Mohd Khairul Anuar",
+  "Addenan, Mohd Shahdan",
+  "Bt Ali, Nur Azliza",
+  "Muthusamy, Richard",
+  "Sarojini, Gramalingam",
+  "Tam, Swee Chin",
+  "Chia, Vincent Lean Tatt",
+  "Bin Hashim, Ihsan Hasifi",
+  "Bin Kamal Ariff, Kamal Firdaus",
+  "Abdul Razak, Mohamad Amirul",
+  "Mohamad Termizi, Mimy Fatin Aliya",
+  "Radzi, Mohamad Firdaus",
+  "Zainal Abidin, Mohd Zulfaizal",
+  "Azhar, Muhammad Aiman",
+  "Bin Mohd Mokhtar, Muhammad Aizat",
+  "Prahakaran, Prasath",
+  "Palanisamy, Ranusha",
+  "Rosle, Rohaniff",
+  "Al Kandasamy, Thinagaran",
+  "Manikkam, Vinod",
+  "Abdul Kadir Jelani, Wani",
+  "Loganazan, Yuveneswaran",
+  "Mohd Shafian, Zarina",
+  "Che Azman, Zul Aizad",
+  "Cheah, Beng Gaik",
+  "Chang, Chun Chian",
+  "Bin Bahari, Mohd Zulkhairi",
+  "Yeoh, Oon San",
+  "Ooi, Ying Hui",
+  "Lim, Pei Pei",
+  "Lim, Kok Loon",
+  "Tan, Guat Ngoh",
+  "Nurhazli, Nur Azmira Elena",
+  "Islam, Sharique",
+  "Sharifud-din, Muhammad Shahir",
+  "Chandran, Dennis Prem Kumar",
+  "Bee Ling Tan",
+  "Harris D.Ilham Adni",
+  "Jenson Oh",
+  "Joseph Xuan You Tian",
+  "Nurul Zawani Muhamad Shukri",
+  "Tharini Murthy",
+  "Zaaim Redha, Zaaim Syukrin",
+  "Syed Nasir Mohamed",
+  "Lokman Marzuki",
+  "azri mohd khanil",
+  "Amit Sarkar",
+  "Frederick Yew Shen Chong",
+  "Julius Victorio Koentjoro",
+  "Larissa Shuen Yuin Chee",
+  "Mun Sun Son",
+  "Yen Ting Koo",
+  "Ai Chen Ng",
+  "Ai Ni Eng",
+  "Chai Ong Cheng",
+  "Chee Hwei Ko",
+  "Chin Chai Ng",
+  "Chin Fai Lok",
+  "Erdiana Natashsya Zulkifli",
+  "HUI LING LEE",
+  "Jui Ang Tan",
+  "Nguk Yen Ong",
+  "Sock Khim Pah",
+  "Nathan Ganaeson",
+  "Nivitha Sundarajoo Thilagar",
+  "Yap, Austin",
+  "Chitra A/P Arjunan",
+  "Li Fen Ho",
+  "Chee San Lee",
+  "DIVYA RUBAN MUTHUSAMY",
+  "Si Yeu Lai",
+  "Jessica, Choong",
+  "Leng See Teh",
+  "SZE GIE ANG",
+  "Farilah Yusoff",
+  "Mahsuri Mat Wasi",
+  "Rames Velusamy",
+  "Cheah Kuon Sim",
+  "Joa Yen Tang",
+  "Usha Devi Raman",
+  "Norhaslinda Mohamad Kasim",
+  "Jaffar, Khyrunisha",
+  "Ping Chiet Chai",
+  "Tan, Gaik Theng",
+  "Irene Poh Im Yeoh"
+];
 
-  function initAudio() {
-    if (!audioCtx) {
+/* ========================================================
+   STATE MANAGEMENT & LOCAL STORAGE
+======================================================== */
+const STORAGE_KEY_POOL = "lucky_draw_pool_2026_v2";
+const STORAGE_KEY_WINNERS = "lucky_draw_winners_2026_v2";
+const STORAGE_KEY_SOUND = "lucky_draw_sound_enabled_v2";
+
+let pool = [];
+let winners = [];
+let isRolling = false;
+let soundEnabled = true;
+
+function loadState() {
+  const savedPool = localStorage.getItem(STORAGE_KEY_POOL);
+  const savedWinners = localStorage.getItem(STORAGE_KEY_WINNERS);
+  const savedSound = localStorage.getItem(STORAGE_KEY_SOUND);
+
+  pool = savedPool ? JSON.parse(savedPool) : [...INITIAL_POOL];
+  winners = savedWinners ? JSON.parse(savedWinners) : [];
+  soundEnabled = savedSound !== null ? JSON.parse(savedSound) : true;
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY_POOL, JSON.stringify(pool));
+  localStorage.setItem(STORAGE_KEY_WINNERS, JSON.stringify(winners));
+  localStorage.setItem(STORAGE_KEY_SOUND, JSON.stringify(soundEnabled));
+}
+
+/* ========================================================
+   AUDIO SYNTHESIS (Web Audio API - No Audio Files Needed)
+======================================================== */
+let audioCtx = null;
+
+function initAudio() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
       audioCtx = new AudioContext();
     }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
   }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
 
-  // Ticking sound while spinning
-  function playTick() {
-    if (!audioCtx) return;
+function playTick() {
+  if (!soundEnabled || !audioCtx) return;
+  try {
     const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(800, audioCtx.currentTime); 
-    osc.frequency.exponentialRampToValueAtTime(400, audioCtx.currentTime + 0.05);
-    gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // Quiet tick
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
-    osc.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+    const gain = audioCtx.createGain();
+    osc.type = "triangle";
+    osc.frequency.setValueAtTime(420 + Math.random() * 220, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
     osc.start();
     osc.stop(audioCtx.currentTime + 0.05);
-  }
+  } catch (e) {}
+}
 
-  // Mario-style coin/level up sound for the winner
-  function playWinSound() {
-    if (!audioCtx) return;
-    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Arpeggio)
-    let time = audioCtx.currentTime;
-    notes.forEach((freq, index) => {
+function playWinSound() {
+  if (!soundEnabled || !audioCtx) return;
+  try {
+    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+    notes.forEach((freq, i) => {
       const osc = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(freq, time);
-      gainNode.gain.setValueAtTime(0.1, time);
-      gainNode.gain.linearRampToValueAtTime(0, time + 0.15);
-      osc.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
-      osc.start(time);
-      osc.stop(time + 0.15);
-      time += 0.1; 
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.1);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime + i * 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.1 + 0.4);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(audioCtx.currentTime + i * 0.1);
+      osc.stop(audioCtx.currentTime + i * 0.1 + 0.4);
+    });
+  } catch (e) {}
+}
+
+/* ========================================================
+   MOBILE CONFETTI ENGINE (Pure Vanilla HTML5 Canvas)
+======================================================== */
+const canvas = document.getElementById("confettiCanvas");
+const ctx = canvas.getContext("2d");
+let confettiPieces = [];
+let confettiAnimationId = null;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function triggerConfetti() {
+  confettiPieces = [];
+  const colors = ["#f6c85f", "#ffd700", "#00d2ff", "#ff4757", "#2ed573", "#a55eea", "#ffffff"];
+  for (let i = 0; i < 90; i++) {
+    confettiPieces.push({
+      x: canvas.width / 2,
+      y: canvas.height * 0.45,
+      r: Math.random() * 6 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 16,
+      vy: Math.random() * -15 - 5,
+      gravity: 0.4,
+      tilt: Math.random() * 10,
+      tiltSpeed: (Math.random() - 0.5) * 0.1,
+      opacity: 1
     });
   }
+  if (!confettiAnimationId) {
+    animateConfetti();
+  }
+}
 
-  // Sanitized Attendee List (Names Only)
-  const ATTENDEES = [
-    "Suryakandh Kalimutu", "Jeff Heah Jun Jie", "Dylan Leong Chat Lun", 
-    "Christine Woo", "Kasturi Krishnan", "Teoh Pei Fen", "Lee Swee Hoon", 
-    "Celine Yap Y Mendoza", "Chiravong A Ne Chin", "Eugene Loke Shiuk Ming", 
-    "Jenson Oh", "Azri Mohd Khanil", "Abbie Yen Ting Koo", "Syed Nasir Mohamed", 
-    "Hakim Ab Razak", "Catherine Lim", "Chan Kl Chan", "John Doe", "Jane Smith"
-  ];
+function animateConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  let active = false;
 
-  let isDrawing = false;
-  const spinnerElement = document.getElementById('spinnerName');
-  const drawBtn = document.getElementById('drawBtn');
-  const winnerModal = document.getElementById('winnerModal');
-  const finalWinnerName = document.getElementById('finalWinnerName');
+  for (let p of confettiPieces) {
+    p.vy += p.gravity;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.tilt += p.tiltSpeed;
+    p.opacity -= 0.006;
 
-  function startDraw() {
-    if (isDrawing || ATTENDEES.length === 0) return;
-    
-    // Initialize audio on first click (browser requirement)
-    initAudio();
-
-    isDrawing = true;
-    drawBtn.disabled = true;
-    drawBtn.textContent = "Drawing...";
-    spinnerElement.classList.remove('winner-highlight');
-
-    let duration = 3000; 
-    let startTime = Date.now();
-    let intervalId;
-
-    function animateSpin() {
-      let now = Date.now();
-      let elapsed = now - startTime;
-
-      if (elapsed < duration) {
-        let randomIndex = Math.floor(Math.random() * ATTENDEES.length);
-        spinnerElement.textContent = ATTENDEES[randomIndex];
-        playTick(); // Play sound effect
-        
-        // Slow down effect
-        let currentInterval = Math.max(50, (elapsed / duration) * 150);
-        intervalId = setTimeout(animateSpin, currentInterval);
-      } else {
-        clearTimeout(intervalId);
-        finishDraw();
-      }
+    if (p.opacity > 0 && p.y < canvas.height + 20) {
+      active = true;
+      ctx.beginPath();
+      ctx.save();
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = Math.max(0, p.opacity);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.tilt);
+      ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.5);
+      ctx.restore();
     }
-
-    animateSpin();
   }
 
-  function finishDraw() {
-    const winningIndex = Math.floor(Math.random() * ATTENDEES.length);
-    const winnerName = ATTENDEES[winningIndex];
+  if (active) {
+    confettiAnimationId = requestAnimationFrame(animateConfetti);
+  } else {
+    cancelAnimationFrame(confettiAnimationId);
+    confettiAnimationId = null;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+}
 
-    spinnerElement.textContent = winnerName;
-    spinnerElement.classList.add('winner-highlight');
-    playWinSound(); // Play victory sound effect!
-    
-    setTimeout(() => {
-      finalWinnerName.textContent = winnerName;
-      winnerModal.classList.add('active');
-    }, 600);
+/* ========================================================
+   UI UPDATE HELPERS
+======================================================== */
+const poolCountEl = document.getElementById("poolCount");
+const nameBoxEl = document.getElementById("nameBox");
+const displaySubtitleEl = document.getElementById("displaySubtitle");
+const drawBtnEl = document.getElementById("drawBtn");
+const latestWinnerNameEl = document.getElementById("latestWinnerName");
+const winnerBadgeCountEl = document.getElementById("winnerBadgeCount");
+const modalWinnersCountEl = document.getElementById("modalWinnersCount");
+const winnersListContainerEl = document.getElementById("winnersListContainer");
+const soundToggleBtn = document.getElementById("soundToggleBtn");
+const soundIcon = document.getElementById("soundIcon");
+const infoPoolSizeEl = document.getElementById("infoPoolSize");
 
-    drawBtn.disabled = false;
-    drawBtn.textContent = "Draw Winner";
-    isDrawing = false;
+function updateUI() {
+  poolCountEl.textContent = pool.length;
+  infoPoolSizeEl.textContent = pool.length;
+  winnerBadgeCountEl.textContent = winners.length;
+  modalWinnersCountEl.textContent = winners.length;
+
+  if (winners.length > 0) {
+    latestWinnerNameEl.textContent = winners[winners.length - 1];
+  } else {
+    latestWinnerNameEl.textContent = "None yet";
   }
 
-  function closeWinnerModal() {
-    winnerModal.classList.remove('active');
-    spinnerElement.textContent = "READY TO ROLL";
-    spinnerElement.classList.remove('winner-highlight');
+  if (pool.length === 0) {
+    drawBtnEl.disabled = true;
+    nameBoxEl.textContent = "All Drawn!";
+    displaySubtitleEl.textContent = "Pool Exhausted";
+  } else if (!isRolling) {
+    drawBtnEl.disabled = false;
   }
+
+  soundIcon.textContent = soundEnabled ? "🔔" : "🔕";
+  renderWinnersList();
+}
+
+function renderWinnersList() {
+  if (winners.length === 0) {
+    winnersListContainerEl.innerHTML = `
+      <div class="empty-state">
+        <p>No winners drawn yet.</p>
+        <p style="margin-top:4px; font-size:0.8rem; color:#718096;">Tap "DRAW NOW" on the main screen to begin.</p>
+      </div>
+    `;
+    return;
+  }
+  let html = "";
+  for (let i = winners.length - 1; i >= 0; i--) {
+    html += `
+      <div class="winner-list-item">
+        <span class="winner-rank">#${i + 1}</span>
+        <span class="winner-info">${winners[i]}</span>
+      </div>
+    `;
+  }
+  winnersListContainerEl.innerHTML = html;
+}
+
+/* ========================================================
+   EXTENDED ROLLING / DRAW ENGINE (~5.5 Seconds Suspense)
+======================================================== */
+function drawWinner() {
+  if (isRolling || pool.length === 0) return;
+  initAudio();
+  isRolling = true;
+  drawBtnEl.disabled = true;
+  nameBoxEl.classList.add("rolling");
+  nameBoxEl.classList.remove("winner-flash");
+  displaySubtitleEl.textContent = "Drawing Winner...";
+
+  let counter = 0;
+  const totalSteps = 52; // Extended steps to roll through the 354 names
+  let delay = 35;        // Starts fast, then progressively decelerates
+
+  function step() {
+    const randomIndex = Math.floor(Math.random() * pool.length);
+    nameBoxEl.textContent = pool[randomIndex];
+    playTick();
+    counter++;
+
+    if (counter < totalSteps) {
+      // Progressively decelerate the roll for maximum suspense
+      if (counter > totalSteps - 24) {
+        delay += 12;
+      }
+      if (counter > totalSteps - 8) {
+        delay += 35;
+      }
+      setTimeout(step, delay);
+    } else {
+      finalizeWinner();
+    }
+  }
+  step();
+}
+
+function finalizeWinner() {
+  const winningIndex = Math.floor(Math.random() * pool.length);
+  const winnerName = pool.splice(winningIndex, 1)[0];
+  winners.push(winnerName);
+  saveState();
+
+  // UI Reveal
+  nameBoxEl.classList.remove("rolling");
+  nameBoxEl.classList.add("winner-flash");
+  nameBoxEl.textContent = winnerName;
+  displaySubtitleEl.textContent = "WINNER SELECTED!";
+  isRolling = false;
+
+  // Celebratory Effects
+  playWinSound();
+  triggerConfetti();
+  updateUI();
+
+  // Show Full celebration modal after a short pause
+  setTimeout(() => {
+    document.getElementById("celebratedNameBox").textContent = winnerName;
+    document.getElementById("winnerPopup").classList.add("active");
+  }, 700);
+}
+
+/* ========================================================
+   EVENT LISTENERS
+======================================================== */
+drawBtnEl.addEventListener("click", drawWinner);
+
+document.getElementById("claimBtn").addEventListener("click", () => {
+  document.getElementById("winnerPopup").classList.remove("active");
+});
+
+// Sound toggle
+soundToggleBtn.addEventListener("click", () => {
+  initAudio();
+  soundEnabled = !soundEnabled;
+  saveState();
+  updateUI();
+});
+
+// Modals
+const winnersModal = document.getElementById("winnersModal");
+const infoModal = document.getElementById("infoModal");
+
+document.getElementById("viewWinnersBtn").addEventListener("click", () => {
+  winnersModal.classList.add("active");
+});
+document.getElementById("closeWinnersModal").addEventListener("click", () => {
+  winnersModal.classList.remove("active");
+});
+
+document.getElementById("infoBtn").addEventListener("click", () => {
+  infoModal.classList.add("active");
+});
+document.getElementById("closeInfoModal").addEventListener("click", () => {
+  infoModal.classList.remove("active");
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === winnersModal) winnersModal.classList.remove("active");
+  if (e.target === infoModal) infoModal.classList.remove("active");
+});
+
+// Reset Pool
+document.getElementById("resetBtn").addEventListener("click", () => {
+  if (confirm("Reset lucky draw pool and restore all 354 eligible names?")) {
+    pool = [...INITIAL_POOL];
+    winners = [];
+    saveState();
+    nameBoxEl.textContent = "Ready?";
+    nameBoxEl.classList.remove("winner-flash", "rolling");
+    displaySubtitleEl.textContent = "Tap to Draw Winner";
+    updateUI();
+  }
+});
+
+// Initial Launch
+loadState();
+updateUI();
 </script>
 </body>
 </html>
