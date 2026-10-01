@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SCM Annual Dinner 2026 | Event Hub</title>
+  <title>SCM Annual Dinner 2026</title>
   <style>
     :root {
       --bg-main: #0b132b;
-      --bg-panel: #1c2541;
-      --bg-card: #151d38;
+      --bg-card: #1c2541;
       --accent-cyan: #64dfdf;
       --accent-teal: #5bc0be;
       --accent-gold: #ffb703;
-      --accent-green: #52b788;
-      --accent-purple: #9d4edd;
-      --accent-pink: #ff4d6d;
+      --accent-blue: #4895ef;
       --text-main: #ffffff;
       --text-muted: #8d99ae;
       --border-color: #3a506b;
-      --card-radius: 16px;
+      --card-radius: 14px;
     }
 
     * {
@@ -38,218 +35,147 @@
       flex-direction: column;
       align-items: center;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(100, 223, 223, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(255, 183, 3, 0.06) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(100, 223, 223, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(255, 183, 3, 0.06) 0%, transparent 45%);
     }
 
     .container {
       width: 100%;
       max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    /* Event Hero Header */
-    .hero-banner {
+    /* Header Section */
+    .header-box {
+      text-align: center;
       background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 24px 20px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      padding: 24px 16px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
-    .hero-banner::before {
+    .header-box::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; height: 4px;
+      top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold), var(--accent-teal));
     }
-    .badge-event {
-      display: inline-block;
-      background: rgba(100, 223, 223, 0.12);
+    .header-box h1 {
       color: var(--accent-cyan);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.6px;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      border: 1px solid rgba(100, 223, 223, 0.25);
-    }
-    .hero-banner h1 {
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: 0.5px;
-      color: #ffffff;
       margin-bottom: 4px;
     }
-    .hero-banner h2 {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--accent-gold);
-      margin-bottom: 12px;
+    .header-box h2 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #e0e1dd;
+      margin-bottom: 10px;
     }
-    .event-meta {
+    .header-meta {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
       font-size: 0.8rem;
       color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 12px;
     }
-    .event-meta span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* Welcome Section */
-    .welcome-card {
-      background: rgba(28, 37, 65, 0.6);
-      border: 1px dashed var(--border-color);
+    .meta-badge {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 10px;
       border-radius: 12px;
-      padding: 14px 18px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .welcome-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-    .welcome-text h3 {
-      font-size: 0.95rem;
-      color: var(--accent-cyan);
-      margin-bottom: 2px;
-    }
-    .welcome-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.35;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* 8-Tile Navigation Grid */
+    /* 8 Hub Cards Grid */
     .hub-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 14px;
-      margin-bottom: 25px;
     }
 
     .hub-card {
-      background: var(--bg-panel);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
-      padding: 20px 16px;
+      padding: 18px 14px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
       text-decoration: none;
       color: var(--text-main);
+      cursor: pointer;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s, border-color 0.2s;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
     .hub-card:active {
-      transform: scale(0.96);
+      transform: scale(0.97);
     }
     .hub-card:hover {
       border-color: var(--accent-cyan);
-      box-shadow: 0 8px 20px rgba(100, 223, 223, 0.2);
+      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.2);
     }
 
-    /* Primary Seating Tile Highlight */
+    /* Highlight Card for Seat & Reservation */
     .hub-card.primary {
-      background: linear-gradient(135deg, #1c2541 0%, #1e3a5f 100%);
+      grid-column: span 2;
+      background: linear-gradient(135deg, #1c2541 0%, #152238 100%);
       border: 1.5px solid var(--accent-cyan);
-      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.25);
+      box-shadow: 0 4px 16px rgba(100, 223, 223, 0.25);
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 18px 20px;
+      gap: 16px;
     }
-    .hub-card.primary:hover {
-      box-shadow: 0 10px 25px rgba(100, 223, 223, 0.4);
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      width: 48px;
-      height: 48px;
+    .hub-card.primary .card-icon {
+      font-size: 2.2rem;
+      background: rgba(100, 223, 223, 0.15);
+      border-radius: 12px;
+      padding: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .hub-card.primary .card-icon {
-      background: rgba(100, 223, 223, 0.15);
-      border-color: rgba(100, 223, 223, 0.3);
+    .hub-card.primary .card-text h3 {
+      color: var(--accent-cyan);
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .hub-card.primary .card-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Standard Cards */
+    .card-icon {
+      font-size: 2rem;
     }
     .card-title {
-      font-size: 1.02rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-    .card-desc {
-      font-size: 0.75rem;
+    .card-subtitle {
+      font-size: 0.72rem;
       color: var(--text-muted);
-      line-height: 1.35;
-    }
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 0.62rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 3px 8px;
-      border-radius: 20px;
-    }
-    .badge-live {
-      background: rgba(82, 183, 136, 0.2);
-      color: var(--accent-green);
-      border: 1px solid rgba(82, 183, 136, 0.4);
-    }
-    .badge-hot {
-      background: rgba(255, 183, 3, 0.2);
-      color: var(--accent-gold);
-      border: 1px solid rgba(255, 183, 3, 0.4);
-    }
-    .badge-fun {
-      background: rgba(255, 77, 109, 0.2);
-      color: var(--accent-pink);
-      border: 1px solid rgba(255, 77, 109, 0.4);
-    }
-    .badge-new {
-      background: rgba(157, 78, 221, 0.2);
-      color: var(--accent-purple);
-      border: 1px solid rgba(157, 78, 221, 0.4);
+      line-height: 1.2;
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      padding: 10px 0 25px;
-      line-height: 1.5;
-    }
-
-    /* Modal / Popups */
+    /* Modals for secondary actions */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
       display: none;
       justify-content: center;
       align-items: center;
@@ -259,755 +185,588 @@
     .modal-overlay.active {
       display: flex;
     }
-    .modal-content {
-      background: var(--bg-panel);
-      border: 1px solid var(--accent-teal);
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
       width: 100%;
-      max-width: 550px;
-      max-height: 88vh;
+      max-width: 520px;
+      max-height: 85vh;
       overflow-y: auto;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      padding: 22px;
-      position: relative;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-
-    /* Top Modal Navigation & Back Button */
-    .modal-nav-bar {
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .back-panel-btn {
+    .modal-nav-back {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(100, 223, 223, 0.12);
+      background: rgba(100, 223, 223, 0.15);
       color: var(--accent-cyan);
       border: 1px solid rgba(100, 223, 223, 0.35);
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
-    .back-panel-btn:hover {
+    .modal-nav-back:hover {
       background: var(--accent-cyan);
-      color: #0b132b;
+      color: var(--bg-main);
     }
-    .close-btn {
+    .modal-close {
       background: none;
       border: none;
-      font-size: 1.5rem;
       color: var(--text-muted);
+      font-size: 1.6rem;
       cursor: pointer;
-      line-height: 1;
-      padding: 0 4px;
     }
-    .close-btn:hover {
-      color: #ffffff;
+    .modal-content {
+      font-size: 0.9rem;
+      color: #e0e1dd;
+      line-height: 1.5;
     }
 
-    .modal-header h3 {
-      font-size: 1.25rem;
+    /* Modal Navigation Back Button at Footer */
+    .modal-bottom-bar {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: center;
+    }
+    .btn-return-main {
+      width: 100%;
+      padding: 12px;
+      background: rgba(100, 223, 223, 0.15);
+      border: 1px solid var(--accent-cyan);
       color: var(--accent-cyan);
-      margin-bottom: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      transition: all 0.2s ease;
     }
-    .modal-header p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-    .modal-body {
-      font-size: 0.86rem;
-      line-height: 1.5;
-      color: #e0e1dd;
+    .btn-return-main:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-main);
     }
 
-    /* Timeline Styling */
-    .timeline-container {
+    /* Timeline in Schedule */
+    .timeline {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
-    .timeline-item {
+    .time-slot {
       display: flex;
       gap: 12px;
-      padding: 10px;
       background: rgba(255, 255, 255, 0.03);
+      padding: 10px 12px;
       border-radius: 8px;
       border-left: 3px solid var(--accent-teal);
     }
-    .timeline-item.highlight {
-      background: rgba(255, 183, 3, 0.08);
-      border-left-color: var(--accent-gold);
-    }
-    .timeline-time {
+    .time-val {
       font-weight: 700;
       color: var(--accent-gold);
-      min-width: 70px;
-      font-size: 0.82rem;
-      padding-top: 2px;
+      min-width: 65px;
+      font-size: 0.85rem;
     }
-    .timeline-desc strong {
-      color: #ffffff;
-      display: block;
-      font-size: 0.88rem;
-      margin-bottom: 2px;
-    }
-    .timeline-desc span {
-      color: var(--text-muted);
-      font-size: 0.76rem;
-      line-height: 1.3;
-      display: block;
+    .time-desc {
+      font-size: 0.85rem;
     }
 
-    .info-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 12px;
-    }
-
-    /* Bottom Back Button */
-    .bottom-back-action {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--accent-cyan);
-      border: 1px solid var(--border-color);
-      font-weight: 700;
-      border-radius: 8px;
-      margin-top: 18px;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.2s ease;
-    }
-    .bottom-back-action:hover {
-      background: rgba(100, 223, 223, 0.15);
-      border-color: var(--accent-cyan);
-    }
-
-    /* Committee Grid & Cards */
+    /* Committee Grid */
     .committee-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
     }
-    @media (max-width: 440px) {
-      .committee-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .committee-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 12px;
+    .comm-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px 10px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      transition: transform 0.2s, border-color 0.2s;
+      gap: 10px;
     }
-    .committee-card:hover {
-      border-color: var(--accent-gold);
-      transform: translateY(-2px);
-    }
-    .committee-avatar {
-      width: 54px;
-      height: 54px;
+    .comm-avatar-frame {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
       border-radius: 50%;
-      object-fit: cover;
+      background: #151d38;
       border: 2px solid var(--accent-cyan);
-      flex-shrink: 0;
-      background: #1c2541;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
     }
-    .committee-info {
+    .comm-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .comm-details {
       flex: 1;
-      min-width: 0;
+      overflow: hidden;
     }
-    .committee-name {
-      font-size: 0.88rem;
+    .comm-name {
+      font-size: 0.85rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #fff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .committee-dept {
-      font-size: 0.72rem;
+    .comm-dept {
+      font-size: 0.68rem;
       color: var(--accent-teal);
-      margin-top: 1px;
     }
-    .committee-role {
+    .comm-role-pill {
       display: inline-block;
-      margin-top: 4px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 10px;
+      margin-top: 3px;
       background: rgba(255, 183, 3, 0.15);
       color: var(--accent-gold);
       border: 1px solid rgba(255, 183, 3, 0.3);
-      white-space: nowrap;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    /* Interactive Game Card */
+    .game-box {
+      text-align: center;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      border: 1px dashed var(--border-color);
+    }
+    .lucky-token {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--accent-gold);
+      margin: 12px 0;
+      text-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
+    }
+    .btn-action {
+      background: var(--accent-cyan);
+      color: var(--bg-main);
+      border: none;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+    .btn-action:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 8px;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <!-- Hero Banner -->
-  <header class="hero-banner">
-    <div class="badge-event">Intel Supply Chain Malaysia</div>
-    <h1>Annual Dinner 2026</h1>
-    <h2>Evening of Appreciation & Celebration</h2>
-
-    <div class="event-meta">
-      <span>📍 Grand Ballroom</span>
-      <span>⏰ 5:30 PM - 10:30 PM</span>
+  <!-- Header -->
+  <header class="header-box">
+    <h1>INTEL SUPPLY CHAIN MALAYSIA</h1>
+    <h2>Annual Dinner 2026</h2>
+    <div class="header-meta">
+      <span class="meta-badge">📍 Grand Ballroom</span>
+      <span class="meta-badge">⏰ 5:30 PM - 10:30 PM</span>
+      <span class="meta-badge">✨ 360 Guests</span>
     </div>
   </header>
 
-  <!-- Welcome Card -->
-  <div class="welcome-card">
-    <div class="welcome-icon">✨</div>
-    <div class="welcome-text">
-      <h3>Welcome, SCM Team!</h3>
-      <p>Tap any of the 8 event cards below to check your table seat, view the timeline, and join tonight's games.</p>
-    </div>
-  </div>
-
-  <!-- 8 Action Cards Navigation Hub -->
+  <!-- 8 Hub Cards -->
   <main class="hub-grid">
-
-    <!-- 1. Seat & Reservation (Direct Link to seating.html) -->
+    <!-- 1. Seat & Reservation (Direct Link) -->
     <a href="seating.html" class="hub-card primary">
-      <span class="card-badge badge-live">Live Map</span>
       <div class="card-icon">🪑</div>
-      <div class="card-title">Seat & Reservation</div>
-      <div class="card-desc">Find your assigned table, seat number & ballroom floor map.</div>
+      <div class="card-text">
+        <h3>Seat & Reservation</h3>
+        <p>Find your assigned table & view ballroom layout</p>
+      </div>
     </a>
 
     <!-- 2. Event Schedule -->
-    <div class="hub-card" onclick="openModal('schedule')">
-      <span class="card-badge badge-hot">5:30 - 10:30 PM</span>
-      <div class="card-icon">🕒</div>
+    <div class="hub-card" onclick="openModal('modalSchedule')">
+      <div class="card-icon">📅</div>
       <div class="card-title">Event Schedule</div>
-      <div class="card-desc">High-level event run sheet, speeches, performances & draws.</div>
+      <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
     </div>
 
     <!-- 3. Lucky Draw -->
-    <div class="hub-card" onclick="openModal('luckyDraw')">
-      <span class="card-badge badge-hot">3 Sessions</span>
+    <div class="hub-card" onclick="openModal('modalLucky')">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
-      <div class="card-desc">Session 1, Session 2, and Grand Lucky Draw prize rounds.</div>
+      <div class="card-subtitle">Prizes, tiers & guidelines</div>
     </div>
 
     <!-- 4. Performance -->
-    <div class="hub-card" onclick="openModal('performance')">
-      <span class="card-badge badge-fun">Showcase</span>
-      <div class="card-icon">🎭</div>
+    <div class="hub-card" onclick="openModal('modalPerformance')">
+      <div class="card-icon">🎤</div>
       <div class="card-title">Performance</div>
-      <div class="card-desc">Live band sets, opening ceremony & team talent showcases.</div>
+      <div class="card-subtitle">Live band & talent acts</div>
     </div>
 
     <!-- 5. Photobooths -->
-    <div class="hub-card" onclick="openModal('photobooth')">
-      <span class="card-badge badge-fun">Memories</span>
+    <div class="hub-card" onclick="openModal('modalPhotobooth')">
       <div class="card-icon">📸</div>
       <div class="card-title">Photobooths</div>
-      <div class="card-desc">Red carpet registration photo zone & instant print keepsakes.</div>
+      <div class="card-subtitle">360 Cam & instant prints</div>
     </div>
 
     <!-- 6. Try Your Luck -->
-    <div class="hub-card" onclick="openModal('minigame')">
-      <span class="card-badge badge-new">Interactive</span>
-      <div class="card-icon">🎲</div>
+    <div class="hub-card" onclick="openModal('modalTryLuck')">
+      <div class="card-icon">🎰</div>
       <div class="card-title">Try Your Luck</div>
-      <div class="card-desc">Interactive stage games, trivia challenges & door gifts.</div>
+      <div class="card-subtitle">Door gift code & games</div>
     </div>
 
     <!-- 7. Event Committee -->
-    <div class="hub-card" onclick="openModal('committee')">
-      <span class="card-badge badge-live">Organizers</span>
+    <div class="hub-card" onclick="openModal('modalCommittee')">
       <div class="card-icon">👥</div>
       <div class="card-title">Event Committee</div>
-      <div class="card-desc">Meet the organizing leads and dedicated planning committee.</div>
+      <div class="card-subtitle">Organizing team directory</div>
     </div>
 
     <!-- 8. Mystery -->
-    <div class="hub-card" onclick="openModal('mystery')">
-      <span class="card-badge badge-new">Surprise</span>
-      <div class="card-icon">🔮</div>
+    <div class="hub-card" onclick="openModal('modalMystery')">
+      <div class="card-icon">✨</div>
       <div class="card-title">Mystery</div>
-      <div class="card-desc">Special surprise reveal & spontaneous evening moments.</div>
+      <div class="card-subtitle">Special surprise reveal</div>
     </div>
-
   </main>
 
   <footer>
-    Intel Supply Chain Malaysia (SCM) &bull; Annual Dinner 2026<br>
-    Please approach any floor marshal or the registration counter for assistance.
+    Intel Supply Chain Malaysia • Annual Dinner 2026
   </footer>
 </div>
 
-<!-- Dynamic Modal Popup with Back Button -->
-<div class="modal-overlay" id="hubModal" onclick="closeModalOnBackdrop(event)">
-  <div class="modal-content">
-    <div class="modal-nav-bar">
-      <button class="back-panel-btn" onclick="closeModal()">
-        ← Back to Main Panel
-      </button>
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-    </div>
+<!-- ================= MODALS ================= -->
+
+<!-- Modal: Event Schedule -->
+<div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
     <div class="modal-header">
-      <h3 id="modalTitle">Details</h3>
-      <p id="modalSubtitle">Event Information</p>
+      <button class="modal-nav-back" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalSchedule')">&times;</button>
     </div>
-    <div class="modal-body" id="modalBody">
-      <!-- Injected dynamically via JS -->
+    <div class="modal-content">
+      <div class="timeline">
+        <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
+        <div class="time-slot"><div class="time-val">6:25 PM</div><div class="time-desc">Final Call &amp; Seating in Ballroom</div></div>
+        <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Grand Opening Session</div></div>
+        <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
+        <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
+        <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
+        <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
+        <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
+        <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
+        <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
+        <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
+        <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
+        <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
+        <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
+        <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
+        <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
+        <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
+        <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
+        <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
+        <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
+      </div>
     </div>
-    <button class="bottom-back-action" onclick="closeModal()">
-      ← Back to Main Panel
-    </button>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Lucky Draw -->
+<div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
+    </div>
+    <div class="modal-content">
+      <p style="margin-bottom: 12px;">Get ready for an exciting night with <strong>72 prize positions</strong> up for grabs across multiple drawing rounds!</p>
+      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+        <h4 style="color: var(--accent-gold);">🎁 Session 1 (6:55 PM)</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 revealed live on the side LED displays.</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+        <h4 style="color: var(--accent-cyan);">🎁 Session 2 (8:10 PM)</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 drawn during the second band set.</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
+        <h4 style="color: #ff4d6d;">🏆 Grand Lucky Draw (9:48 PM - 10:13 PM)</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted);">The Top 10 Grand Prizes drawn live on stage using the interactive balloon app!</p>
+      </div>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Performance -->
+<div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
+    </div>
+    <div class="modal-content">
+      <p style="margin-bottom: 14px;">Tonight features three high-energy sets by our live band and volunteer showcases from across our organization:</p>
+      <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px;">
+        <li><strong>Opening Session</strong> (6:30 PM)</li>
+        <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
+        <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
+        <li><strong>Internal Performance 2</strong> (8:00 PM - 8:10 PM)</li>
+        <li><strong>Live Band Set 2</strong> (8:10 PM - 8:43 PM)</li>
+        <li><strong>Internal Performance 3</strong> (8:53 PM - 9:03 PM)</li>
+        <li><strong>Live Band Finale Set 3</strong> (9:18 PM - 9:48 PM)</li>
+      </ul>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Photobooth -->
+<div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalPhotobooth')">&times;</button>
+    </div>
+    <div class="modal-content">
+      <h4 style="color: var(--accent-cyan); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
+      <p style="margin-bottom: 10px;">Capture the memories of the night with your colleagues at the foyer entrance before dinner commences.</p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">
+        • Available from 5:30 PM to 8:30 PM in the grand ballroom foyer.<br>
+        • Unlimited 4R photo printouts with customized SCM 2026 frames.<br>
+        • Instant QR download for digital video clips to share on social media.
+      </p>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Try Your Luck -->
+<div class="modal-overlay" id="modalTryLuck" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalTryLuck')">&times;</button>
+    </div>
+    <div class="modal-content">
+      <div class="game-box">
+        <p>Tap below to reveal your lucky digital token for tonight's special door gift redemption:</p>
+        <div class="lucky-token" id="tokenDisplay">????</div>
+        <button class="btn-action" onclick="generateToken()">Roll Lucky Number</button>
+      </div>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalTryLuck')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Event Committee -->
+<div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalCommittee')">&times;</button>
+    </div>
+    <div class="modal-content">
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
+        Meet the dedicated team behind the Intel Supply Chain Malaysia Annual Dinner 2026:
+      </p>
+      <div class="committee-grid" id="committeeGrid">
+        <!-- Rendered dynamically by script -->
+      </div>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Mystery -->
+<div class="modal-overlay" id="modalMystery" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalMystery')">&times;</button>
+    </div>
+    <div class="modal-content" style="text-align: center; padding: 10px 0;">
+      <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
+      <h3 style="color: var(--accent-gold); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
+      <p style="color: #e0e1dd; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+        A special moment awaits our dinner guests at <strong>9:03 PM</strong>!<br>
+        Fortune favors those who pay attention to their surroundings.
+      </p>
+      <div style="background: rgba(255, 183, 3, 0.1); border: 1px dashed var(--accent-gold); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: var(--accent-gold);">
+        Stay at your assigned tables throughout the evening banquet for the spontaneous reveal!
+      </div>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
+    </div>
   </div>
 </div>
 
 <script>
-  // Corrected Committee Data with accurate roles and repository image filenames
+  // Roster with exact image filenames from your repository
   const COMMITTEE_MEMBERS = [
-    {
-      name: "Suryakandh Kalimutu",
-      dept: "SCPO-CPOG",
-      role: "Committee Lead",
-      photo: "Suryakandh Kalimutu.png"
-    },
-    {
-      name: "Jeff Heah Jun Jie",
-      dept: "GSCO-CPOG",
-      role: "Committee Lead / Lucky Draw & Games",
-      photo: "Heah Jeff.jpg"
-    },
-    {
-      name: "Dylan Leong Chat Lun",
-      dept: "GSCO-CPOG",
-      role: "Lucky Draw & Games",
-      photo: "Dylan Leong.png"
-    },
-    {
-      name: "Christine Woo",
-      dept: "GSCO-CPOG",
-      role: "Vendor Coordinator",
-      photo: "Christine Woo.png"
-    },
-    {
-      name: "Kasturi Krishnan",
-      dept: "SCPO-CPOG",
-      role: "Vendor Coordinator",
-      photo: "Kasturi Krishnan.png"
-    },
-    {
-      name: "Teoh Pei Fen",
-      dept: "GSCO-CPOG",
-      role: "Door Gift Lead",
-      photo: "Teoh Pei Fen.png"
-    },
-    {
-      name: "Lee Swee Hoon",
-      dept: "GSCO-CPOG",
-      role: "Door Gift Lead",
-      photo: "Lee Swee Hoon.png"
-    },
-    {
-      name: "Celine Yap Y Mendoza",
-      dept: "GSCO-CPOG",
-      role: "Emcee & Stage Host",
-      photo: "Celine Yap Y Mendoza.jpg"
-    },
-    {
-      name: "Chiravong A Ne Chin",
-      dept: "FCS-Intel Foundry",
-      role: "Emcee & Stage Host",
-      photo: "Chiravong A Ne chin.png"
-    },
-    {
-      name: "Eugene Loke Shiuk Ming",
-      dept: "FCSP-Intel Foundry",
-      role: "Media & Photography",
-      photo: "Eugene Loke Shiuk Ming.jpg"
-    },
-    {
-      name: "Jenson Oh",
-      dept: "IFA-Intel Foundry",
-      role: "Media & Photography",
-      photo: "Jenson Oh.jpeg"
-    },
-    {
-      name: "Azri Mohd Khanil",
-      dept: "FIFA-Intel Foundry",
-      role: "Media & Photography",
-      photo: "Azri Mohd Khanil.jpg"
-    },
-    {
-      name: "Abbie Yen Ting Koo",
-      dept: "IFA-Intel Foundry",
-      role: "Performance Lead",
-      photo: "Abbie Yen Ting Koo.jpg"
-    },
-    {
-      name: "Syed Nasir Mohamed",
-      dept: "IFA-Intel Foundry",
-      role: "Event Operations",
-      photo: "Syed Nasir Mohamed.png"
-    },
-    {
-      name: "Hakim Ab Razak",
-      dept: "FCSP-Intel Foundry",
-      role: "Event Operations",
-      photo: "Hakim Ab Razak.png"
-    },
-    {
-      name: "Catherine Lim",
-      dept: "FCS-Intel Foundry",
-      role: "Event Operations",
-      photo: "Catherine Lim.png"
-    },
-    {
-      name: "Chan Kl Chan",
-      dept: "FCS-Intel Foundry",
-      role: "Event Operations",
-      photo: "Chan Kl Chan.png"
-    }
+    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png" },
+    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg" },
+    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png" },
+    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png" },
+    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png" },
+    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png" },
+    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png" },
+    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg" },
+    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png" },
+    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg" },
+    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg" },
+    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg" },
+    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg" },
+    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png" },
+    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "hakim Ab Razak.png" },
+    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png" },
+    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png" }
   ];
 
-  function handleImageError(img, baseFilename, memberName) {
-    const rawName = baseFilename.substring(0, baseFilename.lastIndexOf('.'));
-    const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG'];
-    
-    let attemptIndex = parseInt(img.dataset.attempt || '0', 10);
-    
-    if (attemptIndex < extensions.length) {
-      const nextExt = extensions[attemptIndex];
-      img.dataset.attempt = (attemptIndex + 1).toString();
-      img.src = encodeURI(rawName + nextExt);
+  function getInitials(name) {
+    const parts = name.split(' ');
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
+  }
+
+  // Multi-tier fallback scanner to handle lowercase/uppercase and format differences
+  function handleImageError(img, name) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+
+    const baseName = name.trim();
+    const cleanBase = baseName.replace(/ /g, '%20');
+
+    if (attempt === 0) {
+      // Attempt 1: lowercase first character
+      const lowerFirst = baseName.charAt(0).toLowerCase() + baseName.slice(1);
+      img.src = encodeURI(lowerFirst + '.png');
+    } else if (attempt === 1) {
+      // Attempt 2: Uppercase first character .png
+      const upperFirst = baseName.charAt(0).toUpperCase() + baseName.slice(1);
+      img.src = encodeURI(upperFirst + '.png');
+    } else if (attempt === 2) {
+      // Attempt 3: Uppercase .jpg
+      img.src = encodeURI(baseName + '.jpg');
+    } else if (attempt === 3) {
+      // Attempt 4: Uppercase .jpeg
+      img.src = encodeURI(baseName + '.jpeg');
     } else {
-      img.onerror = null;
-      img.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=1c2541&color=64dfdf&bold=true`;
+      // Fallback: render initials circle
+      const parent = img.parentElement;
+      if (parent) {
+        parent.innerHTML = getInitials(name);
+      }
     }
   }
 
-  function renderCommitteeHtml() {
-    let html = `
-      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-        A heartfelt tribute to the committee leads and operations teams who organized tonight's celebration:
-      </p>
-      <div class="committee-grid">
-    `;
+  function renderCommitteeGrid() {
+    const container = document.getElementById('committeeGrid');
+    if (!container) return;
+    let html = '';
 
     COMMITTEE_MEMBERS.forEach(m => {
+      const initials = getInitials(m.name);
+      const encodedSrc = encodeURI(m.photo);
       html += `
-        <div class="committee-card">
-          <img class="committee-avatar" 
-               src="${encodeURI(m.photo)}" 
-               alt="${m.name}" 
-               data-attempt="0"
-               onerror="handleImageError(this, '${m.photo}', '${m.name}')" />
-          <div class="committee-info">
-            <div class="committee-name">${m.name}</div>
-            <div class="committee-dept">${m.dept}</div>
-            <span class="committee-role">${m.role}</span>
+        <div class="comm-card">
+          <div class="comm-avatar-frame">
+            <img src="${encodedSrc}" 
+                 alt="${m.name}" 
+                 loading="lazy" 
+                 onerror="handleImageError(this, '${m.name.replace(/'/g, "\\'")}')" />
+          </div>
+          <div class="comm-details">
+            <div class="comm-name" title="${m.name}">${m.name}</div>
+            <div class="comm-dept">${m.dept}</div>
+            <span class="comm-role-pill">${m.role}</span>
           </div>
         </div>
       `;
     });
-
-    html += `</div>`;
-    return html;
+    container.innerHTML = html;
   }
 
-  // High-level content dictionary derived from the official Run Sheet
-  const MODAL_CONTENT = {
-    schedule: {
-      title: "🕒 Event Rundown",
-      subtitle: "Official Evening Programme (5:30 PM - 10:30 PM)",
-      body: `
-        <div class="timeline-container">
-          <div class="timeline-item">
-            <div class="timeline-time">5:30 PM</div>
-            <div class="timeline-desc">
-              <strong>Registration, Photo Booth & Networking</strong>
-              <span>Guest arrival, networking, photo booth participation & foyer cocktail</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">6:25 PM</div>
-            <div class="timeline-desc">
-              <strong>Final Call & Seating</strong>
-              <span>Doors open to main ballroom, guests proceed to assigned tables & Opening Video</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">6:30 PM</div>
-            <div class="timeline-desc">
-              <strong>Opening Session</strong>
-              <span>Energetic opening sequence to kick off the dinner programme</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">6:40 PM</div>
-            <div class="timeline-desc">
-              <strong>Opening Speech by SCM Executive</strong>
-              <span>Leadership welcome address and opening remarks</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">6:49 PM</div>
-            <div class="timeline-desc">
-              <strong>Housekeeping & Buffet Service Opens</strong>
-              <span>Event housekeeping briefing & dinner buffet service commences</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">6:55 PM</div>
-            <div class="timeline-desc">
-              <strong>Live Band Set 1 + Lucky Draw Session 1</strong>
-              <span>First musical set & Lucky Draw announcement (Prize Positions 42 to 72)</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">7:30 PM</div>
-            <div class="timeline-desc">
-              <strong>Game 1: How Well Do You Know Your Workplace?</strong>
-              <span>Interactive workplace landmark photo quiz on mobile devices</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">7:40 PM</div>
-            <div class="timeline-desc">
-              <strong>Internal Performance 1</strong>
-              <span>First volunteer showcase performance from internal team</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">7:50 PM</div>
-            <div class="timeline-desc">
-              <strong>Game 2: When Big Wind Blows</strong>
-              <span>Audience reaction stage game</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">8:00 PM</div>
-            <div class="timeline-desc">
-              <strong>Internal Performance 2</strong>
-              <span>Second volunteer showcase vocal performance</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">8:10 PM</div>
-            <div class="timeline-desc">
-              <strong>Live Band Set 2 + Lucky Draw Session 2</strong>
-              <span>Second musical set & Lucky Draw announcement (Prize Positions 11 to 41)</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">8:43 PM</div>
-            <div class="timeline-desc">
-              <strong>Best Dressed Final Showcase & Awards</strong>
-              <span>Finalist runway walk, live audience QR voting & prize presentation</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">8:53 PM</div>
-            <div class="timeline-desc">
-              <strong>Internal Performance 3</strong>
-              <span>Final volunteer musical showcase performance</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">9:03 PM</div>
-            <div class="timeline-desc">
-              <strong>Mystery Surprise Reveal</strong>
-              <span>A spontaneous surprise moment for attendees across the ballroom</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">9:08 PM</div>
-            <div class="timeline-desc">
-              <strong>Game 3: The Black Box Mystery</strong>
-              <span>Tactile guessing challenge for stage volunteers</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">9:18 PM</div>
-            <div class="timeline-desc">
-              <strong>Live Band Set 3 - High Energy Finale</strong>
-              <span>Third and final live band performance set</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">9:48 PM</div>
-            <div class="timeline-desc">
-              <strong>Grand Lucky Draw (Prize Positions 10 to 6)</strong>
-              <span>First round of Top 10 Grand Lucky Draw prizes</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">9:58 PM</div>
-            <div class="timeline-desc">
-              <strong>All-Attendees Group Photo</strong>
-              <span>Full commemorative gathering photo on stage</span>
-            </div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">10:03 PM</div>
-            <div class="timeline-desc">
-              <strong>Grand Lucky Draw Finale (Prize Positions 5 to 1)</strong>
-              <span>Final countdown to the Grand Prize winner of the evening</span>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">10:13 PM</div>
-            <div class="timeline-desc">
-              <strong>Closing Remarks & Farewell</strong>
-              <span>Appreciation address, prize redemption instructions & event conclusion</span>
-            </div>
-          </div>
-        </div>
-      `
-    },
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.classList.add('active');
+  }
 
-    luckyDraw: {
-      title: "🎁 Lucky Draw Structure",
-      subtitle: "Over 70 exciting prizes throughout the evening",
-      body: `
-        <div class="info-card">
-          <strong style="color: var(--accent-cyan); display: block; margin-bottom: 4px;">Session 1 (6:55 PM)</strong>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">Drawing Prize Positions 42 to 72 on the side LED screens during Band Set 1.</span>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-teal); display: block; margin-bottom: 4px;">Session 2 (8:10 PM)</strong>
-          <span style="color: var(--text-muted); font-size: 0.8rem;">Drawing Prize Positions 11 to 41 during Band Set 2.</span>
-        </div>
-        <div class="info-card" style="border-color: var(--accent-gold);">
-          <strong style="color: var(--accent-gold); display: block; margin-bottom: 4px;">Grand Lucky Draw (9:48 PM & 10:03 PM)</strong>
-          <span style="color: #ffffff; font-size: 0.8rem;">Live on-stage reveal for Top 10 Grand Prizes (Positions 10 to 1).</span>
-        </div>
-        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 10px; text-align: center;">
-          ⚠️ <em>Winners must be present in the ballroom to verify and claim awards at the prize collection desk.</em>
-        </p>
-      `
-    },
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.classList.remove('active');
+  }
 
-    performance: {
-      title: "🎭 Evening Performances",
-      subtitle: "Live entertainment & team talent lineup",
-      body: `
-        <div class="info-card">
-          <strong style="color: var(--accent-pink);">🌟 Special Opening Session (6:30 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">The official opening sequence immediately following the dinner opening video.</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-cyan);">🎸 Live Band Performance Sets</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Three dedicated sets throughout dinner: Opening Set (6:55 PM), Mid-Dinner Set (8:10 PM), and High Energy Finale (9:18 PM).</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-gold);">🎤 Internal Team Showcases</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Three special volunteer showcase performances from our Supply Chain business groups.</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-teal);">👑 Best Dressed Runway (8:43 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Final showcase for Gentlemen and Ladies finalists with live audience QR voting.</p>
-        </div>
-      `
-    },
-
-    photobooth: {
-      title: "📸 Photo Booths & Memories",
-      subtitle: "Capture and keep your dinner highlights",
-      body: `
-        <div class="info-card">
-          <strong style="color: var(--accent-cyan);">Red Carpet & Photo Booth Foyer (5:30 PM - 6:30 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Commemorative backdrop photo sessions with instant printouts available upon arrival.</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-gold);">Official Grand Group Photo (9:58 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">All attendees will assemble at the main stage for the full annual dinner group portrait.</p>
-        </div>
-        <p style="font-size: 0.8rem; color: var(--accent-green); text-align: center; margin-top: 10px;">High-resolution digital photos will be available for download post-event.</p>
-      `
-    },
-
-    minigame: {
-      title: "🎲 Interactive Stage Games",
-      subtitle: "Three fun challenges scheduled tonight",
-      body: `
-        <div class="info-card">
-          <strong style="color: var(--accent-cyan);">Game 1: Workplace Landmark Quiz (7:30 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Test how well you know the campus via an interactive mobile quiz game.</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-teal);">Game 2: When Big Wind Blows (7:50 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Fast-paced stage reaction challenge for volunteers.</p>
-        </div>
-        <div class="info-card">
-          <strong style="color: var(--accent-gold);">Game 3: The Black Box Mystery (9:08 PM)</strong>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 3px;">Tactile guessing game where participants identify hidden mystery items.</p>
-        </div>
-      `
-    },
-
-    committee: {
-      title: "👥 Organizing Committee 2026",
-      subtitle: "Supply Chain Malaysia Annual Dinner Organizing Team",
-      body: renderCommitteeHtml()
-    },
-
-    mystery: {
-      title: "🔮 Mystery Surprise",
-      subtitle: "Surprise reveals during the evening",
-      body: `
-        <div class="info-card" style="border-color: var(--accent-purple); text-align: center; padding: 20px 14px;">
-          <div style="font-size: 2.5rem; margin-bottom: 6px;">✨</div>
-          <strong style="color: var(--accent-purple); font-size: 1.05rem; display: block;">Spontaneous Ballroom Surprise (9:03 PM)</strong>
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 8px; line-height: 1.4;">
-            Something unexpected is planned across the ballroom tables right after the performances. Stay at your table and be ready!
-          </p>
-        </div>
-        <p style="font-size: 0.78rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
-          🤫 <em>Fortune favors the attentive — keep your eyes and ears open!</em>
-        </p>
-      `
+  function closeOnBackdrop(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.classList.remove('active');
     }
-  };
-
-  function openModal(type) {
-    const data = MODAL_CONTENT[type];
-    if (!data) return;
-
-    document.getElementById('modalTitle').innerHTML = data.title;
-    document.getElementById('modalSubtitle').textContent = data.subtitle;
-    document.getElementById('modalBody').innerHTML = data.body;
-    document.getElementById('hubModal').classList.add('active');
   }
 
-  function closeModal() {
-    document.getElementById('hubModal').classList.remove('active');
+  function generateToken() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let token = '';
+    for (let i = 0; i < 4; i++) {
+      token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    document.getElementById('tokenDisplay').textContent = '#' + token;
   }
 
-  function closeModalOnBackdrop(e) {
-    if (e.target.id === 'hubModal') closeModal();
-  }
+  window.addEventListener('DOMContentLoaded', () => {
+    renderCommitteeGrid();
+  });
 </script>
 
 </body>
