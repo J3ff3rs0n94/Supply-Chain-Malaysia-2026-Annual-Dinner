@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SCM Annual Dinner 2026</title>
+  <title>SCM Annual Dinner 2026 (Corrected)</title>
   <style>
     :root {
       /* Black & Red Gala Theme */
@@ -186,7 +186,10 @@
       z-index: 9999;
       padding: 16px;
     }
-    .modal-overlay.active { display: flex; }
+    /* This is the key change: a modal becomes visible when it's the target of the URL's anchor */
+    .modal-overlay:target {
+      display: flex;
+    }
     .modal-box {
       background: #141013;
       border: 1px solid var(--accent-crimson);
@@ -206,9 +209,11 @@
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .modal-nav-back {
+    .modal-nav-back, .modal-close, .btn-return-main {
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       background: rgba(230, 57, 70, 0.15);
       color: var(--accent-ruby);
@@ -220,15 +225,16 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    .modal-nav-back:hover { background: var(--accent-crimson); color: #fff; }
+    .modal-nav-back:hover, .modal-close:hover, .btn-return-main:hover { background: var(--accent-crimson); color: #fff; }
+    
     .modal-close {
       background: none;
       border: none;
-      color: var(--text-muted);
       font-size: 1.6rem;
-      cursor: pointer;
+      padding: 0 8px;
+      border-radius: 50%;
     }
-    .modal-close:hover { color: #fff; }
+     .modal-close:hover { color: #fff; }
 
     .modal-bottom-bar {
       margin-top: 20px;
@@ -240,16 +246,9 @@
     .btn-return-main {
       width: 100%;
       padding: 12px;
-      background: rgba(230, 57, 70, 0.15);
-      border: 1px solid var(--accent-red);
-      color: var(--accent-ruby);
-      font-weight: 700;
       font-size: 0.9rem;
       border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
     }
-    .btn-return-main:hover { background: var(--accent-crimson); color: #fff; }
 
     /* Carousel in Modals */
     .carousel-container {
@@ -391,11 +390,11 @@
 
   <main class="hub-grid">
     <!-- 1. Event Details -->
-    <div class="hub-card card-details" onclick="openModal('modalDetails')">
+    <a href="#modalDetails" class="hub-card card-details">
       <div class="card-icon">ℹ️</div>
       <div class="card-title">Event Details</div>
       <div class="card-subtitle">Date, venue &amp; guide</div>
-    </div>
+    </a>
 
     <!-- 2. Seat & Reservation -->
     <a href="seating.html" class="hub-card card-seating">
@@ -405,32 +404,32 @@
     </a>
 
     <!-- 3. Event Schedule -->
-    <div class="hub-card" onclick="openModal('modalSchedule')">
+    <a href="#modalSchedule" class="hub-card">
       <div class="card-icon">📅</div>
       <div class="card-title">Event Schedule</div>
       <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
-    </div>
+    </a>
 
     <!-- 4. Lucky Draw -->
-    <div class="hub-card" onclick="openModal('modalLucky')">
+    <a href="#modalLucky" class="hub-card">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
       <div class="card-subtitle">Prizes, tiers &amp; guidelines</div>
-    </div>
+    </a>
 
     <!-- 5. Performance -->
-    <div class="hub-card card-performance" onclick="openModal('modalPerformance')">
+    <a href="#modalPerformance" class="hub-card card-performance">
       <div class="card-icon">🎤</div>
       <div class="card-title">Performance</div>
       <div class="card-subtitle">Live band &amp; talent acts</div>
-    </div>
+    </a>
 
     <!-- 6. Photobooths -->
-    <div class="hub-card" onclick="openModal('modalPhotobooth')">
+    <a href="#modalPhotobooth" class="hub-card">
       <div class="card-icon">📸</div>
       <div class="card-title">Photobooths</div>
       <div class="card-subtitle">360 Cam &amp; instant prints</div>
-    </div>
+    </a>
 
     <!-- 7. Try Your Luck -->
     <a href="try_your_luck.html" class="hub-card">
@@ -454,34 +453,34 @@
     </a>
 
     <!-- 10. Games -->
-    <div class="hub-card card-games" onclick="openModal('modalGames')">
+    <a href="#modalGames" class="hub-card card-games">
       <div class="card-icon">🎮</div>
       <div class="card-title">Games</div>
       <div class="card-subtitle">Stage quiz &amp; challenges</div>
-    </div>
+    </a>
 
     <!-- 11. Event Committee -->
-    <div class="hub-card" onclick="openModal('modalCommittee')">
+    <a href="#modalCommittee" class="hub-card">
       <div class="card-icon">👥</div>
       <div class="card-title">Event Committee</div>
       <div class="card-subtitle">Organizing team directory</div>
-    </div>
+    </a>
 
     <!-- 12. Mystery -->
-    <div class="hub-card" onclick="openModal('modalMystery')">
+    <a href="#modalMystery" class="hub-card">
       <div class="card-icon">✨</div>
       <div class="card-title">Mystery</div>
       <div class="card-subtitle">Special surprise reveal</div>
-    </div>
+    </a>
   </main>
 </div>
 
 <!-- Modal: Event Details -->
-<div class="modal-overlay" id="modalDetails" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalDetails">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalDetails')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalDetails')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <div style="display:flex; flex-direction:column; gap:16px;">
       <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
@@ -520,17 +519,17 @@
       </div>
     </div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalDetails')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Lucky Draw (Dynamically Generated 48 Slides) -->
-<div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalLucky">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     
     <div class="carousel-container" id="luckyCarousel">
@@ -546,17 +545,17 @@
     </div>
 
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Performance -->
-<div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalPerformance">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <div class="carousel-container" id="perfCarousel">
       <div class="carousel-track" id="perfTrack">
@@ -618,17 +617,17 @@
       <button class="carousel-btn" onclick="nextPerfSlide()">Next Act ▶</button>
     </div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Games -->
-<div class="modal-overlay" id="modalGames" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalGames">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalGames')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalGames')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <div class="carousel-container" id="gameCarousel">
       <div class="carousel-track" id="carouselTrack">
@@ -671,17 +670,17 @@
       <button class="carousel-btn" onclick="nextGameSlide()">Next Game ▶</button>
     </div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalGames')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Schedule (Standard Timeline) -->
-<div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalSchedule">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalSchedule')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <div class="timeline">
       <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
@@ -706,17 +705,17 @@
       <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
     </div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalSchedule')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Photobooth -->
-<div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalPhotobooth">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalPhotobooth')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <h4 style="color: var(--accent-ruby); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
     <p style="font-size:0.85rem; color:var(--text-muted); line-height: 1.6;">
@@ -725,32 +724,32 @@
       • Instant QR download for digital video clips.
     </p>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Committee -->
-<div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalCommittee">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalCommittee')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Meet the organizing committee behind Intel Supply Chain Malaysia Annual Dinner 2026:</p>
     <div class="committee-grid" id="committeeGrid"></div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalCommittee')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
 
 <!-- Modal: Mystery -->
-<div class="modal-overlay" id="modalMystery" onclick="closeOnBackdrop(event)">
+<div class="modal-overlay" id="modalMystery">
   <div class="modal-box">
     <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalMystery')">&times;</button>
+      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
+      <a href="#" class="modal-close">&times;</a>
     </div>
     <div style="text-align: center; padding: 10px 0;">
       <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
@@ -764,7 +763,7 @@
       </div>
     </div>
     <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalMystery')">← Back to Main Panel</button>
+      <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
   </div>
 </div>
@@ -825,14 +824,14 @@
     // Using DOM Elements to avoid parsing errors
     PRIZES.forEach((prizeObj, i) => {
       const isGrand = prizeObj.name === "Top Grand Prize";
-      const imgName = isGrand ? \`Prize\${i+1}.png\` : \`\${prizeObj.name}.png\`;
+      const imgName = isGrand ? `Prize${i+1}.png` : `${prizeObj.name}.png`;
       
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
       
       const badge = document.createElement('span');
       badge.className = 'game-badge';
-      badge.textContent = \`Prize Draw \${i + 1} / 48\`;
+      badge.textContent = `Prize Draw ${i + 1} / 48`;
       
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
@@ -875,7 +874,7 @@
       
       // Inject the 'x2', 'x6', etc. quantity badge if more than 1
       if(prizeObj.count > 1) {
-          title.innerHTML = \`\${prizeObj.name} <span style="font-size:0.8rem; color:var(--text-muted); vertical-align:middle; margin-left:6px;">x\${prizeObj.count}</span>\`;
+          title.innerHTML = `${prizeObj.name} <span style="font-size:0.8rem; color:var(--text-muted); vertical-align:middle; margin-left:6px;">x${prizeObj.count}</span>`;
       } else {
           title.textContent = prizeObj.name;
       }
@@ -893,8 +892,8 @@
   function updateLuckyCarousel() {
     const track = document.getElementById('luckyTrack');
     const counter = document.getElementById('luckyCounter');
-    if (track) track.style.transform = \`translateX(-\${currentLuckySlide * 100}%)\`;
-    if (counter) counter.innerText = \`\${currentLuckySlide + 1} / 48\`;
+    if (track) track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
+    if (counter) counter.innerText = `${currentLuckySlide + 1} / 48`;
   }
 
   function nextLuckySlide() {
@@ -1017,28 +1016,13 @@
     else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
   }
 
-  /* Modal Core Functions */
-  function openModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.classList.add('active');
-  }
-  function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.classList.remove('active');
-  }
-  function closeOnBackdrop(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-      e.target.classList.remove('active');
-    }
-  }
-
   /* Games Carousel */
   let currentGameSlide = 0;
   const totalGameSlides = 3;
   function updateGameCarousel() {
     const track = document.getElementById('carouselTrack');
     const dots = document.querySelectorAll('#carouselDots .carousel-dot');
-    if (track) track.style.transform = \`translateX(-\${currentGameSlide * 100}%)\`;
+    if (track) track.style.transform = `translateX(-${currentGameSlide * 100}%)`;
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentGameSlide);
     });
@@ -1053,7 +1037,7 @@
   function updatePerfCarousel() {
     const track = document.getElementById('perfTrack');
     const dots = document.querySelectorAll('#perfDots .carousel-dot');
-    if (track) track.style.transform = \`translateX(-\${currentPerfSlide * 100}%)\`;
+    if (track) track.style.transform = `translateX(-${currentPerfSlide * 100}%)`;
     dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === currentPerfSlide);
     });
