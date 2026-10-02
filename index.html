@@ -150,19 +150,19 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-    
+
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-    
+
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-    
+
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-    
+
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-    
+
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
@@ -324,7 +324,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-    
+
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -530,7 +530,7 @@
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-    
+
     <div class="carousel-container" id="luckyCarousel">
       <div class="carousel-track" id="luckyTrack">
         <!-- 48 Unique Slides are generated safely via JS -->
@@ -772,45 +772,56 @@
      48-SLIDE DE-DUPLICATED LUCKY DRAW RENDERER
      ========================================= */
   const PRIZES = [
-    ...Array(10).fill("Top Grand Prize"),
-    "70mai Dash Cam + Memory",
-    "Decathlon Compartment Bags",
-    "Decathlon Waterproof Bag",
-    "Elba Coffee Maker",
-    "Hooga Black Room Spray - Bergamot & Balsam",
-    "Hooga Black Room Spray - Kenya Yuzu",
-    "Hooga Black Room Spray - Ocean",
-    "Hooga Black Room Spray - Sea Salt",
-    "Hooga Black Room Spray - White Tea & Ginger",
-    "IKEA Microwave Oven (Black)",
-    "IKEA Microwave Oven (White)",
-    "Intel Tower Set",
-    "Jisulife Mini Portable Fan",
-    "Jollie Memory Microfibre Pillow",
-    "Li Ning AXForce Cannon",
-    "Miivio Blood Pressure Monitor",
-    "Mosquito Trap Lamp",
-    "MR DIY Premium Ice Box",
-    "Nitori Gas Aluminium Pot",
-    "Nitori Glass Container",
-    "Ogawa Curve Massage Gun",
-    "Outin Mino Portable Expresso Machine",
-    "Phillips Toaster",
-    "Plant Origins Aromatherapy Gift Set",
-    "Redmi Watch 6",
-    "Scosche MagicMount Magnetic Phone Holder",
-    "Sony Wireless Headphones",
-    "Sport Direct Yoga Mat",
-    "Universal Adapter",
-    "Urbanlite Tron 2.0 20inch",
-    "Urbanlite Tron 2.0 24inch",
-    "Urbanlite Tron 2.0 28inch",
-    "Utanking Foldable Hiking Stick",
-    "Utanking Portable Chair",
-    "Xiaomi Portable Blender",
-    "Xiaomi Portable Printer",
-    "Xiaomi Smart Air Purifier 4",
-    "Xiaomi Wireless Charger"
+    // Top 10 Grand Prizes
+    { name: "Top Grand Prize #1", file: "Prize1.png" },
+    { name: "Top Grand Prize #2", file: "Prize2.png" },
+    { name: "Top Grand Prize #3", file: "Prize3.png" },
+    { name: "Top Grand Prize #4", file: "Prize4.png" },
+    { name: "Top Grand Prize #5", file: "Prize5.png" },
+    { name: "Top Grand Prize #6", file: "Prize6.png" },
+    { name: "Top Grand Prize #7", file: "Prize7.png" },
+    { name: "Top Grand Prize #8", file: "Prize8.png" },
+    { name: "Top Grand Prize #9", file: "Prize9.png" },
+    { name: "Top Grand Prize #10", file: "Prize10.png" },
+    // 38 Lucky Draw Prizes matched directly to uploaded GitHub filenames
+    { name: "70mai Dash Cam + Memory", file: "70mai Dash Cam + Memory.png" },
+    { name: "Decathlon Compartment Bag (6 sets)", file: "Decathlon Compartment Bag (6 sets).png" },
+    { name: "Decathlon Waterproof Bag", file: "Decathlon Waterproof Bag.png" },
+    { name: "Elba Coffee Maker", file: "Elba Coffee Maker.png" },
+    { name: "Hooga Black Room Spray - Bergamot & Balsam", file: "Hooga Black Room Spray - Bergamot & Balsam.png" },
+    { name: "Hooga Black Room Spray - Kenya Yuzu", file: "Hooga Black Room Spray - Kenya Yuzu.png" },
+    { name: "Hooga Black Room Spray - Ocean", file: "Hooga Black Room Spray - Ocean.png" },
+    { name: "Hooga Black Room Spray - Sea Salt", file: "Hooga Black Room Spray - Sea Salt.png" },
+    { name: "Hooga Black Room Spray - White Tea & Ginger", file: "Hooga Black Room Spray - White Tea & Ginger.png" },
+    { name: "IKEA Microwave Oven (Black)", file: "IKEA Microwave Oven (Black).png" },
+    { name: "IKEA Microwave Oven (White)", file: "IKEA Microwave Oven (White).png" },
+    { name: "Intel Tower Set (11 sets)", file: "Intel Tower Set (11 sets).jpg" },
+    { name: "Jisulife Mini Portable Fan", file: "Jisulife Mini Portable Fan.png" },
+    { name: "Jollie Memory Microfibre Pillow (2 sets)", file: "Jollie Memory Microfibre Pillow (2 sets).png" },
+    { name: "Li Ning AXForce Cannon (2 sets)", file: "Li Ning AXForce Cannon (2 sets).png" },
+    { name: "Miivio Blood Pressure Monitor (2 sets)", file: "Miivio Blood Pressure Monitor (2 sets).png" },
+    { name: "Mosquito Trap Lamp", file: "Mosquite Trap Lamp.png" },
+    { name: "MR DIY Premium Ice Box", file: "MR DIY Premium Ice Box.png" },
+    { name: "Nitori Gas Aluminium Pot", file: "Nitori Gas Aluminium Pot.png" },
+    { name: "Nitori Glass Container (2 sets)", file: "Nitori Glass Container (2 sets).png" },
+    { name: "Ogawa Curve Massage Gun", file: "Ogawa Curve Masssage Gun.png" },
+    { name: "Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png" },
+    { name: "Phillips Toaster", file: "Phillips Toaster.png" },
+    { name: "Plant Origins Aromatherapy Gift Set", file: "Plant Origins Aromatherapy Gift Set.png" },
+    { name: "Redmi Watch 6", file: "Redmi Watch 6.png" },
+    { name: "Scosche MagicMount Magnetic Phone Holder", file: "Scosche MagicMount Magnetic Phone Holder.png" },
+    { name: "Sony Wireless Headphones", file: "Sony Wireless Headphones.png" },
+    { name: "Sport Direct Pro Yoga Mat (2 sets)", file: "Sport Direct Pro Yoga Mat (2 sets).png" },
+    { name: "Universal Adapter (2 sets)", file: "Universal Adapter (2 sets).png" },
+    { name: "Urbanlite Tron 2.0 20inch", file: "Urbanlite Tron 2.0 20inch.jpg" },
+    { name: "Urbanlite Tron 2.0 24inch", file: "Urbanlite Tron 2.0 24inch.jpg" },
+    { name: "Urbanlite Tron 2.0 28inch", file: "Urbanlite Tron 2.0 28inch.jpg" },
+    { name: "Utanking Foldable Hiking Stick (2 sets)", file: "Utanking Foldable Hiking Stick ( 2 sets).png" },
+    { name: "Utanking Portable Chair (2 sets)", file: "Utanking Portable Chair (2 sets).png" },
+    { name: "Xiaomi Portable Blender (2 sets)", file: "Xiaomi Portable Blender (2 sets).png" },
+    { name: "Xiaomi Portable Printer", file: "Xiaomi Portable Printer.png" },
+    { name: "Xiaomi Smart Air Purifier 4", file: "Xiaomi Smart Air Purifier 4.png" },
+    { name: "Xiaomi Wireless Charger (4 sets)", file: "Xiaomi Wireless Charger (4 sets).png" }
   ];
 
   let currentLuckySlide = 0;
@@ -819,18 +830,18 @@
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
-    
-    PRIZES.forEach((prize, i) => {
-      const isGrand = i < 10;
-      const imgName = isGrand ? `Prize${i+1}.png` : `${prize}.png`;
-      
+
+    PRIZES.forEach((item, i) => {
+      const prizeName = typeof item === 'string' ? item : item.name;
+      const fileName = typeof item === 'string' ? (i < 10 ? `Prize${i+1}.png` : `${item}.png`) : item.file;
+
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-      
+
       const badge = document.createElement('span');
       badge.className = 'game-badge';
       badge.textContent = `Prize Draw ${i + 1} / 48`;
-      
+
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
       frame.style.background = 'transparent';
@@ -838,44 +849,48 @@
       frame.style.boxShadow = 'none';
       frame.style.height = '240px';
       frame.style.marginBottom = '0';
-      
+
       const img = document.createElement('img');
-      img.src = encodeURI(imgName + '?v=6');
-      img.alt = prize;
+      img.src = encodeURI(fileName);
+      img.alt = prizeName;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
-      img.dataset.imgname = imgName;
-      
+      img.dataset.filename = fileName;
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
-        const base = this.dataset.imgname.replace('.png', '');
-        
+        const rawFile = this.dataset.filename;
+        const dotIndex = rawFile.lastIndexOf('.');
+        const base = dotIndex !== -1 ? rawFile.substring(0, dotIndex) : rawFile;
+
         if (attempt === 0) {
-          this.src = encodeURI(base + '.jpg?v=6');
+          this.src = encodeURI(base + '.jpg');
         } else if (attempt === 1) {
-          this.src = encodeURI(base + '.jpeg?v=6');
+          this.src = encodeURI(base + '.jpeg');
         } else if (attempt === 2) {
-          this.src = encodeURI(base.toUpperCase() + '.PNG?v=6');
+          this.src = encodeURI(base + '.png');
+        } else if (attempt === 3) {
+          this.src = encodeURI(base + '.PNG');
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
       };
-      
+
       frame.appendChild(img);
-      
+
       const title = document.createElement('h3');
       title.className = 'game-title';
       title.style.color = 'var(--accent-gold)';
       title.style.fontSize = '1.3rem';
-      title.textContent = prize;
-      
+      title.textContent = prizeName;
+
       slide.appendChild(badge);
       slide.appendChild(frame);
       slide.appendChild(title);
       track.appendChild(slide);
     });
-    
+
     updateLuckyCarousel();
     setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   }
@@ -934,15 +949,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-      
+
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-      
+
       // Fallback for committee photos safely bound
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
@@ -957,32 +972,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-      
+
       avatarFrame.appendChild(img);
-      
+
       const details = document.createElement('div');
       details.className = 'comm-details';
-      
+
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-      
+
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-      
+
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-      
+
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-      
+
       card.appendChild(avatarFrame);
       card.appendChild(details);
-      
+
       container.appendChild(card);
     });
   }
