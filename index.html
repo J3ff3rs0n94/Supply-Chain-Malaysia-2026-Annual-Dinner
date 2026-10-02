@@ -186,7 +186,6 @@
       z-index: 9999;
       padding: 16px;
     }
-    /* This is the key change: a modal becomes visible when it's the target of the URL's anchor */
     .modal-overlay:target {
       display: flex;
     }
@@ -389,84 +388,61 @@
   </header>
 
   <main class="hub-grid">
-    <!-- 1. Event Details -->
     <a href="#modalDetails" class="hub-card card-details">
       <div class="card-icon">ℹ️</div>
       <div class="card-title">Event Details</div>
       <div class="card-subtitle">Date, venue &amp; guide</div>
     </a>
-
-    <!-- 2. Seat & Reservation -->
     <a href="seating.html" class="hub-card card-seating">
       <div class="card-icon">🪑</div>
       <div class="card-title">Seat &amp; Reservation</div>
       <div class="card-subtitle">Assigned table &amp; map</div>
     </a>
-
-    <!-- 3. Event Schedule -->
     <a href="#modalSchedule" class="hub-card">
       <div class="card-icon">📅</div>
       <div class="card-title">Event Schedule</div>
       <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
     </a>
-
-    <!-- 4. Lucky Draw -->
     <a href="#modalLucky" class="hub-card">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
       <div class="card-subtitle">Prizes, tiers &amp; guidelines</div>
     </a>
-
-    <!-- 5. Performance -->
     <a href="#modalPerformance" class="hub-card card-performance">
       <div class="card-icon">🎤</div>
       <div class="card-title">Performance</div>
       <div class="card-subtitle">Live band &amp; talent acts</div>
     </a>
-
-    <!-- 6. Photobooths -->
     <a href="#modalPhotobooth" class="hub-card">
       <div class="card-icon">📸</div>
       <div class="card-title">Photobooths</div>
       <div class="card-subtitle">360 Cam &amp; instant prints</div>
     </a>
-
-    <!-- 7. Try Your Luck -->
     <a href="try_your_luck.html" class="hub-card">
       <div class="card-icon">🎰</div>
       <div class="card-title">Try Your Luck</div>
       <div class="card-subtitle">Interactive Lucky Draw</div>
     </a>
-
-    <!-- 8. Vote The Best Dressed! -->
     <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
       <div class="card-icon">👑</div>
       <div class="card-title">Vote The Best Dressed!</div>
       <div class="card-subtitle">Cast your vote live ↗</div>
     </a>
-
-    <!-- 9. Post Your Photos! -->
     <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
       <div class="card-icon">📷</div>
       <div class="card-title">Post Your Photos!</div>
       <div class="card-subtitle">Supply Chain Channel ↗</div>
     </a>
-
-    <!-- 10. Games -->
     <a href="#modalGames" class="hub-card card-games">
       <div class="card-icon">🎮</div>
       <div class="card-title">Games</div>
       <div class="card-subtitle">Stage quiz &amp; challenges</div>
     </a>
-
-    <!-- 11. Event Committee -->
     <a href="#modalCommittee" class="hub-card">
       <div class="card-icon">👥</div>
       <div class="card-title">Event Committee</div>
       <div class="card-subtitle">Organizing team directory</div>
     </a>
-
-    <!-- 12. Mystery -->
     <a href="#modalMystery" class="hub-card">
       <div class="card-icon">✨</div>
       <div class="card-title">Mystery</div>
@@ -493,7 +469,6 @@
           <div><strong style="color:#fff;">Dress Code:</strong> <span style="color:var(--accent-ruby); font-weight:700;">Red &amp; Black 🔴⚫</span></div>
         </div>
       </div>
-      <!-- Parking Information -->
       <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-ruby);">
         <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 10px;">🚗 Parking Information</h3>
         <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
@@ -501,7 +476,6 @@
           <p><strong style="color:#fff;">Exit Procedure:</strong> When driving toward the exit gate, the barrier will automatically open for validated vehicles without requiring any additional ticket or card action.</p>
         </div>
       </div>
-      <!-- Mystery Game Alert -->
       <div style="background: rgba(230, 57, 70, 0.08); border-radius: 12px; padding: 16px; border: 1px dashed var(--accent-red);">
         <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 8px;">🎭 Mystery Game Alert!</h3>
         <p style="font-size: 0.85rem; color: #f1faee; line-height: 1.5; margin-bottom: 8px;">Your assigned seat number will be used for special mystery game activities throughout the evening, so please take note of your seat number.</p>
@@ -510,7 +484,6 @@
           🎉 <strong>Pro Tip:</strong> Remember your original seat number so you don't miss out on any surprises or prizes!
         </div>
       </div>
-      <!-- Share Your Moments -->
       <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
         <h3 style="color: var(--accent-gold-soft); font-size: 1.05rem; margin-bottom: 8px;">📷 Share Your Moments</h3>
         <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Capture and share your photos and videos on Yammer and social media using the official hashtag:</p>
@@ -524,26 +497,21 @@
   </div>
 </div>
 
-<!-- Modal: Lucky Draw (Dynamically Generated 48 Slides) -->
+<!-- Modal: Lucky Draw -->
 <div class="modal-overlay" id="modalLucky">
   <div class="modal-box">
     <div class="modal-header">
       <a href="#" class="modal-nav-back">← Back to Main Panel</a>
       <a href="#" class="modal-close">&times;</a>
     </div>
-    
     <div class="carousel-container" id="luckyCarousel">
-      <div class="carousel-track" id="luckyTrack">
-        <!-- 48 Unique Slides are generated safely via JS -->
-      </div>
+      <div class="carousel-track" id="luckyTrack"></div>
     </div>
-
     <div class="carousel-nav">
       <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
       <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 48</div>
       <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
     </div>
-
     <div class="modal-bottom-bar">
       <a href="#" class="btn-return-main">← Back to Main Panel</a>
     </div>
@@ -631,7 +599,6 @@
     </div>
     <div class="carousel-container" id="gameCarousel">
       <div class="carousel-track" id="carouselTrack">
-        <!-- Game 1 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 1 • Interactive Quiz</span>
           <div style="font-size: 2.8rem; margin: 6px 0;">🏢⚡</div>
@@ -640,7 +607,6 @@
             ⚠️ <strong>Heads Up:</strong> Be ready to scan the live QR code displayed on the main stage screen by the Emcee. <em>Speed and accuracy are key to taking the #1 spot!</em>
           </p>
         </div>
-        <!-- Game 2 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 2 • Stage Reaction</span>
           <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4)); animation: windSway 2s ease-in-out infinite alternate;">🍃💨🌪️</div>
@@ -649,7 +615,6 @@
             "When Big Wind Blows, it blows........"
           </p>
         </div>
-        <!-- Game 3 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 3 • The Mystery</span>
           <div style="width: 100px; height: 100px; background: linear-gradient(145deg, #1f1b20, #0a080a); border: 2px solid var(--accent-gold); border-radius: 14px; box-shadow: 0 0 24px rgba(255, 183, 3, 0.3); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 10px auto 14px auto;">🎁</div>
@@ -769,13 +734,10 @@
 </div>
 
 <script>
-  /* =========================================
-     48-SLIDE DE-DUPLICATED LUCKY DRAW RENDERER
-     ========================================= */
   const PRIZES = [
     ...Array(10).fill({name: "Top Grand Prize", count: 1}),
     {name: "70mai Dash Cam + Memory", count: 1},
-    {name: "Decathlon Compartment Bags", count: 6},
+    {name: "Decathlon Compartment Bag (6 sets)", count: 6},
     {name: "Decathlon Waterproof Bag", count: 1},
     {name: "Elba Coffee Maker", count: 1},
     {name: "Hooga Black Room Spray - Bergamot & Balsam", count: 1},
@@ -785,15 +747,15 @@
     {name: "Hooga Black Room Spray - White Tea & Ginger", count: 1},
     {name: "IKEA Microwave Oven (Black)", count: 1},
     {name: "IKEA Microwave Oven (White)", count: 1},
-    {name: "Intel Tower Set", count: 11},
+    {name: "Intel Tower Set (11 sets)", count: 11},
     {name: "Jisulife Mini Portable Fan", count: 1},
-    {name: "Jollie Memory Microfibre Pillow", count: 2},
-    {name: "Li Ning AXForce Cannon", count: 2},
-    {name: "Miivio Blood Pressure Monitor", count: 2},
+    {name: "Jollie Memory Microfibre Pillow (2 sets)", count: 2},
+    {name: "Li Ning AXforce Cannon (2 sets)", count: 2},
+    {name: "Miivio Blood Pressure Monitor (2 sets)", count: 2},
     {name: "Mosquito Trap Lamp", count: 1},
     {name: "MR DIY Premium Ice Box", count: 1},
     {name: "Nitori Gas Aluminium Pot", count: 1},
-    {name: "Nitori Glass Container", count: 2},
+    {name: "Nitori Glass Container (2 sets)", count: 2},
     {name: "Ogawa Curve Massage Gun", count: 1},
     {name: "Outin Mino Portable Expresso Machine", count: 1},
     {name: "Phillips Toaster", count: 1},
@@ -801,17 +763,17 @@
     {name: "Redmi Watch 6", count: 1},
     {name: "Scosche MagicMount Magnetic Phone Holder", count: 1},
     {name: "Sony Wireless Headphones", count: 1},
-    {name: "Sport Direct Yoga Mat", count: 2},
-    {name: "Universal Adapter", count: 2},
+    {name: "Sport Direct Pro Yoga Mat (2 sets)", count: 2},
+    {name: "Universal Adapter (2 sets)", count: 2},
     {name: "Urbanlite Tron 2.0 20inch", count: 1},
     {name: "Urbanlite Tron 2.0 24inch", count: 1},
     {name: "Urbanlite Tron 2.0 28inch", count: 1},
-    {name: "Utanking Foldable Hiking Stick", count: 2},
-    {name: "Utanking Portable Chair", count: 2},
-    {name: "Xiaomi Portable Blender", count: 2},
+    {name: "Utanking Foldable Hiking Stick (2 sets)", count: 2},
+    {name: "Utanking Portable Chair (2 sets)", count: 2},
+    {name: "Xiaomi Portable Blender (2 sets)", count: 2},
     {name: "Xiaomi Portable Printer", count: 1},
     {name: "Xiaomi Smart Air Purifier 4", count: 1},
-    {name: "Xiaomi Wireless Charger", count: 4}
+    {name: "Xiaomi Wireless Charger (4 sets)", count: 4}
   ];
 
   let currentLuckySlide = 0;
@@ -821,10 +783,11 @@
     if (!track) return;
     track.innerHTML = '';
     
-    // Using DOM Elements to avoid parsing errors
     PRIZES.forEach((prizeObj, i) => {
       const isGrand = prizeObj.name === "Top Grand Prize";
-      const imgName = isGrand ? `Prize${i+1}.png` : `${prizeObj.name}.png`;
+      const imgNameBase = prizeObj.name;
+      const imgNameJpg = `${imgNameBase}.jpg`;
+      const imgNamePng = `${imgNameBase}.png`;
       
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
@@ -842,24 +805,16 @@
       frame.style.marginBottom = '0';
       
       const img = document.createElement('img');
-      img.src = encodeURIComponent(imgName) + '?v=9';
+      img.src = encodeURIComponent(imgNamePng) + '?v=9';
       img.alt = prizeObj.name;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
-      img.dataset.imgname = imgName;
       
-      // Fallback handlers for images
       img.onerror = function() {
-        const attempt = parseInt(this.dataset.attempt || '0');
-        this.dataset.attempt = attempt + 1;
-        const base = this.dataset.imgname.replace('.png', '');
-        
-        if (attempt === 0) {
-          this.src = encodeURIComponent(base + '.jpg') + '?v=9';
-        } else if (attempt === 1) {
-          this.src = encodeURIComponent(base + '.jpeg') + '?v=9';
-        } else if (attempt === 2) {
-          this.src = encodeURIComponent(base.toUpperCase() + '.PNG') + '?v=9';
+        const currentSrc = new URL(this.src).pathname;
+        // If the png failed, try jpg. If jpg fails, show placeholder.
+        if (currentSrc.includes('.png')) {
+          this.src = encodeURIComponent(imgNameJpg) + '?v=9';
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
@@ -872,7 +827,6 @@
       title.style.color = 'var(--accent-gold)';
       title.style.fontSize = '1.3rem';
       
-      // Inject the 'x2', 'x6', etc. quantity badge if more than 1
       if(prizeObj.count > 1) {
           title.innerHTML = `${prizeObj.name} <span style="font-size:0.8rem; color:var(--text-muted); vertical-align:middle; margin-left:6px;">x${prizeObj.count}</span>`;
       } else {
@@ -906,9 +860,6 @@
     updateLuckyCarousel();
   }
 
-  /* =========================================
-     COMMITTEE ROSTER (DOM Rendered Safely)
-     ========================================= */
   const COMMITTEE_MEMBERS = [
     { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png" },
     { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg" },
@@ -938,7 +889,7 @@
   function renderCommitteeGrid() {
     const container = document.getElementById('committeeGrid');
     if (!container) return;
-    container.innerHTML = ''; // Clear container safely
+    container.innerHTML = ''; 
 
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
@@ -952,19 +903,8 @@
       img.alt = m.name;
       img.loading = "lazy";
       
-      // Safe fallback logic 
       img.onerror = function() {
-        const attempt = parseInt(this.dataset.attempt || '0');
-        this.dataset.attempt = attempt + 1;
-        const baseName = m.name.trim();
-
-        if (attempt === 0) this.src = encodeURIComponent('hakim Ab Razak.png') + '?v=9';
-        else if (attempt === 1) this.src = encodeURIComponent('Hakim Ab Razak.png') + '?v=9';
-        else if (attempt === 2) this.src = encodeURIComponent(baseName + '.jpg') + '?v=9';
-        else if (attempt === 3) this.src = encodeURIComponent(baseName + '.jpeg') + '?v=9';
-        else {
-          this.parentElement.innerHTML = getInitials(m.name);
-        }
+        this.parentElement.innerHTML = getInitials(m.name);
       };
       
       avatarFrame.appendChild(img);
@@ -997,26 +937,13 @@
   }
 
   function handleWhoImageError(img) {
-    const attempt = parseInt(img.dataset.attempt || '0');
-    img.dataset.attempt = attempt + 1;
-    if (attempt === 0) img.src = 'Who.png?v=9';
-    else if (attempt === 1) img.src = 'Who.jpg?v=9';
-    else if (attempt === 2) img.src = '0024.png?v=9';
-    else if (attempt === 3) img.src = 'who.png?v=9';
-    else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
+    img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
   }
 
   function handleBandImageError(img) {
-    const attempt = parseInt(img.dataset.attempt || '0');
-    img.dataset.attempt = attempt + 1;
-    if (attempt === 0) img.src = encodeURIComponent('The Wonders Band.png') + '?v=9';
-    else if (attempt === 1) img.src = encodeURIComponent('The Wonders Band.jpg') + '?v=9';
-    else if (attempt === 2) img.src = encodeURIComponent('The Wonderful Band.png') + '?v=9';
-    else if (attempt === 3) img.src = encodeURIComponent('The Wonderful Band.jpg') + '?v=9';
-    else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
+    img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
   }
 
-  /* Games Carousel */
   let currentGameSlide = 0;
   const totalGameSlides = 3;
   function updateGameCarousel() {
@@ -1031,7 +958,6 @@
   function prevGameSlide() { currentGameSlide = (currentGameSlide - 1 + totalGameSlides) % totalGameSlides; updateGameCarousel(); }
   function goToGameSlide(index) { currentGameSlide = index; updateGameCarousel(); }
 
-  /* Perf Carousel */
   let currentPerfSlide = 0;
   const totalPerfSlides = 7;
   function updatePerfCarousel() {
@@ -1046,7 +972,6 @@
   function prevPerfSlide() { currentPerfSlide = (currentPerfSlide - 1 + totalPerfSlides) % totalPerfSlides; updatePerfCarousel(); }
   function goToPerfSlide(index) { currentPerfSlide = index; updatePerfCarousel(); }
 
-  /* Swipe Setup */
   function setupSwipe(elementId, nextFn, prevFn) {
     let touchStartX = 0; let touchEndX = 0;
     const el = document.getElementById(elementId);
@@ -1059,7 +984,6 @@
     }, { passive: true });
   }
 
-  /* Initialize */
   window.addEventListener('DOMContentLoaded', () => {
     renderCommitteeGrid();
     renderLuckyGrid(); 
