@@ -6,17 +6,19 @@
   <title>SCM Annual Dinner 2026</title>
   <style>
     :root {
-      --bg-main: #0b132b;
-      --bg-card: #1c2541;
-      --accent-cyan: #64dfdf;
-      --accent-teal: #5bc0be;
+      /* Black & Red Gala Theme Palette */
+      --bg-main: #07070a;
+      --bg-card: #121217;
+      --bg-card-hover: #1c1518;
+      --accent-red: #e63946;
+      --accent-crimson: #d90429;
+      --accent-ruby: #ff4d6d;
       --accent-gold: #ffb703;
-      --accent-blue: #4895ef;
-      --accent-purple: #9d4edd;
-      --accent-pink: #f72585;
+      --accent-gold-soft: #f4d06f;
       --text-main: #ffffff;
-      --text-muted: #8d99ae;
-      --border-color: #3a506b;
+      --text-muted: #a3a3ad;
+      --border-color: #2b1f24;
+      --border-glow: rgba(224, 30, 55, 0.4);
       --card-radius: 14px;
     }
 
@@ -37,8 +39,9 @@
       flex-direction: column;
       align-items: center;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(100, 223, 223, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(255, 183, 3, 0.06) 0%, transparent 45%);
+        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
     }
 
     .container {
@@ -49,34 +52,41 @@
       gap: 16px;
     }
 
+    /* Header Section */
     .header-box {
       text-align: center;
-      background: linear-gradient(135deg, #1c2541 0%, #0d1b2a 100%);
+      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
       border: 1px solid var(--border-color);
       border-radius: var(--card-radius);
       padding: 24px 16px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
     }
     .header-box::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold), var(--accent-teal));
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
     }
     .header-box h1 {
-      color: var(--accent-cyan);
+      color: #fff;
       font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-weight: 900;
+      letter-spacing: 1px;
       margin-bottom: 4px;
+      text-shadow: 0 0 16px rgba(230, 57, 70, 0.4);
+    }
+    .header-box h1 span {
+      color: var(--accent-ruby);
     }
     .header-box h2 {
       font-size: 1.05rem;
-      font-weight: 400;
-      color: #e0e1dd;
-      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--accent-gold-soft);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
     .header-meta {
       display: flex;
@@ -87,10 +97,15 @@
       color: var(--text-muted);
     }
     .meta-badge {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 4px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(230, 57, 70, 0.08);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(230, 57, 70, 0.25);
+      color: #f1faee;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     /* Uniform 2-Column Grid for All Cards */
@@ -115,48 +130,61 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+    .hub-card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: transparent;
+      transition: background 0.2s ease;
     }
     .hub-card:active {
       transform: scale(0.97);
     }
     .hub-card:hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.2);
+      background: var(--bg-card-hover);
+      border-color: var(--accent-red);
+      box-shadow: 0 6px 20px rgba(217, 4, 41, 0.35);
+    }
+    .hub-card:hover::after {
+      background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
     }
 
-    /* Dedicated Subtle Hover Accents */
+    /* Dedicated Border Accents */
     .hub-card.card-seating {
-      border-color: rgba(100, 223, 223, 0.4);
+      border-color: rgba(230, 57, 70, 0.45);
     }
     .hub-card.card-seating:hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 6px 18px rgba(100, 223, 223, 0.25);
+      border-color: var(--accent-ruby);
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
     }
 
     .hub-card.card-photos {
-      border-color: rgba(157, 78, 221, 0.4);
+      border-color: rgba(255, 183, 3, 0.35);
     }
     .hub-card.card-photos:hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 6px 18px rgba(157, 78, 221, 0.3);
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3);
     }
 
     .hub-card.card-vote {
-      border-color: rgba(247, 37, 133, 0.4);
+      border-color: rgba(217, 4, 41, 0.5);
     }
     .hub-card.card-vote:hover {
-      border-color: var(--accent-pink);
-      box-shadow: 0 6px 18px rgba(247, 37, 133, 0.3);
+      border-color: #ff0033;
+      box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4);
     }
 
     .card-icon {
       font-size: 2rem;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
     }
     .card-title {
       font-size: 0.95rem;
       font-weight: 700;
+      color: #fff;
     }
     .card-subtitle {
       font-size: 0.72rem;
@@ -164,12 +192,12 @@
       line-height: 1.2;
     }
 
-    /* Modals for secondary actions */
+    /* Modals */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(6px);
       display: none;
       justify-content: center;
       align-items: center;
@@ -178,15 +206,15 @@
     }
     .modal-overlay.active { display: flex; }
     .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      background: #141013;
+      border: 1px solid var(--accent-crimson);
       border-radius: var(--card-radius);
       width: 100%;
       max-width: 520px;
       max-height: 85vh;
       overflow-y: auto;
       padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.2);
     }
     .modal-header {
       display: flex;
@@ -200,14 +228,19 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(100, 223, 223, 0.15);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(100, 223, 223, 0.35);
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border: 1px solid rgba(230, 57, 70, 0.4);
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-nav-back:hover {
+      background: var(--accent-crimson);
+      color: #fff;
     }
     .modal-close {
       background: none;
@@ -215,6 +248,9 @@
       color: var(--text-muted);
       font-size: 1.6rem;
       cursor: pointer;
+    }
+    .modal-close:hover {
+      color: #fff;
     }
 
     .modal-bottom-bar {
@@ -227,15 +263,21 @@
     .btn-return-main {
       width: 100%;
       padding: 12px;
-      background: rgba(100, 223, 223, 0.15);
-      border: 1px solid var(--accent-cyan);
-      color: var(--accent-cyan);
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid var(--accent-red);
+      color: var(--accent-ruby);
       font-weight: 700;
       font-size: 0.9rem;
       border-radius: 10px;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-return-main:hover {
+      background: var(--accent-crimson);
+      color: #fff;
     }
 
+    /* Schedule Timeline */
     .timeline { display: flex; flex-direction: column; gap: 12px; }
     .time-slot {
       display: flex;
@@ -243,11 +285,12 @@
       background: rgba(255, 255, 255, 0.03);
       padding: 10px 12px;
       border-radius: 8px;
-      border-left: 3px solid var(--accent-teal);
+      border-left: 3px solid var(--accent-red);
     }
-    .time-val { font-weight: 700; color: var(--accent-gold); min-width: 65px; font-size: 0.85rem; }
+    .time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
     .time-desc { font-size: 0.85rem; }
 
+    /* Committee Directory */
     .committee-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -268,15 +311,15 @@
       height: 48px;
       min-width: 48px;
       border-radius: 50%;
-      background: #151d38;
-      border: 2px solid var(--accent-cyan);
+      background: #1c1417;
+      border: 2px solid var(--accent-red);
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 0.85rem;
-      color: var(--accent-cyan);
+      color: var(--accent-ruby);
     }
     .comm-avatar-frame img {
       width: 100%;
@@ -293,13 +336,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .comm-dept { font-size: 0.68rem; color: var(--accent-teal); }
+    .comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
     .comm-role-pill {
       display: inline-block;
       margin-top: 3px;
-      background: rgba(255, 183, 3, 0.15);
-      color: var(--accent-gold);
-      border: 1px solid rgba(255, 183, 3, 0.3);
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border: 1px solid rgba(230, 57, 70, 0.35);
       font-size: 0.65rem;
       padding: 2px 6px;
       border-radius: 10px;
@@ -311,12 +354,11 @@
 
 <div class="container">
   <header class="header-box">
-    <h1>INTEL SUPPLY CHAIN MALAYSIA</h1>
+    <h1>INTEL SUPPLY CHAIN <span>MALAYSIA</span></h1>
     <h2>Annual Dinner 2026</h2>
     <div class="header-meta">
       <span class="meta-badge">📍 Grand Ballroom</span>
       <span class="meta-badge">⏰ 5:30 PM - 10:30 PM</span>
-      <span class="meta-badge">✨ 360 Guests</span>
     </div>
   </header>
 
@@ -324,8 +366,8 @@
     <!-- 1. Seat & Reservation -->
     <a href="seating.html" class="hub-card card-seating">
       <div class="card-icon">🪑</div>
-      <div class="card-title">Seat & Reservation</div>
-      <div class="card-subtitle">Assigned table & ballroom map</div>
+      <div class="card-title">Seat &amp; Reservation</div>
+      <div class="card-subtitle">Assigned table &amp; ballroom map</div>
     </a>
 
     <!-- 2. Event Schedule -->
@@ -339,24 +381,24 @@
     <div class="hub-card" onclick="openModal('modalLucky')">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Prizes, tiers & guidelines</div>
+      <div class="card-subtitle">Prizes, tiers &amp; guidelines</div>
     </div>
 
     <!-- 4. Performance -->
     <div class="hub-card" onclick="openModal('modalPerformance')">
       <div class="card-icon">🎤</div>
       <div class="card-title">Performance</div>
-      <div class="card-subtitle">Live band & talent acts</div>
+      <div class="card-subtitle">Live band &amp; talent acts</div>
     </div>
 
     <!-- 5. Photobooths -->
     <div class="hub-card" onclick="openModal('modalPhotobooth')">
       <div class="card-icon">📸</div>
       <div class="card-title">Photobooths</div>
-      <div class="card-subtitle">360 Cam & instant prints</div>
+      <div class="card-subtitle">360 Cam &amp; instant prints</div>
     </div>
 
-    <!-- 6. Try Your Luck (Links to Super Mario Lucky Draw) -->
+    <!-- 6. Try Your Luck (Links to Lucky Draw Web App) -->
     <a href="try_your_luck.html" class="hub-card">
       <div class="card-icon">🎰</div>
       <div class="card-title">Try Your Luck</div>
@@ -435,18 +477,18 @@
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-    <p style="margin-bottom: 12px;">72 prize positions up for grabs!</p>
-    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+    <p style="margin-bottom: 12px; color: #f1faee;">72 prize positions up for grabs throughout the evening!</p>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid var(--accent-gold);">
       <h4 style="color: var(--accent-gold);">🎁 Session 1 (6:55 PM)</h4>
-      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 on side LED displays.</p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 42 to 72 displayed live on side LED screens.</p>
     </div>
-    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-      <h4 style="color: var(--accent-cyan);">🎁 Session 2 (8:10 PM)</h4>
-      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 during band set 2.</p>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 3px solid var(--accent-ruby);">
+      <h4 style="color: var(--accent-ruby);">🎁 Session 2 (8:10 PM)</h4>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Prize Positions 11 to 41 drawn during band set 2.</p>
     </div>
-    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-      <h4 style="color: #ff4d6d;">🏆 Grand Draw (9:48 PM - 10:13 PM)</h4>
-      <p style="font-size:0.85rem; color:var(--text-muted);">Top 10 Grand Prizes on stage!</p>
+    <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-crimson);">
+      <h4 style="color: #ff3355;">🏆 Grand Draw (9:48 PM - 10:13 PM)</h4>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Top 10 Grand Prizes drawn live on stage!</p>
     </div>
     <div class="modal-bottom-bar">
       <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
@@ -461,7 +503,7 @@
       <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
     </div>
-    <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px;">
+    <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px; color: #f1faee;">
       <li><strong>Opening Session</strong> (6:30 PM)</li>
       <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
       <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
@@ -483,10 +525,10 @@
       <button class="modal-nav-back" onclick="closeModal('modalPhotobooth')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalPhotobooth')">&times;</button>
     </div>
-    <h4 style="color: var(--accent-cyan); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
-    <p style="font-size:0.85rem; color:var(--text-muted);">
-      • Available from 5:30 PM to 8:30 PM in ballroom foyer.<br>
-      • Unlimited 4R photo printouts.<br>
+    <h4 style="color: var(--accent-ruby); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
+    <p style="font-size:0.85rem; color:var(--text-muted); line-height: 1.6;">
+      • Available from 5:30 PM to 8:30 PM in the grand ballroom foyer.<br>
+      • Unlimited 4R photo printouts with customized Black &amp; Red SCM 2026 frames.<br>
       • Instant QR download for digital video clips.
     </p>
     <div class="modal-bottom-bar">
@@ -503,7 +545,7 @@
       <button class="modal-close" onclick="closeModal('modalCommittee')">&times;</button>
     </div>
     <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
-      Meet the organizing team behind Intel Supply Chain Malaysia Annual Dinner 2026:
+      Meet the organizing committee behind Intel Supply Chain Malaysia Annual Dinner 2026:
     </p>
     <div class="committee-grid" id="committeeGrid"></div>
     <div class="modal-bottom-bar">
@@ -521,12 +563,12 @@
     </div>
     <div style="text-align: center; padding: 10px 0;">
       <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
-      <h3 style="color: var(--accent-gold); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
-      <p style="color: #e0e1dd; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
+      <h3 style="color: var(--accent-ruby); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
+      <p style="color: #f1faee; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
         A special moment awaits our dinner guests at <strong>9:03 PM</strong>!<br>
         Fortune favors those who pay attention to their surroundings.
       </p>
-      <div style="background: rgba(255, 183, 3, 0.1); border: 1px dashed var(--accent-gold); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: var(--accent-gold);">
+      <div style="background: rgba(230, 57, 70, 0.1); border: 1px dashed var(--accent-red); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: var(--accent-ruby);">
         Stay at your assigned tables throughout the evening banquet for the spontaneous reveal!
       </div>
     </div>
