@@ -811,8 +811,7 @@
       img.style.borderRadius = '8px';
       
       img.onerror = function() {
-        const currentSrc = new URL(this.src).pathname;
-        // If the png failed, try jpg. If jpg fails, show placeholder.
+        const currentSrc = new URL(this.src).pathname.toLowerCase();
         if (currentSrc.includes('.png')) {
           this.src = encodeURIComponent(imgNameJpg) + '?v=9';
         } else {
@@ -827,11 +826,7 @@
       title.style.color = 'var(--accent-gold)';
       title.style.fontSize = '1.3rem';
       
-      if(prizeObj.count > 1) {
-          title.innerHTML = `${prizeObj.name} <span style="font-size:0.8rem; color:var(--text-muted); vertical-align:middle; margin-left:6px;">x${prizeObj.count}</span>`;
-      } else {
-          title.textContent = prizeObj.name;
-      }
+      title.textContent = prizeObj.name;
       
       slide.appendChild(badge);
       slide.appendChild(frame);
