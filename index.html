@@ -640,7 +640,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 1 • 6:30 PM</span>
           <div class="perf-photo-frame">
-            <img src="0024.png" alt="Opening Session" onerror="handleWhoImageError(this)" />
+            <img src="Who.png" alt="Opening Session" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Opening Session</h3>
           <p class="perf-desc">
@@ -664,7 +664,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 3 • 7:40 PM</span>
           <div class="perf-photo-frame">
-            <img src="0024.png" alt="Performance 1" onerror="handleWhoImageError(this)" />
+            <img src="Who.png" alt="Performance 1" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 1</h3>
           <p class="perf-desc">
@@ -676,7 +676,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 4 • 8:00 PM</span>
           <div class="perf-photo-frame">
-            <img src="0024.png" alt="Performance 2" onerror="handleWhoImageError(this)" />
+            <img src="Who.png" alt="Performance 2" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 2</h3>
           <p class="perf-desc">
@@ -700,7 +700,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 6 • 8:53 PM</span>
           <div class="perf-photo-frame">
-            <img src="0024.png" alt="Performance 3" onerror="handleWhoImageError(this)" />
+            <img src="Who.png" alt="Performance 3" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 3</h3>
           <p class="perf-desc">
@@ -1047,15 +1047,13 @@
     const attempt = parseInt(img.dataset.attempt || '0');
     img.dataset.attempt = attempt + 1;
     if (attempt === 0) {
-      img.src = '0024.png?v=4';
+      img.src = 'Who.png';
     } else if (attempt === 1) {
-      img.src = 'Who.png?v=4';
+      img.src = 'Who.jpg';
     } else if (attempt === 2) {
-      img.src = 'Who.jpg?v=4';
+      img.src = '0024.png';
     } else if (attempt === 3) {
-      img.src = 'who.png?v=4';
-    } else if (attempt === 4) {
-      img.src = '0024.jpg?v=4';
+      img.src = 'who.png';
     } else {
       img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
     }
@@ -1066,13 +1064,13 @@
     const attempt = parseInt(img.dataset.attempt || '0');
     img.dataset.attempt = attempt + 1;
     if (attempt === 0) {
-      img.src = encodeURI('The Wonders Band.png?v=4');
+      img.src = encodeURI('The Wonders Band.png');
     } else if (attempt === 1) {
-      img.src = encodeURI('The Wonders Band.jpg?v=4');
+      img.src = encodeURI('The Wonders Band.jpg');
     } else if (attempt === 2) {
-      img.src = encodeURI('The Wonderful Band.png?v=4');
+      img.src = encodeURI('The Wonderful Band.png');
     } else if (attempt === 3) {
-      img.src = encodeURI('The Wonderful Band.jpg?v=4');
+      img.src = encodeURI('The Wonderful Band.jpg');
     } else {
       img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
     }
