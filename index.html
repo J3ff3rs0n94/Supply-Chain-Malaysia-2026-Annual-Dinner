@@ -429,7 +429,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display: none; /* revealed automatically when real photo loads */
+      display: none;
       padding: 10px;
     }
     .prize-box-frame.has-image img {
@@ -1268,9 +1268,9 @@
     } else if (attempt === 1) {
       img.src = 'Who.jpg';
     } else if (attempt === 2) {
-      img.src = '0024.png';
-    } else if (attempt === 3) {
       img.src = 'who.png';
+    } else if (attempt === 3) {
+      img.src = '0024.png';
     } else {
       img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
     }
