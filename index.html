@@ -150,19 +150,22 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-
+    
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
+    
+    .hub-card.card-lucky { border-color: rgba(255, 183, 3, 0.55); }
+    .hub-card.card-lucky:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-
+    
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-
+    
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-
+    
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
@@ -324,7 +327,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-
+    
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -373,6 +376,19 @@
     .comm-name { font-size: 0.85rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
     .comm-role-pill { display: inline-block; margin-top: 3px; background: rgba(230, 57, 70, 0.15); color: var(--accent-ruby); border: 1px solid rgba(230, 57, 70, 0.35); font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
+
+    /* Notice Banner for Lucky Draw */
+    .lucky-notice-box {
+      background: rgba(255, 183, 3, 0.08);
+      border: 1px dashed var(--accent-gold);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 0.82rem;
+      color: var(--accent-gold-soft);
+      line-height: 1.45;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -410,10 +426,10 @@
     </div>
 
     <!-- 4. Lucky Draw -->
-    <div class="hub-card" onclick="openModal('modalLucky')">
+    <div class="hub-card card-lucky" onclick="openModal('modalLucky')">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Total 75 prizes • Alphabetical sequence</div>
+      <div class="card-subtitle">Total 76 prizes • Alphabetical sequence</div>
     </div>
 
     <!-- 5. Performance -->
@@ -523,22 +539,22 @@
   </div>
 </div>
 
-<!-- Modal: Lucky Draw (Dynamically Generated 48 Slides) -->
+<!-- Modal: Lucky Draw (48 Slides with Grand Prizes & Alphabetical Regular Prizes) -->
 <div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-
-    <!-- Remark Note -->
-    <div style="background: rgba(255, 183, 3, 0.08); border: 1px dashed var(--accent-gold); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; text-align: center; font-size: 0.82rem; color: var(--accent-gold-soft); line-height: 1.45;">
-      🎁 <strong>Note:</strong> There are a total of <strong>75 lucky draw items</strong>. Items are displayed here in <strong>alphabetical sequence</strong>, not in terms of value.
+    
+    <!-- Remark Banner: 76 Total Lucky Draw Items -->
+    <div class="lucky-notice-box">
+      🎉 <strong>Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in <strong>alphabetical sequence</strong>, not in terms of value.
     </div>
 
     <div class="carousel-container" id="luckyCarousel">
       <div class="carousel-track" id="luckyTrack">
-        <!-- 48 Unique Slides are generated safely via JS -->
+        <!-- Slides generated via JS matching exact GitHub filenames -->
       </div>
     </div>
 
@@ -773,60 +789,79 @@
 </div>
 
 <script>
-  /* =========================================
-     48-SLIDE DE-DUPLICATED LUCKY DRAW RENDERER
-     ========================================= */
+  /* ========================================================
+     PRIZE LIST (48 Slides Covering Total 76 Lucky Draw Items)
+     - 10 Grand Prizes (Grand Prize 5: Outin Mino Portable Expresso Machine)
+     - 38 Regular Prizes in Alphabetical Sequence
+     ======================================================== */
+  const GRAND_PRIZES = [
+    { rank: 1, name: "Top Grand Prize 1", file: "Prize1.png" },
+    { rank: 2, name: "Top Grand Prize 2", file: "Prize2.png" },
+    { rank: 3, name: "Top Grand Prize 3", file: "Prize3.png" },
+    { rank: 4, name: "Top Grand Prize 4", file: "Prize4.png" },
+    { rank: 5, name: "Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png", isGrand5: true },
+    { rank: 6, name: "Top Grand Prize 6", file: "Prize6.png" },
+    { rank: 7, name: "Top Grand Prize 7", file: "Prize7.png" },
+    { rank: 8, name: "Top Grand Prize 8", file: "Prize8.png" },
+    { rank: 9, name: "Top Grand Prize 9", file: "Prize9.png" },
+    { rank: 10, name: "Top Grand Prize 10", file: "Prize10.png" }
+  ];
+
+  const REGULAR_PRIZES = [
+    { title: "70mai Dash Cam + Memory", file: "70mai Dash Cam + Memory.png" },
+    { title: "Decathlon Compartment Bag (6 sets)", file: "Decathlon Compartment Bag (6 sets).png" },
+    { title: "Decathlon Waterproof Bag", file: "Decathlon Waterproof Bag.png" },
+    { title: "Elba Coffee Maker", file: "Elba Coffee Maker.png" },
+    { title: "Hooga Black Room Spray - Bergamot & Balsam", file: "Hooga Black Room Spray - Bergamot & Balsam.png" },
+    { title: "Hooga Black Room Spray - Kenya Yuzu", file: "Hooga Black Room Spray - Kenya Yuzu.png" },
+    { title: "Hooga Black Room Spray - Ocean", file: "Hooga Black Room Spray - Ocean.png" },
+    { title: "Hooga Black Room Spray - Sea Salt", file: "Hooga Black Room Spray - Sea Salt.png" },
+    { title: "Hooga Black Room Spray - White Tea & Ginger", file: "Hooga Black Room Spray - White Tea & Ginger.png" },
+    { title: "IKEA Microwave Oven (Black)", file: "IKEA Microwave Oven (Black).png" },
+    { title: "IKEA Microwave Oven (White)", file: "IKEA Microwave Oven (White).png" },
+    { title: "Intel Tower Set (11 sets)", file: "Intel Tower Set (11 sets).jpg" },
+    { title: "Jisulife Mini Portable Fan", file: "Jisulife Mini Portable Fan.png" },
+    { title: "Jollie Memory Microfibre Pillow (2 sets)", file: "Jollie Memory Microfibre Pillow (2 sets).png" },
+    { title: "Li Ning AXForce Cannon (2 sets)", file: "Li Ning AXForce Cannon (2 sets).png" },
+    { title: "Miivio Blood Pressure Monitor (2 sets)", file: "Miivio Blood Pressure Monitor (2 sets).png" },
+    { title: "Mosquito Trap Lamp", file: "Mosquite Trap Lamp.png" },
+    { title: "MR DIY Premium Ice Box", file: "MR DIY Premium Ice Box.png" },
+    { title: "Nitori Gas Aluminium Pot", file: "Nitori Gas Aluminium Pot.png" },
+    { title: "Nitori Glass Container (2 sets)", file: "Nitori Glass Container (2 sets).png" },
+    { title: "Ogawa Curve Massage Gun", file: "Ogawa Curve Masssage Gun.png" },
+    { title: "PerrySmith Vacuum Cleaner", file: "PerrySmith Vacuum Cleaner.png" },
+    { title: "Phillips Toaster", file: "Phillips Toaster.png" },
+    { title: "Plant Origins Aromatherapy Gift Set", file: "Plant Origins Aromatherapy Gift Set.png" },
+    { title: "Redmi Watch 6", file: "Redmi Watch 6.png" },
+    { title: "Scosche MagicMount Magnetic Phone Holder", file: "Scosche MagicMount Magnetic Phone Holder.png" },
+    { title: "Sony Wireless Headphones", file: "Sony Wireless Headphones.png" },
+    { title: "Sport Direct Pro Yoga Mat (2 sets)", file: "Sport Direct Pro Yoga Mat (2 sets).png" },
+    { title: "Universal Adapter (2 sets)", file: "Universal Adapter (2 sets).png" },
+    { title: "Urbanlite Tron 2.0 20inch", file: "Urbanlite Tron 2.0 20inch.jpg" },
+    { title: "Urbanlite Tron 2.0 24inch", file: "Urbanlite Tron 2.0 24inch.jpg" },
+    { title: "Urbanlite Tron 2.0 28inch", file: "Urbanlite Tron 2.0 28inch.jpg" },
+    { title: "Utanking Foldable Hiking Stick (2 sets)", file: "Utanking Foldable Hiking Stick ( 2 sets).png" },
+    { title: "Utanking Portable Chair (2 sets)", file: "Utanking Portable Chair (2 sets).png" },
+    { title: "Xiaomi Portable Blender (2 sets)", file: "Xiaomi Portable Blender (2 sets).png" },
+    { title: "Xiaomi Portable Printer", file: "Xiaomi Portable Printer.png" },
+    { title: "Xiaomi Smart Air Purifier 4", file: "Xiaomi Smart Air Purifier 4.png" },
+    { title: "Xiaomi Wireless Charger (4 sets)", file: "Xiaomi Wireless Charger (4 sets).png" }
+  ];
+
   const PRIZES = [
-    // Top 10 Grand Prizes
-    { name: "Top Grand Prize #1", file: "Prize1.png" },
-    { name: "Top Grand Prize #2", file: "Prize2.png" },
-    { name: "Top Grand Prize #3", file: "Prize3.png" },
-    { name: "Top Grand Prize #4", file: "Prize4.png" },
-    { name: "Top Grand Prize #5", file: "Prize5.png" },
-    { name: "Top Grand Prize #6", file: "Prize6.png" },
-    { name: "Top Grand Prize #7", file: "Prize7.png" },
-    { name: "Top Grand Prize #8", file: "Prize8.png" },
-    { name: "Top Grand Prize #9", file: "Prize9.png" },
-    { name: "Top Grand Prize #10", file: "Prize10.png" },
-    // 38 Lucky Draw Prizes matched directly to uploaded GitHub filenames
-    { name: "70mai Dash Cam + Memory", file: "70mai Dash Cam + Memory.png" },
-    { name: "Decathlon Compartment Bag (6 sets)", file: "Decathlon Compartment Bag (6 sets).png" },
-    { name: "Decathlon Waterproof Bag", file: "Decathlon Waterproof Bag.png" },
-    { name: "Elba Coffee Maker", file: "Elba Coffee Maker.png" },
-    { name: "Hooga Black Room Spray - Bergamot & Balsam", file: "Hooga Black Room Spray - Bergamot & Balsam.png" },
-    { name: "Hooga Black Room Spray - Kenya Yuzu", file: "Hooga Black Room Spray - Kenya Yuzu.png" },
-    { name: "Hooga Black Room Spray - Ocean", file: "Hooga Black Room Spray - Ocean.png" },
-    { name: "Hooga Black Room Spray - Sea Salt", file: "Hooga Black Room Spray - Sea Salt.png" },
-    { name: "Hooga Black Room Spray - White Tea & Ginger", file: "Hooga Black Room Spray - White Tea & Ginger.png" },
-    { name: "IKEA Microwave Oven (Black)", file: "IKEA Microwave Oven (Black).png" },
-    { name: "IKEA Microwave Oven (White)", file: "IKEA Microwave Oven (White).png" },
-    { name: "Intel Tower Set (11 sets)", file: "Intel Tower Set (11 sets).jpg" },
-    { name: "Jisulife Mini Portable Fan", file: "Jisulife Mini Portable Fan.png" },
-    { name: "Jollie Memory Microfibre Pillow (2 sets)", file: "Jollie Memory Microfibre Pillow (2 sets).png" },
-    { name: "Li Ning AXForce Cannon (2 sets)", file: "Li Ning AXForce Cannon (2 sets).png" },
-    { name: "Miivio Blood Pressure Monitor (2 sets)", file: "Miivio Blood Pressure Monitor (2 sets).png" },
-    { name: "Mosquito Trap Lamp", file: "Mosquite Trap Lamp.png" },
-    { name: "MR DIY Premium Ice Box", file: "MR DIY Premium Ice Box.png" },
-    { name: "Nitori Gas Aluminium Pot", file: "Nitori Gas Aluminium Pot.png" },
-    { name: "Nitori Glass Container (2 sets)", file: "Nitori Glass Container (2 sets).png" },
-    { name: "Ogawa Curve Massage Gun", file: "Ogawa Curve Masssage Gun.png" },
-    { name: "Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png" },
-    { name: "Phillips Toaster", file: "Phillips Toaster.png" },
-    { name: "Plant Origins Aromatherapy Gift Set", file: "Plant Origins Aromatherapy Gift Set.png" },
-    { name: "Redmi Watch 6", file: "Redmi Watch 6.png" },
-    { name: "Scosche MagicMount Magnetic Phone Holder", file: "Scosche MagicMount Magnetic Phone Holder.png" },
-    { name: "Sony Wireless Headphones", file: "Sony Wireless Headphones.png" },
-    { name: "Sport Direct Pro Yoga Mat (2 sets)", file: "Sport Direct Pro Yoga Mat (2 sets).png" },
-    { name: "Universal Adapter (2 sets)", file: "Universal Adapter (2 sets).png" },
-    { name: "Urbanlite Tron 2.0 20inch", file: "Urbanlite Tron 2.0 20inch.jpg" },
-    { name: "Urbanlite Tron 2.0 24inch", file: "Urbanlite Tron 2.0 24inch.jpg" },
-    { name: "Urbanlite Tron 2.0 28inch", file: "Urbanlite Tron 2.0 28inch.jpg" },
-    { name: "Utanking Foldable Hiking Stick (2 sets)", file: "Utanking Foldable Hiking Stick ( 2 sets).png" },
-    { name: "Utanking Portable Chair (2 sets)", file: "Utanking Portable Chair (2 sets).png" },
-    { name: "Xiaomi Portable Blender (2 sets)", file: "Xiaomi Portable Blender (2 sets).png" },
-    { name: "Xiaomi Portable Printer", file: "Xiaomi Portable Printer.png" },
-    { name: "Xiaomi Smart Air Purifier 4", file: "Xiaomi Smart Air Purifier 4.png" },
-    { name: "Xiaomi Wireless Charger (4 sets)", file: "Xiaomi Wireless Charger (4 sets).png" }
+    ...GRAND_PRIZES.map(p => ({
+      title: p.name,
+      file: p.file,
+      badge: p.isGrand5 ? "Grand Prize 5" : `Top Grand Prize • Rank ${p.rank}`,
+      isGrand: true,
+      rank: p.rank
+    })),
+    ...REGULAR_PRIZES.map((p, idx) => ({
+      title: p.title,
+      file: p.file,
+      badge: `Prize Draw ${idx + 11} / 48 (Alphabetical)`,
+      isGrand: false
+    }))
   ];
 
   let currentLuckySlide = 0;
@@ -835,18 +870,20 @@
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
-
-    PRIZES.forEach((item, i) => {
-      const prizeName = typeof item === 'string' ? item : item.name;
-      const fileName = typeof item === 'string' ? (i < 10 ? `Prize${i+1}.png` : `${item}.png`) : item.file;
-
+    
+    PRIZES.forEach((p, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-
+      
       const badge = document.createElement('span');
       badge.className = 'game-badge';
-      badge.textContent = `Prize Draw ${i + 1} / 48`;
-
+      badge.textContent = p.badge;
+      if (p.isGrand) {
+        badge.style.background = 'rgba(230, 57, 70, 0.2)';
+        badge.style.borderColor = 'var(--accent-ruby)';
+        badge.style.color = 'var(--accent-ruby)';
+      }
+      
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
       frame.style.background = 'transparent';
@@ -854,48 +891,49 @@
       frame.style.boxShadow = 'none';
       frame.style.height = '240px';
       frame.style.marginBottom = '0';
-
+      
       const img = document.createElement('img');
-      img.src = encodeURI(fileName);
-      img.alt = prizeName;
+      img.src = encodeURI(p.file + '?v=6');
+      img.alt = p.title;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
-      img.dataset.filename = fileName;
-
+      img.dataset.imgname = p.file;
+      
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
-        const rawFile = this.dataset.filename;
-        const dotIndex = rawFile.lastIndexOf('.');
-        const base = dotIndex !== -1 ? rawFile.substring(0, dotIndex) : rawFile;
-
+        const lastDot = this.dataset.imgname.lastIndexOf('.');
+        const base = lastDot !== -1 ? this.dataset.imgname.substring(0, lastDot) : this.dataset.imgname;
+        
         if (attempt === 0) {
-          this.src = encodeURI(base + '.jpg');
+          this.src = encodeURI(base + '.png?v=6');
         } else if (attempt === 1) {
-          this.src = encodeURI(base + '.jpeg');
+          this.src = encodeURI(base + '.jpg?v=6');
         } else if (attempt === 2) {
-          this.src = encodeURI(base + '.png');
+          this.src = encodeURI(base + '.jpeg?v=6');
         } else if (attempt === 3) {
-          this.src = encodeURI(base + '.PNG');
+          this.src = encodeURI(base + '.PNG?v=6');
+        } else if (p.rank === 5) {
+          this.src = encodeURI('Prize5.png?v=6');
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
       };
-
+      
       frame.appendChild(img);
-
+      
       const title = document.createElement('h3');
       title.className = 'game-title';
-      title.style.color = 'var(--accent-gold)';
-      title.style.fontSize = '1.3rem';
-      title.textContent = prizeName;
-
+      title.style.color = p.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
+      title.style.fontSize = '1.25rem';
+      title.textContent = p.title;
+      
       slide.appendChild(badge);
       slide.appendChild(frame);
       slide.appendChild(title);
       track.appendChild(slide);
     });
-
+    
     updateLuckyCarousel();
     setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   }
@@ -904,7 +942,7 @@
     const track = document.getElementById('luckyTrack');
     const counter = document.getElementById('luckyCounter');
     if (track) track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
-    if (counter) counter.innerText = `${currentLuckySlide + 1} / 48`;
+    if (counter) counter.innerText = `${currentLuckySlide + 1} / ${PRIZES.length}`;
   }
 
   function nextLuckySlide() {
@@ -954,16 +992,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-
+      
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-
+      
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-
-      // Fallback for committee photos safely bound
+      
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -977,32 +1014,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-
+      
       avatarFrame.appendChild(img);
-
+      
       const details = document.createElement('div');
       details.className = 'comm-details';
-
+      
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-
+      
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-
+      
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-
+      
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-
+      
       card.appendChild(avatarFrame);
       card.appendChild(details);
-
+      
       container.appendChild(card);
     });
   }
