@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,562 +22,575 @@
       --card-radius: 14px;
     }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  -webkit-tap-highlight-color: transparent;
-}
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
+    }
 
-body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  padding: 16px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: 
-    radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
-}
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-.container {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+    /* Header Section */
+    .header-box {
+      text-align: center;
+      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 24px 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
+    }
+    .header-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
+    }
+    .header-box h1 {
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+      text-shadow: 0 0 16px rgba(230, 57, 70, 0.4);
+    }
+    .header-box h1 span {
+      color: var(--accent-ruby);
+    }
+    .header-box h2 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--accent-gold-soft);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .meta-badge {
+      background: rgba(230, 57, 70, 0.08);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(230, 57, 70, 0.25);
+      color: #f1faee;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-/* Header Section */
-.header-box {
-  text-align: center;
-  background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
-  border: 1px solid var(--border-color);
-  border-radius: var(--card-radius);
-  padding: 24px 16px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
-}
-.header-box::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
-}
-.header-box h1 {
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-  text-shadow: 0 0 16px rgba(230, 57, 70, 0.4);
-}
-.header-box h1 span {
-  color: var(--accent-ruby);
-}
-.header-box h2 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--accent-gold-soft);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.header-meta {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.meta-badge {
-  background: rgba(230, 57, 70, 0.08);
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(230, 57, 70, 0.25);
-  color: #f1faee;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
+    /* Uniform 2-Column Grid for All Cards */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
 
-/* Uniform 2-Column Grid for All Cards */
-.hub-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
+    .hub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+    .hub-card::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: transparent;
+      transition: background 0.2s ease;
+    }
+    .hub-card:active {
+      transform: scale(0.97);
+    }
+    .hub-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-red);
+      box-shadow: 0 6px 20px rgba(217, 4, 41, 0.35);
+    }
+    .hub-card:hover::after {
+      background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+    }
 
-.hub-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--card-radius);
-  padding: 18px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-  text-decoration: none;
-  color: var(--text-main);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-}
-.hub-card::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: transparent;
-  transition: background 0.2s ease;
-}
-.hub-card:active {
-  transform: scale(0.97);
-}
-.hub-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--accent-red);
-  box-shadow: 0 6px 20px rgba(217, 4, 41, 0.35);
-}
-.hub-card:hover::after {
-  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-}
+    /* Dedicated Border Accents */
+    .hub-card.card-details {
+      border-color: rgba(255, 183, 3, 0.5);
+    }
+    .hub-card.card-details:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4);
+    }
 
-/* Dedicated Border Accents */
-.hub-card.card-details {
-  border-color: rgba(255, 183, 3, 0.5);
-}
-.hub-card.card-details:hover {
-  border-color: var(--accent-gold);
-  box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4);
-}
+    .hub-card.card-seating {
+      border-color: rgba(230, 57, 70, 0.45);
+    }
+    .hub-card.card-seating:hover {
+      border-color: var(--accent-ruby);
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
+    }
 
-.hub-card.card-seating {
-  border-color: rgba(230, 57, 70, 0.45);
-}
-.hub-card.card-seating:hover {
-  border-color: var(--accent-ruby);
-  box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
-}
+    .hub-card.card-performance {
+      border-color: rgba(230, 57, 70, 0.45);
+    }
+    .hub-card.card-performance:hover {
+      border-color: var(--accent-ruby);
+      box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45);
+    }
 
-.hub-card.card-performance {
-  border-color: rgba(230, 57, 70, 0.45);
-}
-.hub-card.card-performance:hover {
-  border-color: var(--accent-ruby);
-  box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45);
-}
+    .hub-card.card-games {
+      border-color: rgba(255, 183, 3, 0.45);
+    }
+    .hub-card.card-games:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45);
+    }
 
-.hub-card.card-games {
-  border-color: rgba(255, 183, 3, 0.45);
-}
-.hub-card.card-games:hover {
-  border-color: var(--accent-gold);
-  box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45);
-}
+    .hub-card.card-photos {
+      border-color: rgba(255, 183, 3, 0.35);
+    }
+    .hub-card.card-photos:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3);
+    }
 
-.hub-card.card-photos {
-  border-color: rgba(255, 183, 3, 0.35);
-}
-.hub-card.card-photos:hover {
-  border-color: var(--accent-gold);
-  box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3);
-}
+    .hub-card.card-vote {
+      border-color: rgba(217, 4, 41, 0.5);
+    }
+    .hub-card.card-vote:hover {
+      border-color: #ff0033;
+      box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4);
+    }
 
-.hub-card.card-vote {
-  border-color: rgba(217, 4, 41, 0.5);
-}
-.hub-card.card-vote:hover {
-  border-color: #ff0033;
-  box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4);
-}
+    .card-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.2;
+    }
 
-.card-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-}
-.card-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #fff;
-}
-.card-subtitle {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  line-height: 1.2;
-}
+    /* Modals */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #141013;
+      border: 1px solid var(--accent-crimson);
+      border-radius: var(--card-radius);
+      width: 100%;
+      max-width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.2);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .modal-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border: 1px solid rgba(230, 57, 70, 0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-nav-back:hover {
+      background: var(--accent-crimson);
+      color: #fff;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .modal-close:hover {
+      color: #fff;
+    }
 
-/* Modals */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(6px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 16px;
-}
-.modal-overlay.active { display: flex; }
-.modal-box {
-  background: #141013;
-  border: 1px solid var(--accent-crimson);
-  border-radius: var(--card-radius);
-  width: 100%;
-  max-width: 520px;
-  max-height: 85vh;
-  overflow-y: auto;
-  padding: 20px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.2);
-}
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.modal-nav-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(230, 57, 70, 0.15);
-  color: var(--accent-ruby);
-  border: 1px solid rgba(230, 57, 70, 0.4);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.modal-nav-back:hover {
-  background: var(--accent-crimson);
-  color: #fff;
-}
-.modal-close {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-.modal-close:hover {
-  color: #fff;
-}
+    .modal-bottom-bar {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: center;
+    }
+    .btn-return-main {
+      width: 100%;
+      padding: 12px;
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid var(--accent-red);
+      color: var(--accent-ruby);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-return-main:hover {
+      background: var(--accent-crimson);
+      color: #fff;
+    }
 
-.modal-bottom-bar {
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: center;
-}
-.btn-return-main {
-  width: 100%;
-  padding: 12px;
-  background: rgba(230, 57, 70, 0.15);
-  border: 1px solid var(--accent-red);
-  color: var(--accent-ruby);
-  font-weight: 700;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn-return-main:hover {
-  background: var(--accent-crimson);
-  color: #fff;
-}
+    /* Swipeable Carousel in Modals */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 12px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 100%;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(230, 57, 70, 0.2);
+      border-radius: 12px;
+    }
+    .game-badge, .perf-badge, .prize-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(255, 183, 3, 0.15);
+      color: var(--accent-gold);
+      border: 1px solid rgba(255, 183, 3, 0.3);
+      margin-bottom: 12px;
+    }
+    .perf-badge {
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border-color: rgba(230, 57, 70, 0.35);
+    }
+    .prize-badge {
+      background: linear-gradient(135deg, rgba(255, 183, 3, 0.25), rgba(230, 57, 70, 0.2));
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+    }
+    .game-title, .perf-title, .prize-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .prize-title {
+      color: var(--accent-gold-soft);
+      letter-spacing: 1px;
+    }
+    .game-desc, .perf-desc, .prize-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      max-width: 420px;
+    }
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      gap: 10px;
+    }
+    .carousel-btn {
+      background: rgba(230, 57, 70, 0.2);
+      border: 1px solid var(--accent-red);
+      color: var(--accent-ruby);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .carousel-btn:hover {
+      background: var(--accent-crimson);
+      color: #fff;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 200px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .carousel-dot.active {
+      width: 22px;
+      border-radius: 4px;
+      background: var(--accent-ruby);
+    }
 
-/* Swipeable Carousel in Modals */
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  border-radius: 12px;
-}
-.carousel-track {
-  display: flex;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  width: 100%;
-}
-.carousel-slide {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 18px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(230, 57, 70, 0.2);
-  border-radius: 12px;
-}
-.game-badge, .perf-badge, .lucky-badge {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  background: rgba(255, 183, 3, 0.15);
-  color: var(--accent-gold);
-  border: 1px solid rgba(255, 183, 3, 0.3);
-  margin-bottom: 12px;
-}
-.perf-badge {
-  background: rgba(230, 57, 70, 0.15);
-  color: var(--accent-ruby);
-  border-color: rgba(230, 57, 70, 0.35);
-}
-.lucky-badge {
-  background: linear-gradient(135deg, rgba(255, 183, 3, 0.2), rgba(230, 57, 70, 0.2));
-  color: var(--accent-gold);
-  border: 1px solid var(--accent-gold);
-  font-size: 0.8rem;
-}
-.game-title, .perf-title, .lucky-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-.lucky-title {
-  font-size: 1.35rem;
-  color: var(--accent-gold);
-  letter-spacing: 1px;
-}
-.game-desc, .perf-desc, .lucky-desc {
-  font-size: 0.86rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-  margin-bottom: 14px;
-  max-width: 420px;
-}
-.carousel-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 14px;
-  gap: 10px;
-}
-.carousel-btn {
-  background: rgba(230, 57, 70, 0.2);
-  border: 1px solid var(--accent-red);
-  color: var(--accent-ruby);
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.carousel-btn:hover {
-  background: var(--accent-crimson);
-  color: #fff;
-}
-.carousel-dots {
-  display: flex;
-  gap: 6px;
-  max-width: 200px;
-  overflow-x: auto;
-  padding: 4px;
-}
-.carousel-dot {
-  width: 8px;
-  height: 8px;
-  min-width: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-.carousel-dot.active {
-  width: 22px;
-  border-radius: 4px;
-  background: var(--accent-ruby);
-}
+    /* Prize Mystery Box Visual Card */
+    .prize-box-frame {
+      width: 100%;
+      max-width: 290px;
+      height: 220px;
+      border-radius: 16px;
+      margin: 8px auto 14px auto;
+      background: linear-gradient(145deg, #1f1418, #0a0608);
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 0 28px rgba(255, 183, 3, 0.25), inset 0 0 20px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prize-box-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none; /* revealed automatically when real photo loads */
+      padding: 10px;
+    }
+    .prize-box-frame.has-image img {
+      display: block;
+    }
+    .prize-box-frame.has-image .prize-box-placeholder {
+      display: none;
+    }
+    .prize-box-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .prize-question-mark {
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: var(--accent-gold);
+      text-shadow: 0 0 24px rgba(255, 183, 3, 0.8), 0 0 45px rgba(230, 57, 70, 0.5);
+      animation: questionPulse 1.8s ease-in-out infinite alternate;
+      line-height: 1;
+    }
+    .prize-box-icon {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+    }
+    @keyframes questionPulse {
+      0% { transform: scale(0.95); opacity: 0.85; filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.4)); }
+      100% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 20px rgba(255, 183, 3, 0.9)); }
+    }
 
-/* Gift Mystery Box Art for Lucky Draw */
-.gift-box-wrapper {
-  position: relative;
-  margin: 12px auto 16px auto;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.big-question-mark {
-  position: absolute;
-  top: -12px;
-  font-size: 3.2rem;
-  font-weight: 900;
-  color: var(--accent-gold);
-  text-shadow: 0 0 18px rgba(255, 183, 3, 0.8), 0 2px 4px #000;
-  z-index: 2;
-  animation: questionBob 1.8s ease-in-out infinite alternate;
-}
-.gift-box-art {
-  font-size: 5rem;
-  filter: drop-shadow(0 10px 20px rgba(217, 4, 41, 0.5));
-  animation: giftPulse 2.4s ease-in-out infinite alternate;
-}
-@keyframes questionBob {
-  0% { transform: translateY(0px) scale(0.95); }
-  100% { transform: translateY(-8px) scale(1.1); }
-}
-@keyframes giftPulse {
-  0% { transform: scale(0.96) rotate(-2deg); }
-  100% { transform: scale(1.04) rotate(2deg); }
-}
+    /* Photo Frame for Performances */
+    .perf-photo-frame {
+      width: 100%;
+      max-width: 320px;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 2px solid rgba(230, 57, 70, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      background: #0d0a0c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .perf-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-/* Photo Frame for Performances */
-.perf-photo-frame {
-  width: 100%;
-  max-width: 320px;
-  height: 220px;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  border: 2px solid rgba(230, 57, 70, 0.4);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-  background: #0d0a0c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.perf-photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    /* Black Mystery Box Visual */
+    .black-box-art {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(145deg, #1f1b20, #0a080a);
+      border: 2px solid var(--accent-gold);
+      border-radius: 14px;
+      box-shadow: 0 0 24px rgba(255, 183, 3, 0.3), inset 0 0 15px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 10px auto 14px auto;
+      position: relative;
+      animation: boxFloat 2.6s ease-in-out infinite alternate;
+    }
+    @keyframes boxFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-8px) rotate(2deg); }
+    }
 
-/* Black Mystery Box Visual */
-.black-box-art {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(145deg, #1f1b20, #0a080a);
-  border: 2px solid var(--accent-gold);
-  border-radius: 14px;
-  box-shadow: 0 0 24px rgba(255, 183, 3, 0.3), inset 0 0 15px rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  margin: 10px auto 14px auto;
-  position: relative;
-  animation: boxFloat 2.6s ease-in-out infinite alternate;
-}
-@keyframes boxFloat {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-8px) rotate(2deg); }
-}
+    /* Wind Graphic */
+    .wind-art {
+      font-size: 3.2rem;
+      margin: 10px auto 12px auto;
+      filter: drop-shadow(0 0 14px rgba(100, 223, 223, 0.4));
+      animation: windSway 2s ease-in-out infinite alternate;
+    }
+    @keyframes windSway {
+      0% { transform: translateX(-5px) skewX(-4deg); }
+      100% { transform: translateX(8px) skewX(4deg); }
+    }
 
-/* Wind Graphic */
-.wind-art {
-  font-size: 3.2rem;
-  margin: 10px auto 12px auto;
-  filter: drop-shadow(0 0 14px rgba(100, 223, 223, 0.4));
-  animation: windSway 2s ease-in-out infinite alternate;
-}
-@keyframes windSway {
-  0% { transform: translateX(-5px) skewX(-4deg); }
-  100% { transform: translateX(8px) skewX(4deg); }
-}
+    /* Schedule Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 12px; }
+    .time-slot {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-red);
+    }
+    .time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
+    .time-desc { font-size: 0.85rem; }
 
-/* Schedule Timeline */
-.timeline { display: flex; flex-direction: column; gap: 12px; }
-.time-slot {
-  display: flex;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 10px 12px;
-  border-radius: 8px;
-  border-left: 3px solid var(--accent-red);
-}
-.time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
-.time-desc { font-size: 0.85rem; }
-
-/* Committee Directory */
-.committee-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-.comm-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 12px 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.comm-avatar-frame {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  background: #1c1417;
-  border: 2px solid var(--accent-red);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: var(--accent-ruby);
-}
-.comm-avatar-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.comm-details { flex: 1; overflow: hidden; }
-.comm-name {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
-.comm-role-pill {
-  display: inline-block;
-  margin-top: 3px;
-  background: rgba(230, 57, 70, 0.15);
-  color: var(--accent-ruby);
-  border: 1px solid rgba(230, 57, 70, 0.35);
-  font-size: 0.65rem;
-  padding: 2px 6px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-
+    /* Committee Directory */
+    .committee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .comm-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 12px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .comm-avatar-frame {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      background: #1c1417;
+      border: 2px solid var(--accent-red);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--accent-ruby);
+    }
+    .comm-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .comm-details { flex: 1; overflow: hidden; }
+    .comm-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
+    .comm-role-pill {
+      display: inline-block;
+      margin-top: 3px;
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border: 1px solid rgba(230, 57, 70, 0.35);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
-
 
 <div class="container">
   <header class="header-box">
@@ -591,7 +602,6 @@ body {
     </div>
   </header>
 
-
   <main class="hub-grid">
     <!-- 1. Event Details (First Card) -->
     <div class="hub-card card-details" onclick="openModal('modalDetails')">
@@ -600,95 +610,88 @@ body {
       <div class="card-subtitle">Date, venue &amp; guide</div>
     </div>
 
+    <!-- 2. Seat & Reservation -->
+    <a href="seating.html" class="hub-card card-seating">
+      <div class="card-icon">🪑</div>
+      <div class="card-title">Seat &amp; Reservation</div>
+      <div class="card-subtitle">Assigned table &amp; map</div>
+    </a>
 
-<!-- 2. Seat & Reservation -->
-<a href="seating.html" class="hub-card card-seating">
-  <div class="card-icon">🪑</div>
-  <div class="card-title">Seat &amp; Reservation</div>
-  <div class="card-subtitle">Assigned table &amp; map</div>
-</a>
+    <!-- 3. Event Schedule -->
+    <div class="hub-card" onclick="openModal('modalSchedule')">
+      <div class="card-icon">📅</div>
+      <div class="card-title">Event Schedule</div>
+      <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
+    </div>
 
-<!-- 3. Event Schedule -->
-<div class="hub-card" onclick="openModal('modalSchedule')">
-  <div class="card-icon">📅</div>
-  <div class="card-title">Event Schedule</div>
-  <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
-</div>
+    <!-- 4. Lucky Draw (10 Mystery Slides) -->
+    <div class="hub-card" onclick="openModal('modalLucky')">
+      <div class="card-icon">🎁</div>
+      <div class="card-title">Lucky Draw</div>
+      <div class="card-subtitle">Top Grand Prizes Preview</div>
+    </div>
 
-<!-- 4. Lucky Draw (Swipeable 10 Gifts Carousel) -->
-<div class="hub-card" onclick="openModal('modalLucky')">
-  <div class="card-icon">🎁</div>
-  <div class="card-title">Lucky Draw</div>
-  <div class="card-subtitle">Grand prizes &amp; tiers</div>
-</div>
+    <!-- 5. Performance (Swipeable 7-Stage Carousel) -->
+    <div class="hub-card card-performance" onclick="openModal('modalPerformance')">
+      <div class="card-icon">🎤</div>
+      <div class="card-title">Performance</div>
+      <div class="card-subtitle">Live band &amp; talent acts</div>
+    </div>
 
-<!-- 5. Performance (Swipeable 7-Stage Carousel) -->
-<div class="hub-card card-performance" onclick="openModal('modalPerformance')">
-  <div class="card-icon">🎤</div>
-  <div class="card-title">Performance</div>
-  <div class="card-subtitle">Live band &amp; talent acts</div>
-</div>
+    <!-- 6. Photobooths -->
+    <div class="hub-card" onclick="openModal('modalPhotobooth')">
+      <div class="card-icon">📸</div>
+      <div class="card-title">Photobooths</div>
+      <div class="card-subtitle">360 Cam &amp; instant prints</div>
+    </div>
 
-<!-- 6. Photobooths -->
-<div class="hub-card" onclick="openModal('modalPhotobooth')">
-  <div class="card-icon">📸</div>
-  <div class="card-title">Photobooths</div>
-  <div class="card-subtitle">360 Cam &amp; instant prints</div>
-</div>
+    <!-- 7. Try Your Luck (Links to Lucky Draw Web App) -->
+    <a href="try_your_luck.html" class="hub-card">
+      <div class="card-icon">🎰</div>
+      <div class="card-title">Try Your Luck</div>
+      <div class="card-subtitle">Interactive Lucky Draw</div>
+    </a>
 
-<!-- 7. Try Your Luck (Links to Lucky Draw Web App) -->
-<a href="try_your_luck.html" class="hub-card">
-  <div class="card-icon">🎰</div>
-  <div class="card-title">Try Your Luck</div>
-  <div class="card-subtitle">Interactive Lucky Draw</div>
-</a>
+    <!-- 8. Vote The Best Dressed! (Links to Microsoft Forms) -->
+    <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
+      <div class="card-icon">👑</div>
+      <div class="card-title">Vote The Best Dressed!</div>
+      <div class="card-subtitle">Cast your vote live ↗</div>
+    </a>
 
-<!-- 8. Vote The Best Dressed! (Links to Microsoft Forms) -->
-<a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
-  <div class="card-icon">👑</div>
-  <div class="card-title">Vote The Best Dressed!</div>
-  <div class="card-subtitle">Cast your vote live ↗</div>
-</a>
+    <!-- 9. Post Your Photos! -->
+    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
+      <div class="card-icon">📷</div>
+      <div class="card-title">Post Your Photos!</div>
+      <div class="card-subtitle">Supply Chain Channel ↗</div>
+    </a>
 
-<!-- 9. Post Your Photos! -->
-<a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
-  <div class="card-icon">📷</div>
-  <div class="card-title">Post Your Photos!</div>
-  <div class="card-subtitle">Supply Chain Channel ↗</div>
-</a>
+    <!-- 10. Games (Swipeable Carousel) -->
+    <div class="hub-card card-games" onclick="openModal('modalGames')">
+      <div class="card-icon">🎮</div>
+      <div class="card-title">Games</div>
+      <div class="card-subtitle">Stage quiz &amp; challenges</div>
+    </div>
 
-<!-- 10. Games (Swipeable Carousel) -->
-<div class="hub-card card-games" onclick="openModal('modalGames')">
-  <div class="card-icon">🎮</div>
-  <div class="card-title">Games</div>
-  <div class="card-subtitle">Stage quiz &amp; challenges</div>
-</div>
+    <!-- 11. Event Committee -->
+    <div class="hub-card" onclick="openModal('modalCommittee')">
+      <div class="card-icon">👥</div>
+      <div class="card-title">Event Committee</div>
+      <div class="card-subtitle">Organizing team directory</div>
+    </div>
 
-<!-- 11. Event Committee -->
-<div class="hub-card" onclick="openModal('modalCommittee')">
-  <div class="card-icon">👥</div>
-  <div class="card-title">Event Committee</div>
-  <div class="card-subtitle">Organizing team directory</div>
-</div>
-
-<!-- 12. Mystery -->
-<div class="hub-card" onclick="openModal('modalMystery')">
-  <div class="card-icon">✨</div>
-  <div class="card-title">Mystery</div>
-  <div class="card-subtitle">Special surprise reveal</div>
-</div>
-
-
+    <!-- 12. Mystery -->
+    <div class="hub-card" onclick="openModal('modalMystery')">
+      <div class="card-icon">✨</div>
+      <div class="card-title">Mystery</div>
+      <div class="card-subtitle">Special surprise reveal</div>
+    </div>
   </main>
 </div>
 
-
 <!-- ================= MODALS ================= -->
 
-
-<!-- Modal: Lucky Draw (10 Swipeable Mystery Gifts Carousel) -->
-
-
+<!-- Modal: Lucky Draw (10 Swipeable Mystery Prizes - All Labeled Top Grand Prize without Numbering) -->
 <div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -696,152 +699,176 @@ body {
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
 
+    <!-- Lucky Draw 10-Slide Carousel Component -->
+    <div class="carousel-container" id="luckyCarousel">
+      <div class="carousel-track" id="luckyTrack">
+        <!-- Prize Slide 1 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame1">
+            <img src="Prize1.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 1)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
 
-<!-- 10-Gift Carousel -->
-<div class="carousel-container" id="luckyCarousel">
-  <div class="carousel-track" id="luckyTrack">
-    <!-- Slide 1: Grand Prize 1 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Top Grand Prize</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
+        <!-- Prize Slide 2 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame2">
+            <img src="Prize2.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 2)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 3 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame3">
+            <img src="Prize3.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 3)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 4 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame4">
+            <img src="Prize4.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 4)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 5 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame5">
+            <img src="Prize5.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 5)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 6 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame6">
+            <img src="Prize6.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 6)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 7 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame7">
+            <img src="Prize7.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 7)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 8 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame8">
+            <img src="Prize8.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 8)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 9 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame9">
+            <img src="Prize9.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 9)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
+
+        <!-- Prize Slide 10 -->
+        <div class="carousel-slide">
+          <span class="prize-badge">✨ Stage Draw</span>
+          <div class="prize-box-frame" id="prizeFrame10">
+            <img src="Prize10.png" alt="Top Grand Prize" onload="handlePrizeImgLoaded(this)" onerror="handlePrizeImgError(this, 10)" />
+            <div class="prize-box-placeholder">
+              <div class="prize-question-mark">?</div>
+              <div class="prize-box-icon">🎁</div>
+            </div>
+          </div>
+          <h3 class="prize-title">Top Grand Prize</h3>
+          <p class="prize-desc">Drawn live on stage during the grand finale!</p>
+        </div>
       </div>
-      <h3 class="lucky-title">Grand Prize 1</h3>
-      <p class="lucky-desc">Who will take home tonight's most coveted mystery grand prize?</p>
     </div>
 
-    <!-- Slide 2: Prize 2 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Grand Tier</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
+    <!-- Carousel Controls -->
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
+      <div class="carousel-dots" id="luckyDots">
+        <span class="carousel-dot active" onclick="goToLuckySlide(0)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(1)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(2)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(3)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(4)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(5)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(6)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(7)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(8)"></span>
+        <span class="carousel-dot" onclick="goToLuckySlide(9)"></span>
       </div>
-      <h3 class="lucky-title">Prize 2</h3>
-      <p class="lucky-desc">A premium mystery reward waiting for its lucky winner.</p>
+      <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
     </div>
 
-    <!-- Slide 3: Prize 3 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Grand Tier</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 3</h3>
-      <p class="lucky-desc">Another spectacular grand prize waiting under wraps.</p>
-    </div>
-
-    <!-- Slide 4: Prize 4 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Grand Tier</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 4</h3>
-      <p class="lucky-desc">Mystery prize revealed live on stage tonight.</p>
-    </div>
-
-    <!-- Slide 5: Prize 5 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Grand Tier</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 5</h3>
-      <p class="lucky-desc">Excitement builds as we reveal the top five prizes.</p>
-    </div>
-
-    <!-- Slide 6: Prize 6 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Stage Draw</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 6</h3>
-      <p class="lucky-desc">An incredible mystery item in tonight's stage draw.</p>
-    </div>
-
-    <!-- Slide 7: Prize 7 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Stage Draw</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 7</h3>
-      <p class="lucky-desc">Will your number be called for this special gift?</p>
-    </div>
-
-    <!-- Slide 8: Prize 8 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Stage Draw</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 8</h3>
-      <p class="lucky-desc">A wonderful surprise awaits the verified ticket holder.</p>
-    </div>
-
-    <!-- Slide 9: Prize 9 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Stage Draw</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 9</h3>
-      <p class="lucky-desc">Ready to unlock what's inside this mystery box?</p>
-    </div>
-
-    <!-- Slide 10: Prize 10 -->
-    <div class="carousel-slide">
-      <span class="lucky-badge">Stage Draw</span>
-      <div class="gift-box-wrapper">
-        <span class="big-question-mark">?</span>
-        <span class="gift-box-art">🎁</span>
-      </div>
-      <h3 class="lucky-title">Prize 10</h3>
-      <p class="lucky-desc">Kicking off the Top 10 Grand Draws of the evening!</p>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
     </div>
   </div>
 </div>
-
-<!-- Carousel Controls -->
-<div class="carousel-nav">
-  <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
-  <div class="carousel-dots" id="luckyDots">
-    <span class="carousel-dot active" onclick="goToLuckySlide(0)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(1)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(2)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(3)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(4)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(5)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(6)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(7)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(8)"></span>
-    <span class="carousel-dot" onclick="goToLuckySlide(9)"></span>
-  </div>
-  <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
-</div>
-
-<div class="modal-bottom-bar">
-  <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
-</div>
-
-
-  </div>
-</div>
-
 
 <!-- Modal: Performance (7-Slide Swipeable Carousel) -->
-
-
 <div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -849,123 +876,117 @@ body {
       <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
     </div>
 
+    <!-- Performance Carousel Component -->
+    <div class="carousel-container" id="perfCarousel">
+      <div class="carousel-track" id="perfTrack">
+        <!-- Slide 1: Opening Session -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 1 • 6:30 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Opening Session" onerror="handleWhoImageError(this)" />
+          </div>
+          <h3 class="perf-title">Opening Session</h3>
+          <p class="perf-desc">
+            A special, high-energy grand opening presentation to kick off the Intel SCM Annual Dinner 2026.
+          </p>
+        </div>
 
-<!-- Performance Carousel Component -->
-<div class="carousel-container" id="perfCarousel">
-  <div class="carousel-track" id="perfTrack">
-    <!-- Slide 1: Opening Session -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 1 • 6:30 PM</span>
-      <div class="perf-photo-frame">
-        <img src="Who.png" alt="Opening Session" onerror="this.onerror=null; this.src='Who.jpg';" />
+        <!-- Slide 2: Live Band Set 1 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 2 • 6:55 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 1 • Rocking the stage with your favorite classic dinner hits and acoustic grooves.
+          </p>
+        </div>
+
+        <!-- Slide 3: Performance 1 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 3 • 7:40 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 1" onerror="handleWhoImageError(this)" />
+          </div>
+          <h3 class="perf-title">Performance 1</h3>
+          <p class="perf-desc">
+            First internal talent showcase presented live on stage by our talented organization members.
+          </p>
+        </div>
+
+        <!-- Slide 4: Performance 2 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 4 • 8:00 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 2" onerror="handleWhoImageError(this)" />
+          </div>
+          <h3 class="perf-title">Performance 2</h3>
+          <p class="perf-desc">
+            Second internal vocal and stage showcase taking over the ballroom spotlight.
+          </p>
+        </div>
+
+        <!-- Slide 5: Live Band Set 2 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 5 • 8:10 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 2 • Dialing up the tempo with pop favorites and upbeat sing-along classics!
+          </p>
+        </div>
+
+        <!-- Slide 6: Performance 3 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 6 • 8:53 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 3" onerror="handleWhoImageError(this)" />
+          </div>
+          <h3 class="perf-title">Performance 3</h3>
+          <p class="perf-desc">
+            The grand internal team musical showcase bringing maximum team spirit to the stage!
+          </p>
+        </div>
+
+        <!-- Slide 7: Live Band Finale -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 7 • 9:18 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 3 • The high-energy finale performance celebrating an unforgettable evening together!
+          </p>
+        </div>
       </div>
-      <h3 class="perf-title">Opening Session</h3>
-      <p class="perf-desc">
-        A special, high-energy grand opening presentation to kick off the Intel SCM Annual Dinner 2026.
-      </p>
     </div>
 
-    <!-- Slide 2: Live Band Set 1 -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 2 • 6:55 PM</span>
-      <div class="perf-photo-frame">
-        <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+    <!-- Carousel Controls -->
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prevPerfSlide()">◀ Prev Act</button>
+      <div class="carousel-dots" id="perfDots">
+        <span class="carousel-dot active" onclick="goToPerfSlide(0)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(1)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(2)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(3)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(4)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(5)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(6)"></span>
       </div>
-      <h3 class="perf-title">The Wonderful Band</h3>
-      <p class="perf-desc">
-        Live Band Set 1 • Rocking the stage with your favorite classic dinner hits and acoustic grooves.
-      </p>
+      <button class="carousel-btn" onclick="nextPerfSlide()">Next Act ▶</button>
     </div>
 
-    <!-- Slide 3: Performance 1 -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 3 • 7:40 PM</span>
-      <div class="perf-photo-frame">
-        <img src="Who.png" alt="Performance 1" onerror="this.onerror=null; this.src='Who.jpg';" />
-      </div>
-      <h3 class="perf-title">Performance 1</h3>
-      <p class="perf-desc">
-        First internal talent showcase presented live on stage by our talented organization members.
-      </p>
-    </div>
-
-    <!-- Slide 4: Performance 2 -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 4 • 8:00 PM</span>
-      <div class="perf-photo-frame">
-        <img src="Who.png" alt="Performance 2" onerror="this.onerror=null; this.src='Who.jpg';" />
-      </div>
-      <h3 class="perf-title">Performance 2</h3>
-      <p class="perf-desc">
-        Second internal vocal and stage showcase taking over the ballroom spotlight.
-      </p>
-    </div>
-
-    <!-- Slide 5: Live Band Set 2 -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 5 • 8:10 PM</span>
-      <div class="perf-photo-frame">
-        <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
-      </div>
-      <h3 class="perf-title">The Wonderful Band</h3>
-      <p class="perf-desc">
-        Live Band Set 2 • Dialing up the tempo with pop favorites and upbeat sing-along classics!
-      </p>
-    </div>
-
-    <!-- Slide 6: Performance 3 -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 6 • 8:53 PM</span>
-      <div class="perf-photo-frame">
-        <img src="Who.png" alt="Performance 3" onerror="this.onerror=null; this.src='Who.jpg';" />
-      </div>
-      <h3 class="perf-title">Performance 3</h3>
-      <p class="perf-desc">
-        The grand internal team musical showcase bringing maximum team spirit to the stage!
-      </p>
-    </div>
-
-    <!-- Slide 7: Live Band Finale -->
-    <div class="carousel-slide">
-      <span class="perf-badge">Act 7 • 9:18 PM</span>
-      <div class="perf-photo-frame">
-        <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
-      </div>
-      <h3 class="perf-title">The Wonderful Band</h3>
-      <p class="perf-desc">
-        Live Band Set 3 • The high-energy finale performance celebrating an unforgettable evening together!
-      </p>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
     </div>
   </div>
 </div>
-
-<!-- Carousel Controls -->
-<div class="carousel-nav">
-  <button class="carousel-btn" onclick="prevPerfSlide()">◀ Prev Act</button>
-  <div class="carousel-dots" id="perfDots">
-    <span class="carousel-dot active" onclick="goToPerfSlide(0)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(1)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(2)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(3)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(4)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(5)"></span>
-    <span class="carousel-dot" onclick="goToPerfSlide(6)"></span>
-  </div>
-  <button class="carousel-btn" onclick="nextPerfSlide()">Next Act ▶</button>
-</div>
-
-<div class="modal-bottom-bar">
-  <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-</div>
-
-
-  </div>
-</div>
-
 
 <!-- Modal: Games (Swipeable 3 Games) -->
-
-
 <div class="modal-overlay" id="modalGames" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -973,68 +994,62 @@ body {
       <button class="modal-close" onclick="closeModal('modalGames')">&times;</button>
     </div>
 
+    <!-- Carousel Component -->
+    <div class="carousel-container" id="gameCarousel">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Game 1 -->
+        <div class="carousel-slide">
+          <span class="game-badge">Game 1 • Interactive Quiz</span>
+          <div style="font-size: 2.8rem; margin: 6px 0;">🏢⚡</div>
+          <h3 class="game-title">How Well Do You Know Your Workplace?</h3>
+          <p class="game-desc">
+            ⚠️ <strong>Heads Up:</strong> Be ready to scan the live QR code displayed on the main stage screen by the Emcee. <em>Speed and accuracy are key to taking the #1 spot!</em>
+          </p>
+          <div style="background: rgba(255, 183, 3, 0.1); border: 1px dashed var(--accent-gold); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; color: var(--accent-gold);">
+            ⚡ Fast fingers win the round! Highest points takes the prize.
+          </div>
+        </div>
 
-<!-- Carousel Component -->
-<div class="carousel-container" id="gameCarousel">
-  <div class="carousel-track" id="carouselTrack">
-    <!-- Game 1 -->
-    <div class="carousel-slide">
-      <span class="game-badge">Game 1 • Interactive Quiz</span>
-      <div style="font-size: 2.8rem; margin: 6px 0;">🏢⚡</div>
-      <h3 class="game-title">How Well Do You Know Your Workplace?</h3>
-      <p class="game-desc">
-        ⚠️ <strong>Heads Up:</strong> Be ready to scan the live QR code displayed on the main stage screen by the Emcee. <em>Speed and accuracy are key to taking the #1 spot!</em>
-      </p>
-      <div style="background: rgba(255, 183, 3, 0.1); border: 1px dashed var(--accent-gold); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; color: var(--accent-gold);">
-        ⚡ Fast fingers win the round! Highest points takes the prize.
+        <!-- Game 2 -->
+        <div class="carousel-slide">
+          <span class="game-badge">Game 2 • Stage Reaction</span>
+          <div class="wind-art">🍃💨🌪️</div>
+          <h3 class="game-title">When Big Wind Blows</h3>
+          <p class="game-desc" style="font-size: 1.05rem; font-style: italic; color: #fff;">
+            "When Big Wind Blows, it blows........"
+          </p>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="carousel-slide">
+          <span class="game-badge">Game 3 • The Mystery</span>
+          <div class="black-box-art">🎁</div>
+          <h3 class="game-title">The Black Box Mystery</h3>
+          <p class="game-desc" style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
+            "I wonder what prize is it inside?"
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Game 2 -->
-    <div class="carousel-slide">
-      <span class="game-badge">Game 2 • Stage Reaction</span>
-      <div class="wind-art">🍃💨🌪️</div>
-      <h3 class="game-title">When Big Wind Blows</h3>
-      <p class="game-desc" style="font-size: 1.05rem; font-style: italic; color: #fff;">
-        "When Big Wind Blows, it blows........"
-      </p>
+    <!-- Carousel Controls -->
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prevGameSlide()">◀ Prev Game</button>
+      <div class="carousel-dots" id="carouselDots">
+        <span class="carousel-dot active" onclick="goToGameSlide(0)"></span>
+        <span class="carousel-dot" onclick="goToGameSlide(1)"></span>
+        <span class="carousel-dot" onclick="goToGameSlide(2)"></span>
+      </div>
+      <button class="carousel-btn" onclick="nextGameSlide()">Next Game ▶</button>
     </div>
 
-    <!-- Game 3 -->
-    <div class="carousel-slide">
-      <span class="game-badge">Game 3 • The Mystery</span>
-      <div class="black-box-art">🎁</div>
-      <h3 class="game-title">The Black Box Mystery</h3>
-      <p class="game-desc" style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
-        "I wonder what prize is it inside?"
-      </p>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalGames')">← Back to Main Panel</button>
     </div>
   </div>
 </div>
-
-<!-- Carousel Controls -->
-<div class="carousel-nav">
-  <button class="carousel-btn" onclick="prevGameSlide()">◀ Prev Game</button>
-  <div class="carousel-dots" id="carouselDots">
-    <span class="carousel-dot active" onclick="goToGameSlide(0)"></span>
-    <span class="carousel-dot" onclick="goToGameSlide(1)"></span>
-    <span class="carousel-dot" onclick="goToGameSlide(2)"></span>
-  </div>
-  <button class="carousel-btn" onclick="nextGameSlide()">Next Game ▶</button>
-</div>
-
-<div class="modal-bottom-bar">
-  <button class="btn-return-main" onclick="closeModal('modalGames')">← Back to Main Panel</button>
-</div>
-
-
-  </div>
-</div>
-
 
 <!-- Modal: Event Details -->
-
-
 <div class="modal-overlay" id="modalDetails" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -1042,74 +1057,68 @@ body {
       <button class="modal-close" onclick="closeModal('modalDetails')">&times;</button>
     </div>
 
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Key Information Section -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
+        <h3 style="color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 12px;">📅 Key Event Details</h3>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size: 0.88rem; line-height: 1.5;">
+          <div><strong style="color:#fff;">Date:</strong> 23 October 2026</div>
+          <div><strong style="color:#fff;">Time:</strong> 5:30 PM - 10:30 PM</div>
+          <div><strong style="color:#fff;">Venue:</strong> Grand Ballroom Level 2, Penang Marriott Hotel</div>
+          <div><strong style="color:#fff;">Address:</strong> 55, Gurney Dr, 10250 George Town, Penang</div>
+          <div><strong style="color:#fff;">Dress Code:</strong> <span style="color:var(--accent-ruby); font-weight:700;">Red &amp; Black 🔴⚫</span></div>
+        </div>
+      </div>
 
-<div style="display:flex; flex-direction:column; gap:16px;">
-  <!-- Key Information Section -->
-  <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
-    <h3 style="color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 12px;">📅 Key Event Details</h3>
-    <div style="display:flex; flex-direction:column; gap:8px; font-size: 0.88rem; line-height: 1.5;">
-      <div><strong style="color:#fff;">Date:</strong> 23 October 2026</div>
-      <div><strong style="color:#fff;">Time:</strong> 5:30 PM - 10:30 PM</div>
-      <div><strong style="color:#fff;">Venue:</strong> Grand Ballroom Level 2, Penang Marriott Hotel</div>
-      <div><strong style="color:#fff;">Address:</strong> 55, Gurney Dr, 10250 George Town, Penang</div>
-      <div><strong style="color:#fff;">Dress Code:</strong> <span style="color:var(--accent-ruby); font-weight:700;">Red &amp; Black 🔴⚫</span></div>
-    </div>
-  </div>
+      <!-- Parking Information -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-ruby);">
+        <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 10px;">🚗 Parking Information</h3>
+        <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+          <p style="margin-bottom: 8px;">
+            <strong style="color:#fff;">Payment:</strong> Scan the QR code provided during event registration at the foyer. You will be directed to an online payment portal on your mobile device. The event guest rate is a flat fee of <strong style="color:var(--accent-gold);">RM10</strong>.
+          </p>
+          <p>
+            <strong style="color:#fff;">Exit Procedure:</strong> When driving toward the exit gate, the barrier will automatically open for validated vehicles without requiring any additional ticket or card action.
+          </p>
+        </div>
+      </div>
 
-  <!-- Parking Information -->
-  <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-ruby);">
-    <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 10px;">🚗 Parking Information</h3>
-    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-      <p style="margin-bottom: 8px;">
-        <strong style="color:#fff;">Payment:</strong> Scan the QR code provided during event registration at the foyer. You will be directed to an online payment portal on your mobile device. The event guest rate is a flat fee of <strong style="color:var(--accent-gold);">RM10</strong>.
-      </p>
-      <p>
-        <strong style="color:#fff;">Exit Procedure:</strong> When driving toward the exit gate, the barrier will automatically open for validated vehicles without requiring any additional ticket or card action.
-      </p>
-    </div>
-  </div>
+      <!-- Mystery Game Alert -->
+      <div style="background: rgba(230, 57, 70, 0.08); border-radius: 12px; padding: 16px; border: 1px dashed var(--accent-red);">
+        <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 8px;">🎭 Mystery Game Alert!</h3>
+        <p style="font-size: 0.85rem; color: #f1faee; line-height: 1.5; margin-bottom: 8px;">
+          Your assigned seat number will be used for special mystery game activities throughout the evening, so please take note of your seat number.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
+          Feel free to mingle and visit colleagues at different tables, but when the Emcee signals the start of mystery game activities, please return to your assigned seat promptly!
+        </p>
+        <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px 12px; font-size: 0.82rem; color: var(--accent-gold);">
+          🎉 <strong>Pro Tip:</strong> Remember your original seat number so you don't miss out on any surprises or prizes!
+        </div>
+      </div>
 
-  <!-- Mystery Game Alert -->
-  <div style="background: rgba(230, 57, 70, 0.08); border-radius: 12px; padding: 16px; border: 1px dashed var(--accent-red);">
-    <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 8px;">🎭 Mystery Game Alert!</h3>
-    <p style="font-size: 0.85rem; color: #f1faee; line-height: 1.5; margin-bottom: 8px;">
-      Your assigned seat number will be used for special mystery game activities throughout the evening, so please take note of your seat number.
-    </p>
-    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-      Feel free to mingle and visit colleagues at different tables, but when the Emcee signals the start of mystery game activities, please return to your assigned seat promptly!
-    </p>
-    <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px 12px; font-size: 0.82rem; color: var(--accent-gold);">
-      🎉 <strong>Pro Tip:</strong> Remember your original seat number so you don't miss out on any surprises or prizes!
+      <!-- Share Your Moments -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
+        <h3 style="color: var(--accent-gold-soft); font-size: 1.05rem; margin-bottom: 8px;">📷 Share Your Moments</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+          Capture and share your photos and videos on Yammer and social media using the official hashtag:
+        </p>
+        <div style="margin: 8px 0; font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: 1px;">
+          #SCM2026AD
+        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">
+          A Yammer QR code will also be available on each table card for instant uploading!
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Share Your Moments -->
-  <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
-    <h3 style="color: var(--accent-gold-soft); font-size: 1.05rem; margin-bottom: 8px;">📷 Share Your Moments</h3>
-    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-      Capture and share your photos and videos on Yammer and social media using the official hashtag:
-    </p>
-    <div style="margin: 8px 0; font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: 1px;">
-      #SCM2026AD
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalDetails')">← Back to Main Panel</button>
     </div>
-    <p style="font-size: 0.8rem; color: var(--text-muted);">
-      A Yammer QR code will also be available on each table card for instant uploading!
-    </p>
   </div>
 </div>
-
-<div class="modal-bottom-bar">
-  <button class="btn-return-main" onclick="closeModal('modalDetails')">← Back to Main Panel</button>
-</div>
-
-
-  </div>
-</div>
-
 
 <!-- Modal: Schedule -->
-
-
 <div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -1144,10 +1153,7 @@ body {
   </div>
 </div>
 
-
 <!-- Modal: Photobooth -->
-
-
 <div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -1166,10 +1172,7 @@ body {
   </div>
 </div>
 
-
 <!-- Modal: Committee -->
-
-
 <div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -1186,10 +1189,7 @@ body {
   </div>
 </div>
 
-
 <!-- Modal: Mystery -->
-
-
 <div class="modal-overlay" id="modalMystery" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -1212,7 +1212,6 @@ body {
     </div>
   </div>
 </div>
-
 
 <script>
   const COMMITTEE_MEMBERS = [
@@ -1260,6 +1259,63 @@ body {
     }
   }
 
+  /* Multi-tier fallback for Mystery performer image */
+  function handleWhoImageError(img) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+    if (attempt === 0) {
+      img.src = 'Who.png';
+    } else if (attempt === 1) {
+      img.src = 'Who.jpg';
+    } else if (attempt === 2) {
+      img.src = '0024.png';
+    } else if (attempt === 3) {
+      img.src = 'who.png';
+    } else {
+      img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
+    }
+  }
+
+  /* Multi-tier fallback for Band image */
+  function handleBandImageError(img) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+    if (attempt === 0) {
+      img.src = encodeURI('The Wonders Band.png');
+    } else if (attempt === 1) {
+      img.src = encodeURI('The Wonders Band.jpg');
+    } else if (attempt === 2) {
+      img.src = encodeURI('The Wonderful Band.png');
+    } else if (attempt === 3) {
+      img.src = encodeURI('The Wonderful Band.jpg');
+    } else {
+      img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
+    }
+  }
+
+  /* Handler for Prize Images: reveal image if exists, keep question box if not uploaded yet */
+  function handlePrizeImgLoaded(img) {
+    if (img.naturalWidth > 0) {
+      img.parentElement.classList.add('has-image');
+    }
+  }
+
+  function handlePrizeImgError(img, num) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+    if (attempt === 0) {
+      img.src = `Prize${num}.jpg`;
+    } else if (attempt === 1) {
+      img.src = `prize${num}.png`;
+    } else if (attempt === 2) {
+      img.src = `Prize_${num}.png`;
+    } else {
+      // Keep question mark placeholder active
+      img.style.display = 'none';
+      img.parentElement.classList.remove('has-image');
+    }
+  }
+
   function renderCommitteeGrid() {
     const container = document.getElementById('committeeGrid');
     if (!container) return;
@@ -1276,7 +1332,7 @@ body {
                  onerror="handleImageError(this, '${m.name.replace(/'/g, "\\'")}')" />
           </div>
           <div class="comm-details">
-            <div class="comm-name" title="\${m.name}">\${m.name}</div>
+            <div class="comm-name" title="${m.name}">${m.name}</div>
             <div class="comm-dept">${m.dept}</div>
             <span class="comm-role-pill">${m.role}</span>
           </div>
@@ -1300,36 +1356,6 @@ body {
     if (e.target.classList.contains('modal-overlay')) {
       e.target.classList.remove('active');
     }
-  }
-
-  /* Lucky Draw 10-Slide Carousel Navigation */
-  let currentLuckySlide = 0;
-  const totalLuckySlides = 10;
-
-  function updateLuckyCarousel() {
-    const track = document.getElementById('luckyTrack');
-    const dots = document.querySelectorAll('#luckyDots .carousel-dot');
-    if (track) {
-      track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
-    }
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentLuckySlide);
-    });
-  }
-
-  function nextLuckySlide() {
-    currentLuckySlide = (currentLuckySlide + 1) % totalLuckySlides;
-    updateLuckyCarousel();
-  }
-
-  function prevLuckySlide() {
-    currentLuckySlide = (currentLuckySlide - 1 + totalLuckySlides) % totalLuckySlides;
-    updateLuckyCarousel();
-  }
-
-  function goToLuckySlide(index) {
-    currentLuckySlide = index;
-    updateLuckyCarousel();
   }
 
   /* Games Carousel Navigation */
@@ -1392,6 +1418,36 @@ body {
     updatePerfCarousel();
   }
 
+  /* Lucky Draw Carousel Navigation (10 Slides) */
+  let currentLuckySlide = 0;
+  const totalLuckySlides = 10;
+
+  function updateLuckyCarousel() {
+    const track = document.getElementById('luckyTrack');
+    const dots = document.querySelectorAll('#luckyDots .carousel-dot');
+    if (track) {
+      track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
+    }
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentLuckySlide);
+    });
+  }
+
+  function nextLuckySlide() {
+    currentLuckySlide = (currentLuckySlide + 1) % totalLuckySlides;
+    updateLuckyCarousel();
+  }
+
+  function prevLuckySlide() {
+    currentLuckySlide = (currentLuckySlide - 1 + totalLuckySlides) % totalLuckySlides;
+    updateLuckyCarousel();
+  }
+
+  function goToLuckySlide(index) {
+    currentLuckySlide = index;
+    updateLuckyCarousel();
+  }
+
   /* Touch / Swipe Navigation for Mobile */
   let touchStartX = 0;
   let touchEndX = 0;
@@ -1412,12 +1468,11 @@ body {
 
   window.addEventListener('DOMContentLoaded', () => {
     renderCommitteeGrid();
-    setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
     setupSwipe('gameCarousel', nextGameSlide, prevGameSlide);
     setupSwipe('perfCarousel', nextPerfSlide, prevPerfSlide);
+    setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   });
 </script>
-
 
 </body>
 </html>
