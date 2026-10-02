@@ -640,7 +640,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 1 • 6:30 PM</span>
           <div class="perf-photo-frame">
-            <img src="Who.png" alt="Opening Session" onerror="this.onerror=null; this.src='Who.jpg';" />
+            <img src="0024.png" alt="Opening Session" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Opening Session</h3>
           <p class="perf-desc">
@@ -652,7 +652,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 2 • 6:55 PM</span>
           <div class="perf-photo-frame">
-            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
           </div>
           <h3 class="perf-title">The Wonderful Band</h3>
           <p class="perf-desc">
@@ -664,7 +664,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 3 • 7:40 PM</span>
           <div class="perf-photo-frame">
-            <img src="Who.png" alt="Performance 1" onerror="this.onerror=null; this.src='Who.jpg';" />
+            <img src="0024.png" alt="Performance 1" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 1</h3>
           <p class="perf-desc">
@@ -676,7 +676,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 4 • 8:00 PM</span>
           <div class="perf-photo-frame">
-            <img src="Who.png" alt="Performance 2" onerror="this.onerror=null; this.src='Who.jpg';" />
+            <img src="0024.png" alt="Performance 2" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 2</h3>
           <p class="perf-desc">
@@ -688,7 +688,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 5 • 8:10 PM</span>
           <div class="perf-photo-frame">
-            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
           </div>
           <h3 class="perf-title">The Wonderful Band</h3>
           <p class="perf-desc">
@@ -700,7 +700,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 6 • 8:53 PM</span>
           <div class="perf-photo-frame">
-            <img src="Who.png" alt="Performance 3" onerror="this.onerror=null; this.src='Who.jpg';" />
+            <img src="0024.png" alt="Performance 3" onerror="handleWhoImageError(this)" />
           </div>
           <h3 class="perf-title">Performance 3</h3>
           <p class="perf-desc">
@@ -712,7 +712,7 @@
         <div class="carousel-slide">
           <span class="perf-badge">Act 7 • 9:18 PM</span>
           <div class="perf-photo-frame">
-            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" />
           </div>
           <h3 class="perf-title">The Wonderful Band</h3>
           <p class="perf-desc">
@@ -1039,6 +1039,42 @@
     } else {
       const parent = img.parentElement;
       if (parent) parent.innerHTML = getInitials(name);
+    }
+  }
+
+  /* Multi-tier fallback for Mystery performer image */
+  function handleWhoImageError(img) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+    if (attempt === 0) {
+      img.src = '0024.png?v=4';
+    } else if (attempt === 1) {
+      img.src = 'Who.png?v=4';
+    } else if (attempt === 2) {
+      img.src = 'Who.jpg?v=4';
+    } else if (attempt === 3) {
+      img.src = 'who.png?v=4';
+    } else if (attempt === 4) {
+      img.src = '0024.jpg?v=4';
+    } else {
+      img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
+    }
+  }
+
+  /* Multi-tier fallback for Band image */
+  function handleBandImageError(img) {
+    const attempt = parseInt(img.dataset.attempt || '0');
+    img.dataset.attempt = attempt + 1;
+    if (attempt === 0) {
+      img.src = encodeURI('The Wonders Band.png?v=4');
+    } else if (attempt === 1) {
+      img.src = encodeURI('The Wonders Band.jpg?v=4');
+    } else if (attempt === 2) {
+      img.src = encodeURI('The Wonderful Band.png?v=4');
+    } else if (attempt === 3) {
+      img.src = encodeURI('The Wonderful Band.jpg?v=4');
+    } else {
+      img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
     }
   }
 
