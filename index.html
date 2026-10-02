@@ -13,6 +13,7 @@
       --accent-gold: #ffb703;
       --accent-blue: #4895ef;
       --accent-purple: #9d4edd;
+      --accent-pink: #f72585;
       --text-main: #ffffff;
       --text-muted: #8d99ae;
       --border-color: #3a506b;
@@ -140,6 +141,14 @@
     .hub-card.card-photos:hover {
       border-color: var(--accent-purple);
       box-shadow: 0 6px 18px rgba(157, 78, 221, 0.3);
+    }
+
+    .hub-card.card-vote {
+      border-color: rgba(247, 37, 133, 0.4);
+    }
+    .hub-card.card-vote:hover {
+      border-color: var(--accent-pink);
+      box-shadow: 0 6px 18px rgba(247, 37, 133, 0.3);
     }
 
     .card-icon {
@@ -312,7 +321,7 @@
   </header>
 
   <main class="hub-grid">
-    <!-- 1. Seat & Reservation (Standard 1-Column Card) -->
+    <!-- 1. Seat & Reservation -->
     <a href="seating.html" class="hub-card card-seating">
       <div class="card-icon">🪑</div>
       <div class="card-title">Seat & Reservation</div>
@@ -354,21 +363,28 @@
       <div class="card-subtitle">Interactive Lucky Draw</div>
     </a>
 
-    <!-- 7. Post Your Photos! (Standard 1-Column Card) -->
+    <!-- 7. Vote The Best Dressed! (Links to Microsoft Forms) -->
+    <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
+      <div class="card-icon">👑</div>
+      <div class="card-title">Vote The Best Dressed!</div>
+      <div class="card-subtitle">Cast your vote live ↗</div>
+    </a>
+
+    <!-- 8. Post Your Photos! -->
     <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
       <div class="card-icon">📷</div>
       <div class="card-title">Post Your Photos!</div>
       <div class="card-subtitle">Supply Chain Channel ↗</div>
     </a>
 
-    <!-- 8. Event Committee -->
+    <!-- 9. Event Committee -->
     <div class="hub-card" onclick="openModal('modalCommittee')">
       <div class="card-icon">👥</div>
       <div class="card-title">Event Committee</div>
       <div class="card-subtitle">Organizing team directory</div>
     </div>
 
-    <!-- 9. Mystery -->
+    <!-- 10. Mystery -->
     <div class="hub-card" onclick="openModal('modalMystery')">
       <div class="card-icon">✨</div>
       <div class="card-title">Mystery</div>
