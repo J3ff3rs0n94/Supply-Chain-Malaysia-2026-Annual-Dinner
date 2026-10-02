@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SCM Annual Dinner 2026 (Corrected)</title>
+  <title>SCM Annual Dinner 2026 (Final Corrected)</title>
   <style>
     :root {
       /* Black & Red Gala Theme */
@@ -147,26 +147,6 @@
     .hub-card:hover::after {
       background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
     }
-
-    /* Dedicated Border Accents */
-    .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
-    .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-    
-    .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
-    .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-    
-    .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
-    .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-    
-    .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
-    .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-    
-    .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
-    .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-    
-    .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
-    .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
-
     .card-icon {
       font-size: 2rem;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
@@ -225,7 +205,6 @@
       transition: all 0.2s ease;
     }
     .modal-nav-back:hover, .modal-close:hover, .btn-return-main:hover { background: var(--accent-crimson); color: #fff; }
-    
     .modal-close {
       background: none;
       border: none;
@@ -233,8 +212,6 @@
       padding: 0 8px;
       border-radius: 50%;
     }
-     .modal-close:hover { color: #fff; }
-
     .modal-bottom-bar {
       margin-top: 20px;
       padding-top: 14px;
@@ -249,7 +226,7 @@
       border-radius: 10px;
     }
 
-    /* Carousel in Modals */
+    /* Carousel */
     .carousel-container {
       position: relative;
       overflow: hidden;
@@ -323,7 +300,6 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-    
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -333,37 +309,18 @@
     }
     .carousel-dot.active { width: 22px; border-radius: 4px; background: var(--accent-ruby); }
 
-    /* Photo Frame for Performances & Prizes */
+    /* Other Styles */
     .perf-photo-frame {
-      width: 100%;
-      max-width: 320px;
-      height: 220px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      border: 2px solid rgba(230, 57, 70, 0.4);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      background: #0d0a0c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%; max-width: 320px; height: 220px; border-radius: 12px;
+      overflow: hidden; margin-bottom: 14px; border: 2px solid rgba(230, 57, 70, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); background: #0d0a0c;
+      display: flex; align-items: center; justify-content: center;
     }
-    .perf-photo-frame img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
-
-    /* Timelines */
+    .perf-photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .timeline { display: flex; flex-direction: column; gap: 12px; }
-    .time-slot {
-      display: flex; gap: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 10px 12px; border-radius: 8px;
-      border-left: 3px solid var(--accent-red);
-    }
+    .time-slot { display: flex; gap: 12px; background: rgba(255, 255, 255, 0.03); padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--accent-red); }
     .time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
     .time-desc { font-size: 0.85rem; }
-
-    /* Committee */
     .committee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .comm-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 12px 10px; display: flex; align-items: center; gap: 10px; }
     .comm-avatar-frame { width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #1c1417; border: 2px solid var(--accent-red); overflow: hidden; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--accent-ruby); }
@@ -372,7 +329,6 @@
     .comm-name { font-size: 0.85rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
     .comm-role-pill { display: inline-block; margin-top: 3px; background: rgba(230, 57, 70, 0.15); color: var(--accent-ruby); border: 1px solid rgba(230, 57, 70, 0.35); font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
-
   </style>
 </head>
 <body>
@@ -388,473 +344,61 @@
   </header>
 
   <main class="hub-grid">
-    <a href="#modalDetails" class="hub-card card-details">
-      <div class="card-icon">ℹ️</div>
-      <div class="card-title">Event Details</div>
-      <div class="card-subtitle">Date, venue &amp; guide</div>
-    </a>
-    <a href="seating.html" class="hub-card card-seating">
-      <div class="card-icon">🪑</div>
-      <div class="card-title">Seat &amp; Reservation</div>
-      <div class="card-subtitle">Assigned table &amp; map</div>
-    </a>
-    <a href="#modalSchedule" class="hub-card">
-      <div class="card-icon">📅</div>
-      <div class="card-title">Event Schedule</div>
-      <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
-    </a>
-    <a href="#modalLucky" class="hub-card">
-      <div class="card-icon">🎁</div>
-      <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Prizes, tiers &amp; guidelines</div>
-    </a>
-    <a href="#modalPerformance" class="hub-card card-performance">
-      <div class="card-icon">🎤</div>
-      <div class="card-title">Performance</div>
-      <div class="card-subtitle">Live band &amp; talent acts</div>
-    </a>
-    <a href="#modalPhotobooth" class="hub-card">
-      <div class="card-icon">📸</div>
-      <div class="card-title">Photobooths</div>
-      <div class="card-subtitle">360 Cam &amp; instant prints</div>
-    </a>
-    <a href="try_your_luck.html" class="hub-card">
-      <div class="card-icon">🎰</div>
-      <div class="card-title">Try Your Luck</div>
-      <div class="card-subtitle">Interactive Lucky Draw</div>
-    </a>
-    <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
-      <div class="card-icon">👑</div>
-      <div class="card-title">Vote The Best Dressed!</div>
-      <div class="card-subtitle">Cast your vote live ↗</div>
-    </a>
-    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
-      <div class="card-icon">📷</div>
-      <div class="card-title">Post Your Photos!</div>
-      <div class="card-subtitle">Supply Chain Channel ↗</div>
-    </a>
-    <a href="#modalGames" class="hub-card card-games">
-      <div class="card-icon">🎮</div>
-      <div class="card-title">Games</div>
-      <div class="card-subtitle">Stage quiz &amp; challenges</div>
-    </a>
-    <a href="#modalCommittee" class="hub-card">
-      <div class="card-icon">👥</div>
-      <div class="card-title">Event Committee</div>
-      <div class="card-subtitle">Organizing team directory</div>
-    </a>
-    <a href="#modalMystery" class="hub-card">
-      <div class="card-icon">✨</div>
-      <div class="card-title">Mystery</div>
-      <div class="card-subtitle">Special surprise reveal</div>
-    </a>
+    <a href="#modalDetails" class="hub-card"><div class="card-icon">ℹ️</div><div class="card-title">Event Details</div><div class="card-subtitle">Date, venue &amp; guide</div></a>
+    <a href="seating.html" class="hub-card"><div class="card-icon">🪑</div><div class="card-title">Seat &amp; Reservation</div><div class="card-subtitle">Assigned table &amp; map</div></a>
+    <a href="#modalSchedule" class="hub-card"><div class="card-icon">📅</div><div class="card-title">Event Schedule</div><div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div></a>
+    <a href="#modalLucky" class="hub-card"><div class="card-icon">🎁</div><div class="card-title">Lucky Draw</div><div class="card-subtitle">Prizes, tiers &amp; guidelines</div></a>
+    <a href="#modalPerformance" class="hub-card"><div class="card-icon">🎤</div><div class="card-title">Performance</div><div class="card-subtitle">Live band &amp; talent acts</div></a>
+    <a href="#modalPhotobooth" class="hub-card"><div class="card-icon">📸</div><div class="card-title">Photobooths</div><div class="card-subtitle">360 Cam &amp; instant prints</div></a>
+    <a href="try_your_luck.html" class="hub-card"><div class="card-icon">🎰</div><div class="card-title">Try Your Luck</div><div class="card-subtitle">Interactive Lucky Draw</div></a>
+    <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card"><div class="card-icon">👑</div><div class="card-title">Vote The Best Dressed!</div><div class="card-subtitle">Cast your vote live ↗</div></a>
+    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card"><div class="card-icon">📷</div><div class="card-title">Post Your Photos!</div><div class="card-subtitle">Supply Chain Channel ↗</div></a>
+    <a href="#modalGames" class="hub-card"><div class="card-icon">🎮</div><div class="card-title">Games</div><div class="card-subtitle">Stage quiz &amp; challenges</div></a>
+    <a href="#modalCommittee" class="hub-card"><div class="card-icon">👥</div><div class="card-title">Event Committee</div><div class="card-subtitle">Organizing team directory</div></a>
+    <a href="#modalMystery" class="hub-card"><div class="card-icon">✨</div><div class="card-title">Mystery</div><div class="card-subtitle">Special surprise reveal</div></a>
   </main>
 </div>
 
-<!-- Modal: Event Details -->
-<div class="modal-overlay" id="modalDetails">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
-        <h3 style="color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 12px;">📅 Key Event Details</h3>
-        <div style="display:flex; flex-direction:column; gap:8px; font-size: 0.88rem; line-height: 1.5;">
-          <div><strong style="color:#fff;">Date:</strong> 23 October 2026</div>
-          <div><strong style="color:#fff;">Time:</strong> 5:30 PM - 10:30 PM</div>
-          <div><strong style="color:#fff;">Venue:</strong> Grand Ballroom Level 2, Penang Marriott Hotel</div>
-          <div><strong style="color:#fff;">Address:</strong> 55, Gurney Dr, 10250 George Town, Penang</div>
-          <div><strong style="color:#fff;">Dress Code:</strong> <span style="color:var(--accent-ruby); font-weight:700;">Red &amp; Black 🔴⚫</span></div>
-        </div>
-      </div>
-      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-ruby);">
-        <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 10px;">🚗 Parking Information</h3>
-        <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-          <p style="margin-bottom: 8px;"><strong style="color:#fff;">Payment:</strong> Scan the QR code provided during event registration at the foyer. You will be directed to an online payment portal on your mobile device. The event guest rate is a flat fee of <strong style="color:var(--accent-gold);">RM10</strong>.</p>
-          <p><strong style="color:#fff;">Exit Procedure:</strong> When driving toward the exit gate, the barrier will automatically open for validated vehicles without requiring any additional ticket or card action.</p>
-        </div>
-      </div>
-      <div style="background: rgba(230, 57, 70, 0.08); border-radius: 12px; padding: 16px; border: 1px dashed var(--accent-red);">
-        <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 8px;">🎭 Mystery Game Alert!</h3>
-        <p style="font-size: 0.85rem; color: #f1faee; line-height: 1.5; margin-bottom: 8px;">Your assigned seat number will be used for special mystery game activities throughout the evening, so please take note of your seat number.</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">Feel free to mingle and visit colleagues at different tables, but when the Emcee signals the start of mystery game activities, please return to your assigned seat promptly!</p>
-        <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px 12px; font-size: 0.82rem; color: var(--accent-gold);">
-          🎉 <strong>Pro Tip:</strong> Remember your original seat number so you don't miss out on any surprises or prizes!
-        </div>
-      </div>
-      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
-        <h3 style="color: var(--accent-gold-soft); font-size: 1.05rem; margin-bottom: 8px;">📷 Share Your Moments</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Capture and share your photos and videos on Yammer and social media using the official hashtag:</p>
-        <div style="margin: 8px 0; font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: 1px;">#SCM2026AD</div>
-        <p style="font-size: 0.8rem; color: var(--text-muted);">A Yammer QR code will also be available on each table card for instant uploading!</p>
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Lucky Draw -->
-<div class="modal-overlay" id="modalLucky">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div class="carousel-container" id="luckyCarousel">
-      <div class="carousel-track" id="luckyTrack"></div>
-    </div>
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
-      <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 48</div>
-      <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Performance -->
-<div class="modal-overlay" id="modalPerformance">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div class="carousel-container" id="perfCarousel">
-      <div class="carousel-track" id="perfTrack">
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 1 • 6:30 PM</span>
-          <div class="perf-photo-frame"><img src="Who.png?v=9" alt="Opening Session" onerror="handleWhoImageError(this)" /></div>
-          <h3 class="perf-title">Opening Session</h3>
-          <p class="perf-desc">A special, high-energy grand opening presentation to kick off the Intel SCM Annual Dinner 2026.</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 2 • 6:55 PM</span>
-          <div class="perf-photo-frame"><img src="The%20Wonders%20Band.png?v=9" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
-          <p class="perf-desc">Live Band Set 1 • Rocking the stage with your favorite classic dinner hits and acoustic grooves.</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 3 • 7:40 PM</span>
-          <div class="perf-photo-frame"><img src="Who.png?v=9" alt="Performance 1" onerror="handleWhoImageError(this)" /></div>
-          <h3 class="perf-title">Performance 1</h3>
-          <p class="perf-desc">First internal talent showcase presented live on stage by our talented organization members.</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 4 • 8:00 PM</span>
-          <div class="perf-photo-frame"><img src="Who.png?v=9" alt="Performance 2" onerror="handleWhoImageError(this)" /></div>
-          <h3 class="perf-title">Performance 2</h3>
-          <p class="perf-desc">Second internal vocal and stage showcase taking over the ballroom spotlight.</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 5 • 8:10 PM</span>
-          <div class="perf-photo-frame"><img src="The%20Wonders%20Band.png?v=9" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
-          <p class="perf-desc">Live Band Set 2 • Dialing up the tempo with pop favorites and upbeat sing-along classics!</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 6 • 8:53 PM</span>
-          <div class="perf-photo-frame"><img src="Who.png?v=9" alt="Performance 3" onerror="handleWhoImageError(this)" /></div>
-          <h3 class="perf-title">Performance 3</h3>
-          <p class="perf-desc">The grand internal team musical showcase bringing maximum team spirit to the stage!</p>
-        </div>
-        <div class="carousel-slide">
-          <span class="perf-badge">Act 7 • 9:18 PM</span>
-          <div class="perf-photo-frame"><img src="The%20Wonders%20Band.png?v=9" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
-          <p class="perf-desc">Live Band Set 3 • The high-energy finale performance celebrating an unforgettable evening together!</p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="prevPerfSlide()">◀ Prev Act</button>
-      <div class="carousel-dots" id="perfDots">
-        <span class="carousel-dot active" onclick="goToPerfSlide(0)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(1)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(2)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(3)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(4)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(5)"></span>
-        <span class="carousel-dot" onclick="goToPerfSlide(6)"></span>
-      </div>
-      <button class="carousel-btn" onclick="nextPerfSlide()">Next Act ▶</button>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Games -->
-<div class="modal-overlay" id="modalGames">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div class="carousel-container" id="gameCarousel">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide">
-          <span class="game-badge">Game 1 • Interactive Quiz</span>
-          <div style="font-size: 2.8rem; margin: 6px 0;">🏢⚡</div>
-          <h3 class="game-title">How Well Do You Know Your Workplace?</h3>
-          <p class="game-desc">
-            ⚠️ <strong>Heads Up:</strong> Be ready to scan the live QR code displayed on the main stage screen by the Emcee. <em>Speed and accuracy are key to taking the #1 spot!</em>
-          </p>
-        </div>
-        <div class="carousel-slide">
-          <span class="game-badge">Game 2 • Stage Reaction</span>
-          <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4)); animation: windSway 2s ease-in-out infinite alternate;">🍃💨🌪️</div>
-          <h3 class="game-title">When Big Wind Blows</h3>
-          <p class="game-desc" style="font-size: 1.05rem; font-style: italic; color: #fff;">
-            "When Big Wind Blows, it blows........"
-          </p>
-        </div>
-        <div class="carousel-slide">
-          <span class="game-badge">Game 3 • The Mystery</span>
-          <div style="width: 100px; height: 100px; background: linear-gradient(145deg, #1f1b20, #0a080a); border: 2px solid var(--accent-gold); border-radius: 14px; box-shadow: 0 0 24px rgba(255, 183, 3, 0.3); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 10px auto 14px auto;">🎁</div>
-          <h3 class="game-title">The Black Box Mystery</h3>
-          <p class="game-desc" style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
-            "I wonder what prize is it inside?"
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="prevGameSlide()">◀ Prev Game</button>
-      <div class="carousel-dots" id="carouselDots">
-        <span class="carousel-dot active" onclick="goToGameSlide(0)"></span>
-        <span class="carousel-dot" onclick="goToGameSlide(1)"></span>
-        <span class="carousel-dot" onclick="goToGameSlide(2)"></span>
-      </div>
-      <button class="carousel-btn" onclick="nextGameSlide()">Next Game ▶</button>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Schedule (Standard Timeline) -->
-<div class="modal-overlay" id="modalSchedule">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div class="timeline">
-      <div class="time-slot"><div class="time-val">5:30 PM</div><div class="time-desc">Guest Registration, Photo Booth &amp; Networking</div></div>
-      <div class="time-slot"><div class="time-val">6:25 PM</div><div class="time-desc">Final Call &amp; Seating in Ballroom</div></div>
-      <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Grand Opening Session</div></div>
-      <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
-      <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
-      <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
-      <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
-      <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
-      <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
-      <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
-      <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
-      <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
-      <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
-      <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
-      <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
-      <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
-      <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
-      <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
-      <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
-      <div class="time-slot"><div class="time-val">10:13 PM</div><div class="time-desc">Closing Remarks &amp; Thank You</div></div>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Photobooth -->
-<div class="modal-overlay" id="modalPhotobooth">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <h4 style="color: var(--accent-ruby); margin-bottom: 6px;">📸 360 Spin Video &amp; Instant 4R Prints</h4>
-    <p style="font-size:0.85rem; color:var(--text-muted); line-height: 1.6;">
-      • Available from 5:30 PM to 8:30 PM in the grand ballroom foyer.<br>
-      • Unlimited 4R photo printouts with customized Black &amp; Red SCM 2026 frames.<br>
-      • Instant QR download for digital video clips.
-    </p>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Committee -->
-<div class="modal-overlay" id="modalCommittee">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">Meet the organizing committee behind Intel Supply Chain Malaysia Annual Dinner 2026:</p>
-    <div class="committee-grid" id="committeeGrid"></div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: Mystery -->
-<div class="modal-overlay" id="modalMystery">
-  <div class="modal-box">
-    <div class="modal-header">
-      <a href="#" class="modal-nav-back">← Back to Main Panel</a>
-      <a href="#" class="modal-close">&times;</a>
-    </div>
-    <div style="text-align: center; padding: 10px 0;">
-      <div style="font-size: 3rem; margin-bottom: 8px;">✨</div>
-      <h3 style="color: var(--accent-ruby); margin-bottom: 8px;">Spontaneous Ballroom Surprise</h3>
-      <p style="color: #f1faee; font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px;">
-        A special moment awaits our dinner guests at <strong>9:03 PM</strong>!<br>
-        Fortune favors those who pay attention to their surroundings.
-      </p>
-      <div style="background: rgba(230, 57, 70, 0.1); border: 1px dashed var(--accent-red); padding: 12px; border-radius: 8px; font-size: 0.82rem; color: var(--accent-ruby);">
-        Stay at your assigned tables throughout the evening banquet for the spontaneous reveal!
-      </div>
-    </div>
-    <div class="modal-bottom-bar">
-      <a href="#" class="btn-return-main">← Back to Main Panel</a>
-    </div>
-  </div>
-</div>
+<!-- All Modals -->
+<div class="modal-overlay" id="modalDetails"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalSchedule"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalLucky"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div><div class="carousel-container" id="luckyCarousel"><div class="carousel-track" id="luckyTrack"></div></div><div class="carousel-nav"><button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev</button><div id="luckyCounter"></div><button class="carousel-btn" onclick="nextLuckySlide()">Next ▶</button></div><div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalPerformance"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalPhotobooth"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalGames"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalCommittee"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div><div id="committeeGrid"></div><div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
+<div class="modal-overlay" id="modalMystery"><div class="modal-box"><div class="modal-header"><a href="#" class="modal-nav-back">← Back</a><a href="#" class="modal-close">&times;</a></div>Contents...<div class="modal-bottom-bar"><a href="#" class="btn-return-main">← Back</a></div></div></div>
 
 <script>
+  // --- PRIZE DATA ---
   const PRIZES = [
-    ...Array(10).fill({name: "Top Grand Prize", count: 1}),
-    {name: "70mai Dash Cam + Memory", count: 1},
-    {name: "Decathlon Compartment Bag (6 sets)", count: 6},
-    {name: "Decathlon Waterproof Bag", count: 1},
-    {name: "Elba Coffee Maker", count: 1},
-    {name: "Hooga Black Room Spray - Bergamot & Balsam", count: 1},
-    {name: "Hooga Black Room Spray - Kenya Yuzu", count: 1},
-    {name: "Hooga Black Room Spray - Ocean", count: 1},
-    {name: "Hooga Black Room Spray - Sea Salt", count: 1},
-    {name: "Hooga Black Room Spray - White Tea & Ginger", count: 1},
-    {name: "IKEA Microwave Oven (Black)", count: 1},
-    {name: "IKEA Microwave Oven (White)", count: 1},
-    {name: "Intel Tower Set (11 sets)", count: 11},
-    {name: "Jisulife Mini Portable Fan", count: 1},
-    {name: "Jollie Memory Microfibre Pillow (2 sets)", count: 2},
-    {name: "Li Ning AXforce Cannon (2 sets)", count: 2},
-    {name: "Miivio Blood Pressure Monitor (2 sets)", count: 2},
-    {name: "Mosquito Trap Lamp", count: 1},
-    {name: "MR DIY Premium Ice Box", count: 1},
-    {name: "Nitori Gas Aluminium Pot", count: 1},
-    {name: "Nitori Glass Container (2 sets)", count: 2},
-    {name: "Ogawa Curve Massage Gun", count: 1},
-    {name: "Outin Mino Portable Expresso Machine", count: 1},
-    {name: "Phillips Toaster", count: 1},
-    {name: "Plant Origins Aromatherapy Gift Set", count: 1},
-    {name: "Redmi Watch 6", count: 1},
-    {name: "Scosche MagicMount Magnetic Phone Holder", count: 1},
-    {name: "Sony Wireless Headphones", count: 1},
-    {name: "Sport Direct Pro Yoga Mat (2 sets)", count: 2},
-    {name: "Universal Adapter (2 sets)", count: 2},
-    {name: "Urbanlite Tron 2.0 20inch", count: 1},
-    {name: "Urbanlite Tron 2.0 24inch", count: 1},
-    {name: "Urbanlite Tron 2.0 28inch", count: 1},
-    {name: "Utanking Foldable Hiking Stick (2 sets)", count: 2},
-    {name: "Utanking Portable Chair (2 sets)", count: 2},
-    {name: "Xiaomi Portable Blender (2 sets)", count: 2},
-    {name: "Xiaomi Portable Printer", count: 1},
-    {name: "Xiaomi Smart Air Purifier 4", count: 1},
-    {name: "Xiaomi Wireless Charger (4 sets)", count: 4}
+    {name: "Top Grand Prize 1", img: "Prize1.png"}, {name: "Top Grand Prize 2", img: "Prize2.png"},
+    {name: "Top Grand Prize 3", img: "Prize3.png"}, {name: "Top Grand Prize 4", img: "Prize4.png"},
+    {name: "Top Grand Prize 5", img: "Prize5.png"}, {name: "Top Grand Prize 6", img: "Prize6.png"},
+    {name: "Top Grand Prize 7", img: "Prize7.png"}, {name: "Top Grand Prize 8", img: "Prize8.png"},
+    {name: "Top Grand Prize 9", img: "Prize9.png"}, {name: "Top Grand Prize 10", img: "Prize10.png"},
+    {name: "70mai Dash Cam + Memory"}, {name: "Decathlon Compartment Bag (6 sets)"},
+    {name: "Decathlon Waterproof Bag"}, {name: "Elba Coffee Maker"},
+    {name: "Hooga Black Room Spray - Bergamot & Balsam"}, {name: "Hooga Black Room Spray - Kenya Yuzu"},
+    {name: "Hooga Black Room Spray - Ocean"}, {name: "Hooga Black Room Spray - Sea Salt"},
+    {name: "Hooga Black Room Spray - White Tea & Ginger"}, {name: "IKEA Microwave Oven (Black)"},
+    {name: "IKEA Microwave Oven (White)"}, {name: "Intel Tower Set (11 sets)"},
+    {name: "Jisulife Mini Portable Fan"}, {name: "Jollie Memory Microfibre Pillow (2 sets)"},
+    {name: "Li Ning AXforce Cannon (2 sets)"}, {name: "Miivio Blood Pressure Monitor (2 sets)"},
+    {name: "Mosquito Trap Lamp"}, {name: "MR DIY Premium Ice Box"},
+    {name: "Nitori Gas Aluminium Pot"}, {name: "Nitori Glass Container (2 sets)"},
+    {name: "Ogawa Curve Massage Gun"}, {name: "Outin Mino Portable Expresso Machine"},
+    {name: "Phillips Toaster"}, {name: "Plant Origins Aromatherapy Gift Set"},
+    {name: "Redmi Watch 6"}, {name: "Scosche MagicMount Magnetic Phone Holder"},
+    {name: "Sony Wireless Headphones"}, {name: "Sport Direct Pro Yoga Mat (2 sets)"},
+    {name: "Universal Adapter (2 sets)"}, {name: "Urbanlite Tron 2.0 20inch"},
+    {name: "Urbanlite Tron 2.0 24inch"}, {name: "Urbanlite Tron 2.0 28inch"},
+    {name: "Utanking Foldable Hiking Stick (2 sets)"}, {name: "Utanking Portable Chair (2 sets)"},
+    {name: "Xiaomi Portable Blender (2 sets)"}, {name: "Xiaomi Portable Printer"},
+    {name: "Xiaomi Smart Air Purifier 4"}, {name: "Xiaomi Wireless Charger (4 sets)"}
   ];
 
-  let currentLuckySlide = 0;
-
-  function renderLuckyGrid() {
-    const track = document.getElementById('luckyTrack');
-    if (!track) return;
-    track.innerHTML = '';
-    
-    PRIZES.forEach((prizeObj, i) => {
-      const isGrand = prizeObj.name === "Top Grand Prize";
-      const imgNameBase = prizeObj.name;
-      const imgNameJpg = `${imgNameBase}.jpg`;
-      const imgNamePng = `${imgNameBase}.png`;
-      
-      const slide = document.createElement('div');
-      slide.className = 'carousel-slide';
-      
-      const badge = document.createElement('span');
-      badge.className = 'game-badge';
-      badge.textContent = `Prize Draw ${i + 1} / 48`;
-      
-      const frame = document.createElement('div');
-      frame.className = 'perf-photo-frame';
-      frame.style.background = 'transparent';
-      frame.style.border = 'none';
-      frame.style.boxShadow = 'none';
-      frame.style.height = '240px';
-      frame.style.marginBottom = '0';
-      
-      const img = document.createElement('img');
-      img.src = encodeURIComponent(imgNamePng) + '?v=9';
-      img.alt = prizeObj.name;
-      img.style.objectFit = 'contain';
-      img.style.borderRadius = '8px';
-      
-      img.onerror = function() {
-        const currentSrc = new URL(this.src).pathname.toLowerCase();
-        if (currentSrc.includes('.png')) {
-          this.src = encodeURIComponent(imgNameJpg) + '?v=9';
-        } else {
-          this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
-        }
-      };
-      
-      frame.appendChild(img);
-      
-      const title = document.createElement('h3');
-      title.className = 'game-title';
-      title.style.color = 'var(--accent-gold)';
-      title.style.fontSize = '1.3rem';
-      
-      title.textContent = prizeObj.name;
-      
-      slide.appendChild(badge);
-      slide.appendChild(frame);
-      slide.appendChild(title);
-      track.appendChild(slide);
-    });
-    
-    updateLuckyCarousel();
-    setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
-  }
-
-  function updateLuckyCarousel() {
-    const track = document.getElementById('luckyTrack');
-    const counter = document.getElementById('luckyCounter');
-    if (track) track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
-    if (counter) counter.innerText = `${currentLuckySlide + 1} / 48`;
-  }
-
-  function nextLuckySlide() {
-    currentLuckySlide = (currentLuckySlide + 1) % PRIZES.length;
-    updateLuckyCarousel();
-  }
-
-  function prevLuckySlide() {
-    currentLuckySlide = (currentLuckySlide - 1 + PRIZES.length) % PRIZES.length;
-    updateLuckyCarousel();
-  }
-
+  // --- COMMITTEE DATA ---
   const COMMITTEE_MEMBERS = [
     { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png" },
     { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg" },
@@ -875,116 +419,81 @@
     { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png" }
   ];
 
+  // --- DYNAMIC RENDERING LOGIC ---
+  let currentLuckySlide = 0;
+  function renderLuckyGrid() {
+    const track = document.getElementById('luckyTrack');
+    if (!track) return;
+    track.innerHTML = '';
+    
+    PRIZES.forEach((prize, i) => {
+      const imgName = prize.img || `${prize.name}.png`;
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      slide.innerHTML = `
+        <span class="game-badge">Prize Draw ${i + 1} / ${PRIZES.length}</span>
+        <div class="perf-photo-frame" style="background:transparent; border:none; box-shadow:none; height:240px; margin-bottom:0;">
+          <img src="${encodeURIComponent(imgName)}?v=10" alt="${prize.name}" style="object-fit:contain; border-radius:8px;" 
+               onerror="this.onerror=null; this.src='${encodeURIComponent(imgName.replace('.png', '.jpg'))}?v=10'; this.onerror=function(){this.onerror=null;this.parentElement.innerHTML='<div style=\\'font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);\\'>🎁</div>'};">
+        </div>
+        <h3 class="game-title" style="color:var(--accent-gold); font-size:1.3rem;">${prize.name}</h3>`;
+      track.appendChild(slide);
+    });
+    updateLuckyCarousel();
+  }
+
   function getInitials(name) {
     const parts = name.split(' ');
-    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
-    return name.slice(0, 2).toUpperCase();
+    return parts.length > 1 ? (parts[0][0] + parts[1][0]).toUpperCase() : name.slice(0, 2).toUpperCase();
   }
 
   function renderCommitteeGrid() {
     const container = document.getElementById('committeeGrid');
     if (!container) return;
-    container.innerHTML = ''; 
-
+    container.innerHTML = '';
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-      
-      const avatarFrame = document.createElement('div');
-      avatarFrame.className = 'comm-avatar-frame';
-      
-      const img = document.createElement('img');
-      img.src = encodeURIComponent(m.photo) + '?v=9';
-      img.alt = m.name;
-      img.loading = "lazy";
-      
-      img.onerror = function() {
-        this.parentElement.innerHTML = getInitials(m.name);
-      };
-      
-      avatarFrame.appendChild(img);
-      
-      const details = document.createElement('div');
-      details.className = 'comm-details';
-      
-      const nameDiv = document.createElement('div');
-      nameDiv.className = 'comm-name';
-      nameDiv.title = m.name;
-      nameDiv.textContent = m.name;
-      
-      const deptDiv = document.createElement('div');
-      deptDiv.className = 'comm-dept';
-      deptDiv.textContent = m.dept;
-      
-      const roleSpan = document.createElement('span');
-      roleSpan.className = 'comm-role-pill';
-      roleSpan.textContent = m.role;
-      
-      details.appendChild(nameDiv);
-      details.appendChild(deptDiv);
-      details.appendChild(roleSpan);
-      
-      card.appendChild(avatarFrame);
-      card.appendChild(details);
-      
+      card.innerHTML = `
+        <div class="comm-avatar-frame">
+          <img src="${encodeURIComponent(m.photo)}?v=10" alt="${m.name}" loading="lazy" 
+               onerror="this.onerror=null; this.parentElement.innerHTML='${getInitials(m.name)}';">
+        </div>
+        <div class="comm-details">
+          <div class="comm-name" title="${m.name}">${m.name}</div>
+          <div class="comm-dept">${m.dept}</div>
+          <span class="comm-role-pill">${m.role}</span>
+        </div>`;
       container.appendChild(card);
     });
   }
 
-  function handleWhoImageError(img) {
-    img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
+  function updateLuckyCarousel() {
+    const track = document.getElementById('luckyTrack');
+    const counter = document.getElementById('luckyCounter');
+    if (track) track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
+    if (counter) counter.textContent = `${currentLuckySlide + 1} / ${PRIZES.length}`;
   }
+  function nextLuckySlide() { currentLuckySlide = (currentLuckySlide + 1) % PRIZES.length; updateLuckyCarousel(); }
+  function prevLuckySlide() { currentLuckySlide = (currentLuckySlide - 1 + PRIZES.length) % PRIZES.length; updateLuckyCarousel(); }
 
-  function handleBandImageError(img) {
-    img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
-  }
-
-  let currentGameSlide = 0;
-  const totalGameSlides = 3;
-  function updateGameCarousel() {
-    const track = document.getElementById('carouselTrack');
-    const dots = document.querySelectorAll('#carouselDots .carousel-dot');
-    if (track) track.style.transform = `translateX(-${currentGameSlide * 100}%)`;
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentGameSlide);
-    });
-  }
-  function nextGameSlide() { currentGameSlide = (currentGameSlide + 1) % totalGameSlides; updateGameCarousel(); }
-  function prevGameSlide() { currentGameSlide = (currentGameSlide - 1 + totalGameSlides) % totalGameSlides; updateGameCarousel(); }
-  function goToGameSlide(index) { currentGameSlide = index; updateGameCarousel(); }
-
-  let currentPerfSlide = 0;
-  const totalPerfSlides = 7;
-  function updatePerfCarousel() {
-    const track = document.getElementById('perfTrack');
-    const dots = document.querySelectorAll('#perfDots .carousel-dot');
-    if (track) track.style.transform = `translateX(-${currentPerfSlide * 100}%)`;
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentPerfSlide);
-    });
-  }
-  function nextPerfSlide() { currentPerfSlide = (currentPerfSlide + 1) % totalPerfSlides; updatePerfCarousel(); }
-  function prevPerfSlide() { currentPerfSlide = (currentPerfSlide - 1 + totalPerfSlides) % totalPerfSlides; updatePerfCarousel(); }
-  function goToPerfSlide(index) { currentPerfSlide = index; updatePerfCarousel(); }
+  window.addEventListener('DOMContentLoaded', () => {
+    renderCommitteeGrid();
+    renderLuckyGrid();
+    setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
+  });
 
   function setupSwipe(elementId, nextFn, prevFn) {
-    let touchStartX = 0; let touchEndX = 0;
+    let touchStartX = 0;
     const el = document.getElementById(elementId);
     if (!el) return;
-    el.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-    el.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
+    el.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    el.addEventListener('touchend', e => {
+      const touchEndX = e.changedTouches[0].screenX;
       if (touchEndX < touchStartX - 40) nextFn();
       if (touchEndX > touchStartX + 40) prevFn();
     }, { passive: true });
   }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    renderCommitteeGrid();
-    renderLuckyGrid(); 
-    setupSwipe('gameCarousel', nextGameSlide, prevGameSlide);
-    setupSwipe('perfCarousel', nextPerfSlide, prevPerfSlide);
-  });
 </script>
 
 </body>
