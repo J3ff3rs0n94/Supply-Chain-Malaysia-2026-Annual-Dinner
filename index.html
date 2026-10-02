@@ -169,6 +169,14 @@
       box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35);
     }
 
+    .hub-card.card-performance {
+      border-color: rgba(230, 57, 70, 0.45);
+    }
+    .hub-card.card-performance:hover {
+      border-color: var(--accent-ruby);
+      box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45);
+    }
+
     .hub-card.card-games {
       border-color: rgba(255, 183, 3, 0.45);
     }
@@ -293,7 +301,7 @@
       color: #fff;
     }
 
-    /* Swipeable Carousel in Games Modal */
+    /* Swipeable Carousel in Modals */
     .carousel-container {
       position: relative;
       overflow: hidden;
@@ -317,7 +325,7 @@
       border: 1px solid rgba(230, 57, 70, 0.2);
       border-radius: 12px;
     }
-    .game-badge {
+    .game-badge, .perf-badge {
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -329,14 +337,19 @@
       border: 1px solid rgba(255, 183, 3, 0.3);
       margin-bottom: 12px;
     }
-    .game-title {
+    .perf-badge {
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border-color: rgba(230, 57, 70, 0.35);
+    }
+    .game-title, .perf-title {
       font-size: 1.15rem;
       font-weight: 800;
       color: #fff;
       margin-bottom: 10px;
       line-height: 1.3;
     }
-    .game-desc {
+    .game-desc, .perf-desc {
       font-size: 0.86rem;
       color: var(--text-muted);
       line-height: 1.55;
@@ -381,6 +394,28 @@
       width: 22px;
       border-radius: 4px;
       background: var(--accent-ruby);
+    }
+
+    /* Photo Frame for Performances */
+    .perf-photo-frame {
+      width: 100%;
+      max-width: 320px;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 2px solid rgba(230, 57, 70, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      background: #0d0a0c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .perf-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* Black Mystery Box Visual */
@@ -530,8 +565,8 @@
       <div class="card-subtitle">Prizes, tiers &amp; guidelines</div>
     </div>
 
-    <!-- 5. Performance -->
-    <div class="hub-card" onclick="openModal('modalPerformance')">
+    <!-- 5. Performance (Swipeable 7-Stage Carousel) -->
+    <div class="hub-card card-performance" onclick="openModal('modalPerformance')">
       <div class="card-icon">🎤</div>
       <div class="card-title">Performance</div>
       <div class="card-subtitle">Live band &amp; talent acts</div>
@@ -565,7 +600,7 @@
       <div class="card-subtitle">Supply Chain Channel ↗</div>
     </a>
 
-    <!-- 10. Games (12th Card - Swipeable Carousel) -->
+    <!-- 10. Games (Swipeable Carousel) -->
     <div class="hub-card card-games" onclick="openModal('modalGames')">
       <div class="card-icon">🎮</div>
       <div class="card-title">Games</div>
@@ -589,6 +624,124 @@
 </div>
 
 <!-- ================= MODALS ================= -->
+
+<!-- Modal: Performance (7-Slide Swipeable Carousel) -->
+<div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
+    </div>
+
+    <!-- Performance Carousel Component -->
+    <div class="carousel-container" id="perfCarousel">
+      <div class="carousel-track" id="perfTrack">
+        <!-- Slide 1: Opening Session -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 1 • 6:30 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Opening Session" onerror="this.onerror=null; this.src='Who.jpg';" />
+          </div>
+          <h3 class="perf-title">Opening Session</h3>
+          <p class="perf-desc">
+            A special, high-energy grand opening presentation to kick off the Intel SCM Annual Dinner 2026.
+          </p>
+        </div>
+
+        <!-- Slide 2: Live Band Set 1 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 2 • 6:55 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 1 • Rocking the stage with your favorite classic dinner hits and acoustic grooves.
+          </p>
+        </div>
+
+        <!-- Slide 3: Performance 1 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 3 • 7:40 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 1" onerror="this.onerror=null; this.src='Who.jpg';" />
+          </div>
+          <h3 class="perf-title">Performance 1</h3>
+          <p class="perf-desc">
+            First internal talent showcase presented live on stage by our talented organization members.
+          </p>
+        </div>
+
+        <!-- Slide 4: Performance 2 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 4 • 8:00 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 2" onerror="this.onerror=null; this.src='Who.jpg';" />
+          </div>
+          <h3 class="perf-title">Performance 2</h3>
+          <p class="perf-desc">
+            Second internal vocal and stage showcase taking over the ballroom spotlight.
+          </p>
+        </div>
+
+        <!-- Slide 5: Live Band Set 2 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 5 • 8:10 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 2 • Dialing up the tempo with pop favorites and upbeat sing-along classics!
+          </p>
+        </div>
+
+        <!-- Slide 6: Performance 3 -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 6 • 8:53 PM</span>
+          <div class="perf-photo-frame">
+            <img src="Who.png" alt="Performance 3" onerror="this.onerror=null; this.src='Who.jpg';" />
+          </div>
+          <h3 class="perf-title">Performance 3</h3>
+          <p class="perf-desc">
+            The grand internal team musical showcase bringing maximum team spirit to the stage!
+          </p>
+        </div>
+
+        <!-- Slide 7: Live Band Finale -->
+        <div class="carousel-slide">
+          <span class="perf-badge">Act 7 • 9:18 PM</span>
+          <div class="perf-photo-frame">
+            <img src="The Wonders Band.png" alt="The Wonderful Band" onerror="this.onerror=null; this.src='The Wonders Band.jpg';" />
+          </div>
+          <h3 class="perf-title">The Wonderful Band</h3>
+          <p class="perf-desc">
+            Live Band Set 3 • The high-energy finale performance celebrating an unforgettable evening together!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prevPerfSlide()">◀ Prev Act</button>
+      <div class="carousel-dots" id="perfDots">
+        <span class="carousel-dot active" onclick="goToPerfSlide(0)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(1)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(2)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(3)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(4)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(5)"></span>
+        <span class="carousel-dot" onclick="goToPerfSlide(6)"></span>
+      </div>
+      <button class="carousel-btn" onclick="nextPerfSlide()">Next Act ▶</button>
+    </div>
+
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
 
 <!-- Modal: Games (Swipeable 3 Games) -->
 <div class="modal-overlay" id="modalGames" onclick="closeOnBackdrop(event)">
@@ -783,28 +936,6 @@
   </div>
 </div>
 
-<!-- Modal: Performance -->
-<div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <button class="modal-nav-back" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-      <button class="modal-close" onclick="closeModal('modalPerformance')">&times;</button>
-    </div>
-    <ul style="padding-left: 20px; font-size: 0.88rem; display: flex; flex-direction: column; gap: 8px; color: #f1faee;">
-      <li><strong>Opening Session</strong> (6:30 PM)</li>
-      <li><strong>Live Band Set 1</strong> (6:55 PM - 7:30 PM)</li>
-      <li><strong>Internal Performance 1</strong> (7:40 PM - 7:50 PM)</li>
-      <li><strong>Internal Performance 2</strong> (8:00 PM - 8:10 PM)</li>
-      <li><strong>Live Band Set 2</strong> (8:10 PM - 8:43 PM)</li>
-      <li><strong>Internal Performance 3</strong> (8:53 PM - 9:03 PM)</li>
-      <li><strong>Live Band Finale Set 3</strong> (9:18 PM - 9:48 PM)</li>
-    </ul>
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalPerformance')">← Back to Main Panel</button>
-    </div>
-  </div>
-</div>
-
 <!-- Modal: Photobooth -->
 <div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
@@ -953,13 +1084,13 @@
     }
   }
 
-  /* Carousel Navigation Logic */
+  /* Games Carousel Navigation */
   let currentSlide = 0;
   const totalSlides = 3;
 
   function updateCarousel() {
     const track = document.getElementById('carouselTrack');
-    const dots = document.querySelectorAll('.carousel-dot');
+    const dots = document.querySelectorAll('#carouselDots .carousel-dot');
     if (track) {
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
@@ -983,38 +1114,58 @@
     updateCarousel();
   }
 
+  /* Performance Carousel Navigation (7 Slides) */
+  let currentPerfSlide = 0;
+  const totalPerfSlides = 7;
+
+  function updatePerfCarousel() {
+    const track = document.getElementById('perfTrack');
+    const dots = document.querySelectorAll('#perfDots .carousel-dot');
+    if (track) {
+      track.style.transform = `translateX(-${currentPerfSlide * 100}%)`;
+    }
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentPerfSlide);
+    });
+  }
+
+  function nextPerfSlide() {
+    currentPerfSlide = (currentPerfSlide + 1) % totalPerfSlides;
+    updatePerfCarousel();
+  }
+
+  function prevPerfSlide() {
+    currentPerfSlide = (currentPerfSlide - 1 + totalPerfSlides) % totalPerfSlides;
+    updatePerfCarousel();
+  }
+
+  function goToPerfSlide(index) {
+    currentPerfSlide = index;
+    updatePerfCarousel();
+  }
+
   /* Touch / Swipe Navigation for Mobile */
   let touchStartX = 0;
   let touchEndX = 0;
 
-  function handleTouchStart(e) {
-    touchStartX = e.changedTouches[0].screenX;
-  }
-
-  function handleTouchEnd(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }
-
-  function handleSwipe() {
-    const swipeThreshold = 40;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swiped Left -> Next
-      nextGameSlide();
-    }
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Swiped Right -> Prev
-      prevGameSlide();
-    }
+  function setupSwipe(elementId, nextFn, prevFn) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    el.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    el.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 40;
+      if (touchEndX < touchStartX - swipeThreshold) nextFn();
+      if (touchEndX > touchStartX + swipeThreshold) prevFn();
+    }, { passive: true });
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     renderCommitteeGrid();
-    const carousel = document.getElementById('gameCarousel');
-    if (carousel) {
-      carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-      carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
-    }
+    setupSwipe('gameCarousel', nextGameSlide, prevGameSlide);
+    setupSwipe('perfCarousel', nextPerfSlide, prevPerfSlide);
   });
 </script>
 
