@@ -18,6 +18,7 @@
       --text-main: #ffffff;
       --text-muted: #a3a3ad;
       --border-color: #2b1f24;
+      --border-glow: rgba(224, 30, 55, 0.4);
       --card-radius: 14px;
     }
 
@@ -524,7 +525,7 @@
   </div>
 </div>
 
-<!-- Modal: Lucky Draw (Dynamically Generated 48 Slides) -->
+<!-- Modal: Lucky Draw (Dynamically Generated) -->
 <div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -534,7 +535,7 @@
     
     <div class="carousel-container" id="luckyCarousel">
       <div class="carousel-track" id="luckyTrack">
-        <!-- 48 Unique Slides are generated safely via JS -->
+        <!-- Slides are generated safely via JS -->
       </div>
     </div>
 
@@ -631,7 +632,6 @@
     </div>
     <div class="carousel-container" id="gameCarousel">
       <div class="carousel-track" id="carouselTrack">
-        <!-- Game 1 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 1 • Interactive Quiz</span>
           <div style="font-size: 2.8rem; margin: 6px 0;">🏢⚡</div>
@@ -640,7 +640,6 @@
             ⚠️ <strong>Heads Up:</strong> Be ready to scan the live QR code displayed on the main stage screen by the Emcee. <em>Speed and accuracy are key to taking the #1 spot!</em>
           </p>
         </div>
-        <!-- Game 2 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 2 • Stage Reaction</span>
           <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4)); animation: windSway 2s ease-in-out infinite alternate;">🍃💨🌪️</div>
@@ -649,7 +648,6 @@
             "When Big Wind Blows, it blows........"
           </p>
         </div>
-        <!-- Game 3 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 3 • The Mystery</span>
           <div style="width: 100px; height: 100px; background: linear-gradient(145deg, #1f1b20, #0a080a); border: 2px solid var(--accent-gold); border-radius: 14px; box-shadow: 0 0 24px rgba(255, 183, 3, 0.3); display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 10px auto 14px auto;">🎁</div>
@@ -773,45 +771,45 @@
      48-SLIDE DE-DUPLICATED LUCKY DRAW RENDERER
      ========================================= */
   const PRIZES = [
-    ...Array(10).fill("Top Grand Prize"),
-    "70mai Dash Cam + Memory",
-    "Decathlon Compartment Bags",
-    "Decathlon Waterproof Bag",
-    "Elba Coffee Maker",
-    "Hooga Black Room Spray - Bergamot & Balsam",
-    "Hooga Black Room Spray - Kenya Yuzu",
-    "Hooga Black Room Spray - Ocean",
-    "Hooga Black Room Spray - Sea Salt",
-    "Hooga Black Room Spray - White Tea & Ginger",
-    "IKEA Microwave Oven (Black)",
-    "IKEA Microwave Oven (White)",
-    "Intel Tower Set",
-    "Jisulife Mini Portable Fan",
-    "Jollie Memory Microfibre Pillow",
-    "Li Ning AXForce Cannon",
-    "Miivio Blood Pressure Monitor",
-    "Mosquito Trap Lamp",
-    "MR DIY Premium Ice Box",
-    "Nitori Gas Aluminium Pot",
-    "Nitori Glass Container",
-    "Ogawa Curve Massage Gun",
-    "Outin Mino Portable Expresso Machine",
-    "Phillips Toaster",
-    "Plant Origins Aromatherapy Gift Set",
-    "Redmi Watch 6",
-    "Scosche MagicMount Magnetic Phone Holder",
-    "Sony Wireless Headphones",
-    "Sport Direct Yoga Mat",
-    "Universal Adapter",
-    "Urbanlite Tron 2.0 20inch",
-    "Urbanlite Tron 2.0 24inch",
-    "Urbanlite Tron 2.0 28inch",
-    "Utanking Foldable Hiking Stick",
-    "Utanking Portable Chair",
-    "Xiaomi Portable Blender",
-    "Xiaomi Portable Printer",
-    "Xiaomi Smart Air Purifier 4",
-    "Xiaomi Wireless Charger"
+    ...Array(10).fill({name: "Top Grand Prize", count: 1}),
+    {name: "70mai Dash Cam + Memory", count: 1},
+    {name: "Decathlon Compartment Bags", count: 6},
+    {name: "Decathlon Waterproof Bag", count: 1},
+    {name: "Elba Coffee Maker", count: 1},
+    {name: "Hooga Black Room Spray - Bergamot & Balsam", count: 1},
+    {name: "Hooga Black Room Spray - Kenya Yuzu", count: 1},
+    {name: "Hooga Black Room Spray - Ocean", count: 1},
+    {name: "Hooga Black Room Spray - Sea Salt", count: 1},
+    {name: "Hooga Black Room Spray - White Tea & Ginger", count: 1},
+    {name: "IKEA Microwave Oven (Black)", count: 1},
+    {name: "IKEA Microwave Oven (White)", count: 1},
+    {name: "Intel Tower Set", count: 11},
+    {name: "Jisulife Mini Portable Fan", count: 1},
+    {name: "Jollie Memory Microfibre Pillow", count: 2},
+    {name: "Li Ning AXForce Cannon", count: 2},
+    {name: "Miivio Blood Pressure Monitor", count: 2},
+    {name: "Mosquito Trap Lamp", count: 1},
+    {name: "MR DIY Premium Ice Box", count: 1},
+    {name: "Nitori Gas Aluminium Pot", count: 1},
+    {name: "Nitori Glass Container", count: 2},
+    {name: "Ogawa Curve Massage Gun", count: 1},
+    {name: "Outin Mino Portable Expresso Machine", count: 1},
+    {name: "Phillips Toaster", count: 1},
+    {name: "Plant Origins Aromatherapy Gift Set", count: 1},
+    {name: "Redmi Watch 6", count: 1},
+    {name: "Scosche MagicMount Magnetic Phone Holder", count: 1},
+    {name: "Sony Wireless Headphones", count: 1},
+    {name: "Sport Direct Yoga Mat", count: 2},
+    {name: "Universal Adapter", count: 2},
+    {name: "Urbanlite Tron 2.0 20inch", count: 1},
+    {name: "Urbanlite Tron 2.0 24inch", count: 1},
+    {name: "Urbanlite Tron 2.0 28inch", count: 1},
+    {name: "Utanking Foldable Hiking Stick", count: 2},
+    {name: "Utanking Portable Chair", count: 2},
+    {name: "Xiaomi Portable Blender", count: 2},
+    {name: "Xiaomi Portable Printer", count: 1},
+    {name: "Xiaomi Smart Air Purifier 4", count: 1},
+    {name: "Xiaomi Wireless Charger", count: 4}
   ];
 
   let currentLuckySlide = 0;
@@ -821,9 +819,10 @@
     if (!track) return;
     track.innerHTML = '';
     
-    PRIZES.forEach((prize, i) => {
-      const isGrand = i < 10;
-      const imgName = isGrand ? `Prize${i+1}.png` : `${prize}.png`;
+    // Using DOM Elements to avoid parsing errors
+    PRIZES.forEach((prizeObj, i) => {
+      const isGrand = prizeObj.name === "Top Grand Prize";
+      const imgName = isGrand ? `Prize${i+1}.png` : `${prizeObj.name}.png`;
       
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
@@ -841,23 +840,24 @@
       frame.style.marginBottom = '0';
       
       const img = document.createElement('img');
-      img.src = encodeURI(imgName + '?v=6');
-      img.alt = prize;
+      img.src = encodeURI(imgName + '?v=8');
+      img.alt = prizeObj.name;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
       img.dataset.imgname = imgName;
       
+      // Fallback handlers for images
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
         const base = this.dataset.imgname.replace('.png', '');
         
         if (attempt === 0) {
-          this.src = encodeURI(base + '.jpg?v=6');
+          this.src = encodeURI(base + '.jpg?v=8');
         } else if (attempt === 1) {
-          this.src = encodeURI(base + '.jpeg?v=6');
+          this.src = encodeURI(base + '.jpeg?v=8');
         } else if (attempt === 2) {
-          this.src = encodeURI(base.toUpperCase() + '.PNG?v=6');
+          this.src = encodeURI(base.toUpperCase() + '.PNG?v=8');
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
@@ -869,7 +869,13 @@
       title.className = 'game-title';
       title.style.color = 'var(--accent-gold)';
       title.style.fontSize = '1.3rem';
-      title.textContent = prize;
+      
+      // Inject the 'x2', 'x6', etc. quantity badge if more than 1
+      if(prizeObj.count > 1) {
+          title.innerHTML = `${prizeObj.name} <span style="font-size:0.8rem; color:var(--text-muted); vertical-align:middle; margin-left:6px;">x${prizeObj.count}</span>`;
+      } else {
+          title.textContent = prizeObj.name;
+      }
       
       slide.appendChild(badge);
       slide.appendChild(frame);
@@ -902,23 +908,23 @@
      COMMITTEE ROSTER (DOM Rendered Safely)
      ========================================= */
   const COMMITTEE_MEMBERS = [
-    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png?v=6" },
-    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg?v=6" },
-    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png?v=6" },
-    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png?v=6" },
-    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png?v=6" },
-    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png?v=6" },
-    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png?v=6" },
-    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg?v=6" },
-    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png?v=6" },
-    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg?v=6" },
-    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg?v=6" },
-    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg?v=6" },
-    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg?v=6" },
-    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png?v=6" },
-    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "Hakim Ab Razak.png?v=6" },
-    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png?v=6" },
-    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png?v=6" }
+    { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png?v=8" },
+    { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg?v=8" },
+    { name: "Dylan Leong Chat Lun", dept: "GSCO-CPOG", role: "Lucky Draw & Games", photo: "Dylan Leong.png?v=8" },
+    { name: "Christine Woo", dept: "GSCO-CPOG", role: "Vendor Coordinator", photo: "Christine Woo.png?v=8" },
+    { name: "Kasturi Krishnan", dept: "SCPO-CPOG", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png?v=8" },
+    { name: "Teoh Pei Fen", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Teoh Pei Fen.png?v=8" },
+    { name: "Lee Swee Hoon", dept: "GSCO-CPOG", role: "Door Gift Lead", photo: "Lee Swee Hoon.png?v=8" },
+    { name: "Celine Yap Y Mendoza", dept: "GSCO-CPOG", role: "Emcee & Stage Host", photo: "Celine Yap Y Mendoza.jpg?v=8" },
+    { name: "Chiravong A Ne Chin", dept: "FCS-Intel Foundry", role: "Emcee & Stage Host", photo: "Chiravong A Ne chin.png?v=8" },
+    { name: "Eugene Loke Shiuk Ming", dept: "FCSP-Intel Foundry", role: "Media & Photography", photo: "Eugene Loke Shiuk Ming.jpg?v=8" },
+    { name: "Jenson Oh", dept: "IFA-Intel Foundry", role: "Media & Photography", photo: "Jenson Oh.jpeg?v=8" },
+    { name: "Azri Mohd Khanil", dept: "FIFA-Intel Foundry", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg?v=8" },
+    { name: "Abbie Yen Ting Koo", dept: "IFA-Intel Foundry", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg?v=8" },
+    { name: "Syed Nasir Mohamed", dept: "IFA-Intel Foundry", role: "Event Operations", photo: "Syed Nasir Mohamed.png?v=8" },
+    { name: "Hakim Ab Razak", dept: "FCSP-Intel Foundry", role: "Event Operations", photo: "Hakim Ab Razak.png?v=8" },
+    { name: "Catherine Lim", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Catherine Lim.png?v=8" },
+    { name: "Chan Kl Chan", dept: "FCS-Intel Foundry", role: "Event Operations", photo: "Chan Kl Chan.png?v=8" }
   ];
 
   function getInitials(name) {
@@ -930,7 +936,7 @@
   function renderCommitteeGrid() {
     const container = document.getElementById('committeeGrid');
     if (!container) return;
-    container.innerHTML = ''; // Clear container
+    container.innerHTML = ''; // Clear container safely
 
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
@@ -944,16 +950,16 @@
       img.alt = m.name;
       img.loading = "lazy";
       
-      // Fallback for committee photos safely bound
+      // Safe fallback logic 
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
         const baseName = m.name.trim();
 
-        if (attempt === 0) this.src = encodeURI('hakim Ab Razak.png?v=6');
-        else if (attempt === 1) this.src = encodeURI('Hakim Ab Razak.png?v=6');
-        else if (attempt === 2) this.src = encodeURI(baseName + '.jpg?v=6');
-        else if (attempt === 3) this.src = encodeURI(baseName + '.jpeg?v=6');
+        if (attempt === 0) this.src = encodeURI('hakim Ab Razak.png?v=8');
+        else if (attempt === 1) this.src = encodeURI('Hakim Ab Razak.png?v=8');
+        else if (attempt === 2) this.src = encodeURI(baseName + '.jpg?v=8');
+        else if (attempt === 3) this.src = encodeURI(baseName + '.jpeg?v=8');
         else {
           this.parentElement.innerHTML = getInitials(m.name);
         }
@@ -991,20 +997,20 @@
   function handleWhoImageError(img) {
     const attempt = parseInt(img.dataset.attempt || '0');
     img.dataset.attempt = attempt + 1;
-    if (attempt === 0) img.src = 'Who.png?v=6';
-    else if (attempt === 1) img.src = 'Who.jpg?v=6';
-    else if (attempt === 2) img.src = '0024.png?v=6';
-    else if (attempt === 3) img.src = 'who.png?v=6';
+    if (attempt === 0) img.src = 'Who.png?v=8';
+    else if (attempt === 1) img.src = 'Who.jpg?v=8';
+    else if (attempt === 2) img.src = '0024.png?v=8';
+    else if (attempt === 3) img.src = 'who.png?v=8';
     else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-ruby);">❓</div>';
   }
 
   function handleBandImageError(img) {
     const attempt = parseInt(img.dataset.attempt || '0');
     img.dataset.attempt = attempt + 1;
-    if (attempt === 0) img.src = encodeURI('The Wonders Band.png?v=6');
-    else if (attempt === 1) img.src = encodeURI('The Wonders Band.jpg?v=6');
-    else if (attempt === 2) img.src = encodeURI('The Wonderful Band.png?v=6');
-    else if (attempt === 3) img.src = encodeURI('The Wonderful Band.jpg?v=6');
+    if (attempt === 0) img.src = encodeURI('The Wonders Band.png?v=8');
+    else if (attempt === 1) img.src = encodeURI('The Wonders Band.jpg?v=8');
+    else if (attempt === 2) img.src = encodeURI('The Wonderful Band.png?v=8');
+    else if (attempt === 3) img.src = encodeURI('The Wonderful Band.jpg?v=8');
     else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
   }
 
