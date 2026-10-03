@@ -150,22 +150,22 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-    
+
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-    
+
     .hub-card.card-lucky { border-color: rgba(255, 183, 3, 0.55); }
     .hub-card.card-lucky:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-    
+
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-    
+
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-    
+
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
@@ -327,7 +327,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-    
+
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -546,7 +546,7 @@
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-    
+
     <!-- Remark Banner: 76 Total Lucky Draw Items -->
     <div class="lucky-notice-box">
       🎉 <strong>Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in <strong>alphabetical sequence</strong>, not in terms of value.
@@ -587,8 +587,8 @@
         </div>
         <div class="carousel-slide">
           <span class="perf-badge">Act 2 • 6:55 PM</span>
-          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
+          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonders Band" onerror="handleBandImageError(this)" /></div>
+          <h3 class="perf-title">The Wonders Band</h3>
           <p class="perf-desc">Live Band Set 1 • Rocking the stage with your favorite classic dinner hits and acoustic grooves.</p>
         </div>
         <div class="carousel-slide">
@@ -605,8 +605,8 @@
         </div>
         <div class="carousel-slide">
           <span class="perf-badge">Act 5 • 8:10 PM</span>
-          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
+          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonders Band" onerror="handleBandImageError(this)" /></div>
+          <h3 class="perf-title">The Wonders Band</h3>
           <p class="perf-desc">Live Band Set 2 • Dialing up the tempo with pop favorites and upbeat sing-along classics!</p>
         </div>
         <div class="carousel-slide">
@@ -617,8 +617,8 @@
         </div>
         <div class="carousel-slide">
           <span class="perf-badge">Act 7 • 9:18 PM</span>
-          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonderful Band" onerror="handleBandImageError(this)" /></div>
-          <h3 class="perf-title">The Wonderful Band</h3>
+          <div class="perf-photo-frame"><img src="The Wonders Band.png" alt="The Wonders Band" onerror="handleBandImageError(this)" /></div>
+          <h3 class="perf-title">The Wonders Band</h3>
           <p class="perf-desc">Live Band Set 3 • The high-energy finale performance celebrating an unforgettable evening together!</p>
         </div>
       </div>
@@ -870,11 +870,11 @@
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
-    
+
     PRIZES.forEach((p, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-      
+
       const badge = document.createElement('span');
       badge.className = 'game-badge';
       badge.textContent = p.badge;
@@ -883,7 +883,7 @@
         badge.style.borderColor = 'var(--accent-ruby)';
         badge.style.color = 'var(--accent-ruby)';
       }
-      
+
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
       frame.style.background = 'transparent';
@@ -891,20 +891,20 @@
       frame.style.boxShadow = 'none';
       frame.style.height = '240px';
       frame.style.marginBottom = '0';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(p.file + '?v=6');
       img.alt = p.title;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
       img.dataset.imgname = p.file;
-      
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
         const lastDot = this.dataset.imgname.lastIndexOf('.');
         const base = lastDot !== -1 ? this.dataset.imgname.substring(0, lastDot) : this.dataset.imgname;
-        
+
         if (attempt === 0) {
           this.src = encodeURI(base + '.png?v=6');
         } else if (attempt === 1) {
@@ -919,21 +919,21 @@
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
       };
-      
+
       frame.appendChild(img);
-      
+
       const title = document.createElement('h3');
       title.className = 'game-title';
       title.style.color = p.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
       title.style.fontSize = '1.25rem';
       title.textContent = p.title;
-      
+
       slide.appendChild(badge);
       slide.appendChild(frame);
       slide.appendChild(title);
       track.appendChild(slide);
     });
-    
+
     updateLuckyCarousel();
     setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   }
@@ -992,15 +992,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-      
+
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-      
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -1014,32 +1014,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-      
+
       avatarFrame.appendChild(img);
-      
+
       const details = document.createElement('div');
       details.className = 'comm-details';
-      
+
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-      
+
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-      
+
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-      
+
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-      
+
       card.appendChild(avatarFrame);
       card.appendChild(details);
-      
+
       container.appendChild(card);
     });
   }
