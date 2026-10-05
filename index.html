@@ -150,24 +150,24 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-
+    
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-
+    
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-
+    
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-
+    
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-
+    
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
-    .hub-card.card-winner { border-color: rgba(255, 183, 3, 0.6); }
-    .hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.5); }
+    .hub-card.card-winner { border-color: rgba(255, 183, 3, 0.5); }
+    .hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
     .card-icon {
       font-size: 2rem;
@@ -327,7 +327,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-
+    
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -440,11 +440,11 @@
       <div class="card-subtitle">Interactive Lucky Draw</div>
     </a>
 
-    <!-- 8. Lucky Winner -->
+    <!-- 8. Lucky Winner (Clean Separate Page Link) -->
     <a href="lucky_winner.html" class="hub-card card-winner">
       <div class="card-icon">🏆</div>
       <div class="card-title">Lucky Winner</div>
-      <div class="card-subtitle">Live winners list &amp; lookup</div>
+      <div class="card-subtitle">Live Winners Board ↗</div>
     </a>
 
     <!-- 9. Vote The Best Dressed! -->
@@ -533,7 +533,7 @@
   </div>
 </div>
 
-<!-- Modal: Lucky Draw Carousel -->
+<!-- Modal: Lucky Draw (Dynamically Generated 48 Slides) -->
 <div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -541,20 +541,20 @@
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
 
-    <!-- Explanatory Banner -->
-    <div style="background: rgba(255, 183, 3, 0.08); border-left: 3px solid var(--accent-gold); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; color: #f1faee; line-height: 1.45;">
-      💡 <strong style="color: var(--accent-gold);">Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in alphabetical sequence, not in terms of value.
+    <!-- Official Notice Banner -->
+    <div style="background: rgba(255, 183, 3, 0.1); border: 1px solid rgba(255, 183, 3, 0.35); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; color: var(--accent-gold-soft); line-height: 1.45; text-align: center;">
+      ℹ️ <strong>Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in alphabetical sequence, not in terms of value.
     </div>
-
+    
     <div class="carousel-container" id="luckyCarousel">
       <div class="carousel-track" id="luckyTrack">
-        <!-- Generated safely via JS -->
+        <!-- Slides generated safely via JS -->
       </div>
     </div>
 
     <div class="carousel-nav">
       <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
-      <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 49</div>
+      <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 48</div>
       <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
     </div>
 
@@ -657,7 +657,7 @@
         <!-- Game 2 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 2 • Stage Reaction</span>
-          <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4));">🍃💨🌪️</div>
+          <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4)); animation: windSway 2s ease-in-out infinite alternate;">🍃💨🌪️</div>
           <h3 class="game-title">When Big Wind Blows</h3>
           <p class="game-desc" style="font-size: 1.05rem; font-style: italic; color: #fff;">
             "When Big Wind Blows, it blows........"
@@ -783,76 +783,82 @@
 </div>
 
 <script>
-  /* =========================================================
-     LUCKY DRAW ITEMS (76 PRIZES TOTAL - 10 GRAND + 66 REGULAR ACROSS 39 UNIQUE CATEGORIES)
-     Sorted alphabetically by item name with exact GitHub filenames
-     ========================================================= */
-  const PRIZES = [
-    { title: "Top Grand Prize 1", img: "Prize1.png", isGrand: true },
-    { title: "Top Grand Prize 2", img: "Prize2.png", isGrand: true },
-    { title: "Top Grand Prize 3", img: "Prize3.png", isGrand: true },
-    { title: "Top Grand Prize 4", img: "Prize4.png", isGrand: true },
-    { title: "Grand Prize 5 • Outin Mino Portable Expresso Machine", img: "Outin Mino Portable Expresso Machine.png", fallback: "Prize5.png", isGrand: true },
-    { title: "Top Grand Prize 6", img: "Prize6.png", isGrand: true },
-    { title: "Top Grand Prize 7", img: "Prize7.png", isGrand: true },
-    { title: "Top Grand Prize 8", img: "Prize8.png", isGrand: true },
-    { title: "Top Grand Prize 9", img: "Prize9.png", isGrand: true },
-    { title: "Top Grand Prize 10", img: "Prize10.png", isGrand: true },
-    { title: "70mai Dash Cam + Memory", img: "70mai Dash Cam + Memory.png" },
-    { title: "Decathlon Compartment Bag", img: "Decathlon Compartment Bag (6 sets).png" },
-    { title: "Decathlon Waterproof Bag", img: "Decathlon Waterproof Bag.png" },
-    { title: "Elba Coffee Maker", img: "Elba Coffee Maker.png" },
-    { title: "HOESD Portable Monitor", img: "HOESD Portable Monitor.png" },
-    { title: "Hooga Black Room Spray - Bergamot & Balsam", img: "Hooga Black Room Spray - Bergamot & Balsam.png" },
-    { title: "Hooga Black Room Spray - Kenya Yuzu", img: "Hooga Black Room Spray - Kenya Yuzu.png" },
-    { title: "Hooga Black Room Spray - Ocean", img: "Hooga Black Room Spray - Ocean.png" },
-    { title: "Hooga Black Room Spray - Sea Salt", img: "Hooga Black Room Spray - Sea Salt.png" },
-    { title: "Hooga Black Room Spray - White Tea & Ginger", img: "Hooga Black Room Spray - White Tea & Ginger.png" },
-    { title: "IKEA Microwave Oven (Black)", img: "IKEA Microwave Oven (Black).png" },
-    { title: "IKEA Microwave Oven (White)", img: "IKEA Microwave Oven (White).png" },
-    { title: "Intel Tower Set", img: "Intel Tower Set (11 sets).jpg" },
-    { title: "Jisulife Mini Portable Fan", img: "Jisulife Mini Portable Fan.png" },
-    { title: "Jollie Memory Microfibre Pillow", img: "Jollie Memory Microfibre Pillow (2 sets).png" },
-    { title: "Li Ning AXForce Cannon", img: "Li Ning AXForce Cannon (2 sets).png" },
-    { title: "Miivio Blood Pressure Monitor", img: "Miivio Blood Pressure Monitor (2 sets).png" },
-    { title: "Mosquito Trap Lamp", img: "Mosquite Trap Lamp.png" },
-    { title: "MR DIY Premium Ice Box", img: "MR DIY Premium Ice Box.png" },
-    { title: "Nitori Gas Aluminium Pot", img: "Nitori Gas Aluminium Pot.png" },
-    { title: "Nitori Glass Container", img: "Nitori Glass Container (2 sets).png" },
-    { title: "Ogawa Curve Massage Gun", img: "Ogawa Curve Masssage Gun.png" },
-    { title: "PerrySmith Vacuum Cleaner", img: "PerrySmith Vacuum Cleaner.png" },
-    { title: "Phillips Toaster", img: "Phillips Toaster.png" },
-    { title: "Plant Origins Aromatherapy Gift Set", img: "Plant Origins Aromatherapy Gift Set.png" },
-    { title: "Redmi Watch 6", img: "Redmi Watch 6.png" },
-    { title: "Scosche MagicMount Magnetic Phone Holder", img: "Scosche MagicMount Magnetic Phone Holder.png" },
-    { title: "Sony Wireless Headphones", img: "Sony Wireless Headphones.png" },
-    { title: "Sport Direct Pro Yoga Mat", img: "Sport Direct Pro Yoga Mat (2 sets).png" },
-    { title: "Universal Adapter", img: "Universal Adapter (2 sets).png" },
-    { title: "Urbanlite Tron 2.0 20inch", img: "Urbanlite Tron 2.0 20inch.jpg" },
-    { title: "Urbanlite Tron 2.0 24inch", img: "Urbanlite Tron 2.0 24inch.jpg" },
-    { title: "Urbanlite Tron 2.0 28inch", img: "Urbanlite Tron 2.0 28inch.jpg" },
-    { title: "Utanking Foldable Hiking Stick", img: "Utanking Foldable Hiking Stick ( 2 sets).png" },
-    { title: "Utanking Portable Chair", img: "Utanking Portable Chair (2 sets).png" },
-    { title: "Xiaomi Portable Blender", img: "Xiaomi Portable Blender (2 sets).png" },
-    { title: "Xiaomi Portable Printer", img: "Xiaomi Portable Printer.png" },
-    { title: "Xiaomi Smart Air Purifier 4", img: "Xiaomi Smart Air Purifier 4.png" },
-    { title: "Xiaomi Wireless Charger", img: "Xiaomi Wireless Charger (4 sets).png" }
+  /* =========================================================================
+     48-SLIDE DE-DUPLICATED LUCKY DRAW PRESENTATION (10 Grand + 38 Regular)
+     Total 76 Physical Prizes Accounted For:
+     - 10 Grand Prizes (including #5 Outin Mino Expresso & #10 Redmi Watch 6)
+     - 66 Regular Session Prizes
+     ========================================================================= */
+  const GRAND_PRIZES = [
+    { rank: 1, title: "Top Grand Prize 1", file: "Prize1.png" },
+    { rank: 2, title: "Top Grand Prize 2", file: "Prize2.png" },
+    { rank: 3, title: "Top Grand Prize 3", file: "Prize3.png" },
+    { rank: 4, title: "Top Grand Prize 4", file: "Prize4.png" },
+    { rank: 5, title: "Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png", fallback: "Prize5.png" },
+    { rank: 6, title: "Top Grand Prize 6", file: "Prize6.png" },
+    { rank: 7, title: "Top Grand Prize 7", file: "Prize7.png" },
+    { rank: 8, title: "Top Grand Prize 8", file: "Prize8.png" },
+    { rank: 9, title: "Top Grand Prize 9", file: "Prize9.png" },
+    { rank: 10, title: "Redmi Watch 6", file: "Redmi Watch 6.png", fallback: "Prize10.png" }
+  ];
+
+  const REGULAR_PRIZES = [
+    { title: "70mai Dash Cam + Memory", file: "70mai Dash Cam + Memory.png" },
+    { title: "Decathlon Compartment Bag (6 sets)", file: "Decathlon Compartment Bag (6 sets).png" },
+    { title: "Decathlon Waterproof Bag", file: "Decathlon Waterproof Bag.png" },
+    { title: "Elba Coffee Maker", file: "Elba Coffee Maker.png" },
+    { title: "HOESD Portable Monitor", file: "HOESD Portable Monitor.png" },
+    { title: "Hooga Black Room Spray - Bergamot & Balsam", file: "Hooga Black Room Spray - Bergamot & Balsam.png" },
+    { title: "Hooga Black Room Spray - Kenya Yuzu", file: "Hooga Black Room Spray - Kenya Yuzu.png" },
+    { title: "Hooga Black Room Spray - Ocean", file: "Hooga Black Room Spray - Ocean.png" },
+    { title: "Hooga Black Room Spray - Sea Salt", file: "Hooga Black Room Spray - Sea Salt.png" },
+    { title: "Hooga Black Room Spray - White Tea & Ginger", file: "Hooga Black Room Spray - White Tea & Ginger.png" },
+    { title: "IKEA Microwave Oven (Black)", file: "IKEA Microwave Oven (Black).png" },
+    { title: "IKEA Microwave Oven (White)", file: "IKEA Microwave Oven (White).png" },
+    { title: "Intel Towel Set (11 sets)", file: "Intel Tower Set (11 sets).jpg" },
+    { title: "Jisulife Mini Portable Fan", file: "Jisulife Mini Portable Fan.png" },
+    { title: "Jollie Memory Microfibre Pillow (2 sets)", file: "Jollie Memory Microfibre Pillow (2 sets).png" },
+    { title: "Li Ning AXForce Cannon (2 sets)", file: "Li Ning AXForce Cannon (2 sets).png" },
+    { title: "Miivio Blood Pressure Monitor (2 sets)", file: "Miivio Blood Pressure Monitor (2 sets).png" },
+    { title: "Mosquito Trap Lamp", file: "Mosquite Trap Lamp.png" },
+    { title: "MR DIY Premium Ice Box", file: "MR DIY Premium Ice Box.png" },
+    { title: "Nitori Gas Aluminium Pot", file: "Nitori Gas Aluminium Pot.png" },
+    { title: "Nitori Glass Container (2 sets)", file: "Nitori Glass Container (2 sets).png" },
+    { title: "Ogawa Curve Massage Gun", file: "Ogawa Curve Masssage Gun.png" },
+    { title: "PerrySmith Vacuum Cleaner", file: "PerrySmith Vacuum Cleaner.png" },
+    { title: "Phillips Toaster (2 sets)", file: "Phillips Toaster.png" },
+    { title: "Plant Origins Aromatherapy Gift Set", file: "Plant Origins Aromatherapy Gift Set.png" },
+    { title: "Scosche MagicMount Magnetic Phone Holder", file: "Scosche MagicMount Magnetic Phone Holder.png" },
+    { title: "Sony Wireless Headphones", file: "Sony Wireless Headphones.png" },
+    { title: "Sport Direct Pro Yoga Mat (2 sets)", file: "Sport Direct Pro Yoga Mat (2 sets).png" },
+    { title: "Universal Adapter (2 sets)", file: "Universal Adapter (2 sets).png" },
+    { title: "Urbanlite Tron 2.0 20inch", file: "Urbanlite Tron 2.0 20inch.jpg" },
+    { title: "Urbanlite Tron 2.0 24inch", file: "Urbanlite Tron 2.0 24inch.jpg" },
+    { title: "Urbanlite Tron 2.0 28inch", file: "Urbanlite Tron 2.0 28inch.jpg" },
+    { title: "Utanking Foldable Hiking Stick (2 sets)", file: "Utanking Foldable Hiking Stick ( 2 sets).png" },
+    { title: "Utanking Portable Chair (2 sets)", file: "Utanking Portable Chair (2 sets).png" },
+    { title: "Xiaomi Portable Blender (2 sets)", file: "Xiaomi Portable Blender (2 sets).png" },
+    { title: "Xiaomi Portable Printer", file: "Xiaomi Portable Printer.png" },
+    { title: "Xiaomi Smart Air Purifier 4", file: "Xiaomi Smart Air Purifier 4.png" },
+    { title: "Xiaomi Wireless Charger (4 sets)", file: "Xiaomi Wireless Charger (4 sets).png" }
   ];
 
   let currentLuckySlide = 0;
+  const TOTAL_LUCKY_SLIDES = GRAND_PRIZES.length + REGULAR_PRIZES.length;
 
   function renderLuckyGrid() {
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
 
-    PRIZES.forEach((p, i) => {
+    // 1. Render Grand Prizes
+    GRAND_PRIZES.forEach((gp, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
 
       const badge = document.createElement('span');
       badge.className = 'game-badge';
-      badge.textContent = p.isGrand ? `Grand Prize • ${i + 1} / 10` : `Lucky Draw Prize ${i + 1} / ${PRIZES.length}`;
+      badge.textContent = `Grand Prize ${gp.rank} • Draw ${i + 1} / ${TOTAL_LUCKY_SLIDES}`;
 
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
@@ -863,26 +869,26 @@
       frame.style.marginBottom = '0';
 
       const img = document.createElement('img');
-      img.src = encodeURI(p.img + '?v=7');
-      img.alt = p.title;
+      img.src = encodeURI(gp.file + '?v=7');
+      img.alt = gp.title;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
-      img.dataset.imgname = p.img;
-      if (p.fallback) img.dataset.fallback = p.fallback;
+      img.dataset.filename = gp.file;
+      if (gp.fallback) img.dataset.fallback = gp.fallback;
 
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
-        const base = this.dataset.imgname.substring(0, this.dataset.imgname.lastIndexOf('.')) || this.dataset.imgname;
+        const fallback = this.dataset.fallback;
 
-        if (attempt === 0) {
-          this.src = encodeURI(base + '.jpg?v=7');
+        if (attempt === 0 && fallback) {
+          this.src = encodeURI(fallback + '?v=7');
         } else if (attempt === 1) {
-          this.src = encodeURI(base + '.jpeg?v=7');
+          const base = this.dataset.filename.replace(/\.(png|jpg|jpeg)/i, '');
+          this.src = encodeURI(base + '.jpg?v=7');
         } else if (attempt === 2) {
-          this.src = encodeURI(base + '.png?v=7');
-        } else if (attempt === 3 && this.dataset.fallback) {
-          this.src = encodeURI(this.dataset.fallback + '?v=7');
+          const base = this.dataset.filename.replace(/\.(png|jpg|jpeg)/i, '');
+          this.src = encodeURI(base + '.jpeg?v=7');
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
@@ -892,9 +898,64 @@
 
       const title = document.createElement('h3');
       title.className = 'game-title';
-      title.style.color = p.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
+      title.style.color = 'var(--accent-gold)';
       title.style.fontSize = '1.25rem';
-      title.textContent = p.title;
+      title.textContent = gp.title;
+
+      slide.appendChild(badge);
+      slide.appendChild(frame);
+      slide.appendChild(title);
+      track.appendChild(slide);
+    });
+
+    // 2. Render Regular Prizes
+    REGULAR_PRIZES.forEach((rp, i) => {
+      const slideIndex = GRAND_PRIZES.length + i + 1;
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+
+      const badge = document.createElement('span');
+      badge.className = 'game-badge';
+      badge.textContent = `Lucky Draw Prize • Draw ${slideIndex} / ${TOTAL_LUCKY_SLIDES}`;
+
+      const frame = document.createElement('div');
+      frame.className = 'perf-photo-frame';
+      frame.style.background = 'transparent';
+      frame.style.border = 'none';
+      frame.style.boxShadow = 'none';
+      frame.style.height = '240px';
+      frame.style.marginBottom = '0';
+
+      const img = document.createElement('img');
+      img.src = encodeURI(rp.file + '?v=7');
+      img.alt = rp.title;
+      img.style.objectFit = 'contain';
+      img.style.borderRadius = '8px';
+      img.dataset.filename = rp.file;
+
+      img.onerror = function() {
+        const attempt = parseInt(this.dataset.attempt || '0');
+        this.dataset.attempt = attempt + 1;
+        const base = this.dataset.filename.replace(/\.(png|jpg|jpeg)/i, '');
+
+        if (attempt === 0) {
+          this.src = encodeURI(base + '.jpg?v=7');
+        } else if (attempt === 1) {
+          this.src = encodeURI(base + '.jpeg?v=7');
+        } else if (attempt === 2) {
+          this.src = encodeURI(base + '.png?v=7');
+        } else {
+          this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
+        }
+      };
+
+      frame.appendChild(img);
+
+      const title = document.createElement('h3');
+      title.className = 'game-title';
+      title.style.color = 'var(--accent-gold)';
+      title.style.fontSize = '1.25rem';
+      title.textContent = rp.title;
 
       slide.appendChild(badge);
       slide.appendChild(frame);
@@ -910,20 +971,22 @@
     const track = document.getElementById('luckyTrack');
     const counter = document.getElementById('luckyCounter');
     if (track) track.style.transform = `translateX(-${currentLuckySlide * 100}%)`;
-    if (counter) counter.innerText = `${currentLuckySlide + 1} / ${PRIZES.length}`;
+    if (counter) counter.innerText = `${currentLuckySlide + 1} / ${TOTAL_LUCKY_SLIDES}`;
   }
 
   function nextLuckySlide() {
-    currentLuckySlide = (currentLuckySlide + 1) % PRIZES.length;
+    currentLuckySlide = (currentLuckySlide + 1) % TOTAL_LUCKY_SLIDES;
     updateLuckyCarousel();
   }
 
   function prevLuckySlide() {
-    currentLuckySlide = (currentLuckySlide - 1 + PRIZES.length) % PRIZES.length;
+    currentLuckySlide = (currentLuckySlide - 1 + TOTAL_LUCKY_SLIDES) % TOTAL_LUCKY_SLIDES;
     updateLuckyCarousel();
   }
 
-  /* Committee Roster */
+  /* =========================================
+     COMMITTEE ROSTER (DOM Rendered Safely)
+     ========================================= */
   const COMMITTEE_MEMBERS = [
     { name: "Suryakandh Kalimutu", dept: "SCPO-CPOG", role: "Committee Lead", photo: "Suryakandh Kalimutu.png?v=6" },
     { name: "Jeff Heah Jun Jie", dept: "GSCO-CPOG", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg?v=6" },
@@ -958,15 +1021,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-
+      
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-
+      
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-
+      
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -980,32 +1043,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-
+      
       avatarFrame.appendChild(img);
-
+      
       const details = document.createElement('div');
       details.className = 'comm-details';
-
+      
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-
+      
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-
+      
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-
+      
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-
+      
       card.appendChild(avatarFrame);
       card.appendChild(details);
-
+      
       container.appendChild(card);
     });
   }
@@ -1025,7 +1088,6 @@
     img.dataset.attempt = attempt + 1;
     if (attempt === 0) img.src = encodeURI('The Wonders Band.png?v=6');
     else if (attempt === 1) img.src = encodeURI('The Wonders Band.jpg?v=6');
-    else if (attempt === 2) img.src = encodeURI('The Wonders Band.jpeg?v=6');
     else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
   }
 
