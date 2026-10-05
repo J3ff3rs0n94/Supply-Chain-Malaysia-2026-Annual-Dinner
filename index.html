@@ -150,19 +150,19 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-    
+
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-    
+
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-    
+
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-    
+
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-    
+
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
@@ -327,7 +327,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-    
+
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -416,7 +416,7 @@
     <div class="hub-card" onclick="openModal('modalLucky')">
       <div class="card-icon">🎁</div>
       <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Total 77 prizes • Alphabetical sequence</div>
+      <div class="card-subtitle">Total 76 prizes • Alphabetical sequence</div>
     </div>
 
     <!-- 5. Performance -->
@@ -540,10 +540,10 @@
       <button class="modal-nav-back" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
-    
+
     <!-- Explanatory Banner -->
     <div style="background: rgba(255, 183, 3, 0.08); border-left: 3px solid var(--accent-gold); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; color: #f1faee; line-height: 1.45;">
-      💡 <strong style="color: var(--accent-gold);">Note:</strong> There are a total of <strong>77 lucky draw items</strong>. Items are displayed here in alphabetical sequence, not in terms of value.
+      💡 <strong style="color: var(--accent-gold);">Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in alphabetical sequence, not in terms of value.
     </div>
 
     <div class="carousel-container" id="luckyCarousel">
@@ -784,7 +784,7 @@
 
 <script>
   /* =========================================================
-     LUCKY DRAW ITEMS (77 PRIZES TOTAL - 10 GRAND + 39 UNIQUE REGULAR)
+     LUCKY DRAW ITEMS (76 PRIZES TOTAL - 10 GRAND + 66 REGULAR ACROSS 39 UNIQUE CATEGORIES)
      Sorted alphabetically by item name with exact GitHub filenames
      ========================================================= */
   const PRIZES = [
@@ -845,15 +845,15 @@
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
-    
+
     PRIZES.forEach((p, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-      
+
       const badge = document.createElement('span');
       badge.className = 'game-badge';
       badge.textContent = p.isGrand ? `Grand Prize • ${i + 1} / 10` : `Lucky Draw Prize ${i + 1} / ${PRIZES.length}`;
-      
+
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
       frame.style.background = 'transparent';
@@ -861,7 +861,7 @@
       frame.style.boxShadow = 'none';
       frame.style.height = '240px';
       frame.style.marginBottom = '0';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(p.img + '?v=7');
       img.alt = p.title;
@@ -869,12 +869,12 @@
       img.style.borderRadius = '8px';
       img.dataset.imgname = p.img;
       if (p.fallback) img.dataset.fallback = p.fallback;
-      
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
         const base = this.dataset.imgname.substring(0, this.dataset.imgname.lastIndexOf('.')) || this.dataset.imgname;
-        
+
         if (attempt === 0) {
           this.src = encodeURI(base + '.jpg?v=7');
         } else if (attempt === 1) {
@@ -887,21 +887,21 @@
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
       };
-      
+
       frame.appendChild(img);
-      
+
       const title = document.createElement('h3');
       title.className = 'game-title';
       title.style.color = p.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
       title.style.fontSize = '1.25rem';
       title.textContent = p.title;
-      
+
       slide.appendChild(badge);
       slide.appendChild(frame);
       slide.appendChild(title);
       track.appendChild(slide);
     });
-    
+
     updateLuckyCarousel();
     setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   }
@@ -958,15 +958,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-      
+
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-      
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -980,32 +980,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-      
+
       avatarFrame.appendChild(img);
-      
+
       const details = document.createElement('div');
       details.className = 'comm-details';
-      
+
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-      
+
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-      
+
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-      
+
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-      
+
       card.appendChild(avatarFrame);
       card.appendChild(details);
-      
+
       container.appendChild(card);
     });
   }
