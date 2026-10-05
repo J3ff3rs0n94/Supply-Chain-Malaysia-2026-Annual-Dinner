@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,303 +23,307 @@
       --card-radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      padding: 16px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
+}
 
-    /* Top Navigation */
-    .top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(230, 57, 70, 0.15);
-      color: var(--accent-ruby);
-      border: 1px solid rgba(230, 57, 70, 0.4);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-back:hover {
-      background: var(--accent-crimson);
-      color: #fff;
-    }
+.container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    /* Header Box */
-    .header-box {
-      text-align: center;
-      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 22px 16px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
-    }
-    .header-box::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
-    }
-    .header-box h1 {
-      color: #fff;
-      font-size: 1.55rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .header-box h1 span { color: var(--accent-gold); }
-    .header-box p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(230, 57, 70, 0.15);
+  color: var(--accent-ruby);
+  border: 1px solid rgba(230, 57, 70, 0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-back:hover {
+  background: var(--accent-crimson);
+  color: #fff;
+}
 
-    /* Live Search & Filter Bar */
-    .search-box {
-      position: relative;
-      width: 100%;
-    }
-    .search-input {
-      width: 100%;
-      background: #141013;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px 12px 38px;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .search-input:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 12px rgba(255, 183, 3, 0.25);
-    }
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
+/* Header Box */
+.header-box {
+  text-align: center;
+  background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 22px 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
+}
+.header-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
+}
+.header-box h1 {
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.header-box h1 span { color: var(--accent-gold); }
+.header-box p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
 
-    /* Filter Pills */
-    .filter-pills {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .pill-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-    .pill-btn.active, .pill-btn:hover {
-      background: rgba(230, 57, 70, 0.2);
-      border-color: var(--accent-ruby);
-      color: #fff;
-    }
+/* Live Search & Filter Bar */
+.search-box {
+  position: relative;
+  width: 100%;
+}
+.search-input {
+  width: 100%;
+  background: #141013;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px 12px 38px;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.search-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.25);
+}
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
 
-    /* Section Titles */
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--accent-gold);
-      margin-top: 6px;
-    }
-    .section-title.grand {
-      color: var(--accent-ruby);
-    }
-    .section-count {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+/* Filter Pills */
+.filter-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.pill-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.pill-btn.active, .pill-btn:hover {
+  background: rgba(230, 57, 70, 0.2);
+  border-color: var(--accent-ruby);
+  color: #fff;
+}
 
-    /* Grand Prize Podium Cards */
-    .grand-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .grand-winner-card {
-      background: linear-gradient(135deg, #1b1318 0%, #100b0e 100%);
-      border: 1px solid rgba(230, 57, 70, 0.35);
-      border-radius: var(--card-radius);
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-    }
-    .grand-winner-card::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 0; bottom: 0; width: 4px;
-      background: var(--accent-crimson);
-    }
-    .grand-winner-card.top-1::before {
-      background: var(--accent-gold);
-    }
-    .grand-rank-badge {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      background: rgba(230, 57, 70, 0.2);
-      border: 2px solid var(--accent-red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      font-weight: 900;
-      color: var(--accent-ruby);
-    }
-    .grand-rank-badge.top-1 {
-      background: rgba(255, 183, 3, 0.2);
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-    .grand-info { flex: 1; }
-    .grand-prize-title {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      font-weight: 800;
-      color: var(--accent-gold-soft);
-      margin-bottom: 2px;
-    }
-    .grand-winner-name {
-      font-size: 1rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .grand-winner-name.tba {
-      color: var(--text-muted);
-      font-style: italic;
-      font-weight: 600;
-    }
-    .grand-winner-meta {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
+/* Section Titles */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-top: 6px;
+}
+.section-title.grand {
+  color: var(--accent-ruby);
+}
+.section-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
 
-    /* Regular Winners List */
-    .winner-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .winner-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.2s ease;
-    }
-    .winner-item:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 183, 3, 0.4);
-    }
-    .winner-col-left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex: 1;
-      padding-right: 12px;
-    }
-    .winner-prize-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent-gold-soft);
-    }
-    .winner-person-name {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .winner-person-name.tba {
-      color: var(--text-muted);
-      font-style: italic;
-      font-weight: 500;
-      font-size: 0.85rem;
-    }
-    .winner-badge {
-      background: rgba(230, 57, 70, 0.12);
-      border: 1px solid rgba(230, 57, 70, 0.3);
-      color: var(--accent-ruby);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
+/* Grand Prize Podium Cards */
+.grand-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.grand-winner-card {
+  background: linear-gradient(135deg, #1b1318 0%, #100b0e 100%);
+  border: 1px solid rgba(230, 57, 70, 0.35);
+  border-radius: var(--card-radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.grand-winner-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--accent-crimson);
+}
+.grand-winner-card.top-1::before {
+  background: var(--accent-gold);
+}
+.grand-rank-badge {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: rgba(230, 57, 70, 0.2);
+  border: 2px solid var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--accent-ruby);
+}
+.grand-rank-badge.top-1 {
+  background: rgba(255, 183, 3, 0.2);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+.grand-info { flex: 1; }
+.grand-prize-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 800;
+  color: var(--accent-gold-soft);
+  margin-bottom: 2px;
+}
+.grand-winner-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+.grand-winner-name.tba {
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 600;
+}
+.grand-winner-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
 
-    /* Empty Search State */
-    .empty-state {
-      display: none;
-      text-align: center;
-      padding: 28px 16px;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 10px;
-    }
+/* Regular Winners List */
+.winner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.winner-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+.winner-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 183, 3, 0.4);
+}
+.winner-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  padding-right: 12px;
+}
+.winner-prize-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-gold-soft);
+}
+.winner-person-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+}
+.winner-person-name.tba {
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.winner-badge {
+  background: rgba(230, 57, 70, 0.12);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  color: var(--accent-ruby);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* Empty Search State */
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+
   </style>
 </head>
 <body>
+
 
 <div class="container">
   <!-- Top Navigation -->
@@ -326,26 +332,38 @@
     <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 700;">🔴 LIVE UPDATES</span>
   </div>
 
+
   <!-- Header Box -->
+
+
   <header class="header-box">
     <h1>LUCKY DRAW <span>WINNERS</span></h1>
     <p>Intel Supply Chain Malaysia Annual Dinner 2026 • 76 Total Prizes</p>
   </header>
 
+
   <!-- Live Search Bar -->
+
+
   <div class="search-box">
     <span class="search-icon">🔍</span>
     <input type="text" id="winnerSearch" class="search-input" placeholder="Search winner name, prize, or table number..." onkeyup="filterWinners()" />
   </div>
 
+
   <!-- Filter Pills -->
+
+
   <div class="filter-pills">
     <button class="pill-btn active" onclick="setFilter('all', this)">All (76)</button>
     <button class="pill-btn" onclick="setFilter('grand', this)">Grand Prizes (10)</button>
     <button class="pill-btn" onclick="setFilter('session', this)">Session Prizes (66)</button>
   </div>
 
+
   <!-- Section 1: Top 10 Grand Prizes -->
+
+
   <div class="section-title grand" id="grandHeader">
     <span>👑 Top 10 Grand Prizes</span>
     <span class="section-count">10 Prizes</span>
@@ -354,7 +372,10 @@
     <!-- Rendered via JavaScript -->
   </div>
 
+
   <!-- Section 2: Regular Lucky Draw Session Winners -->
+
+
   <div class="section-title" id="sessionHeader">
     <span>🎁 Lucky Draw Session Prizes</span>
     <span class="section-count">66 Prizes (Alphabetical Sequence)</span>
@@ -363,15 +384,20 @@
     <!-- Rendered via JavaScript -->
   </div>
 
+
   <div id="noResults" class="empty-state">
     No matching winners found. Try searching another prize name or table number.
   </div>
 
+
   <!-- Bottom Return Button -->
+
+
   <div style="margin: 16px 0 24px 0;">
     <a href="index.html" class="btn-back" style="width:100%; justify-content:center; padding:12px; border-radius:10px;">← Back to Main Portal</a>
   </div>
 </div>
+
 
 <script>
   /* =====================================================================
@@ -470,11 +496,11 @@
     // Render Grand Prizes (1 to 10)
     grandContainer.innerHTML = GRAND_WINNERS.map(g => `
       <div class="grand-winner-card winner-entry ${g.rank === 1 ? 'top-1' : ''}" data-type="grand">
-        <div class="grand-rank-badge ${g.rank === 1 ? 'top-1' : ''}">#${g.rank}</div>
+        <div class="grand-rank-badge \${g.rank === 1 ? 'top-1' : ''}">#\${g.rank}</div>
         <div class="grand-info">
           <div class="grand-prize-title search-target">${g.prize}</div>
-          <div class="grand-winner-name search-target ${g.winner === 'To Be Announced' ? 'tba' : ''}">${g.winner}</div>
-          <div class="grand-winner-meta search-target">Table ${g.table} • Seat ${g.seat}</div>
+          <div class="grand-winner-name search-target \${g.winner === 'To Be Announced' ? 'tba' : ''}">\${g.winner}</div>
+          <div class="grand-winner-meta search-target">Table \${g.table} • Seat \${g.seat}</div>
         </div>
       </div>
     `).join('');
@@ -484,7 +510,7 @@
       <div class="winner-item winner-entry" data-type="session">
         <div class="winner-col-left">
           <span class="winner-prize-name search-target">${r.prize}</span>
-          <span class="winner-person-name search-target ${r.winner === 'To Be Announced' ? 'tba' : ''}">${r.winner}</span>
+          <span class="winner-person-name search-target \${r.winner === 'To Be Announced' ? 'tba' : ''}">\${r.winner}</span>
         </div>
         <span class="winner-badge search-target">Table ${r.table}</span>
       </div>
@@ -552,6 +578,7 @@
     renderWinners();
   });
 </script>
+
 
 </body>
 </html>
