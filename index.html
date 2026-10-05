@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,380 +23,368 @@
       --card-radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
 
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      padding: 16px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
+}
 
-    /* Header Section */
-    .header-box {
-      text-align: center;
-      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 24px 16px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
-    }
-    .header-box::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
-    }
-    .header-box h1 {
-      color: #fff;
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-      text-shadow: 0 0 16px rgba(230, 57, 70, 0.4);
-    }
-    .header-box h1 span { color: var(--accent-ruby); }
-    .header-box h2 {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--accent-gold-soft);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .header-meta {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .meta-badge {
-      background: rgba(230, 57, 70, 0.08);
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(230, 57, 70, 0.25);
-      color: #f1faee;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
+.container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    /* 2-Column Grid */
-    .hub-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+/* Header Section */
+.header-box {
+  text-align: center;
+  background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 24px 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
+}
+.header-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
+}
+.header-box h1 {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  text-shadow: 0 0 16px rgba(230, 57, 70, 0.4);
+}
+.header-box h1 span { color: var(--accent-ruby); }
+.header-box h2 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--accent-gold-soft);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.header-meta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.meta-badge {
+  background: rgba(230, 57, 70, 0.08);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(230, 57, 70, 0.25);
+  color: #f1faee;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
 
-    .hub-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 18px 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--text-main);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-    }
-    .hub-card::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: transparent;
-      transition: background 0.2s ease;
-    }
-    .hub-card:active { transform: scale(0.97); }
-    .hub-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent-red);
-      box-shadow: 0 6px 20px rgba(217, 4, 41, 0.35);
-    }
-    .hub-card:hover::after {
-      background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-    }
+/* 2-Column Grid */
+.hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
 
-    /* Dedicated Border Accents */
-    .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
-    .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
+.hub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-main);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+.hub-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+.hub-card:active { transform: scale(0.97); }
+.hub-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-red);
+  box-shadow: 0 6px 20px rgba(217, 4, 41, 0.35);
+}
+.hub-card:hover::after {
+  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+}
 
-    .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
-    .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
+/* Dedicated Border Accents */
+.hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
+.hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
 
-    .hub-card.card-lucky { border-color: rgba(255, 183, 3, 0.55); }
-    .hub-card.card-lucky:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
+.hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
+.hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
 
-    .hub-card.card-winner { border-color: rgba(255, 183, 3, 0.65); background: linear-gradient(145deg, #161214, #121013); }
-    .hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 24px rgba(255, 183, 3, 0.5); }
+.hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
+.hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
 
-    .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
-    .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
+.hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
+.hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
-    .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
-    .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
+.hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
+.hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
 
-    .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
-    .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
+.hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
+.hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
-    .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
-    .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
+.hub-card.card-winner { border-color: rgba(255, 183, 3, 0.6); }
+.hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
-    .card-icon {
-      font-size: 2rem;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
-    }
-    .card-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
-    .card-subtitle { font-size: 0.72rem; color: var(--text-muted); line-height: 1.2; }
+.card-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+.card-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
+.card-subtitle { font-size: 0.72rem; color: var(--text-muted); line-height: 1.2; }
 
-    /* Modals */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(6px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 16px;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-box {
-      background: #141013;
-      border: 1px solid var(--accent-crimson);
-      border-radius: var(--card-radius);
-      width: 100%;
-      max-width: 520px;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 20px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.2);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .modal-nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(230, 57, 70, 0.15);
-      color: var(--accent-ruby);
-      border: 1px solid rgba(230, 57, 70, 0.4);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .modal-nav-back:hover { background: var(--accent-crimson); color: #fff; }
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-    .modal-close:hover { color: #fff; }
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 16px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: #141013;
+  border: 1px solid var(--accent-crimson);
+  border-radius: var(--card-radius);
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.2);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.modal-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(230, 57, 70, 0.15);
+  color: var(--accent-ruby);
+  border: 1px solid rgba(230, 57, 70, 0.4);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.modal-nav-back:hover { background: var(--accent-crimson); color: #fff; }
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.modal-close:hover { color: #fff; }
 
-    .modal-bottom-bar {
-      margin-top: 20px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      justify-content: center;
-    }
-    .btn-return-main {
-      width: 100%;
-      padding: 12px;
-      background: rgba(230, 57, 70, 0.15);
-      border: 1px solid var(--accent-red);
-      color: var(--accent-ruby);
-      font-weight: 700;
-      font-size: 0.9rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn-return-main:hover { background: var(--accent-crimson); color: #fff; }
+.modal-bottom-bar {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+}
+.btn-return-main {
+  width: 100%;
+  padding: 12px;
+  background: rgba(230, 57, 70, 0.15);
+  border: 1px solid var(--accent-red);
+  color: var(--accent-ruby);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-return-main:hover { background: var(--accent-crimson); color: #fff; }
 
-    /* Carousel in Modals */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      border-radius: 12px;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-      width: 100%;
-    }
-    .carousel-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      padding: 18px 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(230, 57, 70, 0.2);
-      border-radius: 12px;
-    }
-    .game-badge, .perf-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 4px 10px;
-      border-radius: 12px;
-      background: rgba(255, 183, 3, 0.15);
-      color: var(--accent-gold);
-      border: 1px solid rgba(255, 183, 3, 0.3);
-      margin-bottom: 12px;
-    }
-    .perf-badge {
-      background: rgba(230, 57, 70, 0.15);
-      color: var(--accent-ruby);
-      border-color: rgba(230, 57, 70, 0.35);
-    }
-    .game-title, .perf-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-    .game-desc, .perf-desc {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 14px;
-      max-width: 420px;
-    }
-    .carousel-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 14px;
-      gap: 10px;
-    }
-    .carousel-btn {
-      background: rgba(230, 57, 70, 0.2);
-      border: 1px solid var(--accent-red);
-      color: var(--accent-ruby);
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
+/* Carousel in Modals */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  border-radius: 12px;
+}
+.game-badge, .perf-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(255, 183, 3, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+  margin-bottom: 12px;
+}
+.perf-badge {
+  background: rgba(230, 57, 70, 0.15);
+  color: var(--accent-ruby);
+  border-color: rgba(230, 57, 70, 0.35);
+}
+.game-title, .perf-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.game-desc, .perf-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  max-width: 420px;
+}
+.carousel-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  gap: 10px;
+}
+.carousel-btn {
+  background: rgba(230, 57, 70, 0.2);
+  border: 1px solid var(--accent-red);
+  color: var(--accent-ruby);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
 
-    .carousel-dots { display: flex; gap: 6px; }
-    .carousel-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
-    .carousel-dot.active { width: 22px; border-radius: 4px; background: var(--accent-ruby); }
+.carousel-dots { display: flex; gap: 6px; }
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.carousel-dot.active { width: 22px; border-radius: 4px; background: var(--accent-ruby); }
 
-    /* Photo Frame for Performances & Prizes */
-    .perf-photo-frame {
-      width: 100%;
-      max-width: 320px;
-      height: 220px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      border: 2px solid rgba(230, 57, 70, 0.4);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      background: #0d0a0c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .perf-photo-frame img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-    }
+/* Photo Frame for Performances & Prizes */
+.perf-photo-frame {
+  width: 100%;
+  max-width: 320px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 2px solid rgba(230, 57, 70, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  background: #0d0a0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.perf-photo-frame img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
 
-    /* Timelines */
-    .timeline { display: flex; flex-direction: column; gap: 12px; }
-    .time-slot {
-      display: flex; gap: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 10px 12px; border-radius: 8px;
-      border-left: 3px solid var(--accent-red);
-    }
-    .time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
-    .time-desc { font-size: 0.85rem; }
+/* Timelines */
+.timeline { display: flex; flex-direction: column; gap: 12px; }
+.time-slot {
+  display: flex; gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 12px; border-radius: 8px;
+  border-left: 3px solid var(--accent-red);
+}
+.time-val { font-weight: 700; color: var(--accent-gold-soft); min-width: 65px; font-size: 0.85rem; }
+.time-desc { font-size: 0.85rem; }
 
-    /* Committee */
-    .committee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    .comm-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 12px 10px; display: flex; align-items: center; gap: 10px; }
-    .comm-avatar-frame { width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #1c1417; border: 2px solid var(--accent-red); overflow: hidden; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--accent-ruby); }
-    .comm-avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
-    .comm-details { flex: 1; overflow: hidden; }
-    .comm-name { font-size: 0.85rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
-    .comm-role-pill { display: inline-block; margin-top: 3px; background: rgba(230, 57, 70, 0.15); color: var(--accent-ruby); border: 1px solid rgba(230, 57, 70, 0.35); font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
+/* Committee */
+.committee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.comm-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 12px 10px; display: flex; align-items: center; gap: 10px; }
+.comm-avatar-frame { width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #1c1417; border: 2px solid var(--accent-red); overflow: hidden; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--accent-ruby); }
+.comm-avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+.comm-details { flex: 1; overflow: hidden; }
+.comm-name { font-size: 0.85rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.comm-dept { font-size: 0.68rem; color: var(--accent-gold-soft); }
+.comm-role-pill { display: inline-block; margin-top: 3px; background: rgba(230, 57, 70, 0.15); color: var(--accent-ruby); border: 1px solid rgba(230, 57, 70, 0.35); font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
 
-    /* Notice Banner for Lucky Draw */
-    .lucky-notice-box {
-      background: rgba(255, 183, 3, 0.08);
-      border: 1px dashed var(--accent-gold);
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
-      font-size: 0.82rem;
-      color: var(--accent-gold-soft);
-      line-height: 1.45;
-      text-align: center;
-    }
+
   </style>
 </head>
 <body>
+
 
 <div class="container">
   <header class="header-box">
@@ -406,6 +396,7 @@
     </div>
   </header>
 
+
   <main class="hub-grid">
     <!-- 1. Event Details -->
     <div class="hub-card card-details" onclick="openModal('modalDetails')">
@@ -414,93 +405,99 @@
       <div class="card-subtitle">Date, venue &amp; guide</div>
     </div>
 
-    <!-- 2. Seat & Reservation -->
-    <a href="seating.html" class="hub-card card-seating">
-      <div class="card-icon">🪑</div>
-      <div class="card-title">Seat &amp; Reservation</div>
-      <div class="card-subtitle">Assigned table &amp; map</div>
-    </a>
 
-    <!-- 3. Event Schedule -->
-    <div class="hub-card" onclick="openModal('modalSchedule')">
-      <div class="card-icon">📅</div>
-      <div class="card-title">Event Schedule</div>
-      <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
-    </div>
+<!-- 2. Seat & Reservation -->
+<a href="seating.html" class="hub-card card-seating">
+  <div class="card-icon">🪑</div>
+  <div class="card-title">Seat &amp; Reservation</div>
+  <div class="card-subtitle">Assigned table &amp; map</div>
+</a>
 
-    <!-- 4. Lucky Draw -->
-    <div class="hub-card card-lucky" onclick="openModal('modalLucky')">
-      <div class="card-icon">🎁</div>
-      <div class="card-title">Lucky Draw</div>
-      <div class="card-subtitle">Total 76 prizes • Alphabetical sequence</div>
-    </div>
+<!-- 3. Event Schedule -->
+<div class="hub-card" onclick="openModal('modalSchedule')">
+  <div class="card-icon">📅</div>
+  <div class="card-title">Event Schedule</div>
+  <div class="card-subtitle">5:30 PM - 10:30 PM Run Down</div>
+</div>
 
-    <!-- 5. Performance -->
-    <div class="hub-card card-performance" onclick="openModal('modalPerformance')">
-      <div class="card-icon">🎤</div>
-      <div class="card-title">Performance</div>
-      <div class="card-subtitle">Live band &amp; talent acts</div>
-    </div>
+<!-- 4. Lucky Draw -->
+<div class="hub-card" onclick="openModal('modalLucky')">
+  <div class="card-icon">🎁</div>
+  <div class="card-title">Lucky Draw</div>
+  <div class="card-subtitle">Total 76 prizes • Alphabetical sequence</div>
+</div>
 
-    <!-- 6. Photobooths -->
-    <div class="hub-card" onclick="openModal('modalPhotobooth')">
-      <div class="card-icon">📸</div>
-      <div class="card-title">Photobooths</div>
-      <div class="card-subtitle">360 Cam &amp; instant prints</div>
-    </div>
+<!-- 5. Lucky Winner -->
+<a href="lucky_winner.html" class="hub-card card-winner">
+  <div class="card-icon">🏆</div>
+  <div class="card-title">Lucky Winner</div>
+  <div class="card-subtitle">Live Winner Announcements ↗</div>
+</a>
 
-    <!-- 7. Try Your Luck -->
-    <a href="try_your_luck.html" class="hub-card">
-      <div class="card-icon">🎰</div>
-      <div class="card-title">Try Your Luck</div>
-      <div class="card-subtitle">Interactive Lucky Draw</div>
-    </a>
+<!-- 6. Performance -->
+<div class="hub-card card-performance" onclick="openModal('modalPerformance')">
+  <div class="card-icon">🎤</div>
+  <div class="card-title">Performance</div>
+  <div class="card-subtitle">Live band &amp; talent acts</div>
+</div>
 
-    <!-- 8. Lucky Winner (NEW CARD) -->
-    <a href="lucky_winner.html" class="hub-card card-winner">
-      <div class="card-icon">🏆</div>
-      <div class="card-title">Lucky Winner</div>
-      <div class="card-subtitle">Live winners announcement</div>
-    </a>
+<!-- 7. Photobooths -->
+<div class="hub-card" onclick="openModal('modalPhotobooth')">
+  <div class="card-icon">📸</div>
+  <div class="card-title">Photobooths</div>
+  <div class="card-subtitle">360 Cam &amp; instant prints</div>
+</div>
 
-    <!-- 9. Vote The Best Dressed! -->
-    <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
-      <div class="card-icon">👑</div>
-      <div class="card-title">Vote The Best Dressed!</div>
-      <div class="card-subtitle">Cast your vote live ↗</div>
-    </a>
+<!-- 8. Try Your Luck -->
+<a href="try_your_luck.html" class="hub-card">
+  <div class="card-icon">🎰</div>
+  <div class="card-title">Try Your Luck</div>
+  <div class="card-subtitle">Interactive Lucky Draw</div>
+</a>
 
-    <!-- 10. Post Your Photos! -->
-    <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
-      <div class="card-icon">📷</div>
-      <div class="card-title">Post Your Photos!</div>
-      <div class="card-subtitle">Supply Chain Channel ↗</div>
-    </a>
+<!-- 9. Vote The Best Dressed! -->
+<a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
+  <div class="card-icon">👑</div>
+  <div class="card-title">Vote The Best Dressed!</div>
+  <div class="card-subtitle">Cast your vote live ↗</div>
+</a>
 
-    <!-- 11. Games -->
-    <div class="hub-card card-games" onclick="openModal('modalGames')">
-      <div class="card-icon">🎮</div>
-      <div class="card-title">Games</div>
-      <div class="card-subtitle">Stage quiz &amp; challenges</div>
-    </div>
+<!-- 10. Post Your Photos! -->
+<a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
+  <div class="card-icon">📷</div>
+  <div class="card-title">Post Your Photos!</div>
+  <div class="card-subtitle">Supply Chain Channel ↗</div>
+</a>
 
-    <!-- 12. Event Committee -->
-    <div class="hub-card" onclick="openModal('modalCommittee')">
-      <div class="card-icon">👥</div>
-      <div class="card-title">Event Committee</div>
-      <div class="card-subtitle">Organizing team directory</div>
-    </div>
+<!-- 11. Games -->
+<div class="hub-card card-games" onclick="openModal('modalGames')">
+  <div class="card-icon">🎮</div>
+  <div class="card-title">Games</div>
+  <div class="card-subtitle">Stage quiz &amp; challenges</div>
+</div>
 
-    <!-- 13. Mystery -->
-    <div class="hub-card" onclick="openModal('modalMystery')">
-      <div class="card-icon">✨</div>
-      <div class="card-title">Mystery</div>
-      <div class="card-subtitle">Special surprise reveal</div>
-    </div>
+<!-- 12. Event Committee -->
+<div class="hub-card" onclick="openModal('modalCommittee')">
+  <div class="card-icon">👥</div>
+  <div class="card-title">Event Committee</div>
+  <div class="card-subtitle">Organizing team directory</div>
+</div>
+
+<!-- 13. Mystery -->
+<div class="hub-card" onclick="openModal('modalMystery')">
+  <div class="card-icon">✨</div>
+  <div class="card-title">Mystery</div>
+  <div class="card-subtitle">Special surprise reveal</div>
+</div>
+
+
   </main>
 </div>
 
+
 <!-- Modal: Event Details -->
+
+
 <div class="modal-overlay" id="modalDetails" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -549,7 +546,10 @@
   </div>
 </div>
 
-<!-- Modal: Lucky Draw (48 Slides with Grand Prizes & Alphabetical Regular Prizes) -->
+
+<!-- Modal: Lucky Draw (48 Deduplicated Slides with 76 Total Items) -->
+
+
 <div class="modal-overlay" id="modalLucky" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -557,30 +557,36 @@
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
 
-    <!-- Remark Banner: 76 Total Lucky Draw Items -->
-    <div class="lucky-notice-box">
-      🎉 <strong>Note:</strong> There are a total of <strong>76 lucky draw items</strong>. Items are displayed here in <strong>alphabetical sequence</strong>, not in terms of value.
-    </div>
 
-    <div class="carousel-container" id="luckyCarousel">
-      <div class="carousel-track" id="luckyTrack">
-        <!-- Slides generated via JS matching exact GitHub filenames -->
-      </div>
-    </div>
+<!-- Notice Banner -->
+<div style="background: rgba(255, 183, 3, 0.1); border: 1px solid rgba(255, 183, 3, 0.35); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; text-align: center; font-size: 0.82rem; color: var(--accent-gold);">
+  📢 <strong>Notice:</strong> There are a total of 76 lucky draw items. Items are displayed here in alphabetical sequence, not in terms of value.
+</div>
 
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
-      <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 48</div>
-      <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
-    </div>
-
-    <div class="modal-bottom-bar">
-      <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
-    </div>
+<div class="carousel-container" id="luckyCarousel">
+  <div class="carousel-track" id="luckyTrack">
+    <!-- Slides generated via JavaScript -->
   </div>
 </div>
 
+<div class="carousel-nav">
+  <button class="carousel-btn" onclick="prevLuckySlide()">◀ Prev Prize</button>
+  <div class="carousel-dots" id="luckyCounter" style="color:var(--accent-gold); font-weight:800;">1 / 48</div>
+  <button class="carousel-btn" onclick="nextLuckySlide()">Next Prize ▶</button>
+</div>
+
+<div class="modal-bottom-bar">
+  <button class="btn-return-main" onclick="closeModal('modalLucky')">← Back to Main Panel</button>
+</div>
+
+
+  </div>
+</div>
+
+
 <!-- Modal: Performance -->
+
+
 <div class="modal-overlay" id="modalPerformance" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -652,7 +658,10 @@
   </div>
 </div>
 
+
 <!-- Modal: Games -->
+
+
 <div class="modal-overlay" id="modalGames" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -673,7 +682,7 @@
         <!-- Game 2 -->
         <div class="carousel-slide">
           <span class="game-badge">Game 2 • Stage Reaction</span>
-          <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4));">🍃💨🌪️</div>
+          <div style="font-size: 3.2rem; margin: 10px auto; filter: drop-shadow(0 0 14px rgba(230, 57, 70, 0.4)); animation: windSway 2s ease-in-out infinite alternate;">🍃💨🌪️</div>
           <h3 class="game-title">When Big Wind Blows</h3>
           <p class="game-desc" style="font-size: 1.05rem; font-style: italic; color: #fff;">
             "When Big Wind Blows, it blows........"
@@ -705,7 +714,10 @@
   </div>
 </div>
 
+
 <!-- Modal: Schedule (Standard Timeline) -->
+
+
 <div class="modal-overlay" id="modalSchedule" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -718,17 +730,17 @@
       <div class="time-slot"><div class="time-val">6:30 PM</div><div class="time-desc">Grand Opening Session</div></div>
       <div class="time-slot"><div class="time-val">6:40 PM</div><div class="time-desc">Welcome Address by Leadership</div></div>
       <div class="time-slot"><div class="time-val">6:49 PM</div><div class="time-desc">Housekeeping Briefing &amp; Buffet Banquet Service Opens</div></div>
-      <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">Live Band Set 1 + Lucky Draw (Session 1)</div></div>
+      <div class="time-slot"><div class="time-val">6:55 PM</div><div class="time-desc">The Wonders Band Set 1 + Lucky Draw (Session 1)</div></div>
       <div class="time-slot"><div class="time-val">7:30 PM</div><div class="time-desc">Interactive Game 1</div></div>
       <div class="time-slot"><div class="time-val">7:40 PM</div><div class="time-desc">Internal Showcase Performance 1</div></div>
       <div class="time-slot"><div class="time-val">7:50 PM</div><div class="time-desc">Interactive Game 2</div></div>
       <div class="time-slot"><div class="time-val">8:00 PM</div><div class="time-desc">Internal Showcase Performance 2</div></div>
-      <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">Live Band Set 2 + Lucky Draw (Session 2)</div></div>
+      <div class="time-slot"><div class="time-val">8:10 PM</div><div class="time-desc">The Wonders Band Set 2 + Lucky Draw (Session 2)</div></div>
       <div class="time-slot"><div class="time-val">8:43 PM</div><div class="time-desc">Best Dressed Final Showcase &amp; Live Voting</div></div>
       <div class="time-slot"><div class="time-val">8:53 PM</div><div class="time-desc">Internal Showcase Performance 3</div></div>
       <div class="time-slot"><div class="time-val">9:03 PM</div><div class="time-desc">Mystery Surprise Reveal</div></div>
       <div class="time-slot"><div class="time-val">9:08 PM</div><div class="time-desc">Interactive Game 3</div></div>
-      <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">Live Band Finale (Set 3)</div></div>
+      <div class="time-slot"><div class="time-val">9:18 PM</div><div class="time-desc">The Wonders Band Finale (Set 3)</div></div>
       <div class="time-slot"><div class="time-val">9:48 PM</div><div class="time-desc">Grand Lucky Draw (Positions 10 to 6)</div></div>
       <div class="time-slot"><div class="time-val">9:58 PM</div><div class="time-desc">SCM 2026 Group Photography</div></div>
       <div class="time-slot"><div class="time-val">10:03 PM</div><div class="time-desc">Grand Lucky Draw Top Prizes (Positions 5 to 1)</div></div>
@@ -740,7 +752,10 @@
   </div>
 </div>
 
+
 <!-- Modal: Photobooth -->
+
+
 <div class="modal-overlay" id="modalPhotobooth" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -759,7 +774,10 @@
   </div>
 </div>
 
+
 <!-- Modal: Committee -->
+
+
 <div class="modal-overlay" id="modalCommittee" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -774,7 +792,10 @@
   </div>
 </div>
 
+
 <!-- Modal: Mystery -->
+
+
 <div class="modal-overlay" id="modalMystery" onclick="closeOnBackdrop(event)">
   <div class="modal-box">
     <div class="modal-header">
@@ -798,80 +819,61 @@
   </div>
 </div>
 
+
 <script>
-  /* ========================================================
-     PRIZE LIST (48 Slides Covering Total 76 Lucky Draw Items)
-     - 10 Grand Prizes (Grand Prize 5: Outin Mino Portable Expresso Machine)
-     - 38 Regular Prizes in Alphabetical Sequence
-     ======================================================== */
-  const GRAND_PRIZES = [
-    { rank: 1, name: "Top Grand Prize 1", file: "Prize1.png" },
-    { rank: 2, name: "Top Grand Prize 2", file: "Prize2.png" },
-    { rank: 3, name: "Top Grand Prize 3", file: "Prize3.png" },
-    { rank: 4, name: "Top Grand Prize 4", file: "Prize4.png" },
-    { rank: 5, name: "Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png", isGrand5: true },
-    { rank: 6, name: "Top Grand Prize 6", file: "Prize6.png" },
-    { rank: 7, name: "Top Grand Prize 7", file: "Prize7.png" },
-    { rank: 8, name: "Top Grand Prize 8", file: "Prize8.png" },
-    { rank: 9, name: "Top Grand Prize 9", file: "Prize9.png" },
-    { rank: 10, name: "Top Grand Prize 10", file: "Prize10.png" }
-  ];
-
-  const REGULAR_PRIZES = [
-    { title: "70mai Dash Cam + Memory", file: "70mai Dash Cam + Memory.png" },
-    { title: "Decathlon Compartment Bag (6 sets)", file: "Decathlon Compartment Bag (6 sets).png" },
-    { title: "Decathlon Waterproof Bag", file: "Decathlon Waterproof Bag.png" },
-    { title: "Elba Coffee Maker", file: "Elba Coffee Maker.png" },
-    { title: "Hooga Black Room Spray - Bergamot & Balsam", file: "Hooga Black Room Spray - Bergamot & Balsam.png" },
-    { title: "Hooga Black Room Spray - Kenya Yuzu", file: "Hooga Black Room Spray - Kenya Yuzu.png" },
-    { title: "Hooga Black Room Spray - Ocean", file: "Hooga Black Room Spray - Ocean.png" },
-    { title: "Hooga Black Room Spray - Sea Salt", file: "Hooga Black Room Spray - Sea Salt.png" },
-    { title: "Hooga Black Room Spray - White Tea & Ginger", file: "Hooga Black Room Spray - White Tea & Ginger.png" },
-    { title: "IKEA Microwave Oven (Black)", file: "IKEA Microwave Oven (Black).png" },
-    { title: "IKEA Microwave Oven (White)", file: "IKEA Microwave Oven (White).png" },
-    { title: "Intel Tower Set (11 sets)", file: "Intel Tower Set (11 sets).jpg" },
-    { title: "Jisulife Mini Portable Fan", file: "Jisulife Mini Portable Fan.png" },
-    { title: "Jollie Memory Microfibre Pillow (2 sets)", file: "Jollie Memory Microfibre Pillow (2 sets).png" },
-    { title: "Li Ning AXForce Cannon (2 sets)", file: "Li Ning AXForce Cannon (2 sets).png" },
-    { title: "Miivio Blood Pressure Monitor (2 sets)", file: "Miivio Blood Pressure Monitor (2 sets).png" },
-    { title: "Mosquito Trap Lamp", file: "Mosquite Trap Lamp.png" },
-    { title: "MR DIY Premium Ice Box", file: "MR DIY Premium Ice Box.png" },
-    { title: "Nitori Gas Aluminium Pot", file: "Nitori Gas Aluminium Pot.png" },
-    { title: "Nitori Glass Container (2 sets)", file: "Nitori Glass Container (2 sets).png" },
-    { title: "Ogawa Curve Massage Gun", file: "Ogawa Curve Masssage Gun.png" },
-    { title: "PerrySmith Vacuum Cleaner", file: "PerrySmith Vacuum Cleaner.png" },
-    { title: "Phillips Toaster", file: "Phillips Toaster.png" },
-    { title: "Plant Origins Aromatherapy Gift Set", file: "Plant Origins Aromatherapy Gift Set.png" },
-    { title: "Redmi Watch 6", file: "Redmi Watch 6.png" },
-    { title: "Scosche MagicMount Magnetic Phone Holder", file: "Scosche MagicMount Magnetic Phone Holder.png" },
-    { title: "Sony Wireless Headphones", file: "Sony Wireless Headphones.png" },
-    { title: "Sport Direct Pro Yoga Mat (2 sets)", file: "Sport Direct Pro Yoga Mat (2 sets).png" },
-    { title: "Universal Adapter (2 sets)", file: "Universal Adapter (2 sets).png" },
-    { title: "Urbanlite Tron 2.0 20inch", file: "Urbanlite Tron 2.0 20inch.jpg" },
-    { title: "Urbanlite Tron 2.0 24inch", file: "Urbanlite Tron 2.0 24inch.jpg" },
-    { title: "Urbanlite Tron 2.0 28inch", file: "Urbanlite Tron 2.0 28inch.jpg" },
-    { title: "Utanking Foldable Hiking Stick (2 sets)", file: "Utanking Foldable Hiking Stick ( 2 sets).png" },
-    { title: "Utanking Portable Chair (2 sets)", file: "Utanking Portable Chair (2 sets).png" },
-    { title: "Xiaomi Portable Blender (2 sets)", file: "Xiaomi Portable Blender (2 sets).png" },
-    { title: "Xiaomi Portable Printer", file: "Xiaomi Portable Printer.png" },
-    { title: "Xiaomi Smart Air Purifier 4", file: "Xiaomi Smart Air Purifier 4.png" },
-    { title: "Xiaomi Wireless Charger (4 sets)", file: "Xiaomi Wireless Charger (4 sets).png" }
-  ];
-
+  /* =========================================================================
+     48-SLIDE DEDUPLICATED LUCKY DRAW CAROUSEL (MAPPED TO EXACT GITHUB FILES)
+     Total items represented: 76 prizes
+     ========================================================================= */
   const PRIZES = [
-    ...GRAND_PRIZES.map(p => ({
-      title: p.name,
-      file: p.file,
-      badge: p.isGrand5 ? "Grand Prize 5" : `Top Grand Prize • Rank ${p.rank}`,
-      isGrand: true,
-      rank: p.rank
-    })),
-    ...REGULAR_PRIZES.map((p, idx) => ({
-      title: p.title,
-      file: p.file,
-      badge: `Prize Draw ${idx + 11} / 48 (Alphabetical)`,
-      isGrand: false
-    }))
+    { title: "Top Grand Prize 1", img: "Prize1.png", isGrand: true },
+    { title: "Top Grand Prize 2", img: "Prize2.png", isGrand: true },
+    { title: "Top Grand Prize 3", img: "Prize3.png", isGrand: true },
+    { title: "Top Grand Prize 4", img: "Prize4.png", isGrand: true },
+    { title: "Grand Prize 5 • Outin Mino Portable Expresso Machine", img: "Outin Mino Portable Expresso Machine.png", fallback: "Prize5.png", isGrand: true },
+    { title: "Top Grand Prize 6", img: "Prize6.png", isGrand: true },
+    { title: "Top Grand Prize 7", img: "Prize7.png", isGrand: true },
+    { title: "Top Grand Prize 8", img: "Prize8.png", isGrand: true },
+    { title: "Top Grand Prize 9", img: "Prize9.png", isGrand: true },
+    { title: "Top Grand Prize 10", img: "Prize10.png", isGrand: true },
+    { title: "70mai Dash Cam + Memory", img: "70mai Dash Cam + Memory.png" },
+    { title: "Decathlon Compartment Bag (6 sets)", img: "Decathlon Compartment Bag (6 sets).png" },
+    { title: "Decathlon Waterproof Bag", img: "Decathlon Waterproof Bag.png" },
+    { title: "Elba Coffee Maker", img: "Elba Coffee Maker.png" },
+    { title: "Hooga Black Room Spray - Bergamot & Balsam", img: "Hooga Black Room Spray - Bergamot & Balsam.png" },
+    { title: "Hooga Black Room Spray - Kenya Yuzu", img: "Hooga Black Room Spray - Kenya Yuzu.png" },
+    { title: "Hooga Black Room Spray - Ocean", img: "Hooga Black Room Spray - Ocean.png" },
+    { title: "Hooga Black Room Spray - Sea Salt", img: "Hooga Black Room Spray - Sea Salt.png" },
+    { title: "Hooga Black Room Spray - White Tea & Ginger", img: "Hooga Black Room Spray - White Tea & Ginger.png" },
+    { title: "IKEA Microwave Oven (Black)", img: "IKEA Microwave Oven (Black).png" },
+    { title: "IKEA Microwave Oven (White)", img: "IKEA Microwave Oven (White).png" },
+    { title: "Intel Tower Set (11 sets)", img: "Intel Tower Set (11 sets).jpg" },
+    { title: "Jisulife Mini Portable Fan", img: "Jisulife Mini Portable Fan.png" },
+    { title: "Jollie Memory Microfibre Pillow (2 sets)", img: "Jollie Memory Microfibre Pillow (2 sets).png" },
+    { title: "Li Ning AXForce Cannon (2 sets)", img: "Li Ning AXForce Cannon (2 sets).png" },
+    { title: "Miivio Blood Pressure Monitor (2 sets)", img: "Miivio Blood Pressure Monitor (2 sets).png" },
+    { title: "Mosquito Trap Lamp", img: "Mosquite Trap Lamp.png" },
+    { title: "MR DIY Premium Ice Box", img: "MR DIY Premium Ice Box.png" },
+    { title: "Nitori Gas Aluminium Pot", img: "Nitori Gas Aluminium Pot.png" },
+    { title: "Nitori Glass Container (2 sets)", img: "Nitori Glass Container (2 sets).png" },
+    { title: "Ogawa Curve Massage Gun", img: "Ogawa Curve Masssage Gun.png" },
+    { title: "PerrySmith Vacuum Cleaner", img: "PerrySmith Vacuum Cleaner.png" },
+    { title: "Phillips Toaster", img: "Phillips Toaster.png" },
+    { title: "Plant Origins Aromatherapy Gift Set", img: "Plant Origins Aromatherapy Gift Set.png" },
+    { title: "Redmi Watch 6", img: "Redmi Watch 6.png" },
+    { title: "Scosche MagicMount Magnetic Phone Holder", img: "Scosche MagicMount Magnetic Phone Holder.png" },
+    { title: "Sony Wireless Headphones", img: "Sony Wireless Headphones.png" },
+    { title: "Sport Direct Pro Yoga Mat (2 sets)", img: "Sport Direct Pro Yoga Mat (2 sets).png" },
+    { title: "Universal Adapter (2 sets)", img: "Universal Adapter (2 sets).png" },
+    { title: "Urbanlite Tron 2.0 20inch", img: "Urbanlite Tron 2.0 20inch.jpg" },
+    { title: "Urbanlite Tron 2.0 24inch", img: "Urbanlite Tron 2.0 24inch.jpg" },
+    { title: "Urbanlite Tron 2.0 28inch", img: "Urbanlite Tron 2.0 28inch.jpg" },
+    { title: "Utanking Foldable Hiking Stick (2 sets)", img: "Utanking Foldable Hiking Stick ( 2 sets).png" },
+    { title: "Utanking Portable Chair (2 sets)", img: "Utanking Portable Chair (2 sets).png" },
+    { title: "Xiaomi Portable Blender (2 sets)", img: "Xiaomi Portable Blender (2 sets).png" },
+    { title: "Xiaomi Portable Printer", img: "Xiaomi Portable Printer.png" },
+    { title: "Xiaomi Smart Air Purifier 4", img: "Xiaomi Smart Air Purifier 4.png" },
+    { title: "Xiaomi Wireless Charger (4 sets)", img: "Xiaomi Wireless Charger (4 sets).png" }
   ];
 
   let currentLuckySlide = 0;
@@ -880,20 +882,15 @@
     const track = document.getElementById('luckyTrack');
     if (!track) return;
     track.innerHTML = '';
-
-    PRIZES.forEach((p, i) => {
+    
+    PRIZES.forEach((item, i) => {
       const slide = document.createElement('div');
       slide.className = 'carousel-slide';
-
+      
       const badge = document.createElement('span');
       badge.className = 'game-badge';
-      badge.textContent = p.badge;
-      if (p.isGrand) {
-        badge.style.background = 'rgba(230, 57, 70, 0.2)';
-        badge.style.borderColor = 'var(--accent-ruby)';
-        badge.style.color = 'var(--accent-ruby)';
-      }
-
+      badge.textContent = item.isGrand ? `Grand Prize • ${i + 1} of 10` : `Lucky Draw Prize ${i + 1} / ${PRIZES.length}`;
+      
       const frame = document.createElement('div');
       frame.className = 'perf-photo-frame';
       frame.style.background = 'transparent';
@@ -901,49 +898,47 @@
       frame.style.boxShadow = 'none';
       frame.style.height = '240px';
       frame.style.marginBottom = '0';
-
+      
       const img = document.createElement('img');
-      img.src = encodeURI(p.file + '?v=6');
-      img.alt = p.title;
+      img.src = encodeURI(item.img + '?v=6');
+      img.alt = item.title;
       img.style.objectFit = 'contain';
       img.style.borderRadius = '8px';
-      img.dataset.imgname = p.file;
-
+      img.dataset.imgname = item.img;
+      if (item.fallback) img.dataset.fallback = item.fallback;
+      
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
-        const lastDot = this.dataset.imgname.lastIndexOf('.');
-        const base = lastDot !== -1 ? this.dataset.imgname.substring(0, lastDot) : this.dataset.imgname;
-
-        if (attempt === 0) {
-          this.src = encodeURI(base + '.png?v=6');
+        const base = this.dataset.imgname.substring(0, this.dataset.imgname.lastIndexOf('.')) || this.dataset.imgname;
+        
+        if (attempt === 0 && this.dataset.fallback) {
+          this.src = encodeURI(this.dataset.fallback + '?v=6');
         } else if (attempt === 1) {
           this.src = encodeURI(base + '.jpg?v=6');
         } else if (attempt === 2) {
-          this.src = encodeURI(base + '.jpeg?v=6');
+          this.src = encodeURI(base + '.png?v=6');
         } else if (attempt === 3) {
-          this.src = encodeURI(base + '.PNG?v=6');
-        } else if (p.rank === 5) {
-          this.src = encodeURI('Prize5.png?v=6');
+          this.src = encodeURI(base + '.jpeg?v=6');
         } else {
           this.parentElement.innerHTML = '<div style="font-size:5rem; text-shadow:0 0 20px rgba(255,183,3,0.5);">🎁</div>';
         }
       };
-
+      
       frame.appendChild(img);
-
+      
       const title = document.createElement('h3');
       title.className = 'game-title';
-      title.style.color = p.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
-      title.style.fontSize = '1.25rem';
-      title.textContent = p.title;
-
+      title.style.color = item.isGrand ? 'var(--accent-ruby)' : 'var(--accent-gold)';
+      title.style.fontSize = '1.2rem';
+      title.textContent = item.title;
+      
       slide.appendChild(badge);
       slide.appendChild(frame);
       slide.appendChild(title);
       track.appendChild(slide);
     });
-
+    
     updateLuckyCarousel();
     setupSwipe('luckyCarousel', nextLuckySlide, prevLuckySlide);
   }
@@ -1002,15 +997,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-
+      
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-
+      
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-
+      
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -1024,32 +1019,32 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-
+      
       avatarFrame.appendChild(img);
-
+      
       const details = document.createElement('div');
       details.className = 'comm-details';
-
+      
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-
+      
       const deptDiv = document.createElement('div');
       deptDiv.className = 'comm-dept';
       deptDiv.textContent = m.dept;
-
+      
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-
+      
       details.appendChild(nameDiv);
       details.appendChild(deptDiv);
       details.appendChild(roleSpan);
-
+      
       card.appendChild(avatarFrame);
       card.appendChild(details);
-
+      
       container.appendChild(card);
     });
   }
@@ -1069,8 +1064,6 @@
     img.dataset.attempt = attempt + 1;
     if (attempt === 0) img.src = encodeURI('The Wonders Band.png?v=6');
     else if (attempt === 1) img.src = encodeURI('The Wonders Band.jpg?v=6');
-    else if (attempt === 2) img.src = encodeURI('The Wonderful Band.png?v=6');
-    else if (attempt === 3) img.src = encodeURI('The Wonderful Band.jpg?v=6');
     else img.parentElement.innerHTML = '<div style="font-size:3rem; color:var(--accent-gold);">🎸</div>';
   }
 
@@ -1141,515 +1134,6 @@
   });
 </script>
 
-</body>
-</html>
-
-
-2. lucky_winner.html (Dedicated Live Winners Page)
-
-Save this file as lucky_winner.html in the root of your GitHub repository. It includes live search, quick filter tabs, Grand Prize highlight cards, and an editable list structure ready for event night!
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Lucky Draw Winners • SCM Annual Dinner 2026</title>
-  <style>
-    :root {
-      /* Black & Red Gala Theme */
-      --bg-main: #07070a;
-      --bg-card: #121217;
-      --bg-card-hover: #1c1518;
-      --accent-red: #e63946;
-      --accent-crimson: #d90429;
-      --accent-ruby: #ff4d6d;
-      --accent-gold: #ffb703;
-      --accent-gold-soft: #f4d06f;
-      --text-main: #ffffff;
-      --text-muted: #a3a3ad;
-      --border-color: #2b1f24;
-      --card-radius: 14px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      padding: 16px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
-    }
-
-    .container {
-      width: 100%;
-      max-width: 600px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* Top Navigation Bar */
-    .top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(230, 57, 70, 0.15);
-      color: var(--accent-ruby);
-      border: 1px solid rgba(230, 57, 70, 0.4);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-back:hover {
-      background: var(--accent-crimson);
-      color: #fff;
-    }
-
-    /* Header Box */
-    .header-box {
-      text-align: center;
-      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
-      border: 1px solid var(--border-color);
-      border-radius: var(--card-radius);
-      padding: 22px 16px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
-    }
-    .header-box::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
-    }
-    .header-box h1 {
-      color: #fff;
-      font-size: 1.55rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-    .header-box h1 span { color: var(--accent-gold); }
-    .header-box p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* Live Search & Filter Bar */
-    .search-box {
-      position: relative;
-      width: 100%;
-    }
-    .search-input {
-      width: 100%;
-      background: #141013;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px 12px 38px;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .search-input:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 12px rgba(255, 183, 3, 0.25);
-    }
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Section Headers */
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--accent-gold);
-      margin-top: 4px;
-    }
-    .section-title.grand {
-      color: var(--accent-ruby);
-    }
-
-    /* Grand Prize Podium Cards */
-    .grand-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .grand-winner-card {
-      background: linear-gradient(135deg, #1b1318 0%, #100b0e 100%);
-      border: 1px solid rgba(230, 57, 70, 0.4);
-      border-radius: var(--card-radius);
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-    }
-    .grand-winner-card::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 0; bottom: 0; width: 4px;
-      background: var(--accent-crimson);
-    }
-    .grand-rank-badge {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      background: rgba(230, 57, 70, 0.2);
-      border: 2px solid var(--accent-red);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 900;
-      color: var(--accent-ruby);
-    }
-    .grand-rank-badge.top-1 {
-      background: rgba(255, 183, 3, 0.2);
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-    .grand-info { flex: 1; }
-    .grand-prize-title {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 800;
-      color: var(--accent-gold-soft);
-      margin-bottom: 2px;
-    }
-    .grand-winner-name {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #fff;
-    }
-    .grand-winner-meta {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* Regular Winners List Table / Cards */
-    .winner-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .winner-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.2s ease;
-    }
-    .winner-item:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 183, 3, 0.4);
-    }
-    .winner-col-left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .winner-prize-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent-gold-soft);
-    }
-    .winner-person-name {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .winner-badge {
-      background: rgba(230, 57, 70, 0.12);
-      border: 1px solid rgba(230, 57, 70, 0.3);
-      color: var(--accent-ruby);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-
-    /* Empty Search State */
-    .empty-state {
-      display: none;
-      text-align: center;
-      padding: 24px 16px;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <!-- Back Button Navigation -->
-  <div class="top-nav">
-    <a href="index.html" class="btn-back">← Back to Main Portal</a>
-    <span style="font-size: 0.78rem; color: var(--accent-gold);">🔴 LIVE UPDATES</span>
-  </div>
-
-  <!-- Header Box -->
-  <header class="header-box">
-    <h1>LUCKY DRAW <span>WINNERS</span></h1>
-    <p>Intel Supply Chain Malaysia Annual Dinner 2026</p>
-  </header>
-
-  <!-- Search Filter -->
-  <div class="search-box">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="winnerSearch" class="search-input" placeholder="Search winner name, seat, or prize..." onkeyup="filterWinners()" />
-  </div>
-
-  <!-- Section 1: Grand Prize Winners -->
-  <div class="section-title grand">👑 Top Grand Prize Winners</div>
-  <div class="grand-grid" id="grandWinnersContainer">
-
-    <!-- Grand Prize 1 -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge top-1">#1</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 1</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <!-- Grand Prize 2 -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#2</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 2</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <!-- Grand Prize 3 -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#3</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 3</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <!-- Grand Prize 4 -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#4</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 4</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <!-- Grand Prize 5 (Outin Mino Portable Expresso Machine) -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#5</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 5 • Outin Mino Expresso</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <!-- Grand Prize 6 to 10 -->
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#6</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 6</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#7</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 7</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#8</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 8</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#9</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 9</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-
-    <div class="grand-winner-card winner-entry">
-      <div class="grand-rank-badge">#10</div>
-      <div class="grand-info">
-        <div class="grand-prize-title">Grand Prize 10</div>
-        <div class="grand-winner-name search-target">Revealing Tonight</div>
-        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 2: Regular Lucky Draw Winners -->
-  <div class="section-title">🎁 Lucky Draw Session Winners</div>
-  <div class="winner-list" id="regularWinnersContainer">
-
-    <!-- Sample Template Rows - Easy to duplicate & replace with real names on event night -->
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">70mai Dash Cam + Memory</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Decathlon Compartment Bag</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Decathlon Waterproof Bag</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Elba Coffee Maker</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">PerrySmith Vacuum Cleaner</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Redmi Watch 6</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Sony Wireless Headphones</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-    <div class="winner-item winner-entry">
-      <div class="winner-col-left">
-        <span class="winner-prize-name search-target">Xiaomi Smart Air Purifier 4</span>
-        <span class="winner-person-name search-target">Revealing Tonight</span>
-      </div>
-      <span class="winner-badge search-target">Table --</span>
-    </div>
-
-  </div>
-
-  <div id="noResults" class="empty-state">
-    No matching winners found. Try searching another name or table number.
-  </div>
-
-  <!-- Bottom Return Button -->
-  <div style="margin: 16px 0 24px 0;">
-    <a href="index.html" class="btn-back" style="width:100%; justify-content:center; padding:12px; border-radius:10px;">← Back to Main Panel</a>
-  </div>
-</div>
-
-<script>
-  function filterWinners() {
-    const input = document.getElementById('winnerSearch').value.toLowerCase().trim();
-    const entries = document.querySelectorAll('.winner-entry');
-    let visibleCount = 0;
-
-    entries.forEach(entry => {
-      const targets = entry.querySelectorAll('.search-target');
-      let textMatch = false;
-      targets.forEach(t => {
-        if (t.textContent.toLowerCase().includes(input)) textMatch = true;
-      });
-
-      if (textMatch) {
-        entry.style.display = entry.classList.contains('grand-winner-card') ? 'flex' : 'flex';
-        visibleCount++;
-      } else {
-        entry.style.display = 'none';
-      }
-    });
-
-    const noResults = document.getElementById('noResults');
-    if (noResults) {
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-  }
-</script>
 
 </body>
 </html>
