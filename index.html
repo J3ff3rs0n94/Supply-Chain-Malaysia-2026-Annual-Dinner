@@ -157,6 +157,9 @@
     .hub-card.card-lucky { border-color: rgba(255, 183, 3, 0.55); }
     .hub-card.card-lucky:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
 
+    .hub-card.card-winner { border-color: rgba(255, 183, 3, 0.65); background: linear-gradient(145deg, #161214, #121013); }
+    .hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 24px rgba(255, 183, 3, 0.5); }
+
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
 
@@ -453,35 +456,42 @@
       <div class="card-subtitle">Interactive Lucky Draw</div>
     </a>
 
-    <!-- 8. Vote The Best Dressed! -->
+    <!-- 8. Lucky Winner (NEW CARD) -->
+    <a href="lucky_winner.html" class="hub-card card-winner">
+      <div class="card-icon">🏆</div>
+      <div class="card-title">Lucky Winner</div>
+      <div class="card-subtitle">Live winners announcement</div>
+    </a>
+
+    <!-- 9. Vote The Best Dressed! -->
     <a href="https://forms.cloud.microsoft/r/uWfvGmgqAC" target="_blank" rel="noopener noreferrer" class="hub-card card-vote">
       <div class="card-icon">👑</div>
       <div class="card-title">Vote The Best Dressed!</div>
       <div class="card-subtitle">Cast your vote live ↗</div>
     </a>
 
-    <!-- 9. Post Your Photos! -->
+    <!-- 10. Post Your Photos! -->
     <a href="https://engage.cloud.microsoft/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIzOTEwMTk0NzkwNCJ9/all" target="_blank" rel="noopener noreferrer" class="hub-card card-photos">
       <div class="card-icon">📷</div>
       <div class="card-title">Post Your Photos!</div>
       <div class="card-subtitle">Supply Chain Channel ↗</div>
     </a>
 
-    <!-- 10. Games -->
+    <!-- 11. Games -->
     <div class="hub-card card-games" onclick="openModal('modalGames')">
       <div class="card-icon">🎮</div>
       <div class="card-title">Games</div>
       <div class="card-subtitle">Stage quiz &amp; challenges</div>
     </div>
 
-    <!-- 11. Event Committee -->
+    <!-- 12. Event Committee -->
     <div class="hub-card" onclick="openModal('modalCommittee')">
       <div class="card-icon">👥</div>
       <div class="card-title">Event Committee</div>
       <div class="card-subtitle">Organizing team directory</div>
     </div>
 
-    <!-- 12. Mystery -->
+    <!-- 13. Mystery -->
     <div class="hub-card" onclick="openModal('modalMystery')">
       <div class="card-icon">✨</div>
       <div class="card-title">Mystery</div>
@@ -1129,6 +1139,516 @@
     setupSwipe('gameCarousel', nextGameSlide, prevGameSlide);
     setupSwipe('perfCarousel', nextPerfSlide, prevPerfSlide);
   });
+</script>
+
+</body>
+</html>
+
+
+2. lucky_winner.html (Dedicated Live Winners Page)
+
+Save this file as lucky_winner.html in the root of your GitHub repository. It includes live search, quick filter tabs, Grand Prize highlight cards, and an editable list structure ready for event night!
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Lucky Draw Winners • SCM Annual Dinner 2026</title>
+  <style>
+    :root {
+      /* Black & Red Gala Theme */
+      --bg-main: #07070a;
+      --bg-card: #121217;
+      --bg-card-hover: #1c1518;
+      --accent-red: #e63946;
+      --accent-crimson: #d90429;
+      --accent-ruby: #ff4d6d;
+      --accent-gold: #ffb703;
+      --accent-gold-soft: #f4d06f;
+      --text-main: #ffffff;
+      --text-muted: #a3a3ad;
+      --border-color: #2b1f24;
+      --card-radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding: 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(224, 30, 55, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(139, 0, 0, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(20, 10, 12, 0.8) 0%, transparent 100%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(230, 57, 70, 0.15);
+      color: var(--accent-ruby);
+      border: 1px solid rgba(230, 57, 70, 0.4);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: var(--accent-crimson);
+      color: #fff;
+    }
+
+    /* Header Box */
+    .header-box {
+      text-align: center;
+      background: linear-gradient(135deg, #181114 0%, #0d090b 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 22px 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
+    }
+    .header-box::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-red), var(--accent-crimson), var(--accent-gold));
+    }
+    .header-box h1 {
+      color: #fff;
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .header-box h1 span { color: var(--accent-gold); }
+    .header-box p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Live Search & Filter Bar */
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+    .search-input {
+      width: 100%;
+      background: #141013;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 14px 12px 38px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 12px rgba(255, 183, 3, 0.25);
+    }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Section Headers */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-top: 4px;
+    }
+    .section-title.grand {
+      color: var(--accent-ruby);
+    }
+
+    /* Grand Prize Podium Cards */
+    .grand-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .grand-winner-card {
+      background: linear-gradient(135deg, #1b1318 0%, #100b0e 100%);
+      border: 1px solid rgba(230, 57, 70, 0.4);
+      border-radius: var(--card-radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+    .grand-winner-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--accent-crimson);
+    }
+    .grand-rank-badge {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      background: rgba(230, 57, 70, 0.2);
+      border: 2px solid var(--accent-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--accent-ruby);
+    }
+    .grand-rank-badge.top-1 {
+      background: rgba(255, 183, 3, 0.2);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+    .grand-info { flex: 1; }
+    .grand-prize-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      color: var(--accent-gold-soft);
+      margin-bottom: 2px;
+    }
+    .grand-winner-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .grand-winner-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Regular Winners List Table / Cards */
+    .winner-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .winner-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s ease;
+    }
+    .winner-item:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 183, 3, 0.4);
+    }
+    .winner-col-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .winner-prize-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-gold-soft);
+    }
+    .winner-person-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .winner-badge {
+      background: rgba(230, 57, 70, 0.12);
+      border: 1px solid rgba(230, 57, 70, 0.3);
+      color: var(--accent-ruby);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Empty Search State */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Back Button Navigation -->
+  <div class="top-nav">
+    <a href="index.html" class="btn-back">← Back to Main Portal</a>
+    <span style="font-size: 0.78rem; color: var(--accent-gold);">🔴 LIVE UPDATES</span>
+  </div>
+
+  <!-- Header Box -->
+  <header class="header-box">
+    <h1>LUCKY DRAW <span>WINNERS</span></h1>
+    <p>Intel Supply Chain Malaysia Annual Dinner 2026</p>
+  </header>
+
+  <!-- Search Filter -->
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="winnerSearch" class="search-input" placeholder="Search winner name, seat, or prize..." onkeyup="filterWinners()" />
+  </div>
+
+  <!-- Section 1: Grand Prize Winners -->
+  <div class="section-title grand">👑 Top Grand Prize Winners</div>
+  <div class="grand-grid" id="grandWinnersContainer">
+
+    <!-- Grand Prize 1 -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge top-1">#1</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 1</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <!-- Grand Prize 2 -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#2</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 2</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <!-- Grand Prize 3 -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#3</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 3</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <!-- Grand Prize 4 -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#4</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 4</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <!-- Grand Prize 5 (Outin Mino Portable Expresso Machine) -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#5</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 5 • Outin Mino Expresso</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <!-- Grand Prize 6 to 10 -->
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#6</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 6</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#7</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 7</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#8</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 8</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#9</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 9</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+
+    <div class="grand-winner-card winner-entry">
+      <div class="grand-rank-badge">#10</div>
+      <div class="grand-info">
+        <div class="grand-prize-title">Grand Prize 10</div>
+        <div class="grand-winner-name search-target">Revealing Tonight</div>
+        <div class="grand-winner-meta search-target">Table -- • Seat --</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Regular Lucky Draw Winners -->
+  <div class="section-title">🎁 Lucky Draw Session Winners</div>
+  <div class="winner-list" id="regularWinnersContainer">
+
+    <!-- Sample Template Rows - Easy to duplicate & replace with real names on event night -->
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">70mai Dash Cam + Memory</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Decathlon Compartment Bag</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Decathlon Waterproof Bag</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Elba Coffee Maker</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">PerrySmith Vacuum Cleaner</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Redmi Watch 6</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Sony Wireless Headphones</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+    <div class="winner-item winner-entry">
+      <div class="winner-col-left">
+        <span class="winner-prize-name search-target">Xiaomi Smart Air Purifier 4</span>
+        <span class="winner-person-name search-target">Revealing Tonight</span>
+      </div>
+      <span class="winner-badge search-target">Table --</span>
+    </div>
+
+  </div>
+
+  <div id="noResults" class="empty-state">
+    No matching winners found. Try searching another name or table number.
+  </div>
+
+  <!-- Bottom Return Button -->
+  <div style="margin: 16px 0 24px 0;">
+    <a href="index.html" class="btn-back" style="width:100%; justify-content:center; padding:12px; border-radius:10px;">← Back to Main Panel</a>
+  </div>
+</div>
+
+<script>
+  function filterWinners() {
+    const input = document.getElementById('winnerSearch').value.toLowerCase().trim();
+    const entries = document.querySelectorAll('.winner-entry');
+    let visibleCount = 0;
+
+    entries.forEach(entry => {
+      const targets = entry.querySelectorAll('.search-target');
+      let textMatch = false;
+      targets.forEach(t => {
+        if (t.textContent.toLowerCase().includes(input)) textMatch = true;
+      });
+
+      if (textMatch) {
+        entry.style.display = entry.classList.contains('grand-winner-card') ? 'flex' : 'flex';
+        visibleCount++;
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+
+    const noResults = document.getElementById('noResults');
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
 </script>
 
 </body>
