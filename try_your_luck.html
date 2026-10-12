@@ -150,6 +150,15 @@
       transform: scale(0.92);
       background: rgba(255, 255, 255, 0.2);
     }
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 380px;
+      margin: -4px auto 12px auto;
+      font-style: italic;
+      opacity: 0.8;
+    }
 
     /* Main Container */
     main {
@@ -571,6 +580,10 @@
   </div>
 </header>
 
+<!-- Disclaimer -->
+<p class="disclaimer">Note: This is a simulation for your own fun and is not connected to the official event lucky draw.</p>
+
+
 <!-- Main Game Panel -->
 <main>
   <!-- Pool Counter -->
@@ -694,7 +707,7 @@ const INITIAL_POOL = [
   "Sock Khim Pah", "Nathan Ganaeson", "Nivitha Sundarajoo Thilagar", "Yap, Austin", "Chitra A/P Arjunan", "Li Fen Ho", "Chee San Lee",
   "DIVYA RUBAN MUTHUSAMY", "Si Yeu Lai", "Jessica, Choong", "Leng See Teh", "SZE GIE ANG", "Farilah Yusoff", "Mahsuri Mat Wasi",
   "Rames Velusamy", "Cheah Kuon Sim", "Joa Yen Tang", "Usha Devi Raman", "Norhaslinda Mohamad Kasim", "Jaffar, Khyrunisha", "Ping Chiet Chai",
-  "Tan, Gaik Theng", "Irene Poh Im Yeoh","Cheah Nam See"
+  "Tan, Gaik Theng", "Irene Poh Im Yeoh"
 ];
 
 /* ========================================================
@@ -986,7 +999,7 @@ soundToggleBtn.addEventListener("click", () => {
   updateUI();
 });
 
-// Winners Modal
+// Modals
 const winnersModal = document.getElementById("winnersModal");
 document.getElementById("viewWinnersBtn").addEventListener("click", () => {
   winnersModal.classList.add("active");
