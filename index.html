@@ -150,19 +150,19 @@
     /* Dedicated Border Accents */
     .hub-card.card-details { border-color: rgba(255, 183, 3, 0.5); }
     .hub-card.card-details:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.4); }
-    
+
     .hub-card.card-seating { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-seating:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35); }
-    
+
     .hub-card.card-performance { border-color: rgba(230, 57, 70, 0.45); }
     .hub-card.card-performance:hover { border-color: var(--accent-ruby); box-shadow: 0 6px 22px rgba(230, 57, 70, 0.45); }
-    
+
     .hub-card.card-games { border-color: rgba(255, 183, 3, 0.45); }
     .hub-card.card-games:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.45); }
-    
+
     .hub-card.card-photos { border-color: rgba(255, 183, 3, 0.35); }
     .hub-card.card-photos:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.3); }
-    
+
     .hub-card.card-vote { border-color: rgba(217, 4, 41, 0.5); }
     .hub-card.card-vote:hover { border-color: #ff0033; box-shadow: 0 6px 22px rgba(255, 0, 51, 0.4); }
 
@@ -175,6 +175,17 @@
     }
     .card-title { font-size: 0.95rem; font-weight: 700; color: #fff; }
     .card-subtitle { font-size: 0.72rem; color: var(--text-muted); line-height: 1.2; }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      background: rgba(255, 183, 3, 0.12);
+      border: 1px solid rgba(255, 183, 3, 0.3);
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-top: 2px;
+    }
 
     /* Modals */
     .modal-overlay {
@@ -327,7 +338,7 @@
       transition: all 0.2s ease;
     }
     .carousel-btn:hover { background: var(--accent-crimson); color: #fff; }
-    
+
     .carousel-dots { display: flex; gap: 6px; }
     .carousel-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -451,6 +462,7 @@
       <div class="card-icon">📷</div>
       <div class="card-title">Post Your Photos!</div>
       <div class="card-subtitle">Supply Chain Channel ↗</div>
+      <span class="card-tag">🔒 Intel sign-in required</span>
     </a>
 
     <!-- 10. Games -->
@@ -546,7 +558,7 @@
         ✨ <strong>Note:</strong> There are a total of 76 lucky draw items. Items are displayed here in alphabetical sequence, not in terms of value.
       </p>
     </div>
-    
+
     <div class="carousel-container" id="luckyCarousel">
       <div class="carousel-track" id="luckyTrack">
         <!-- Rendered via JavaScript -->
@@ -1038,15 +1050,15 @@
     COMMITTEE_MEMBERS.forEach(m => {
       const card = document.createElement('div');
       card.className = 'comm-card';
-      
+
       const avatarFrame = document.createElement('div');
       avatarFrame.className = 'comm-avatar-frame';
-      
+
       const img = document.createElement('img');
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
-      
+
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
         this.dataset.attempt = attempt + 1;
@@ -1060,27 +1072,27 @@
           this.parentElement.innerHTML = getInitials(m.name);
         }
       };
-      
+
       avatarFrame.appendChild(img);
-      
+
       const details = document.createElement('div');
       details.className = 'comm-details';
-      
+
       const nameDiv = document.createElement('div');
       nameDiv.className = 'comm-name';
       nameDiv.title = m.name;
       nameDiv.textContent = m.name;
-      
+
       const roleSpan = document.createElement('span');
       roleSpan.className = 'comm-role-pill';
       roleSpan.textContent = m.role;
-      
+
       details.appendChild(nameDiv);
       details.appendChild(roleSpan);
-      
+
       card.appendChild(avatarFrame);
       card.appendChild(details);
-      
+
       container.appendChild(card);
     });
   }
