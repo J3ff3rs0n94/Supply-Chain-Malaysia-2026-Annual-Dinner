@@ -1027,7 +1027,7 @@
     { name: "Suryakandh Kalimutu", role: "Committee Lead", photo: "Suryakandh Kalimutu.png?v=6" },
     { name: "Jeff Heah Jun Jie", role: "Committee Lead / Lucky Draw & Games", photo: "Heah Jeff.jpg?v=6" },
     { name: "Dylan Leong Chat Lun", role: "Lucky Draw & Games", photo: "Dylan Leong.png?v=6" },
-    { name: "Christine Woo", role: "Vendor Coordinator", photo: "Christine Woo.png?v=6" },
+    { name: "Christine Woo", role: "Vendor Coordinator", photo: "Christine Woo.png?v=6", objectPosition: "center 22%" },
     { name: "Kasturi Krishnan", role: "Vendor Coordinator", photo: "Kasturi Krishnan.png?v=6" },
     { name: "Teoh Pei Fen", role: "Door Gift Lead", photo: "Teoh Pei Fen.png?v=6" },
     { name: "Lee Swee Hoon", role: "Door Gift Lead", photo: "Lee Swee Hoon.png?v=6" },
@@ -1065,6 +1065,9 @@
       img.src = encodeURI(m.photo);
       img.alt = m.name;
       img.loading = "lazy";
+      if (m.objectPosition) {
+        img.style.objectPosition = m.objectPosition;
+      }
 
       img.onerror = function() {
         const attempt = parseInt(this.dataset.attempt || '0');
