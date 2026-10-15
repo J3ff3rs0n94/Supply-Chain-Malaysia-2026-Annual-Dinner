@@ -1038,7 +1038,6 @@
     { name: "Azri Mohd Khanil", role: "Media & Photography", photo: "Azri Mohd Khanil.jpg?v=6" },
     { name: "Abbie Yen Ting Koo", role: "Performance Lead", photo: "Abbie Yen Ting Koo.jpg?v=6" },
     { name: "Syed Nasir Mohamed", role: "Event Operations", photo: "Syed Nasir Mohamed.png?v=6" },
-    { name: "Hakim Ab Razak", role: "Event Operations", photo: "Hakim Ab Razak.png?v=6" },
     { name: "Catherine Lim", role: "Event Operations", photo: "Catherine Lim.png?v=6" },
     { name: "Chan Kl Chan", role: "Event Operations", photo: "Chan Kl Chan.png?v=6" }
   ];
@@ -1074,10 +1073,9 @@
         this.dataset.attempt = attempt + 1;
         const baseName = m.name.trim();
 
-        if (attempt === 0) this.src = encodeURI('hakim Ab Razak.png?v=6');
-        else if (attempt === 1) this.src = encodeURI('Hakim Ab Razak.png?v=6');
-        else if (attempt === 2) this.src = encodeURI(baseName + '.jpg?v=6');
-        else if (attempt === 3) this.src = encodeURI(baseName + '.jpeg?v=6');
+        if (attempt === 0) this.src = encodeURI(baseName + '.png?v=6');
+        else if (attempt === 1) this.src = encodeURI(baseName + '.jpg?v=6');
+        else if (attempt === 2) this.src = encodeURI(baseName + '.jpeg?v=6');
         else {
           this.parentElement.innerHTML = getInitials(m.name);
         }
