@@ -169,6 +169,9 @@
     .hub-card.card-winner { border-color: rgba(255, 183, 3, 0.6); background: linear-gradient(135deg, #181316 0%, #120e11 100%); }
     .hub-card.card-winner:hover { border-color: var(--accent-gold); box-shadow: 0 6px 22px rgba(255, 183, 3, 0.4); }
 
+    .hub-card.card-prayer { border-color: rgba(255, 183, 3, 0.4); }
+    .hub-card.card-prayer:hover { border-color: var(--accent-gold); box-shadow: 0 6px 20px rgba(255, 183, 3, 0.35); }
+
     .card-icon {
       font-size: 2rem;
       filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
@@ -492,6 +495,13 @@
       <div class="card-title">Lucky Winner</div>
       <div class="card-subtitle">Live Results &amp; Announcements ↗</div>
     </a>
+
+    <!-- 14. Muslim Prayer Room -->
+    <div class="hub-card card-prayer" onclick="openModal('modalPrayer')">
+      <div class="card-icon">🕌</div>
+      <div class="card-title">Muslim Prayer Room</div>
+      <div class="card-subtitle">Surau location &amp; info</div>
+    </div>
   </main>
 </div>
 
@@ -802,6 +812,38 @@
   </div>
 </div>
 
+<!-- Modal: Muslim Prayer Room -->
+<div class="modal-overlay" id="modalPrayer" onclick="closeOnBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-nav-back" onclick="closeModal('modalPrayer')">← Back to Main Panel</button>
+      <button class="modal-close" onclick="closeModal('modalPrayer')">&times;</button>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-gold);">
+        <h3 style="color: var(--accent-gold); font-size: 1.05rem; margin-bottom: 10px;">🕌 Surau / Muslim Prayer Room</h3>
+        <p style="font-size: 0.86rem; color: #f1faee; line-height: 1.6; margin-bottom: 10px;">
+          Dedicated Muslim prayer rooms (Surau) for male and female guests are available at <strong>Penang Marriott Hotel</strong>.
+        </p>
+        <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+          <div><strong style="color:#fff;">📍 Location:</strong> Level 2 (near the Grand Ballroom foyer / restrooms corridor)</div>
+          <div><strong style="color:#fff;">Facilities:</strong> Dedicated ablution (wudhu) areas, prayer mats (sejadah), and telekung provided.</div>
+        </div>
+      </div>
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; border-left: 3px solid var(--accent-ruby);">
+        <h3 style="color: var(--accent-ruby); font-size: 1.05rem; margin-bottom: 8px;">⏰ Estimated Prayer Times (Penang)</h3>
+        <div style="display:flex; flex-direction:column; gap:6px; font-size: 0.85rem; color: var(--text-muted);">
+          <div><strong style="color:#fff;">Maghrib:</strong> ~7:03 PM</div>
+          <div><strong style="color:#fff;">Isha':</strong> ~8:15 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-bottom-bar">
+      <button class="btn-return-main" onclick="closeModal('modalPrayer')">← Back to Main Panel</button>
+    </div>
+  </div>
+</div>
+
 <script>
   /* ==========================================================================
      LUCKY DRAW ROSTER: 10 GRAND + 38 REGULAR PRESENTATION CATEGORIES (76 TOTAL)
@@ -811,12 +853,12 @@
     { rank: 1, title: "Top Grand Prize 1", file: "Prize1.png" },
     { rank: 2, title: "Top Grand Prize 2", file: "Prize2.png" },
     { rank: 3, title: "Top Grand Prize 3", file: "Prize3.png" },
-    { rank: 4, title: "Grand Prize 4 • Airpod PRO 3", file: "Airpod PRO 3.png" },
+    { rank: 4, title: "Top Grand Prize 4", file: "Prize4.png" },
     { rank: 5, title: "Grand Prize 5 • Outin Mino Portable Expresso Machine", file: "Outin Mino Portable Expresso Machine.png" },
-    { rank: 6, title: "Grand Prize 6 •Arpenaz Camping Tent", file: "Arpenaz Camping Tent.png" },
-    { rank: 7, title: "Grand Prize 7 • Poh Kong Gold", file: "Poh Kong Gold.png" },
-    { rank: 8, title: "Grand Prize 8 • Poh Kong Gold", file: "Poh Kong Gold.png" },
-    { rank: 9, title: "Grand Prize 9 • Deep Creek Auto Pump Air Mattress", file: "Deep Creek Auto Pump Air Mattress.png" },
+    { rank: 6, title: "Top Grand Prize 6", file: "Prize6.png" },
+    { rank: 7, title: "Top Grand Prize 7", file: "Prize7.png" },
+    { rank: 8, title: "Top Grand Prize 8", file: "Prize8.png" },
+    { rank: 9, title: "Top Grand Prize 9", file: "Prize9.png" },
     { rank: 10, title: "Grand Prize 10 • Redmi Watch 6", file: "Redmi Watch 6.png" }
   ];
 
