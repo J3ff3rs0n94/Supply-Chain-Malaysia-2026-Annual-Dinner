@@ -569,10 +569,13 @@
       <button class="modal-close" onclick="closeModal('modalLucky')">&times;</button>
     </div>
 
-    <!-- Official Notice Banner -->
+    <!-- Official Notice Banner with Illustration Purpose Disclaimer -->
     <div style="background: rgba(255, 183, 3, 0.1); border: 1px solid var(--accent-gold); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; text-align: center;">
       <p style="font-size: 0.82rem; color: var(--accent-gold); font-weight: 600; line-height: 1.4;">
         ✨ <strong>Note:</strong> There are a total of 76 lucky draw items. Items are displayed here in alphabetical sequence, not in terms of value.
+      </p>
+      <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 5px; font-style: italic;">
+        *Photos are for illustration purposes only. Actual items may vary.
       </p>
     </div>
 
@@ -964,6 +967,14 @@
 
       frame.appendChild(img);
 
+      const disclaimer = document.createElement('div');
+      disclaimer.style.fontSize = '0.68rem';
+      disclaimer.style.color = 'var(--text-muted)';
+      disclaimer.style.fontStyle = 'italic';
+      disclaimer.style.marginTop = '4px';
+      disclaimer.style.marginBottom = '6px';
+      disclaimer.textContent = '*Photo is for illustration purpose';
+
       const title = document.createElement('h3');
       title.className = 'game-title';
       title.style.color = 'var(--accent-gold)';
@@ -972,6 +983,7 @@
 
       slide.appendChild(badge);
       slide.appendChild(frame);
+      slide.appendChild(disclaimer);
       slide.appendChild(title);
       track.appendChild(slide);
     });
@@ -1038,6 +1050,14 @@
 
       frame.appendChild(img);
 
+      const disclaimer = document.createElement('div');
+      disclaimer.style.fontSize = '0.68rem';
+      disclaimer.style.color = 'var(--text-muted)';
+      disclaimer.style.fontStyle = 'italic';
+      disclaimer.style.marginTop = '4px';
+      disclaimer.style.marginBottom = '6px';
+      disclaimer.textContent = '*Photo is for illustration purpose';
+
       const title = document.createElement('h3');
       title.className = 'game-title';
       title.style.color = '#ffffff';
@@ -1046,6 +1066,7 @@
 
       slide.appendChild(badge);
       slide.appendChild(frame);
+      slide.appendChild(disclaimer);
       slide.appendChild(title);
       track.appendChild(slide);
     });
